@@ -10,9 +10,10 @@ var bodyParser = require('body-parser');
 // var pg = require('pg');
 // var configDB = require('./config/database.js');
 
-db.connect(configDB.url);
+// db.connect(db.url);
 var passport = require('passport');
 var flash = require('connect-flash');
+// require('./app/routes.js')(app, passport);
 
 
 app.use(morgan('dev'));
@@ -25,15 +26,14 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-app.set('view engine', 'ejs');
+// app.set('view engine', 'ejs');
 
 
-app.get('/', function (req, res) {
-  res.send('Hello ddpj!');
-});
+// app.get('/', function (req, res) {
+//   res.send('Hello ddpj!');
+// });
 
-require('./app/routes.js')(app, passport);
-
+app.use(express.static('./client/'));
 app.listen(port);
 
 console.log('Scrummage server running on port: ' + port);

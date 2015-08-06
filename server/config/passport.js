@@ -1,7 +1,7 @@
 var LocalStrategy = require('passport-local').Strategy;
 
 
-var User            = require('../app/models/user');
+// var User            = require('../app/models/user');
 
 module.exports = function(passport) {
 
@@ -24,26 +24,13 @@ module.exports = function(passport) {
     passReqToCallback: true
   },
   function(req, email, password, done){
-    process.nextTick(function(){
-      //Mongo query
-      User.findOne({'local.username': email}, function(err, user){
-        if(err)
-          return done(err);
-        if(user){
-          return done(null, false, req.flash('signupMessage', 'That email already taken'));
-        } else {
-          var newUser = new User();
-          newUser.local.username = email;
-          newUser.local.password = password;
-
-          newUser.save(function(err){
-            if(err)
-              throw err;
-            return done(null, newUser);
-          })
-        }
-      })
-
+    db.select().from('users').where('email', email).then(function(arr){
+      if (arr.length === 0) {
+        db('users').insert({email: email, password: password}).then(function(){
+          console.log('user inserted');
+        });
+      }
+      done();
     });
   }));
 
