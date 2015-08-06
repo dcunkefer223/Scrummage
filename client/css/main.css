@@ -100,6 +100,7 @@
     background-size: cover;
 }
 
+<<<<<<< HEAD
 /* --------------------------------- StoryBoard Styling --------------------------------- */
 
 .container-fluid {
@@ -147,6 +148,32 @@
 
 .col-xs-10 {
   padding: 0;
+=======
+#column-bg {
+  background-color: grey;
+}
+
+.side-bar {
+  z-index: 1001;
+  height: 100%;
+  position: absolute;
+  display: block;
+  float: left;
+  margin: 0;
+  background-color: black;
+}
+
+.side-bar ul {
+  list-style: none;
+  white-space: nowrap;
+}
+
+.fa {
+  width: 40px;
+  font-size: 40px;
+  padding: 10px 11px;
+  line-height: 50px;
+  color: lightyellow;
 }
 
 .container h3 {
@@ -166,5 +193,3 @@
 /*ul[dnd-list], ul[dnd-list] > li { 
     position: relative;
 }*/
-
-
