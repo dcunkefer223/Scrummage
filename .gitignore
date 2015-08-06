@@ -2,3 +2,5 @@ node_modules/**/*
 client/bower_components/**/*
 server/app/models
 
+.DS_Store
+
