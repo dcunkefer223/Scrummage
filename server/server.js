@@ -10,7 +10,7 @@ var bodyParser = require('body-parser');
 // var pg = require('pg');
 // var configDB = require('./config/database.js');
 
-// pg.connect(configDB.url);
+db.connect(configDB.url);
 var passport = require('passport');
 var flash = require('connect-flash');
 
