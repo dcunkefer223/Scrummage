@@ -7,14 +7,22 @@
  git push origin <feature branch name>
  git rebase origin/development
 
- IF THERE IS A CONFLICT:
- 	It will tell you 'CONFLICT: <file name>'.
- 	Go to that file name, manually resolve the conflict.
+##WHEN SOMEONE MERGES
+git fetch origin development
+git rebase origin/development
 
- 	git add <file name with conflict>
- 	git commit 
- 	git rebase --continue
+^This is where a merge conflict might occur, refer to
+"IF THERE IS A CONFLICT" to solve this.
 
- 	
 
+##IF THERE IS A CONFLICT
+	It will tell you 'CONFLICT: <file name>'.
+	Go to that file name, manually resolve the conflict.
+
+	git add <file name with conflict>
+	git commit 
+	git rebase --continue
+
+##BRANCH NAMING
+  Be sure to use <first name feature name> for branch names.
 
