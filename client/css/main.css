@@ -4,3 +4,42 @@
     width: 100%;
     background-size: cover;
 }
+
+#column-bg {
+  background-color: grey;
+}
+
+.side-bar {
+  z-index: 1001;
+  height: 100%;
+  position: absolute;
+  display: block;
+  float: left;
+  margin: 0;
+  background-color: black;
+}
+
+.side-bar ul {
+  list-style: none;
+  white-space: nowrap;
+}
+
+.fa {
+  width: 40px;
+  font-size: 40px;
+  padding: 10px 11px;
+  line-height: 50px;
+  color: lightyellow;
+}
+
+.container h3 {
+  text-align: center;
+
+}
+
+.container .col-md-4 {
+  border-right: 5px solid;
+  text-align: center;
+  min-height: 466px;
+  padding: 10px, 20px;
+}
