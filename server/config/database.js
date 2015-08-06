@@ -1,3 +1,4 @@
+
 var pg = require('pg');
 var auth = require('../config/auth.js');
 
@@ -10,3 +11,4 @@ var db = require('knex')({
 
 
 module.exports = db;
+
