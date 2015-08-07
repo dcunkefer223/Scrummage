@@ -14,14 +14,14 @@ module.exports = function(app){
     passport.authenticate('github', { failureRedirect: '/#/landing'}),
   function(req, res) {
     res.redirect('/');
-  );
+  });
 
-function isLoggedIn(req, res, next) {
-  if(req.isAuthenticated()){
-    return next();
+  function isLoggedIn(req, res, next) {
+    if(req.isAuthenticated()){
+      return next();
+    }
+
+    res.redirect('/landing');
   }
 
-  res.redirect('/landing');
-}
-
-}
+};

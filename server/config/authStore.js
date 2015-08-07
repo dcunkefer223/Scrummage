@@ -14,4 +14,13 @@ exports.checkUser = function(req, res, next){
   } else {
     return res.json({permission: true});
   }
-}
+};
+
+exports.pgData = {
+      host: 'localhost',
+      database: 'postgres',
+      user : 'postgres',
+      port : 5432,
+      password : 'ryuoko',
+      ssl: false
+    };

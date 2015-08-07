@@ -9,13 +9,13 @@ var auth = process.env.DATABASE_URL ? null : require('../config/authStore.js');
 //Commenting out Paris settings to test
 //*************************************
 
-// var db = require('knex')({
-//   client: 'pg',
-//   connection: (process.env.DATABASE_URL || auth.pgData)
-// });
+var db = require('knex')({
+  client: 'pg',
+  connection: (process.env.DATABASE_URL || auth.pgData)
+});
 
-var db = new pg.Client("");
-db.connect();
+//var db = new pg.Client("");
+//db.connect();
 
 
 module.exports = db;
