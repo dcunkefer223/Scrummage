@@ -101,9 +101,6 @@
 }
 
 /* --------------------------------- StoryBoard Styling --------------------------------- */
-body {
-  background-color: black;
-}
 
 .container-fluid {
   padding-left: 0;
@@ -155,6 +152,7 @@ body {
 .container h3 {
   text-align: center;
   color: lightyellow;
+  margin-bottom: 20px;
 }
 
 .container .col-xs-4 {
@@ -163,3 +161,58 @@ body {
   height: 100vh;
   padding: 10px, 20px;
 }
+/* ------------------------- Test Boxes --------------------- */
+
+
+.drag-object [ng-drag]{
+    width: 200px;
+    height: 100px;
+    position: absolute;
+    top:0; left:0;
+    padding: 0;
+    margin: 0;
+}
+
+.drag-object, [ng-drag-clone], [ng-drop] [ng-drag]{
+    width: 200px;
+    height: 100px;
+    background: rgba(255, 0, 0, 0.5);
+    color:white;
+    text-align: center;
+    padding-top: 40px;
+    display: inline-block;
+    margin: 0 10px;
+    cursor: move;
+    position: relative;
+    overflow: hidden;
+}
+
+[ng-drag].drag-over{
+    border:solid 1px red;
+}
+
+[ng-drag].dragging{
+    opacity: 0.5;
+}
+
+[ng-drop].drag-enter{
+    border:solid 5px red;
+}
+
+[ng-drop] div{
+    position: relative;
+    z-index: 2;
+}
+
+[ng-drop] span.title{
+    display: block;
+    position: absolute;
+    top:50%;
+    left:50%;
+    width: 200px;
+    height: 20px;
+    margin-left: -100px;
+    margin-top: -10px;
+}
+
+
