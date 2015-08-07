@@ -1,9 +1,6 @@
 // var LocalStrategy = require('passport-local').Strategy;
 var passport = require('passport');
-var GithubStrategy = require('passport-github2').Strategy;
-
-
-
+var GithubStrategy = require('passport-github').Strategy;
 
 module.exports = function(passport) {
 
@@ -67,4 +64,5 @@ module.exports = function(passport) {
         }
       });
     });
-  }))};
+  }));
+};
