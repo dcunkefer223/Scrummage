@@ -1,1 +1,24 @@
-storypoints.html
+<!DOCTYPE html>
+<head>
+  <title>StoryPoints</title>
+  <link rel="stylesheet" href="./bower_components/normalize.css/normalize.css">
+  <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet" type="text/css"/>
+  <link rel="stylesheet" href="./css/main.css">
+
+  <script src="bower_components/angular/angular.min.js"></script>
+  <script src="bower_components/ngDraggable/ngDraggable.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+</head>
+<body>
+	<div ng-drag="true" ng-drag-data="{obj}" ng-drag-success="onDragComplete($data,$event)" ng-center-anchor="true">
+  Draggable div
+</div>
+
+<div ng-drop="true" ng-drop-success="onDropComplete($data,$event)" >
+  Drop area
+</div>
+
+
+</body>
