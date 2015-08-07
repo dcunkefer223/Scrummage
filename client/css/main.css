@@ -9,8 +9,8 @@
   background-color: grey;
 }
 
-.container {
-  margin-right: 10px;
+#column-bg .container {
+  margin-right: 10%;
 }
 
 #page {
