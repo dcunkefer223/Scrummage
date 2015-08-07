@@ -19,36 +19,38 @@
 </head>
 
 <body>
-  <div id="page">
-    <div class="sidebar-container hidden-xs">
-      <ul class="sidebar-nav">
-        <li><a href="#"><i class="grow fa fa-gear nav-list-icon"></i></a></li>
-        <li><a href="#"><i class="grow fa fa-area-chart nav-list-icon"></i></a></li>
-      </ul>
-    </div>
-    <div class="container" id="column-bg">
-      <div class="row">
-        <div class="col-xs-4">
-          <h3>Todo</h3>
-        </div>
-        <div class="col-xs-4">
-          <h3>In Progress</h3>
-        </div>
-        <div class="col-xs-4">
-          <h3>Completed</h3>
-        </div>
+  <div class="container-fluid mobile-padding">
+    <div class="col-xs-1 nav-bg">
+      <div class="sidebar-nav">
+        <ul>
+          <li><a href="#"><i class="grow fa fa-gear nav-list-icon"></i></a></li>
+          <li><a href="#"><i class="grow fa fa-area-chart nav-list-icon"></i></a></li>
+        </ul>
       </div>
-      <div class="row">
-        <div class="col-xs-4">
-          <div class="task" x-lvl-draggable="true" data-color="green" draggable="true" id="placeholder">Task
-          <form>  storyPoint: <input type="text" name="story point"><br></form>
+    </div>
+    <div class="col-xs-11">
+      <div class="container column-bg">
+        <div class="row">
+          <div class="col-xs-4">
+            <div class="col-header">
+              <h3>Todo</h3>
+            </div>
+            <div class="task" x-lvl-draggable="true" data-color="green" draggable="true" id="placeholder">Task
+            <form>  storyPoint: <input type="text" name="story point"><br></form>
+            </div>
           </div>
-        </div>
-        <div class="col-xs-4">
-          boxes go here
-        </div>
-        <div class="col-xs-4">
-          boxes go here
+          <div class="col-xs-4">
+            <div class="col-header">
+              <h3>In Progress</h3>
+            </div>
+            boxes go here
+          </div>
+          <div class="col-xs-4">
+            <div class="col-header">
+              <h3>Completed</h3>
+            </div>
+            boxes go here
+          </div>
         </div>
       </div>
     </div>
