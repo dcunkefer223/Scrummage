@@ -1,5 +1,9 @@
 // var LocalStrategy = require('passport-local').Strategy;
-var GithubStrategy = require('passport-github').Strategy;
+var passport = require('passport');
+var GithubStrategy = require('passport-github2').Strategy;
+
+
+
 
 module.exports = function(passport) {
 
@@ -17,6 +21,10 @@ module.exports = function(passport) {
     });
   });
 
+  //*************************************************************
+  //Github OAuth
+  //*************************************************************
+
   passport.use(new GithubStrategy({
     clientID: '3cf6f618800a697e2bc5',
     clientSecret: 'b160a044255899ac3cc086064b8783ff40fd0c23',
@@ -26,7 +34,6 @@ module.exports = function(passport) {
 
   function(req, accessToken, refreshToken, profile, done){
     console.log(profile);
-    // asynchronous
     process.nextTick(function() {
       var github_id = profile.id;
 
@@ -42,7 +49,7 @@ module.exports = function(passport) {
           return done(null, user);
         } else {
 
-          // if there is no user found with that roomease_id, create them
+          // if there is no user found, create them
           var newUser = {};
 
           // take information returned from github and using that data,
@@ -60,4 +67,4 @@ module.exports = function(passport) {
         }
       });
     });
-  }));
+  }))};
