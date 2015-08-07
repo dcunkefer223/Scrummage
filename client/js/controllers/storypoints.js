@@ -1,1 +1,1 @@
-storypoints.js
+angular.module('app')
