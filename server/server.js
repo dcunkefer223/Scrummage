@@ -2,7 +2,6 @@ var express = require('express');
 var app = express();
 var port = process.env.PORT || 3000;
 var routes = require(__dirname + '/routes.js');
-var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
