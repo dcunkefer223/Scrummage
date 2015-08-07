@@ -1,39 +1,31 @@
 var express = require('express');
+var bodyParser = require('body-parser');
+var session = require('express-session');
+var passport = require('passport');
+var routes = require('./app/routes.js');
+var port = process.env.PORT || 3000;
+
+// Our App Imports
+var passportConfig = require('./config/passport.js')(passport);
+
+// Initialize the instance of express
 var app = express();
 
-var db = require('./config/database.js');
-
-var port = process.env.PORT || 3000;
-var session = require('express-session');
-var morgan = require('morgan');
-var bodyParser = require('body-parser');
-// var pg = require('pg');
-// var configDB = require('./config/database.js');
-
-// db.connect(db.url);
-var passport = require('passport');
-var flash = require('connect-flash');
-// require('./app/routes.js')(app, passport);
-
-
-app.use(morgan('dev'));
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(session({secret: 'anyString',
-                saveUninitialized: true,
-                resave: true}));
+// Express Middleware Setup
+app.use(session({
+  secret: 'top...secret',
+  resave: false,
+  saveUninitialized: false
+}));
 
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(flash());
+app.use(express.static(__dirname + './client/'));
+app.use(bodyParser.json());
 
-// app.set('view engine', 'ejs');
 
-
-// app.get('/', function (req, res) {
-//   res.send('Hello ddpj!');
-// });
-
-app.use(express.static('./client/'));
+// Writes all the routes to the server instance in the routes.js file
+routes(app);
 app.listen(port);
 
 console.log('Scrummage server running on port: ' + port);
