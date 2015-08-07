@@ -10,15 +10,16 @@ var flash = require('connect-flash');
 
 require('./config/passport')(passport);
 
-app.use(morgan('dev'));
+// app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(session({secret: 'anystringoftext',
          saveUninitialized: true,
          resave: true}));
 
-app.use(express.static(__dirname + '/../client'));
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(express.static(__dirname + '/../client'));
 
 routes(app);
 

@@ -4,9 +4,9 @@ var authStore = require('./config/authStore');
 
 
 module.exports = function(app){
-  // app.get('/', function(req, res){
-  //   res.render('/');
-  // });
+  app.get('/', function(req, res){
+    res.render('/');
+  });
 
   app.get('/auth/github', passport.authenticate('github'));
 
