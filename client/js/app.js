@@ -1,11 +1,12 @@
 angular.module('scrummage', [
   'ui.router',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'dndLists'
   ])
 .config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/signin')
 
-  var appViews = ['signin', 'storyBoard']
+  var appViews = ['signin', 'storyBoard', 'list']
   appViews.forEach(function(stateName) {
     $stateProvider.state(stateName, {
       url: '/' + stateName.toLowerCase(),
