@@ -12,7 +12,7 @@ module.exports = function(passport) {
   passport.deserializeUser(function(id, done) {
 
     User.findUserByGithubId(id, function(err, user) {
-       console.log(err);
+       // console.log(err);
       // if user has a session, they are authenticated
       // if not, returns error
       user ? done(null, user) : done(err, null);
@@ -31,7 +31,7 @@ module.exports = function(passport) {
   },
 
   function(req, accessToken, refreshToken, profile, done){
-    console.log(profile);
+    // console.log(profile);
     process.nextTick(function() {
       var github_id = profile.id;
 
