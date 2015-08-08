@@ -3,5 +3,6 @@ client/bower_components/**/*
 client/test/**/*
 server/app/models
 
+
 .DS_Store
 
