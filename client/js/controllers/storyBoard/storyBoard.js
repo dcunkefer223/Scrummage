@@ -6,15 +6,14 @@ angular.module('scrummage', ['dndLists'])
         lists: {"todo": [], "progress": [], "complete": []}
       };
 
-      // Generate initial model
-      for (var i = 1; i <= 3; i++) {
-        $scope.models.lists.todo.push({label: "Task 1" + i});
-        $scope.models.lists.progress.push({label: "Task 2" + i});
+      $scope.addFeature = function () {
+        $scope.models.lists.todo.push({label: "new thing"});
       }
 
       // Model to JSON
       $scope.$watch('models', function(model) {
         $scope.modelAsJson = angular.toJson(model, true);
       }, true);
+
 
     });
