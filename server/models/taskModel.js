@@ -73,4 +73,13 @@ module.exports.getTasksByStatus = function (sprint_id, status) {
   );
 };
 
-module.exports.getCommentsOnTask = function(feature_id){};
+module.exports.getCommentsOnTask = function (feature_id) {
+  db.select('*').from('comments').where('feature_id', feature_id).then(
+    function (comments) {
+      return comments;
+    }, 
+    function (error) {
+      console.error(error);
+    }
+  );
+};
