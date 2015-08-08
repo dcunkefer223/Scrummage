@@ -18,7 +18,16 @@ module.exports.addTask = function (task) {
   );
 };
 
-module.exports.getAllTasks = function (sprint_id) {};
+module.exports.getAllTasks = function (sprint_id) {
+  db.select('*').from('features').where('sprint_id', sprint_id).then(
+    function (tasks) {
+      return tasks;
+    }, 
+    function (error) {
+      console.error(error);
+    }
+  );
+};
 
 module.exports.getCompleteTasks = function (sprint_id) {};
 
