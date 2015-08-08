@@ -1,9 +1,7 @@
 node_modules/**/*
 client/bower_components/**/*
-client/test/**/*
 
 .DS_Store
 
 
-.DS_Store
 
