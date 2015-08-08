@@ -19,8 +19,8 @@ exports.checkUser = function(req, res, next){
 exports.pgData = {
       host: 'localhost',
       database: 'postgres',
-      user : 'postgres',
+      user : 'student',
       port : 5432,
-      password : 'ryuoko',
+      password : '',
       ssl: false
     };

@@ -1,4 +1,5 @@
 // var LocalStrategy = require('passport-local').Strategy;
+var User = require('../model/userModel.js');
 var passport = require('passport');
 var GithubStrategy = require('passport-github').Strategy;
 
@@ -52,7 +53,7 @@ module.exports = function(passport) {
           // take information returned from github and using that data,
           // parse through it and make a newUser object.
           newUser.github_id      = profile.id;
-          newUser.picture        = profile._json.avatar_url;
+          // newUser.picture        = profile._json.avatar_url;
           newUser.username       = profile.displayName;
           // save our user to the database
           User.addUser(newUser, function(err, results) {
