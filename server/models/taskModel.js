@@ -51,6 +51,15 @@ module.exports.getInProgressTasks = function (sprint_id) {
   );
 };
 
-module.exports.getToDoTasks = function (sprint_id) {};
+module.exports.getToDoTasks = function (sprint_id) {
+  db.select('*').from('features').where({sprint_id: sprint_id, status: 'todo'}).then(
+    function (tasks) {
+      return tasks;
+    }, 
+    function (error) {
+      console.error(error);
+    }
+  );
+};
 
 module.exports.getCommentsOnTask = function(feature_id){};
