@@ -40,7 +40,16 @@ module.exports.getCompleteTasks = function (sprint_id) {
   );
 };
 
-module.exports.getInProgressTasks = function (sprint_id) {};
+module.exports.getInProgressTasks = function (sprint_id) {
+  db.select('*').from('features').where({sprint_id: sprint_id, status: 'inprogress'}).then(
+    function (tasks) {
+      return tasks;
+    }, 
+    function (error) {
+      console.error(error);
+    }
+  );
+};
 
 module.exports.getToDoTasks = function (sprint_id) {};
 
