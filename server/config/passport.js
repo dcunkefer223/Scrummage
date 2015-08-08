@@ -11,8 +11,8 @@ module.exports = function(passport) {
 
   passport.deserializeUser(function(id, done) {
 
-    User.findUserById(id, function(err, user) {
-       console.log(err);
+    User.findUserByGithubId(id, function(err, user) {
+       // console.log(err);
       // if user has a session, they are authenticated
       // if not, returns error
       user ? done(null, user) : done(err, null);
@@ -31,7 +31,7 @@ module.exports = function(passport) {
   },
 
   function(req, accessToken, refreshToken, profile, done){
-    console.log(profile);
+    // console.log(profile);
     process.nextTick(function() {
       var github_id = profile.id;
 
@@ -53,8 +53,8 @@ module.exports = function(passport) {
           // take information returned from github and using that data,
           // parse through it and make a newUser object.
           newUser.github_id      = profile.id;
-          // newUser.picture        = profile._json.avatar_url;
-          newUser.username       = profile.displayName;
+          newUser.username       = profile.username;
+          newUser.email          = profile.emails[0].value;
           // save our user to the database
           User.addUser(newUser, function(err, results) {
             if (err) throw err;

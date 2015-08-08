@@ -4,14 +4,11 @@ var authStore = require('./config/authStore');
 
 
 module.exports = function(app){
-  app.get('/', function(req, res){
-    res.render('/');
-  });
 
   app.get('/auth/github', passport.authenticate('github'));
 
   app.get('/auth/github/callback',
-    passport.authenticate('github', { failureRedirect: '/#/landing'}),
+    passport.authenticate('github', { failureRedirect: '/#/signin'}),
   function(req, res) {
     res.redirect('/');
   });
@@ -21,7 +18,7 @@ module.exports = function(app){
       return next();
     }
 
-    res.redirect('/landing');
+    res.redirect('/#/signin');
   }
 
 };
