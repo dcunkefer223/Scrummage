@@ -100,7 +100,6 @@
     background-size: cover;
 }
 
-<<<<<<< HEAD
 /* --------------------------------- StoryBoard Styling --------------------------------- */
 
 .container-fluid {
@@ -148,7 +147,8 @@
 
 .col-xs-10 {
   padding: 0;
-=======
+}
+
 #column-bg {
   background-color: grey;
 }
@@ -190,6 +190,6 @@
 }
 /* ------------------------- Test Boxes --------------------- */
 
-/*ul[dnd-list], ul[dnd-list] > li { 
+ul[dnd-list], ul[dnd-list] > li { 
     position: relative;
-}*/
+}

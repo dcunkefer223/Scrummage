@@ -6,7 +6,7 @@ angular.module('scrummage', [
 .config(function($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/signin')
 
-  var appViews = ['signin', 'storyBoard', 'list']
+  var appViews = ['signin', 'storyBoard']
   appViews.forEach(function(stateName) {
     $stateProvider.state(stateName, {
       url: '/' + stateName.toLowerCase(),
