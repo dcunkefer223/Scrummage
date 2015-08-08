@@ -1,5 +1,5 @@
 // var LocalStrategy = require('passport-local').Strategy;
-var User = require('../model/userModel.js');
+var User = require('../models/userModel.js');
 var passport = require('passport');
 var GithubStrategy = require('passport-github').Strategy;
 

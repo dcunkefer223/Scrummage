@@ -1,4 +1,4 @@
-var User = require('./model/userModel');
+var User = require('./models/userModel');
 var passport = require('passport');
 var authStore = require('./config/authStore');
 
