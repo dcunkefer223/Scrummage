@@ -8,12 +8,27 @@ exports.addUser = function(user, cb){
                      + "'" + user.github_id + "', "
                      + "'" + user.username + "') RETURNING id;";
 
-  console.log('queryString: ', queryString)
-  db.query(queryString, function(err, results){
-    console.log("Inside the POST Query callback");
-    console.log(err, results);
-    err ? cb(err, null) : cb(null, results.rows[0]);
-  });
+  console.log('queryString: ', queryString);
+  db('users').insert({email: user.email, username: user.username, github_id: user.github_id}).then(function(){
+    console.log("user inserted");
+  })
+  //knex('books').insert({title: 'Slaughterhouse Five'})
+  //insert into `books` (`title`) values ('Slaughterhouse Five')
+//   CREATE TABLE users (
+//   id SERIAL PRIMARY KEY,
+//   email VARCHAR,
+//   username VARCHAR,
+//   password VARCHAR,
+//   github_id VARCHAR
+// );
+
+
+
+  // db.query(queryString, function(err, results){
+  //   console.log("Inside the POST Query callback");
+  //   console.log(err, results);
+  //   err ? cb(err, null) : cb(null, results.rows[0]);
+  // });
 };
 
 exports.findUserByGithubId = function(id, cb){
