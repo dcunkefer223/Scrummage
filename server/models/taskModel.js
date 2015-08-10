@@ -2,10 +2,6 @@ var db = require('../db/db.js');
 
 module.exports.addTask = function (task) {
   // task is {title, description, points, status[complete|inprogress|todo], sprint_id, user_id}
-  var testKeys = Object.keys(task).sort();
-  if (testKeys !== ['description', 'points', 'sprint_id', 'status', 'title', 'user_id']) {
-    return false;
-  }
   db("features").insert(task).returning('id').then(
     function (id) {
       console.log('Task inserted at id: ' + id);
