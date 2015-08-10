@@ -6,13 +6,21 @@ var authStore = require('./config/authStore');
 
 module.exports = function(app){
 
+  function isLoggedIn(req, res, next) {
+    if(req.isAuthenticated()){
+      return next();
+    }
+
+    res.redirect('/#/signin');
+  }
+
   // Auth Routes
   app.get('/auth/github', passport.authenticate('github'));
 
   app.get('/auth/github/callback',
     passport.authenticate('github', { failureRedirect: '/#/signin'}),
-  function (req, res) {
-    res.redirect('/#/storyboard');
+      function (req, res) {
+        res.redirect('/#/storyboard');
   });
 
   // GET requests
@@ -36,6 +44,19 @@ module.exports = function(app){
   });
 
 
+  app.get('/getallfeatures', function (req, res) {
+    Task.getAllFeatures(req.body);
+  });
+
+  app.get('/getfeaturesbystatus', function (req, res) {
+    Task.getFeaturesByStatus(req.body);
+  });
+
+  app.get('/getcomments', function (req, res) {
+    Task.getCommentsOnFeature(req.body);
+  });
+
+
   // POST requests
 
   app.post('/signup', passport.authenticate('local-signup', {
@@ -49,12 +70,5 @@ module.exports = function(app){
     Task.addFeature(req.body);
   });
 
-  function isLoggedIn(req, res, next) {
-    if(req.isAuthenticated()){
-      return next();
-    }
-
-    res.redirect('/#/signin');
-  }
 
 };
