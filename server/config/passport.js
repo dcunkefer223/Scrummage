@@ -2,6 +2,8 @@
 var User = require('../models/userModel.js');
 var passport = require('passport');
 var GithubStrategy = require('passport-github').Strategy;
+var LocalStrategy = require('passport-local').Strategy;
+var bcrypt = require('bcrypt');
 
 module.exports = function(passport) {
 
@@ -18,6 +20,58 @@ module.exports = function(passport) {
       user ? done(null, user) : done(err, null);
     });
   });
+
+  //*************************************************************
+  //Local Auth
+  //*************************************************************
+  passport.use('local-signup', new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password',
+    passReqToCallback: true
+  },
+  function(req, email, password, done){
+    process.nextTick(function(){
+      User.findLocalUser(req.email, function(err, user){
+        if(err)
+          return done(err);
+        if(user){
+          return done(null, false, req.flash('signupMessage', 'That email already exists'));
+        } else {
+          var newUser = {};
+          newUser.email = email;
+          newUser.password = newUser.generateHash(password);
+
+          User.addLocalUser(newUser, function(err, results){
+            if(err) throw err;
+            //return user if successful
+            return done(null, results);
+          });
+        }
+      })
+    });
+  }));
+
+  passport.use('local-signin', new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password',
+    passReqToCallback: true
+  },
+  function(req, email, password, done){
+    process.nextTick(function(){
+      User.findLocalUser(req.email, function(err, user){
+        if(err)
+          return done(err);
+        if(!user)
+          return done(null, false, req.flash('signinMessage', 'No user found'));
+        if(!User.generateHash(password)){
+          return done(null, false, req.flash('signinMessage', 'Invalid password'));
+        }
+        return done(null, user);
+      });
+    });
+  }
+  ));
+
 
   //*************************************************************
   //Github OAuth

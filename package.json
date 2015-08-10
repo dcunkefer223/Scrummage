@@ -5,6 +5,7 @@
   "main": "server.js",
   "author": "ddpj",
   "dependencies": {
+    "bcrypt": "^0.8.4",
     "body-parser": "latest",
     "connect-flash": "~0.1.1",
     "ejs": "latest",
