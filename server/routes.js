@@ -1,4 +1,5 @@
-var User = require('./models/userModel');
+var User = require('./requestHandlers/userHandler.js');
+var Task = require('./requestHandlers/taskHandler.js');
 var passport = require('passport');
 var authStore = require('./config/authStore');
 
@@ -10,13 +11,13 @@ module.exports = function(app){
 
   app.get('/auth/github/callback',
     passport.authenticate('github', { failureRedirect: '/#/signin'}),
-  function(req, res) {
+  function (req, res) {
     res.redirect('/#/storyboard');
   });
 
   // GET requests
 
-  app.get('/logout', function(req, res) {
+  app.get('/logout', function (req, res) {
     req.logout();
     res.redirect('/');
   });
@@ -42,6 +43,11 @@ module.exports = function(app){
     failureRedirect: '/signup',
     failureFlash: true
   }));
+  
+  app.post('/addfeature', function (req, res) {
+    // feature is {title, description, points, status[complete|inprogress|todo], sprint_id, team_id}
+    Task.addFeature(req.body);
+  });
 
   function isLoggedIn(req, res, next) {
     if(req.isAuthenticated()){

@@ -44,6 +44,11 @@ DROP TABLE IF EXISTS sprints CASCADE;
 DROP TABLE IF EXISTS features CASCADE;
 DROP TABLE IF EXISTS comments CASCADE;
 
+CREATE TABLE teams (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR
+);
+
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   email VARCHAR,
@@ -51,11 +56,6 @@ CREATE TABLE users (
   password VARCHAR,
   github_id VARCHAR,
   team_id INTEGER references teams(id)
-);
-
-CREATE TABLE teams (
-  id SERIAL PRIMARY KEY,
-  name VARCHAR
 );
 
 CREATE TABLE sprints (
