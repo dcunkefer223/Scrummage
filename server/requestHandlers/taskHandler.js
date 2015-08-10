@@ -1,7 +1,7 @@
 var tasks = require('../models/taskModel.js');
 
 module.exports.addFeature = function (feature) {
-	// feature is {title, description, points, status[complete|inprogress|todo], sprint_id, user_id}
+	// feature is {title, description, points, status[complete|inprogress|todo], sprint_id, team_id}
 	tasks.addFeature(feature);
 };
 

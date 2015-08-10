@@ -1,7 +1,7 @@
 var db = require('../db/db.js');
 
 module.exports.addFeature = function (feature) {
-  // feature is {title, description, points, status[complete|inprogress|todo], sprint_id, user_id}
+  // feature is {title, description, points, status[complete|inprogress|todo], sprint_id, team_id}
   db("features").insert(feature).returning('id').then(
     function (id) {
       console.log('Feature inserted at id: ' + id);
