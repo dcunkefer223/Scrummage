@@ -18,6 +18,24 @@ module.exports = function(app){
     res.redirect('/');
   });
 
+  app.get('/signin', function(req, res){
+      res.render('signin', { message: req.flash('signinMessage') });
+  });
+  app.post('/signin', passport.authenticate('local-signin', {
+    successRedirect: '/storyBoard',
+    failureRedirect: '/signin',
+    failureFlash: true
+  }));
+
+  app.get('/signup', function(req, res){
+    res.render('signup', { message: req.flash('signupMessage') });
+  });
+  app.post('/signup', passport.authenticate('local-signup', {
+    successRedirect: '/signin',
+    failureRedirect: '/signup',
+    failureFlash: true
+  }));
+
 
   function isLoggedIn(req, res, next) {
     if(req.isAuthenticated()){
