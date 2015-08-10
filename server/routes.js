@@ -10,8 +10,14 @@ module.exports = function(app){
   app.get('/auth/github/callback',
     passport.authenticate('github', { failureRedirect: '/#/signin'}),
   function(req, res) {
+    res.redirect('/#/storyboard');
+  });
+
+  app.get('/logout', function(req, res) {
+    req.logout();
     res.redirect('/');
   });
+
 
   function isLoggedIn(req, res, next) {
     if(req.isAuthenticated()){
