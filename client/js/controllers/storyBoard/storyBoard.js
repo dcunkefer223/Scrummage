@@ -1,4 +1,4 @@
-angular.module('scrummage', ['dndLists'])
+angular.module('scrummage')
     .controller('storyBoardCtrl', function ($scope) {
 
       $scope.models = {
