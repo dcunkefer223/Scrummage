@@ -102,37 +102,32 @@
 
 /* --------------------------------- StoryBoard Styling --------------------------------- */
 
-#column-bg {
+.container-fluid {
+  padding-left: 0;
+}
+
+.column-bg {
   background-color: grey;
 }
 
-#column-bg .container {
-  margin-right: 10%;
-}
-
-#page {
-  width: 100%;
-  height: 100%;
-  position: fixed;
+.nav-bg {
   background-color: black;
-  z-index: -1;
 }
 
-.sidebar-container {
+.sidebar-nav {
   height: 100%;
-  position: absolute;
   display: block;
   margin: 0;
   padding-left: 0;
   z-index: 1001;
 }
 
-.sidebar-container ul {
+.sidebar-nav ul {
   padding-top: 20px;
   padding-left: 25px;
 }
 
-.sidebar-container li {
+.sidebar-nav li {
   list-style: none;
   white-space: nowrap;
   padding-bottom: 20px;
@@ -150,14 +145,88 @@
   width: 40px;
 }
 
+.col-xs-10 {
+  padding: 0;
+}
+
+#column-bg {
+  background-color: grey;
+}
+
+.side-bar {
+  z-index: 1001;
+  height: 100%;
+  position: absolute;
+  display: block;
+  float: left;
+  margin: 0;
+  background-color: black;
+}
+
+.side-bar ul {
+  list-style: none;
+  white-space: nowrap;
+}
+
+.fa {
+  width: 40px;
+  font-size: 40px;
+  padding: 10px 11px;
+  line-height: 50px;
+  color: lightyellow;
+}
+
 .container h3 {
   text-align: center;
   color: lightyellow;
+  margin-bottom: 20px;
 }
 
 .container .col-xs-4 {
   border-right: 5px solid;
   text-align: center;
-  min-height: 466px;
+  height: 100vh;
   padding: 10px, 20px;
+}
+/* ------------------------- Test Boxes --------------------- */
+
+ul[dnd-list],
+ul[dnd-list] > li {
+  position: relative;
+}
+
+ul[dnd-list] {
+    min-height: 42px;
+    padding-left: 0px;
+}
+
+ul[dnd-list] .dndDraggingSource {
+    display: none;
+}
+
+
+ul[dnd-list] .dndPlaceholder {
+    display: block;
+    background-color: #ddd;
+    min-height: 42px;
+}
+
+ul[dnd-list] li {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+    display: block;
+    padding: 10px auto;
+    margin-bottom: 50px;
+    margin-left: 15%;
+    width: 70%;
+    height: 125px;
+
+}
+
+
+ul[dnd-list] li.selected {
+    background-color: #dff0d8;
+    color: #3c763d;
 }

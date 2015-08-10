@@ -47,7 +47,8 @@ CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   email VARCHAR,
   username VARCHAR,
-  password VARCHAR
+  password VARCHAR,
+  github_id VARCHAR
 );
 
 CREATE TABLE sprints (

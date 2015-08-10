@@ -10,7 +10,10 @@
   "dependencies": {
     "angular": "~1.4.3",
     "angular-bootstrap": "~0.13.0",
+    "angular-route": "~1.4.3",
+    "angular-ui-router": "~0.2.15",
     "bootstrap": "~3.3.5",
-    "normalize.css": "~3.0.3"
+    "normalize.css": "~3.0.3",
+    "angular-drag-and-drop-lists": "~1.2.0"
   }
 }
