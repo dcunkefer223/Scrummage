@@ -20,7 +20,7 @@ exports.pgData = {
       host: 'localhost',
       database: 'postgres',
       user : 'student',
-      port : 3000,
+      port : 5432,
       password : '',
       ssl: false
     };
