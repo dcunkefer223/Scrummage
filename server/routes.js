@@ -5,6 +5,7 @@ var authStore = require('./config/authStore');
 
 module.exports = function(app){
 
+  // Auth Routes
   app.get('/auth/github', passport.authenticate('github'));
 
   app.get('/auth/github/callback',
@@ -12,6 +13,8 @@ module.exports = function(app){
   function(req, res) {
     res.redirect('/#/storyboard');
   });
+
+  // GET requests
 
   app.get('/logout', function(req, res) {
     req.logout();
@@ -30,12 +33,15 @@ module.exports = function(app){
   app.get('/signup', function(req, res){
     res.render('signup', { message: req.flash('signupMessage') });
   });
+
+
+  // POST requests
+
   app.post('/signup', passport.authenticate('local-signup', {
     successRedirect: '/signin',
     failureRedirect: '/signup',
     failureFlash: true
   }));
-
 
   function isLoggedIn(req, res, next) {
     if(req.isAuthenticated()){
