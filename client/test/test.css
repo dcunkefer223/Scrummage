@@ -39,15 +39,30 @@
         opacity: 0.5;
     }
     [ng-drop]{
-        background: rgba(0,255,0, 0.5);
+        background: rgba(0,100,0, 0.5);
         text-align: center;
-        width: 600px;
-        height: 200px;
+        width: 33%;
+        height: 100%;
         padding-top:90px;
         display: block;
         margin:20px auto;
         position: relative;
     }
+    [ng-drop]{
+        background: rgba(0,100,0, 0.5);
+        text-align: center;
+        width: 33%;
+        height: 100%;
+        padding-top:90px;
+        display: block;
+        margin:20px auto;
+        position: relative;
+    }
+
+
+
+
+
     [ng-drop].drag-enter{
         border:solid 5px red;
     }
