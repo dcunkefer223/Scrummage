@@ -39,6 +39,7 @@
 --   *User_ID
 
 DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS teams CASCADE;
 DROP TABLE IF EXISTS sprints CASCADE;
 DROP TABLE IF EXISTS features CASCADE;
 DROP TABLE IF EXISTS comments CASCADE;
@@ -48,11 +49,18 @@ CREATE TABLE users (
   email VARCHAR,
   username VARCHAR,
   password VARCHAR,
-  github_id VARCHAR
+  github_id VARCHAR,
+  team_id INTEGER references teams(id)
+);
+
+CREATE TABLE teams (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR
 );
 
 CREATE TABLE sprints (
   id SERIAL PRIMARY KEY,
+  team_id INTEGER references teams(id),
   name VARCHAR
 );
 
@@ -63,7 +71,7 @@ CREATE TABLE features (
   points INTEGER,
   status VARCHAR,
   sprint_id INTEGER references sprints(id),
-  user_id INTEGER DEFAULT null references users(id)
+  team_id INTEGER DEFAULT null references teams(id)
 );
 
 CREATE TABLE comments (
