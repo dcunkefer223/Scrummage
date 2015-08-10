@@ -6,7 +6,7 @@ var authStore = require('./config/authStore');
 
 module.exports = function(app){
 
-  function isLoggedIn(req, res, next) {
+  function isLoggedIn (req, res, next) {
     if(req.isAuthenticated()){
       return next();
     }
@@ -18,7 +18,7 @@ module.exports = function(app){
   app.get('/auth/github', passport.authenticate('github'));
 
   app.get('/auth/github/callback',
-    passport.authenticate('github', { failureRedirect: '/#/signin'}),
+    passport.authenticate('github', { failureRedirect: '/#/signin' }),
       function (req, res) {
         res.redirect('/#/storyboard');
   });
@@ -33,11 +33,6 @@ module.exports = function(app){
   app.get('/signin', function(req, res){
       res.render('signin', { message: req.flash('signinMessage') });
   });
-  app.post('/signin', passport.authenticate('local-signin', {
-    successRedirect: '/storyBoard',
-    failureRedirect: '/signin',
-    failureFlash: true
-  }));
 
   app.get('/signup', function(req, res){
     res.render('signup', { message: req.flash('signupMessage') });
@@ -62,6 +57,12 @@ module.exports = function(app){
   app.post('/signup', passport.authenticate('local-signup', {
     successRedirect: '/signin',
     failureRedirect: '/signup',
+    failureFlash: true
+  }));
+
+  app.post('/signin', passport.authenticate('local-signin', {
+    successRedirect: '/storyBoard',
+    failureRedirect: '/signin',
     failureFlash: true
   }));
   
