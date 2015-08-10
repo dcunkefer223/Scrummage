@@ -1,10 +1,10 @@
 var db = require('../db/db.js');
 
-module.exports.addTask = function (task) {
-  // task is {title, description, points, status[complete|inprogress|todo], sprint_id, user_id}
-  db("features").insert(task).returning('id').then(
+module.exports.addFeature = function (feature) {
+  // feature is {title, description, points, status[complete|inprogress|todo], sprint_id, user_id}
+  db("features").insert(feature).returning('id').then(
     function (id) {
-      console.log('Task inserted at id: ' + id);
+      console.log('Feature inserted at id: ' + id);
       return true;
     }, 
     function (error) {
@@ -14,10 +14,10 @@ module.exports.addTask = function (task) {
   );
 };
 
-module.exports.getAllTasks = function (sprint_id) {
+module.exports.getAllFeatures = function (sprint_id) {
   db.select('*').from('features').where('sprint_id', sprint_id).then(
-    function (tasks) {
-      return tasks;
+    function (features) {
+      return features;
     }, 
     function (error) {
       console.error(error);
@@ -25,10 +25,10 @@ module.exports.getAllTasks = function (sprint_id) {
   );
 };
 
-module.exports.getCompleteTasks = function (sprint_id) {
+module.exports.getCompleteFeatures = function (sprint_id) {
   db.select('*').from('features').where({sprint_id: sprint_id, status: 'complete'}).then(
-    function (tasks) {
-      return tasks;
+    function (features) {
+      return features;
     }, 
     function (error) {
       console.error(error);
@@ -36,10 +36,10 @@ module.exports.getCompleteTasks = function (sprint_id) {
   );
 };
 
-module.exports.getInProgressTasks = function (sprint_id) {
+module.exports.getInProgressFeatures = function (sprint_id) {
   db.select('*').from('features').where({sprint_id: sprint_id, status: 'inprogress'}).then(
-    function (tasks) {
-      return tasks;
+    function (features) {
+      return features;
     }, 
     function (error) {
       console.error(error);
@@ -47,10 +47,10 @@ module.exports.getInProgressTasks = function (sprint_id) {
   );
 };
 
-module.exports.getToDoTasks = function (sprint_id) {
+module.exports.getToDoFeatures = function (sprint_id) {
   db.select('*').from('features').where({sprint_id: sprint_id, status: 'todo'}).then(
-    function (tasks) {
-      return tasks;
+    function (features) {
+      return features;
     }, 
     function (error) {
       console.error(error);
@@ -58,10 +58,10 @@ module.exports.getToDoTasks = function (sprint_id) {
   );
 };
 
-module.exports.getTasksByStatus = function (sprint_id, status) {
+module.exports.getFeaturesByStatus = function (sprint_id, status) {
   db.select('*').from('features').where({sprint_id: sprint_id, status: status}).then(
-    function (tasks) {
-      return tasks;
+    function (features) {
+      return features;
     }, 
     function (error) {
       console.error(error);
@@ -69,7 +69,7 @@ module.exports.getTasksByStatus = function (sprint_id, status) {
   );
 };
 
-module.exports.getCommentsOnTask = function (feature_id) {
+module.exports.getCommentsOnFeature = function (feature_id) {
   db.select('*').from('comments').where('feature_id', feature_id).then(
     function (comments) {
       return comments;
