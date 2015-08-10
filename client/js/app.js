@@ -3,7 +3,7 @@ angular.module('scrummage', [
   'ui.bootstrap',
   'dndLists'
   ])
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function ($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/signin')
 
   var appViews = ['signin', 'storyBoard']
