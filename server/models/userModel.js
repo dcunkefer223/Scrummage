@@ -2,26 +2,31 @@
 var db = require('../db/db.js');
 
 exports.addUser = function(user, cb){
-
-  // var queryString = "INSERT INTO users (githubid, picture, gender, username) VALUES ("
-  //                    + "'" + user.github_id + "', "
-  //                    + "'" + user.username + "') RETURNING id;";
-
-  // console.log('queryString: ', queryString);
-  db('users').insert({email: user.email, username: user.username, github_id: user.github_id})
-    .then(function(){
-      // console.log("user inserted");
-    });
+  // user is {email, username, github_id}
+  db('users').insert(user).returning('id').then(
+    function (id) {
+      console.log("User inserted at: " + id);
+      cb(null, id);
+    },
+    function (error) {
+      console.error(error);
+      cb(error, null);
+    }
+  );
 
 };
 
 exports.findUserByGithubId = function(id, cb){
 
-  db.select('*').from('users').where('github_id', id)
-    .then(function(user){
-      // err ? cb(err, null) : cb(null, results.rows[0]);
+  db.select('*').from('users').where('github_id', id).then(
+    function (user){
       cb(null, user[0]);
-    });
+    },
+    function (error) {
+      console.error(error);
+      cb(error, null);
+    }
+  );
 
 };
 
