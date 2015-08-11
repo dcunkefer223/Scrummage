@@ -100,4 +100,9 @@ module.exports = function(app){
     Task.changeFeatureTeam(req.body, res);
   });
 
+  app.post('/changeuserteam', function (req, res) {
+    // {user_id, newTeam_id}
+    User.changeUserTeam(req.body, res);
+  });
+
 };
