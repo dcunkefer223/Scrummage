@@ -80,4 +80,24 @@ module.exports = function(app){
     Task.changeFeatureStatus(req.body, res);
   });
 
+  app.post('/changefeaturepoints', function (req, res) {
+    // {feature_id, newPoints}
+    Task.changeFeaturePoints(req.body, res);
+  });
+
+  app.post('/changedesc', function (req, res) {
+    // {feature_id, newDesc}
+    Task.changeFeatureDescription(req.body, res);
+  });
+
+  app.post('/changetitle', function (req, res) {
+    // {feature_id, newTitle}
+    Task.changeFeatureTitle(req.body, res);
+  });
+
+  app.post('/changefeatureteam', function (req, res) {
+    // {feature_id, newTeam_id}
+    Task.changeFeatureTeam(req.body, res);
+  });
+
 };
