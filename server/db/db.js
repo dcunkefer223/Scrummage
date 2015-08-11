@@ -14,8 +14,8 @@ var db = require('knex')({
   connection: process.env.DATABASE_URL || auth.pgData
 });
 
-//var db = new pg.Client("");
-//db.connect();
+// var db = new pg.Client("");
+// db.connect();
 
 
 module.exports = db;

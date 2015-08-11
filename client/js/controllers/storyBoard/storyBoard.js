@@ -17,8 +17,10 @@ angular.module('scrummage')
         status: "todo"
       };
 
+      // use dnd callback to updateStatus() on drag event
+
       $scope.addFeature = function (newFeature) {
-        $scope.models.lists.todo.push(newFeature);
+        $scope.models.lists.todo.unshift(newFeature);
 
         $scope.feature = {
           name: "",
