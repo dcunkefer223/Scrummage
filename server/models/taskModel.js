@@ -50,6 +50,30 @@ module.exports.changeFeatureDescription = function (feature_id, newDesc, res) {
   );
 };
 
+module.exports.changeFeatureTitle = function (feature_id, newTitle, res) {
+  db('features').where(id, feature_id).update(title, newTitle).then(
+    function (rows) {
+      res.status(200).send({feature_id: id});
+    }, 
+    function (error) {
+      console.error(error);
+      res.status(500).send('Failed to update feature in database');
+    }
+  );
+};
+
+module.exports.changeFeatureTeam = function (feature_id, newTeam_id, res) {
+  db('features').where(id, feature_id).update(team_id, newTeam_id).then(
+    function (rows) {
+      res.status(200).send({feature_id: id});
+    }, 
+    function (error) {
+      console.error(error);
+      res.status(500).send('Failed to update feature in database');
+    }
+  );
+};
+
 module.exports.getAllFeatures = function (sprint_id, res) {
   db.select('*').from('features').where('sprint_id', sprint_id).then(
     function (features) {
