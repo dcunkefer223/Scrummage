@@ -1,18 +1,18 @@
 var tasks = require('../models/taskModel.js');
 
-module.exports.addFeature = function (feature) {
+module.exports.addFeature = function (feature, res) {
 	// feature is {title, description, points, status[complete|inprogress|todo], sprint_id, team_id}
-	tasks.addFeature(feature);
+	tasks.addFeature(feature, res);
 };
 
-module.exports.getAllFeatures = function (sprint_id) {
-	tasks.getAllFeatures(sprint_id);
+module.exports.getAllFeatures = function (obj, res) {
+	tasks.getAllFeatures(obj.sprint_id, res);
 };
 
-module.exports.getFeaturesByStatus = function (sprint_id, status) {
-	tasks.getFeaturesByStatus(sprint_id, status);
+module.exports.getFeaturesByStatus = function (obj, res) {
+	tasks.getFeaturesByStatus(obj.sprint_id, obj.newStatus, res);
 };
 
-module.exports.getCommentsOnFeature = function (feature_id) {
-	tasks.getCommentsOnFeature(feature_id);
+module.exports.getCommentsOnFeature = function (obj, res) {
+	tasks.getCommentsOnFeature(obj.feature_id, res);
 };
