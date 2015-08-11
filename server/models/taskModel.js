@@ -74,8 +74,8 @@ module.exports.getToDoFeatures = function (sprint_id, res) {
   );
 };
 
-module.exports.getFeaturesByStatus = function (sprint_id, newStatus, res) {
-  db.select('*').from('features').where({sprint_id: sprint_id, status: newStatus}).then(
+module.exports.getFeaturesByStatus = function (sprint_id, status, res) {
+  db.select('*').from('features').where({sprint_id: sprint_id, status: status}).then(
     function (features) {
       res.status(200).send(features);
     }, 

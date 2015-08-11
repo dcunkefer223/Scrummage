@@ -41,14 +41,17 @@ module.exports = function(app){
   });
 
   app.get('/getallfeatures', function (req, res) {
+    // {sprint_id}
     Task.getAllFeatures(req.body, res);
   });
 
   app.get('/getfeaturesbystatus', function (req, res) {
+    // {sprint_id, status}
     Task.getFeaturesByStatus(req.body, res);
   });
 
   app.get('/getcomments', function (req, res) {
+    // {feature_id}
     Task.getCommentsOnFeature(req.body, res);
   });
 
@@ -72,5 +75,9 @@ module.exports = function(app){
     Task.addFeature(req.body, res);
   });
 
+  app.post('/changestatus', function (req, res) {
+    // {feature_id, newStatus}
+    Task.changeFeatureStatus(req.body, res);
+  });
 
 };

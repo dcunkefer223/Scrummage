@@ -5,12 +5,16 @@ module.exports.addFeature = function (feature, res) {
 	tasks.addFeature(feature, res);
 };
 
+module.exports.changeFeatureStatus = function (obj, res) {
+	tasks.getAllFeatures(obj.feature_id, obj.newStatus, res);
+};
+
 module.exports.getAllFeatures = function (obj, res) {
 	tasks.getAllFeatures(obj.sprint_id, res);
 };
 
 module.exports.getFeaturesByStatus = function (obj, res) {
-	tasks.getFeaturesByStatus(obj.sprint_id, obj.newStatus, res);
+	tasks.getFeaturesByStatus(obj.sprint_id, obj.status, res);
 };
 
 module.exports.getCommentsOnFeature = function (obj, res) {
