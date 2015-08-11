@@ -20,7 +20,7 @@ module.exports = function(passport) {
     });
   });
   //*************************************************************
-  //Github OAuth
+  //Github OAuth**
   //*************************************************************
   passport.use(new GithubStrategy({
     clientID: '3cf6f618800a697e2bc5',
