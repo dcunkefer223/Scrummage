@@ -4,6 +4,7 @@ var passport = require('passport');
 var GithubStrategy = require('passport-github').Strategy;
 var LocalStrategy = require('passport-local').Strategy;
 var bcrypt = require('bcrypt');
+var flash = require('connect-flash');
 
 module.exports = function(passport) {
 
@@ -18,61 +19,9 @@ module.exports = function(passport) {
       user ? done(null, user) : done(err, null);
     });
   });
-
-  //*************************************************************
-  //Local Auth
-  //*************************************************************
-  // passport.use('local-signup', new LocalStrategy({
-  //   usernameField: 'email',
-  //   passwordField: 'password',
-  //   passReqToCallback: true
-  // },
-  // function(req, email, password, done){
-  //   process.nextTick(function(){
-  //     User.findLocalUser(req.email, function(err, user){
-  //       if(err)
-  //         return done(err);
-  //       if(user){
-  //         return done(null, false, req.flash('signupMessage', 'That email already exists'));
-  //       } else {
-  //         var newUser = {};
-  //         newUser.email = email;
-  //         newUser.password = newUser.generateHash(password);
-
-  //         User.addLocalUser(newUser, function(err, results){
-  //           if(err) throw err;
-  //           //return user if successful
-  //           return done(null, results);
-  //         });
-  //       }
-  //     })
-  //   });
-  // }));
-
-  passport.use('local', new LocalStrategy({
-    usernameField: 'email',
-    passwordField: 'password',
-    passReqToCallback: true
-  },
-  function(req, email, password, done){
-    process.nextTick(function(){
-      User.findLocalUser(req.email, function(err, user){
-        if(err)
-          return done(err);
-        if(!user)
-          return done(null, false, req.flash('signinMessage', 'No user found'));
-        if(!User.generateHash(password)){
-          return done(null, false, req.flash('signinMessage', 'Invalid password'));
-        }
-        return done(null, user);
-      });
-    });
-  }
-  ));
   //*************************************************************
   //Github OAuth
   //*************************************************************
-
   passport.use(new GithubStrategy({
     clientID: '3cf6f618800a697e2bc5',
     clientSecret: 'b160a044255899ac3cc086064b8783ff40fd0c23',
@@ -116,4 +65,57 @@ module.exports = function(passport) {
       });
     });
   }));
+
+
 };
+  //*************************************************************
+  //Local Auth
+  //*************************************************************
+  // passport.use('local-signup', new LocalStrategy({
+  //   usernameField: 'email',
+  //   passwordField: 'password',
+  //   passReqToCallback: true
+  // },
+  // function(req, email, password, done){
+  //   process.nextTick(function(){
+  //     User.findLocalUser(req.email, function(err, user){
+  //       if(err)
+  //         return done(err);
+  //       if(user){
+  //         return done(null, false, req.flash('signupMessage', 'That email already exists'));
+  //       } else {
+  //         var newUser = {};
+  //         newUser.email = email;
+  //         newUser.password = newUser.generateHash(password);
+
+  //         User.addLocalUser(newUser, function(err, results){
+  //           if(err) throw err;
+  //           //return user if successful
+  //           return done(null, results);
+  //         });
+  //       }
+  //     })
+  //   });
+  // }));
+
+  // passport.use('local', new LocalStrategy({
+  //   usernameField: 'email',
+  //   passwordField: 'password',
+  //   passReqToCallback: true
+  // },
+  // function(req, email, password, done){
+  //   process.nextTick(function(){
+  //     User.findLocalUser(req.email, function(err, user){
+  //       if(err)
+  //         return done(err);
+  //       if(!user)
+  //         return done(null, false, req.flash('signinMessage', 'No user found'));
+  //       if(!User.generateHash(password)){
+  //         return done(null, false, req.flash('signinMessage', 'Invalid password'));
+  //       }
+  //       return done(null, user);
+  //     });
+  //   });
+  // }
+  // ));
+

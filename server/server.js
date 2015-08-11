@@ -17,8 +17,11 @@ app.use(session({secret: 'anystringoftext',
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
 app.use(express.static(__dirname + '/../client'));
+// app.set('view engine', 'html');
+app.engine('html', require('ejs').renderFile);
 
 routes(app);
 
