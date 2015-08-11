@@ -1,15 +1,15 @@
 var db = require('../db/db.js');
 
-module.exports.addFeature = function (feature) {
+module.exports.addFeature = function (feature, res) {
   // feature is {title, description, points, status[complete|inprogress|todo], sprint_id, team_id}
   db('features').insert(feature).returning('id').then(
     function (id) {
       console.log('Feature inserted at id: ' + id);
-      return true;
+      res.status(201).type('json').send({feature_id: id});
     }, 
     function (error) {
       console.error(error);
-      return false;
+      res.status(500).send('Failed to insert feature into database');
     }
   );
 };
