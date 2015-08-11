@@ -6,7 +6,23 @@ module.exports.addFeature = function (feature, res) {
 };
 
 module.exports.changeFeatureStatus = function (obj, res) {
-	tasks.getAllFeatures(obj.feature_id, obj.newStatus, res);
+	tasks.changeFeatureStatus(obj.feature_id, obj.newStatus, res);
+};
+
+module.exports.changeFeaturePoints = function (obj, res) {
+	tasks.changeFeaturePoints(obj.feature_id, obj.newPoints, res);
+};
+
+module.exports.changeFeatureDescription = function (obj, res) {
+	tasks.changeFeatureDescription(obj.feature_id, obj.newDesc, res);
+};
+
+module.exports.changeFeatureTitle = function (obj, res) {
+	tasks.changeFeatureTitle(obj.feature_id, obj.newTitle, res);
+};
+
+module.exports.changeFeatureTeam = function (obj, res) {
+	tasks.changeFeatureTeam(obj.feature_id, obj.newTeam_id, res);
 };
 
 module.exports.getAllFeatures = function (obj, res) {
