@@ -33,7 +33,7 @@ module.exports = function(app){
   });
 
   app.get('/signin', function (req, res){
-      res.render('signin', { message: req.flash('signinMessage') });
+    res.render('signin', { message: req.flash('signinMessage') });
   });
 
   app.get('/signup', function (req, res){
