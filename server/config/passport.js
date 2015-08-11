@@ -14,9 +14,7 @@ module.exports = function(passport) {
   passport.deserializeUser(function(id, done) {
 
     User.findUserByGithubId(id, function(err, user) {
-       // console.log(err);
-      // if user has a session, they are authenticated
-      // if not, returns error
+
       user ? done(null, user) : done(err, null);
     });
   });
@@ -24,34 +22,34 @@ module.exports = function(passport) {
   //*************************************************************
   //Local Auth
   //*************************************************************
-  passport.use('local-signup', new LocalStrategy({
-    usernameField: 'email',
-    passwordField: 'password',
-    passReqToCallback: true
-  },
-  function(req, email, password, done){
-    process.nextTick(function(){
-      User.findLocalUser(req.email, function(err, user){
-        if(err)
-          return done(err);
-        if(user){
-          return done(null, false, req.flash('signupMessage', 'That email already exists'));
-        } else {
-          var newUser = {};
-          newUser.email = email;
-          newUser.password = newUser.generateHash(password);
+  // passport.use('local-signup', new LocalStrategy({
+  //   usernameField: 'email',
+  //   passwordField: 'password',
+  //   passReqToCallback: true
+  // },
+  // function(req, email, password, done){
+  //   process.nextTick(function(){
+  //     User.findLocalUser(req.email, function(err, user){
+  //       if(err)
+  //         return done(err);
+  //       if(user){
+  //         return done(null, false, req.flash('signupMessage', 'That email already exists'));
+  //       } else {
+  //         var newUser = {};
+  //         newUser.email = email;
+  //         newUser.password = newUser.generateHash(password);
 
-          User.addLocalUser(newUser, function(err, results){
-            if(err) throw err;
-            //return user if successful
-            return done(null, results);
-          });
-        }
-      })
-    });
-  }));
+  //         User.addLocalUser(newUser, function(err, results){
+  //           if(err) throw err;
+  //           //return user if successful
+  //           return done(null, results);
+  //         });
+  //       }
+  //     })
+  //   });
+  // }));
 
-  passport.use('local-signin', new LocalStrategy({
+  passport.use('local', new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password',
     passReqToCallback: true
@@ -71,8 +69,6 @@ module.exports = function(passport) {
     });
   }
   ));
-
-
   //*************************************************************
   //Github OAuth
   //*************************************************************

@@ -9,7 +9,7 @@
     "body-parser": "latest",
     "connect-flash": "~0.1.1",
     "ejs": "latest",
-    "express": "~4.12.3",
+    "express": "^4.12.4",
     "express-session": "latest",
     "knex": "^0.8.6",
     "morgan": "~1.5.2",

@@ -18,10 +18,10 @@ module.exports = function(app){
     res.redirect('/');
   });
 
-  app.get('/signin', function(req, res){
+  app.get('/signin', function(req, res, next){
       res.render('signin', { message: req.flash('signinMessage') });
   });
-  app.post('/signin', passport.authenticate('local-signin', {
+  app.post('/signin', passport.authenticate('local', {
     successRedirect: '/storyBoard',
     failureRedirect: '/signin',
     failureFlash: true
@@ -30,7 +30,7 @@ module.exports = function(app){
   app.get('/signup', function(req, res){
     res.render('signup', { message: req.flash('signupMessage') });
   });
-  app.post('/signup', passport.authenticate('local-signup', {
+  app.post('/signup', passport.authenticate('local', {
     successRedirect: '/signin',
     failureRedirect: '/signup',
     failureFlash: true

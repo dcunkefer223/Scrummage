@@ -5,9 +5,9 @@
           <h1>Login using Github</h1><br>
           <a href="/auth/github"><i class="icon-github-sign"></i></a>
           <h3>Or Use your Email</h3>
-          <form>
-            <input type="text" name="user" placeholder="Email">
-            <input type="password" name="pass" placeholder="Password">
+          <form action="/signin" method="post">
+            <input type="text" name="username" placeholder="Email">
+            <input type="password" name="password" placeholder="Password">
             <input type="submit" name="login" class="login loginmodal-submit" value="Login">
           </form>
           <div class="login-help">
