@@ -26,6 +26,30 @@ module.exports.changeFeatureStatus = function (feature_id, newStatus, res) {
   );
 };
 
+module.exports.changeFeaturePoints = function (feature_id, newPoints, res) {
+  db('features').where(id, feature_id).update(points, newPoints).then(
+    function (rows) {
+      res.status(200).send({feature_id: id});
+    }, 
+    function (error) {
+      console.error(error);
+      res.status(500).send('Failed to update feature in database');
+    }
+  );
+};
+
+module.exports.changeFeatureDescription = function (feature_id, newDesc, res) {
+  db('features').where(id, feature_id).update(description, newDesc).then(
+    function (rows) {
+      res.status(200).send({feature_id: id});
+    }, 
+    function (error) {
+      console.error(error);
+      res.status(500).send('Failed to update feature in database');
+    }
+  );
+};
+
 module.exports.getAllFeatures = function (sprint_id, res) {
   db.select('*').from('features').where('sprint_id', sprint_id).then(
     function (features) {
