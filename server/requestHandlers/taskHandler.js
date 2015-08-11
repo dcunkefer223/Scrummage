@@ -5,6 +5,11 @@ module.exports.addFeature = function (feature, res) {
   tasks.addFeature(feature, res);
 };
 
+module.exports.addCommentToFeature = function (comment, res) {
+  // comment is {comment(the text), posted(TIMESTAMP), feature_id, user_id}
+  tasks.addCommentToFeature(comment, res);
+};
+
 module.exports.changeFeatureStatus = function (obj, res) {
   tasks.changeFeatureStatus(obj.feature_id, obj.newStatus, res);
 };

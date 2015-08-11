@@ -75,6 +75,11 @@ module.exports = function(app){
     Task.addFeature(req.body, res);
   });
 
+  app.post('/addfeature', function (req, res) {
+    // comment is {comment(the text), posted(TIMESTAMP), feature_id, user_id}
+    Task.addCommentToFeature(req.body, res);
+  });
+
   app.post('/changestatus', function (req, res) {
     // {feature_id, newStatus}
     Task.changeFeatureStatus(req.body, res);
