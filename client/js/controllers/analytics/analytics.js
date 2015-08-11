@@ -1,5 +1,5 @@
-app = angular.module('graphModal', []);
-app.directive('modalDialog', function() {
+angular.module('scrummage')
+  .directive('modalDialog', function() {
   return {
     restrict: 'E',  // this is angular property to say match Elements. A = attribute,
     //C = match class
@@ -20,11 +20,12 @@ app.directive('modalDialog', function() {
     },
     template: "<div class='ng-modal' ng-show='show'><div class='ng-modal-overlay' ng-click='hideModal()'></div><div class='ng-modal-dialog' ng-style='dialogStyle'><div class='ng-modal-close' ng-click='hideModal()'>X</div><div class='ng-modal-dialog-content' ng-transclude></div></div></div>"
   };
-});
+})
 
-app.controller('graphCtrl', ['$scope', function($scope) {
+.controller('analyticsCtrl', function($scope) {
+  console.log('ANALYTICS WAS CLICK SUCKA');
   $scope.modalShown = false;
   $scope.toggleModal = function() {
     $scope.modalShown = !$scope.modalShown;
   };
-}]);
+});
