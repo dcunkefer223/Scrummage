@@ -2,9 +2,21 @@ var db = require('../db/db.js');
 
 module.exports.addFeature = function (feature) {
   // feature is {title, description, points, status[complete|inprogress|todo], sprint_id, team_id}
-  db("features").insert(feature).returning('id').then(
+  db('features').insert(feature).returning('id').then(
     function (id) {
       console.log('Feature inserted at id: ' + id);
+      return true;
+    }, 
+    function (error) {
+      console.error(error);
+      return false;
+    }
+  );
+};
+
+module.exports.changeFeatureStatus = function (feature_id, newStatus) {
+  db('features').where(id, feature_id).update(status, newStatus).then(
+    function (features) {
       return true;
     }, 
     function (error) {
