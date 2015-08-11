@@ -99,11 +99,17 @@
   font-size: 12px;
 }
 
+.icon-github-sign{
+  font-size: 60px;
+  margin-left: 120px;
+}
+
 .signin-bg {
-  background: url('../img/sheep-herder.jpg') no-repeat center center;
+  background: url('../img/sheep-herder-compressed.jpg') no-repeat center center;
     height: 100vh;
     width: 100%;
     background-size: cover;
+    margin-top: -30px;
 }
 
 /* --------------------------------- StoryBoard Styling --------------------------------- */
@@ -130,7 +136,7 @@
 
 .sidebar-nav ul {
   padding-top: 20px;
-  padding-left: 25px;
+  padding-left: 10px;
 }
 
 .sidebar-nav li {
@@ -194,6 +200,7 @@
   height: 100vh;
   padding: 10px, 20px;
 }
+
 /* ------------------------- Test Boxes --------------------- */
 
 ul[dnd-list],
@@ -202,19 +209,21 @@ ul[dnd-list] > li {
 }
 
 ul[dnd-list] {
-    min-height: 42px;
+    min-height: 550px;
     padding-left: 0px;
 }
 
 ul[dnd-list] .dndDraggingSource {
     display: none;
+    min-height: 42px;
 }
 
 
 ul[dnd-list] .dndPlaceholder {
     display: block;
-    background-color: #ddd;
-    min-height: 42px;
+    background-color: grey;
+    border-style: none;
+    min-height: 48px;
 }
 
 ul[dnd-list] li {
@@ -226,13 +235,52 @@ ul[dnd-list] li {
     padding: 10px auto;
     margin-bottom: 50px;
     margin-left: 15%;
-    width: 70%;
-    height: 125px;
-
 }
-
 
 ul[dnd-list] li.selected {
     background-color: #dff0d8;
     color: #3c763d;
 }
+
+.card {
+  margin-bottom: 20px;
+
+}
+
+.card .card-header {
+  cursor: move;
+  background-color: black;
+  color: white;
+  height: 22px;
+}
+
+.card .card-body {
+  padding: 5px 5px 2px 5px;
+  font-size: 15px;
+  word-wrap: break-word;
+}
+
+.card .card-body .comments {
+  border: none;
+  height: 32px;
+  resize: none;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+
+.card .card-body .card-footer {
+  padding-left:1px;
+}
+
+.card .card-body .card-points {
+  float: right;
+}
+
+
+
+
+
+
+
+
+

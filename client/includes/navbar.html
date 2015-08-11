@@ -1,7 +1,7 @@
-  <div class="sidebar-nav">
+  <div class="sidebar-nav" ng-controller="analyticsCtrl">
     <ul>
       <li><a href="#"><i class="grow fa fa-gear nav-list-icon"></i></a></li>
-      <li><a href="#"><i class="grow fa fa-area-chart nav-list-icon"></i></a></li>
+      <li><a href="#" ng-click="toggleModal()"><i class="grow fa fa-area-chart nav-list-icon"></i></a></li>
       <li><a href="#" ng-click="addFeature()"><i class="grow fa fa-plus"></i></a></li>
       <li><a href="/logout"><i class="grow fa fa-sign-out"></i></a></li>
     </ul>
