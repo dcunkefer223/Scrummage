@@ -14,6 +14,20 @@ module.exports.addFeature = function (feature, res) {
   );
 };
 
+module.exports.addCommentToFeature = function (comment, res) {
+  // comment is {comment(the text), posted(TIMESTAMP), feature_id, user_id}
+  db('comments').insert(comment).returning('id').then(
+    function (id) {
+      console.log('Comment inserted at id: ' + id);
+      res.status(201).send({comment_id: id});
+    }, 
+    function (error) {
+      console.error(error);
+      res.status(500).send('Failed to insert comment into database');
+    }
+  );
+};
+
 module.exports.changeFeatureStatus = function (feature_id, newStatus, res) {
   db('features').where(id, feature_id).update(status, newStatus).then(
     function (rows) {
@@ -145,3 +159,4 @@ module.exports.getCommentsOnFeature = function (feature_id, res) {
     }
   );
 };
+
