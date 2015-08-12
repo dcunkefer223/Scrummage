@@ -3,7 +3,6 @@ var Task = require('./requestHandlers/taskHandler.js');
 var passport = require('passport');
 var authStore = require('./config/authStore');
 
-
 module.exports = function(app){
 
   function isLoggedIn (req, res, next) {
@@ -27,17 +26,17 @@ module.exports = function(app){
 
   // GET requests
 
+  // app.get('/signin', function (req, res){
+  //   res.render('signin', { message: req.flash('signinMessage') });
+  // });
+
+  // app.get('/signup', function (req, res){
+  //   res.render('signup', { message: req.flash('signupMessage') });
+  // });
+
   app.get('/logout', function (req, res) {
     req.logout();
     res.redirect('/');
-  });
-
-  app.get('/signin', function (req, res){
-    res.render('signin', { message: req.flash('signinMessage') });
-  });
-
-  app.get('/signup', function (req, res){
-    res.render('signup', { message: req.flash('signupMessage') });
   });
 
   app.get('/getallfeatures', function (req, res) {
@@ -58,24 +57,24 @@ module.exports = function(app){
 
   // POST requests
 
-  app.post('/signup', passport.authenticate('local-signup', {
-    successRedirect: '/signin',
-    failureRedirect: '/signup',
-    failureFlash: true
-  }));
+  // app.post('/signup', passport.authenticate('local-signup', {
+  //   successRedirect: '/signin',
+  //   failureRedirect: '/signup',
+  //   failureFlash: true
+  // }));
 
-  app.post('/signin', passport.authenticate('local-signin', {
-    successRedirect: '/storyBoard',
-    failureRedirect: '/signin',
-    failureFlash: true
-  }));
+  // app.post('/signin', passport.authenticate('local-signin', {
+  //   successRedirect: '/storyBoard',
+  //   failureRedirect: '/signin',
+  //   failureFlash: true
+  // }));
   
   app.post('/addfeature', function (req, res) {
     // feature is {title, description, points, status[complete|inprogress|todo], sprint_id, team_id}
     Task.addFeature(req.body, res);
   });
 
-  app.post('/addfeature', function (req, res) {
+  app.post('/addcomment', function (req, res) {
     // comment is {comment(the text), posted(TIMESTAMP), feature_id, user_id}
     Task.addCommentToFeature(req.body, res);
   });

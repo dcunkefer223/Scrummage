@@ -1,5 +1,6 @@
 //userModel.js
 var db = require('../db/db.js');
+var bcrypt = require('bcrypt');
 
 exports.addUser = function(user, cb){
   // This method is for internal server use
@@ -14,7 +15,6 @@ exports.addUser = function(user, cb){
       cb(error, null);
     }
   );
-
 };
 
 exports.findUserByGithubId = function(id, cb){
@@ -28,10 +28,30 @@ exports.findUserByGithubId = function(id, cb){
       cb(error, null);
     }
   );
-
 };
 
-module.exports.changeUserTeam = function (user_id, newTeam_id, res) {
+exports.findLocalUser = function(email, cb){
+  db.select('*').from('users').where('email', email).then(function(user){
+    console.log('Logged here ');
+    cb(null, user[0]);
+  });
+};
+
+
+exports.addLocalUser = function(user, cb){
+  db('users').insert({email: user.email, password: user.password})
+  .then(function(){
+    console.log('Local user inserted');
+  });
+};
+
+exports.generateHash = function(password){
+  var hash = bcrypt.hashSync(password, 10);
+  console.log('password: ' + password + ' hash: ' + hash);
+  return hash;
+};
+
+exports.changeUserTeam = function (user_id, newTeam_id, res) {
   db('users').where(id, user_id).update(team_id, newTeam_id).then(
     function (rows) {
       res.status(200).send({user_id: id});
@@ -42,3 +62,4 @@ module.exports.changeUserTeam = function (user_id, newTeam_id, res) {
     }
   );
 };
+
