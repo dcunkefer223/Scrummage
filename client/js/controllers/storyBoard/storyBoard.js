@@ -4,7 +4,7 @@ angular.module('scrummage')
       $scope.models = {
         selected: null,
         lists: {
-          "todo": [], 
+          "backlog": [], 
           "progress": [], 
           "complete": []
         }
@@ -14,19 +14,20 @@ angular.module('scrummage')
         name: "",
         description: "",
         points: 0,
-        status: "todo"
+        status: "backlog"
       };
 
       // use dnd callback to updateStatus() on drag event
+        // $scope.updateStatus()
 
       $scope.addFeature = function (newFeature) {
-        $scope.models.lists.todo.unshift(newFeature);
+        $scope.models.lists.backlog.unshift(newFeature);
 
         $scope.feature = {
           name: "",
           description: "",
           points: 0,
-          status: "todo"
+          status: "backlog"
         };
       };
 
