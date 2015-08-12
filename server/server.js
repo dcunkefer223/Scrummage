@@ -12,6 +12,17 @@ require('./config/passport')(passport);
 
 app.use(bodyParser.json());
 
+// This function is important, it handles the error
+// created when bodyParser recieves invalid JSON
+app.use(function (err, req, res, next) {
+  if(err) {
+    console.error(err);
+    res.status(400).send('Invalid JSON request');
+  } else {
+    next();
+  }
+});
+
 app.use(session({secret: 'anystringoftext',
          saveUninitialized: true,
          resave: true}));
