@@ -29,9 +29,9 @@ module.exports.addCommentToFeature = function (comment, res) {
 };
 
 module.exports.changeFeatureStatus = function (feature_id, newStatus, res) {
-  db('features').where(id, feature_id).update(status, newStatus).then(
+  db('features').where('id', feature_id).update('status', newStatus).then(
     function (rows) {
-      res.status(200).send({feature_id: id});
+      res.status(200).send({feature_id: feature_id});
     }, 
     function (error) {
       console.error(error);
@@ -41,9 +41,9 @@ module.exports.changeFeatureStatus = function (feature_id, newStatus, res) {
 };
 
 module.exports.changeFeaturePoints = function (feature_id, newPoints, res) {
-  db('features').where(id, feature_id).update(points, newPoints).then(
+  db('features').where('id', feature_id).update('points', newPoints).then(
     function (rows) {
-      res.status(200).send({feature_id: id});
+      res.status(200).send({feature_id: feature_id});
     }, 
     function (error) {
       console.error(error);
@@ -53,9 +53,9 @@ module.exports.changeFeaturePoints = function (feature_id, newPoints, res) {
 };
 
 module.exports.changeFeatureDescription = function (feature_id, newDesc, res) {
-  db('features').where(id, feature_id).update(description, newDesc).then(
+  db('features').where('id', feature_id).update('description', newDesc).then(
     function (rows) {
-      res.status(200).send({feature_id: id});
+      res.status(200).send({feature_id: feature_id});
     }, 
     function (error) {
       console.error(error);
@@ -65,7 +65,7 @@ module.exports.changeFeatureDescription = function (feature_id, newDesc, res) {
 };
 
 module.exports.changeFeatureTitle = function (feature_id, newTitle, res) {
-  db('features').where(id, feature_id).update(title, newTitle).then(
+  db('features').where('id', feature_id).update('title', newTitle).then(
     function (rows) {
       res.status(200).send({feature_id: id});
     }, 
@@ -77,7 +77,7 @@ module.exports.changeFeatureTitle = function (feature_id, newTitle, res) {
 };
 
 module.exports.changeFeatureTeam = function (feature_id, newTeam_id, res) {
-  db('features').where(id, feature_id).update(team_id, newTeam_id).then(
+  db('features').where('id', feature_id).update('team_id', newTeam_id).then(
     function (rows) {
       res.status(200).send({feature_id: id});
     }, 
