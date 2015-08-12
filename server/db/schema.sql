@@ -82,3 +82,17 @@ CREATE TABLE comments (
   feature_id INTEGER references features(id),
   user_id INTEGER references users(id)
 );
+
+-----------------------------------------------------------------------
+----------------------------- TEST VALUES -----------------------------
+-----------------------------------------------------------------------
+
+INSERT INTO teams (name) VALUES ('Test Team');
+INSERT INTO sprints (team_id, name) VALUES (1, 'Test Sprint');
+INSERT INTO users (username, github_id) VALUES ('JParis44', 11894565);
+INSERT INTO features (title, description, points, status, sprint_id, user_id)
+  VALUES ('This is a test!', 'This started complete.', 3, 'complete', 1, 1);
+INSERT INTO features (title, description, points, status, sprint_id, user_id)
+  VALUES ('This is another test!', 'This started in progress.', 5, 'progress', 1, 1);
+INSERT INTO features (title, description, points, status, sprint_id, user_id)
+  VALUES ('This is a trial!', 'This started in backlog.', 50, 'backlog', 1, 1);
