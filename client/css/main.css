@@ -211,6 +211,12 @@
   color: lightyellow;
 }
 
+.fa-github-square {
+  font-size: 80px;
+  color: black;
+  margin-left: 100px;
+}
+
 .container h3 {
   text-align: center;
   color: lightyellow;

@@ -57,7 +57,7 @@ angular.module('scrummage')
           }).then(function (resp) {
             return response.data;
           }, noAuthRedirect);
-        }
+        },
         fetchAll : function () {
           return $http({
             method: 'GET',

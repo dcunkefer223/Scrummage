@@ -4,7 +4,7 @@ angular.module('scrummage')
       $scope.models = {
         selected: null,
         lists: {
-          "backlog": [], 
+          "backlog":  [], 
           "progress": [], 
           "complete": []
         }
@@ -17,8 +17,10 @@ angular.module('scrummage')
         status: "backlog"
       };
 
-      // use dnd callback to updateStatus() on drag event
-        // $scope.updateStatus()
+      $scope.dropCallback = function (event, index, item, external, listName) {
+        item.status = listName;
+        return item;
+      };
 
       $scope.addFeature = function (newFeature) {
         $scope.models.lists.backlog.unshift(newFeature);
@@ -29,11 +31,6 @@ angular.module('scrummage')
           points: 0,
           status: "backlog"
         };
-      };
-
-      $scope.submitFeature = function () {
-        console.log($scope.models.lists);
-        console.log($scope.feature);
       };
 
       // Model to JSON
