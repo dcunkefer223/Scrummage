@@ -76,8 +76,8 @@ module.exports.changeFeatureTitle = function (feature_id, newTitle, res) {
   );
 };
 
-module.exports.changeFeatureTeam = function (feature_id, newTeam_id, res) {
-  db('features').where(id, feature_id).update(team_id, newTeam_id).then(
+module.exports.changeFeatureUser = function (feature_id, user_id, res) {
+  db('features').where(id, feature_id).update(team_id, user_id).then(
     function (rows) {
       res.status(200).send({feature_id: id});
     }, 

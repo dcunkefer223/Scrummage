@@ -26,8 +26,8 @@ module.exports.changeFeatureTitle = function (obj, res) {
   tasks.changeFeatureTitle(obj.feature_id, obj.newTitle, res);
 };
 
-module.exports.changeFeatureTeam = function (obj, res) {
-  tasks.changeFeatureTeam(obj.feature_id, obj.newTeam_id, res);
+module.exports.changeFeatureUser = function (obj, res) {
+  tasks.changeFeatureUser(obj.feature_id, obj.user_id, res);
 };
 
 module.exports.getAllFeatures = function (obj, res) {

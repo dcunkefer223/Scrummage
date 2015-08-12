@@ -71,7 +71,8 @@ CREATE TABLE features (
   points INTEGER,
   status VARCHAR,
   sprint_id INTEGER references sprints(id),
-  team_id INTEGER DEFAULT null references teams(id)
+  team_id INTEGER DEFAULT null references teams(id),
+  user_id INTEGER DEFAULT null references users(id)
 );
 
 CREATE TABLE comments (
