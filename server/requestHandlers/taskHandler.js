@@ -30,14 +30,14 @@ module.exports.changeFeatureUser = function (obj, res) {
   tasks.changeFeatureUser(obj.feature_id, obj.user_id, res);
 };
 
-module.exports.getAllFeatures = function (obj, res) {
-  tasks.getAllFeatures(obj.sprint_id, res);
+module.exports.getAllFeatures = function (sprint_id, res) {
+  tasks.getAllFeatures(sprint_id, res);
 };
 
-module.exports.getFeaturesByStatus = function (obj, res) {
-  tasks.getFeaturesByStatus(obj.sprint_id, obj.status, res);
+module.exports.getFeaturesByStatus = function (sprint_id, status, res) {
+  tasks.getFeaturesByStatus(sprint_id, status, res);
 };
 
-module.exports.getCommentsOnFeature = function (obj, res) {
-  tasks.getCommentsOnFeature(obj.feature_id, res);
+module.exports.getCommentsOnFeature = function (feature_id, res) {
+  tasks.getCommentsOnFeature(feature_id, res);
 };

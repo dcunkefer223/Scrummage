@@ -15,13 +15,13 @@ module.exports = function (grunt){
   },
 
   concat: {
-    dist: {
+    serverSide: {
       src: [
       'server/**/*.js',
       ],
       dest: 'server/build/production.js',
     },
-    dist: {
+    clientSide: {
       src: [
       'client/js/*.js',
       ],
@@ -30,31 +30,28 @@ module.exports = function (grunt){
   },
 
   uglify: {
-    build: {
+    serverSide: {
       src: 'server/build/production.js',
       dest: 'server/build/production.min.js'
     },
-    build: {
+    clientSide: {
       src: 'client/build/production.js',
       dest: 'client/build/production.min.js'
     }
   },
 
-  imagemin: {
-    dynamic: {
-      files: [{
-        expand: true,
-        // cwd: 'client/img/',
-        src: ['client/img/*.jpg'],
-        dest: 'client/img/build'
-      }]
-    }
-  },
+  // imagemin: {
+  //   dynamic: {
+  //     files: [{
+  //       expand: true,
+  //       // cwd: 'client/img/',
+  //       src: ['client/img/*.jpg'],
+  //       dest: '/build'
+  //     }]
+  //   }
+  // },
 
   watch: {
-    options: {
-      livereload: true,
-    },
     scripts: {
       files: [
         'client/js/*.js',
@@ -65,7 +62,9 @@ module.exports = function (grunt){
         'uglify'
       ],
       options: {
+        livereload: true,
         spawn: false,
+        event: ['added', 'changed', 'deleted']
       },
     }
 
@@ -94,12 +93,9 @@ module.exports = function (grunt){
   grunt.task.run([ 'watch' ]);
 });
 
-
-
   //what happens when you type grunt in CL
-
-  grunt.registerTask('default', ['cssmin', 'uglify', 'imagemin', 'concat', 'watch']);//'watch'
+  grunt.registerTask('default', ['cssmin', 'concat', 'uglify', 'watch']);//'watch'
   grunt.registerTask('build', ['concat']);
-  //grunt.registerTask('default', ['mochaTest']);
+  //grunt.registerTask('default', ['mochaTest']); will replace with Jasmine if possible
 };
 
