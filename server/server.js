@@ -10,7 +10,8 @@ var flash = require('connect-flash');
 
 require('./config/passport')(passport);
 
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+
 app.use(session({secret: 'anystringoftext',
          saveUninitialized: true,
          resave: true}));
