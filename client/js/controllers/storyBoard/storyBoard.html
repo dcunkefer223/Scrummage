@@ -1,5 +1,4 @@
   <div class="container-fluid mobile-padding nav-bg">
-  <row>
     <div class="col-xs-1 nav-bg" ng-include="'./includes/navbar.html'"></div>
     <div class="col-xs-11 column-bg">
       <div class="container column-bg">
@@ -14,19 +13,4 @@
       </div>
     </div>
   </div>
-  </row>
-  <row>
-    <div class="container">
-      <h1>Enter feature</h1>
-      <form>
-        <label for="">Feature Name</label> <br />
-        <input ng-model="feature.name" type="text" /> <br />
-        <label for="">Feature Description</label> <br />
-        <input ng-model="feature.description" type="text" /> <br />
-        <label for="">Points Amount</label> <br />
-        <input ng-model="feature.points" type="text" /> <br />
-      </form>
-      <a href="" ng-click="addFeature(feature)" class="button bg-teal margin-right">Add A Feature</a>
-      <a href="" ng-click="submitFeature()" class="button bg-red">Submit</a>
-  </row>
   </div>

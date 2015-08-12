@@ -112,6 +112,29 @@
     margin-top: -30px;
 }
 
+ .add-feature-modal {
+    border: 0px;
+    text-shadow: 0 1px rgba(0,0,0,0.1);
+    padding: 17px 0px;
+    font-family: roboto;
+    font-size: 14px;
+    margin-top: 40px;
+    text-align: center;  
+ }
+
+ .add-feature-modal .add-feature-body {
+  margin-bottom: 30px;
+ }
+
+ a:hover {
+  text-decoration: none;
+ }
+
+.modal {
+  top: 15%;
+  bottom: 15%;
+}
+
 /* --------------------------------- StoryBoard Styling --------------------------------- */
 
 .container-fluid {
@@ -188,6 +211,12 @@
   color: lightyellow;
 }
 
+.fa-github-square {
+  font-size: 80px;
+  color: black;
+  margin-left: 100px;
+}
+
 .container h3 {
   text-align: center;
   color: lightyellow;
@@ -199,6 +228,7 @@
   text-align: center;
   height: 100vh;
   padding: 10px, 20px;
+  overflow-y: scroll;
 }
 
 /* ------------------------- Test Boxes --------------------- */
@@ -235,6 +265,7 @@ ul[dnd-list] li {
     padding: 10px auto;
     margin-bottom: 50px;
     margin-left: 15%;
+    margin-right: 15%;
 }
 
 ul[dnd-list] li.selected {

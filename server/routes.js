@@ -99,9 +99,9 @@ module.exports = function(app){
     Task.changeFeatureTitle(req.body, res);
   });
 
-  app.post('/changefeatureteam', function (req, res) {
+  app.post('/changefeatureuser', function (req, res) {
     // {feature_id, newTeam_id}
-    Task.changeFeatureTeam(req.body, res);
+    Task.changeFeatureUser(req.body, res);
   });
 
   app.post('/changeuserteam', function (req, res) {

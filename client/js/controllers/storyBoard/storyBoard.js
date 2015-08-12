@@ -4,7 +4,7 @@ angular.module('scrummage')
       $scope.models = {
         selected: null,
         lists: {
-          "todo": [], 
+          "backlog":  [], 
           "progress": [], 
           "complete": []
         }
@@ -14,23 +14,23 @@ angular.module('scrummage')
         name: "",
         description: "",
         points: 0,
-        status: "todo"
+        status: "backlog"
+      };
+
+      $scope.dropCallback = function (event, index, item, external, listName) {
+        item.status = listName;
+        return item;
       };
 
       $scope.addFeature = function (newFeature) {
-        $scope.models.lists.todo.push(newFeature);
+        $scope.models.lists.backlog.unshift(newFeature);
 
         $scope.feature = {
           name: "",
           description: "",
           points: 0,
-          status: "todo"
+          status: "backlog"
         };
-      };
-
-      $scope.submitFeature = function () {
-        console.log($scope.models.lists);
-        console.log($scope.feature);
       };
 
       // Model to JSON
