@@ -52,9 +52,9 @@ exports.generateHash = function(password){
 };
 
 exports.changeUserTeam = function (user_id, newTeam_id, res) {
-  db('users').where(id, user_id).update(team_id, newTeam_id).then(
+  db('users').where('id', user_id).update('team_id', newTeam_id).then(
     function (rows) {
-      res.status(200).send({user_id: id});
+      res.status(200).send({user_id: user_id});
     }, 
     function (error) {
       console.error(error);
