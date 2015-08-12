@@ -20,7 +20,7 @@ angular.module('scrummage')
 
       $scope.clearBoard = function () {
         for(var prop in $scope.models.lists) {
-          prop.length = 0;
+          $scope.models.lists[prop].length = 0;
         }
       };
 
@@ -34,10 +34,10 @@ angular.module('scrummage')
               }
             }
           }
-        });        
+        });
       };
 
-      setInterval($scope.renderBoard, 1000);
+      // setInterval($scope.renderBoard, 1000);
 
       $scope.dropCallback = function (event, index, item, external, listName) {
         item.status = listName;
