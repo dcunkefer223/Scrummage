@@ -7,7 +7,7 @@ angular.module('scrummage')
         create : function (data) {
           return $http({
             method: 'POST',
-            url: '/tasks',
+            url: '/addfeature',
             data: data
           }).then(function (resp) {
             return response.data;
@@ -61,15 +61,15 @@ angular.module('scrummage')
         fetchAll : function () {
           return $http({
             method: 'GET',
-            url: '/getallfeatures',
+            url: '/getallfeatures?sprint_id=1',
           }).then(function (resp) {
             return resp.data;
           }, noAuthRedirect);
         },
-        fetch : function () {
+        fetch : function (status) {
           return $http({
             method: 'GET',
-            url: '/getfeaturesbystatus',
+            url: '/getfeaturesbystatus?sprint_id=1&status=' + status,
           }).then(function (resp){
             return resp.data;
           }, noAuthRedirect);
@@ -86,10 +86,10 @@ angular.module('scrummage')
             return resp.data;
           }, noAuthRedirect);
         },
-        fetchAll : function () {
+        fetchAll : function (feature_id) {
           return $http({
             method: 'GET',
-            url: '/getcomments'
+            url: '/getcomments?feature_id=' + feature_id,
           }).then(function (resp) {
             return resp.data;
           }, noAuthRedirect);
