@@ -40,18 +40,18 @@ module.exports = function(app){
   });
 
   app.get('/getallfeatures', function (req, res) {
-    // {sprint_id}
-    Task.getAllFeatures(req.body, res);
+    // ?sprint_id=integer
+    Task.getAllFeatures(req.query.sprint_id, res);
   });
 
   app.get('/getfeaturesbystatus', function (req, res) {
-    // {sprint_id, status}
-    Task.getFeaturesByStatus(req.body, res);
+    // ?sprint_id=integer&status=string
+    Task.getFeaturesByStatus(req.query.sprint_id, req.query.status, res);
   });
 
   app.get('/getcomments', function (req, res) {
-    // {feature_id}
-    Task.getCommentsOnFeature(req.body, res);
+    // ?feature_id=integer
+    Task.getCommentsOnFeature(req.query.feature_id, res);
   });
 
 
