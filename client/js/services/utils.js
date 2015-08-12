@@ -97,7 +97,41 @@ angular.module('scrummage')
       },
 
       analytics : {
-
+        updatePoints : function (data) {
+          return $http({
+            method: 'POST',
+            url: '/updatetotalpoints',
+            data: data
+          }).then(function (resp) {
+            return resp.data;
+          }, noAuthRedirect);
+        },
+        addPoints : function (data) {
+          return $http({
+            method: 'POST',
+            url: '/addpoints',
+            data: data
+          }).then(function (resp) {
+            return resp.data;
+          }, noAuthRedirect);
+        },
+        substractPoints : function (data) {
+          return $http({
+            method: 'POST',
+            url: '/substractpoints',
+            data: data
+          }).then(function (resp) {
+            return resp.data;
+          }, noAuthRedirect);
+        },
+        fetchTotal : function() {
+          return $http({
+            method: 'GET',
+            url: '/fetchtotalpoints',
+          }).then(function (resp) {
+            return resp.data;
+          }, noAuthRedirect);
+        }
       },
 
       user : {
