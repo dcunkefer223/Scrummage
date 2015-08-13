@@ -5,7 +5,7 @@ module.exports.addFeature = function (feature, res) {
   db('features').insert(feature).returning('id').then(
     function (id) {
       console.log('Feature inserted at id: ' + id);
-      res.status(201).send({feature_id: id});
+      res.status(201).send({feature_id: id[0]});
     }, 
     function (error) {
       console.error(error);
@@ -19,7 +19,7 @@ module.exports.addCommentToFeature = function (comment, res) {
   db('comments').insert(comment).returning('id').then(
     function (id) {
       console.log('Comment inserted at id: ' + id);
-      res.status(201).send({comment_id: id});
+      res.status(201).send({comment_id: id[0]});
     }, 
     function (error) {
       console.error(error);
