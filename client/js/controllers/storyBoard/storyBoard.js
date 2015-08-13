@@ -88,7 +88,8 @@ angular.module('scrummage')
         $scope.models.lists.backlog.unshift(newFeature);
 
         Request.feature.create(newFeature).then(function (results) {
-          newFeature.id = results.feature_id[0];
+          // console.log('The feature_id is ', results.feature_id)
+          newFeature.id = results.feature_id;
         });
         $scope.feature = {
           sprint_id: 1,
