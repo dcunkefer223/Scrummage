@@ -10,7 +10,7 @@ angular.module('scrummage')
             url: '/addfeature',
             data: data
           }).then(function (resp) {
-            return response.data;
+            return resp.data;
           }, noAuthRedirect);
         },
         updateTitle : function (data) {
@@ -19,7 +19,7 @@ angular.module('scrummage')
             url: '/changetitle',
             data: data
           }).then(function (resp) {
-            return response.data;
+            return resp.data;
           }, noAuthRedirect);
         },
         updateDescription : function (data) {
@@ -28,7 +28,7 @@ angular.module('scrummage')
             url: '/changedesc',
             data: data
           }).then(function (resp) {
-            return response.data;
+            return resp.data;
           }, noAuthRedirect);
         },
         updatePoints : function (data) {
@@ -37,7 +37,7 @@ angular.module('scrummage')
             url: '/changefeaturepoints',
             data: data
           }).then(function (resp) {
-            return response.data;
+            return resp.data;
           }, noAuthRedirect);
         },
         updateStatus : function (data) {
@@ -46,7 +46,7 @@ angular.module('scrummage')
             url: '/changestatus',
             data: data
           }).then(function (resp) {
-            return response.data;
+            return resp.data;
           }, noAuthRedirect);
         },
         updateUser : function (data) {
@@ -55,7 +55,7 @@ angular.module('scrummage')
             url: '/changefeatureuser',
             data: data
           }).then(function (resp) {
-            return response.data;
+            return resp.data;
           }, noAuthRedirect);
         },
         fetchAll : function () {
