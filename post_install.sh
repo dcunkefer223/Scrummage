@@ -5,6 +5,6 @@
 #run grunt after install
 #grunt
 #Access DB
-heroku pg:psql --app scrummage-app DATABASE
+pg:psql --app scrummage-app DATABASE
 #run schema file
 ./server/db/schema.sql
