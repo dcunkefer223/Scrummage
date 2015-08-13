@@ -61,7 +61,7 @@ angular.module('scrummage')
         fetchAll : function () {
           return $http({
             method: 'GET',
-            url: '/getallfeatures?sprint_id=1',
+            url: '/getallfeatures?team_id=1',
           }).then(function (resp) {
             return resp.data;
           }, noAuthRedirect);
@@ -69,7 +69,7 @@ angular.module('scrummage')
         fetch : function (status) {
           return $http({
             method: 'GET',
-            url: '/getfeaturesbystatus?sprint_id=1&status=' + status,
+            url: '/getfeaturesbystatus?team_id=1&status=' + status,
           }).then(function (resp){
             return resp.data;
           }, noAuthRedirect);
