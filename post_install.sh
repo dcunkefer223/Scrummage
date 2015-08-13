@@ -5,6 +5,6 @@
 #run grunt after install
 #grunt
 #Access DB
-pg:psql --app scrummage-app DATABASE
+#
 #run schema file
 ./server/db/schema.sql
