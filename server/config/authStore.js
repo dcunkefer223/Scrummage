@@ -17,10 +17,10 @@ exports.checkUser = function(req, res, next){
 };
 
 exports.pgData = {
-      host: 'ec2-54-83-55-214.compute-1.amazonaws.com',
-      database: 'df8681a488cm7j',
-      user : 'wtloxdvspmlazo',
+      host: 'localhost',
+      database: 'postgres',
+      user : 'postgres',
       port : 5432,
-      password : 'NSQw_qVzfiy4hTSwK3MYTxMEaB',
+      password : '',
       ssl: false
     };
