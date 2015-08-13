@@ -4,7 +4,7 @@
 ./node_modules/bower/bin/bower install
 #run grunt after install
 #grunt
-#Access DB
-#
-#run schema file
-psql: ./server/db/schema.sql
+
+#global install knex
+# npm install -g knex
+
