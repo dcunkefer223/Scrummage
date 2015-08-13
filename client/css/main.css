@@ -417,3 +417,8 @@ ul[dnd-list] li.selected {
 .card .card-body .card-points {
   float: right;
 }
+/* ------------------------- Analytics /// Chart --------------------- */
+.chart {
+ width: 500px;
+ height: 500px;
+}
