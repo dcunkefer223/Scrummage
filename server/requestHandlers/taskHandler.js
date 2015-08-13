@@ -1,7 +1,7 @@
 var taskModel = require('../models/taskModel.js');
 
 module.exports.addFeature = function (feature, res) {
-  // feature is {name, description, points, status[complete|inprogress|todo], sprint_id, team_id}
+  // feature is {name, description, points, status[complete|progress|backlog], team_id}
   taskModel.addFeature(feature, res);
 };
 
@@ -30,12 +30,12 @@ module.exports.changeFeatureUser = function (obj, res) {
   taskModel.changeFeatureUser(obj.feature_id, obj.user_id, res);
 };
 
-module.exports.getAllFeatures = function (sprint_id, res) {
-  taskModel.getAllFeatures(sprint_id, res);
+module.exports.getAllFeatures = function (team_id, res) {
+  taskModel.getAllFeatures(team_id, res);
 };
 
-module.exports.getFeaturesByStatus = function (sprint_id, status, res) {
-  taskModel.getFeaturesByStatus(sprint_id, status, res);
+module.exports.getFeaturesByStatus = function (team_id, status, res) {
+  taskModel.getFeaturesByStatus(team_id, status, res);
 };
 
 module.exports.getCommentsOnFeature = function (feature_id, res) {

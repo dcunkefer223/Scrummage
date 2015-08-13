@@ -40,13 +40,13 @@ module.exports = function(app){
   });
 
   app.get('/getallfeatures', function (req, res) {
-    // ?sprint_id=integer
-    Task.getAllFeatures(req.query.sprint_id, res);
+    // ?team_id=integer
+    Task.getAllFeatures(req.query.team_id, res);
   });
 
   app.get('/getfeaturesbystatus', function (req, res) {
-    // ?sprint_id=integer&status=string
-    Task.getFeaturesByStatus(req.query.sprint_id, req.query.status, res);
+    // ?team_id=integer&status=string
+    Task.getFeaturesByStatus(req.query.team_id, req.query.status, res);
   });
 
   app.get('/getcomments', function (req, res) {
@@ -70,7 +70,7 @@ module.exports = function(app){
   // }));
   
   app.post('/addfeature', function (req, res) {
-    // feature is {name, description, points, status, sprint_id, user_id}
+    // feature is {name, description, points, status, team_id, user_id}
     Task.addFeature(req.body, res);
   });
 
