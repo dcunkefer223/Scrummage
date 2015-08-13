@@ -9,6 +9,8 @@ var auth = process.env.DATABASE_URL ? null : require('../config/authStore.js');
 //Commenting out Paris settings to test
 //*************************************
 
+var url = DATABASE_URL="postgres://ec2-54-83-55-214.compute-1.amazonaws.com?ssl=true";
+
 var db = require('knex')({
   client: 'pg',
   connection: process.env.DATABASE_URL || auth.pgData
