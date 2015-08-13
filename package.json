@@ -4,9 +4,15 @@
   "description": "",
   "main": "server.js",
   "author": "ddpj",
+  "scripts": {
+    "test": "echo \"Error: No Test Specified\" && exit 1",
+    "start": "node server/server.js",
+    "postinstall": "bash ./post_install.sh"
+  },
   "dependencies": {
     "bcrypt": "^0.8.4",
     "body-parser": "latest",
+    "bower": "^1.4.1",
     "connect-flash": "~0.1.1",
     "ejs": "latest",
     "express": "^4.12.4",
