@@ -40,13 +40,16 @@
 
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS teams CASCADE;
-DROP TABLE IF EXISTS sprints CASCADE;
 DROP TABLE IF EXISTS features CASCADE;
 DROP TABLE IF EXISTS comments CASCADE;
 
 CREATE TABLE teams (
   id SERIAL PRIMARY KEY,
-  name VARCHAR
+  name VARCHAR,
+  start TIMESTAMP,
+  backlog VARCHAR,
+  progress VARCHAR,
+  completed VARCHAR
 );
 
 CREATE TABLE users (
@@ -58,20 +61,13 @@ CREATE TABLE users (
   team_id INTEGER references teams(id)
 );
 
-CREATE TABLE sprints (
-  id SERIAL PRIMARY KEY,
-  team_id INTEGER references teams(id),
-  name VARCHAR
-);
-
 CREATE TABLE features (
   id SERIAL PRIMARY KEY,
   name VARCHAR,
   description VARCHAR,
   points INTEGER,
   status VARCHAR,
-  sprint_id INTEGER references sprints(id),
-  team_id INTEGER DEFAULT null references teams(id),
+  team_id INTEGER references teams(id),
   user_id INTEGER DEFAULT null references users(id)
 );
 
@@ -88,11 +84,10 @@ CREATE TABLE comments (
 -----------------------------------------------------------------------
 
 INSERT INTO teams (name) VALUES ('Test Team');
-INSERT INTO sprints (team_id, name) VALUES (1, 'Test Sprint');
 INSERT INTO users (username, github_id) VALUES ('JParis44', 11894565);
-INSERT INTO features (name, description, points, status, sprint_id, user_id)
+INSERT INTO features (name, description, points, status, team_id, user_id)
   VALUES ('This is a test!', 'This started complete.', 3, 'complete', 1, 1);
-INSERT INTO features (name, description, points, status, sprint_id, user_id)
+INSERT INTO features (name, description, points, status, team_id, user_id)
   VALUES ('This is another test!', 'This started in progress.', 5, 'progress', 1, 1);
-INSERT INTO features (name, description, points, status, sprint_id, user_id)
+INSERT INTO features (name, description, points, status, team_id, user_id)
   VALUES ('This is a trial!', 'This started in backlog.', 50, 'backlog', 1, 1);
