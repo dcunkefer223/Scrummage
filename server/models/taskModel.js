@@ -64,10 +64,10 @@ module.exports.changeFeatureDescription = function (feature_id, newDesc, res) {
   );
 };
 
-module.exports.changeFeatureTitle = function (feature_id, newTitle, res) {
-  db('features').where('id', feature_id).update('title', newTitle).then(
+module.exports.changeFeatureName = function (feature_id, newName, res) {
+  db('features').where('id', feature_id).update('name', newName).then(
     function (rows) {
-      res.status(200).send({feature_id: id});
+      res.status(200).send({feature_id: feature_id});
     }, 
     function (error) {
       console.error(error);
@@ -79,7 +79,7 @@ module.exports.changeFeatureTitle = function (feature_id, newTitle, res) {
 module.exports.changeFeatureUser = function (feature_id, user_id, res) {
   db('features').where(id, feature_id).update('team_id', user_id).then(
     function (rows) {
-      res.status(200).send({feature_id: id});
+      res.status(200).send({feature_id: feature_id});
     }, 
     function (error) {
       console.error(error);

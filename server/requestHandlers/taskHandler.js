@@ -1,7 +1,7 @@
 var tasks = require('../models/taskModel.js');
 
 module.exports.addFeature = function (feature, res) {
-  // feature is {title, description, points, status[complete|inprogress|todo], sprint_id, team_id}
+  // feature is {name, description, points, status[complete|inprogress|todo], sprint_id, team_id}
   tasks.addFeature(feature, res);
 };
 
@@ -22,8 +22,8 @@ module.exports.changeFeatureDescription = function (obj, res) {
   tasks.changeFeatureDescription(obj.feature_id, obj.description, res);
 };
 
-module.exports.changeFeatureTitle = function (obj, res) {
-  tasks.changeFeatureTitle(obj.feature_id, obj.title, res);
+module.exports.changeFeatureName = function (obj, res) {
+  tasks.changeFeatureName(obj.feature_id, obj.name, res);
 };
 
 module.exports.changeFeatureUser = function (obj, res) {
