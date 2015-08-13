@@ -53,11 +53,13 @@ angular.module('scrummage')
 
       $scope.renderBoard = function () {
         Request.feature.fetchAll().then(function (results) {
+          console.log(results);
           $scope.clearBoard();
           for(var i = 0; i < results.length; i++) {
             for(var key in $scope.models.lists) {
               if(results[i].status === key) {
                 $scope.models.lists[key].push(results[i]);
+                console.log($scope.models.lists);
               }
             }
           }
