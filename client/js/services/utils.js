@@ -10,7 +10,7 @@ angular.module('scrummage')
             url: '/addfeature',
             data: data
           }).then(function (resp) {
-            return response.data;
+            return resp.data;
           }, noAuthRedirect);
         },
         updateTitle : function (data) {
@@ -19,7 +19,7 @@ angular.module('scrummage')
             url: '/changetitle',
             data: data
           }).then(function (resp) {
-            return response.data;
+            return resp.data;
           }, noAuthRedirect);
         },
         updateDescription : function (data) {
@@ -28,7 +28,7 @@ angular.module('scrummage')
             url: '/changedesc',
             data: data
           }).then(function (resp) {
-            return response.data;
+            return resp.data;
           }, noAuthRedirect);
         },
         updatePoints : function (data) {
@@ -37,7 +37,7 @@ angular.module('scrummage')
             url: '/changefeaturepoints',
             data: data
           }).then(function (resp) {
-            return response.data;
+            return resp.data;
           }, noAuthRedirect);
         },
         updateStatus : function (data) {
@@ -46,7 +46,7 @@ angular.module('scrummage')
             url: '/changestatus',
             data: data
           }).then(function (resp) {
-            return response.data;
+            return resp.data;
           }, noAuthRedirect);
         },
         updateUser : function (data) {
@@ -55,7 +55,7 @@ angular.module('scrummage')
             url: '/changefeatureuser',
             data: data
           }).then(function (resp) {
-            return response.data;
+            return resp.data;
           }, noAuthRedirect);
         },
         fetchAll : function () {
@@ -97,7 +97,41 @@ angular.module('scrummage')
       },
 
       analytics : {
-
+        updatePoints : function (data) {
+          return $http({
+            method: 'POST',
+            url: '/updatetotalpoints',
+            data: data
+          }).then(function (resp) {
+            return resp.data;
+          }, noAuthRedirect);
+        },
+        addPoints : function (data) {
+          return $http({
+            method: 'POST',
+            url: '/addpoints',
+            data: data
+          }).then(function (resp) {
+            return resp.data;
+          }, noAuthRedirect);
+        },
+        substractPoints : function (data) {
+          return $http({
+            method: 'POST',
+            url: '/substractpoints',
+            data: data
+          }).then(function (resp) {
+            return resp.data;
+          }, noAuthRedirect);
+        },
+        fetchTotal : function() {
+          return $http({
+            method: 'GET',
+            url: '/fetchtotalpoints',
+          }).then(function (resp) {
+            return resp.data;
+          }, noAuthRedirect);
+        }
       },
 
       user : {
