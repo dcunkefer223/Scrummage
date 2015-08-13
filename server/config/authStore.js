@@ -22,5 +22,5 @@ exports.pgData = {
       user : 'wtloxdvspmlazo',
       port : 5432,
       password : 'NSQw_qVzfiy4hTSwK3MYTxMEaB',
-      ssl: false
-    };
+      ssl: true
+    }
