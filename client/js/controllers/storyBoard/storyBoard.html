@@ -1,15 +1,16 @@
   <div class="container-fluid mobile-padding nav-bg">
     <div class="col-xs-1 nav-bg" ng-include="'./includes/navbar.html'"></div>
-    <div class="col-xs-11">
-      <div class="container column-bg" dnd-list="list">
+    <div class="col-xs-11 column-bg">
+      <div class="container column-bg">
         <div class="row">
-          <div ng-repeat="(listName, list) in models.lists" class="col-xs-4">
-<!--           <div class="col-header">
-            <h3>Todo</h3>
-          </div> -->
-          <div ng-include="'./js/controllers/storyBoard/list.html'"></div>
+          <div class="col-xs-4" ng-repeat="(listName, list) in models.lists">
+            <div class="feature-header">
+              <h3>{{listName | capitalize}}</h3>
+            </div>
+            <div ng-include="'./js/controllers/storyBoard/list.html'"></div>
           </div>
         </div>
       </div>
     </div>
+  </div>
   </div>

@@ -1,5 +1,7 @@
 node_modules/**/*
 client/bower_components/**/*
+server/config/authStore.js
+server/db/db.js
 
 .DS_Store
 
