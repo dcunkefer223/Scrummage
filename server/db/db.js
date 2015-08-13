@@ -18,9 +18,9 @@ var db = require('knex')({
   client: 'pg',
   connection: process.env.DATABASE_URL || auth.pgData,
   // database: 'df8681a488cm7j',
-  user : process.env.DATABASE_user || auth.pgData,
-  port : process.env.DATABASE_port || auth.pgData,
-  password : process.env.DATABASE_passord || auth.pgData,
+  user : process.env.DATABASE_user || auth.pgData.user,
+  port : process.env.DATABASE_port || auth.pgData.port,
+  password : process.env.DATABASE_password || auth.pgData.password,
   ssl: true
 })
 
