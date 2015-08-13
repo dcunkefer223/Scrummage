@@ -7,4 +7,4 @@
 #Access DB
 #
 #run schema file
-./server/db/schema.sql
+psql: ./server/db/schema.sql
