@@ -11,7 +11,7 @@ var auth = process.env.DATABASE_URL ? null : require('../config/authStore.js');
 
 var db = require('knex')({
   client: 'pg',
-  connection: process.env.DATABASE_URL || auth.pgData
+  connection: 'jansenfamily'
 });
 
 // var db = new pg.Client("");
