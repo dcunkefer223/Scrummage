@@ -1,5 +1,5 @@
 angular.module('scrummage')
-    .controller('storyBoardCtrl', function ($scope, Request) {
+    .controller('storyBoardCtrl', function ($scope, $interval, Request) {
 
       $scope.models = {
         selected: null,
@@ -18,6 +18,33 @@ angular.module('scrummage')
         status: "backlog"
       };
 
+      $scope.backlogTotal = function() {
+        var sum = 0;
+        for(var i = 0; i < $scope.models.lists['backlog'].length; i++) {
+          sum += $scope.models.lists['backlog'][i].points;
+        }
+        console.log('The backlog total is ', sum);
+        return sum;
+      };
+
+      $scope.progressTotal = function() {
+        var sum = 0;
+        for(var i = 0; i < $scope.models.lists['progress'].length; i++) {
+          sum += $scope.models.lists['progress'][i].points;
+        }
+        console.log('The progress total is ', sum);
+        return sum;
+      };
+
+      $scope.completeTotal = function() {
+        var sum = 0;
+        for(var i = 0; i < $scope.models.lists['complete'].length; i++) {
+          sum += $scope.models.lists['complete'][i].points;
+        }
+        console.log('The completed total is ', sum);
+        return sum;
+      };
+
       $scope.clearBoard = function () {
         for(var prop in $scope.models.lists) {
           $scope.models.lists[prop].length = 0;
@@ -26,7 +53,6 @@ angular.module('scrummage')
 
       $scope.renderBoard = function () {
         Request.feature.fetchAll().then(function (results) {
-          console.log(results);
           $scope.clearBoard();
           for(var i = 0; i < results.length; i++) {
             for(var key in $scope.models.lists) {
@@ -35,11 +61,14 @@ angular.module('scrummage')
               }
             }
           }
-          console.log($scope.models.lists);
+          console.log('rendered');
         });
       };
 
-      // setInterval($scope.renderBoard, 1000);
+      $scope.renderBoard();
+
+
+      var intervalPromise = $interval($scope.renderBoard, 3000);
 
       $scope.dropCallback = function (event, index, item, external, listName) {
         item.status = listName;
