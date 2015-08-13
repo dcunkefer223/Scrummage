@@ -23,8 +23,8 @@ module.exports = function(passport) {
   //Github OAuth**
   //*************************************************************
   passport.use(new GithubStrategy({
-    clientID: '3cf6f618800a697e2bc5',
-    clientSecret: 'b160a044255899ac3cc086064b8783ff40fd0c23',
+    clientID: '5057c4d093220875cc38',
+    clientSecret: 'cf79e078480f4dda85ec4946c10353e215d8a9db',
     callbackURL: 'https://scrummage-app.herokuapp.com/auth/github/callback',
     passReqToCallback: true
   },
