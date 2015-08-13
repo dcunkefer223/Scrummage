@@ -1,9 +1,13 @@
 {
   "name": "OAuthProject",
-  "version": "0.12.0",
+  "version": "0.0.0",
   "description": "",
   "main": "server.js",
   "author": "ddpj",
+  "engines": {
+    "node": "0.12.0",
+    "npm": "2.13.4"
+  },
   "scripts": {
     "test": "echo \"Error: No Test Specified\" && exit 1",
     "start": "node server/server.js",
