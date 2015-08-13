@@ -70,7 +70,7 @@ module.exports = function(app){
   // }));
   
   app.post('/addfeature', function (req, res) {
-    // feature is {title, description, points, status[complete|inprogress|todo], sprint_id, user_id}
+    // feature is {title, description, points, status, sprint_id, user_id}
     Task.addFeature(req.body, res);
   });
 

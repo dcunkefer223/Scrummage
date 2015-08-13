@@ -11,19 +11,19 @@ module.exports.addCommentToFeature = function (comment, res) {
 };
 
 module.exports.changeFeatureStatus = function (obj, res) {
-  tasks.changeFeatureStatus(obj.feature_id, obj.newStatus, res);
+  tasks.changeFeatureStatus(obj.feature_id, obj.status, res);
 };
 
 module.exports.changeFeaturePoints = function (obj, res) {
-  tasks.changeFeaturePoints(obj.feature_id, obj.newPoints, res);
+  tasks.changeFeaturePoints(obj.feature_id, obj.points, res);
 };
 
 module.exports.changeFeatureDescription = function (obj, res) {
-  tasks.changeFeatureDescription(obj.feature_id, obj.newDesc, res);
+  tasks.changeFeatureDescription(obj.feature_id, obj.description, res);
 };
 
 module.exports.changeFeatureTitle = function (obj, res) {
-  tasks.changeFeatureTitle(obj.feature_id, obj.newTitle, res);
+  tasks.changeFeatureTitle(obj.feature_id, obj.title, res);
 };
 
 module.exports.changeFeatureUser = function (obj, res) {
