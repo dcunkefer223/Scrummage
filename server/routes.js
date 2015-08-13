@@ -70,7 +70,7 @@ module.exports = function(app){
   // }));
   
   app.post('/addfeature', function (req, res) {
-    // feature is {title, description, points, status[complete|inprogress|todo], sprint_id, team_id}
+    // feature is {title, description, points, status[complete|inprogress|todo], sprint_id, user_id}
     Task.addFeature(req.body, res);
   });
 
@@ -80,32 +80,32 @@ module.exports = function(app){
   });
 
   app.post('/changestatus', function (req, res) {
-    // {feature_id, newStatus}
+    // {feature_id, status}
     Task.changeFeatureStatus(req.body, res);
   });
 
   app.post('/changefeaturepoints', function (req, res) {
-    // {feature_id, newPoints}
+    // {feature_id, points}
     Task.changeFeaturePoints(req.body, res);
   });
 
   app.post('/changedesc', function (req, res) {
-    // {feature_id, newDesc}
+    // {feature_id, description}
     Task.changeFeatureDescription(req.body, res);
   });
 
   app.post('/changetitle', function (req, res) {
-    // {feature_id, newTitle}
+    // {feature_id, title}
     Task.changeFeatureTitle(req.body, res);
   });
 
   app.post('/changefeatureuser', function (req, res) {
-    // {feature_id, newTeam_id}
+    // {feature_id, user_id}
     Task.changeFeatureUser(req.body, res);
   });
 
   app.post('/changeuserteam', function (req, res) {
-    // {user_id, newTeam_id}
+    // {user_id, team_id}
     User.changeUserTeam(req.body, res);
   });
 
