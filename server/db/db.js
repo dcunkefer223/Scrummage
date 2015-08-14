@@ -28,8 +28,7 @@ var db = require('knex')({
     database: 'df8681a488cm7j',
     ssl: true
   }
-  }
-});
+  });
 
 
 module.exports = db;
