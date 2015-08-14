@@ -84,7 +84,7 @@ CREATE TABLE comments (
 ----------------------------- TEST VALUES -----------------------------
 -----------------------------------------------------------------------
 
-INSERT INTO teams (name, backlog, progress, complete) VALUES ('Test Team', '"[50]"', '"[5]"', '"[3]"');
+INSERT INTO teams (name, backlog, progress, complete) VALUES ('Test Team', '[50]', '[5]', '[3]');
 INSERT INTO users (username, github_id) VALUES ('JParis44', 11894565);
 INSERT INTO features (name, description, points, status, team_id, user_id)
   VALUES ('This is a test!', 'This started complete.', 3, 'complete', 1, 1);

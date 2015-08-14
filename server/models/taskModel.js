@@ -30,15 +30,15 @@ module.exports.addCommentToFeature = function (comment, res) {
 };
 
 module.exports.changeFeatureStatus = function (feature_id, newStatus, res) {
-  db('features').where('id', feature_id).update('status', newStatus).then(
-    function (rows) {
-      res.status(200).send({feature_id: feature_id});
-    }, 
-    function (error) {
-      console.error(error);
-      res.status(500).send('Failed to update feature in database');
-    }
-  );
+  return db('features').where('id', feature_id).update('status', newStatus);
+  //   function (rows) {
+      // res.status(200).send({feature_id: feature_id});
+  //   }, 
+  //   function (error) {
+  //     console.error(error);
+  //     res.status(500).send('Failed to update feature in database');
+  //   }
+  // );
 };
 
 module.exports.changeFeaturePoints = function (feature_id, newPoints, res) {

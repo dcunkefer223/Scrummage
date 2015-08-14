@@ -17,31 +17,46 @@ module.exports.changeFeatureStatus = function (obj, res) {
   var currentStatus;
 
   taskModel.getStatusById(obj.feature_id)
-    .then( function(oldStatus) {
+    .then( function (oldStatus) {
       currentStatus = oldStatus[0].status;
-      console.log('CurrentStatus looks like', currentStatus);
       teamModel.fetchPoints(1, currentStatus)
         .then(function (fetchedPoints) {
-          console.log('fetched points looks like', fetchedPoints[0][currentStatus]);
           points = JSON.parse(fetchedPoints[0][currentStatus]);
-          console.log('Points looks like', typeof points);
           // decrement previous status points
-          console.log('DB start is', points[0]);
-          console.log('DB points are', points[points.length - 1]);
-          console.log('Obj points are', obj);
-          points = parseInt(points[1]);
-          points -= obj.points;
-          console.log('subtracted points is', points);
+          points[points.length - 1] -= obj.points;
           teamModel.changePoints(1, currentStatus, points)
-            .then(
-              function(resp) {
-                console.log('It worked!');
-            });
-      });
-    });
-  };
-//   // change current status
-//   taskModel.changeFeatureStatus(obj.feature_id, obj.status, res);
+            .then(function () {
+              // change current status
+              taskModel.changeFeatureStatus(obj.feature_id, obj.status, res)
+                .then(function () {
+                  currentStatus = obj.status
+                  console.log('obj.status looks like', obj.status);
+                  teamModel.fetchPoints(1, currentStatus)
+                    .then(function (fetchedPoints) {
+                      console.log('fetchedPoints looks like', fetchedPoints);
+                      points = JSON.parse(fetchedPoints[0][currentStatus]);
+                      // increment current status points
+                      points[points.length - 1] += obj.points;
+                      teamModel.changePoints(1, currentStatus, points)
+                        .then(
+                          function () {
+                          res.status(200).send({feature_id: obj.feature_id});
+                        },
+                          function (error) {
+                            console.error(error);
+                        }
+                      );
+                    }
+                  );
+                }
+              );
+            }
+          );
+        }
+      );
+    }
+  );
+};
 
 //   // fetch previous status points
 //       console.log('The points in taskHandler looks like', points);
