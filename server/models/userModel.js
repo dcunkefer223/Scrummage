@@ -8,7 +8,7 @@ exports.addUser = function(user, cb){
   db('users').insert(user).returning('id').then(
     function (id) {
       console.log("User inserted at: " + id);
-      cb(null, id[0]);
+      cb(null, id);
     },
     function (error) {
       console.error(error);
