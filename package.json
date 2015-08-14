@@ -11,7 +11,8 @@
   "scripts": {
     "test": "echo \"Error: No Test Specified\" && exit 1",
     "start": "node server/server.js",
-    "postinstall": "bash ./post_install.sh",
+    "postinstall": "bash ./post_install.sh"
+    },
   "dependencies": {
     "bcrypt": "^0.8.4",
     "body-parser": "latest",
