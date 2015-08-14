@@ -19,33 +19,6 @@ angular.module('scrummage')
         index: 0
       };
 
-      // $scope.backlogTotal = function() {
-      //   var sum = 0;
-      //   for(var i = 0; i < $scope.models.lists['backlog'].length; i++) {
-      //     sum += $scope.models.lists['backlog'][i].points;
-      //   }
-      //   console.log('The backlog total is ', sum);
-      //   return sum;
-      // };
-
-      // $scope.progressTotal = function() {
-      //   var sum = 0;
-      //   for(var i = 0; i < $scope.models.lists['progress'].length; i++) {
-      //     sum += $scope.models.lists['progress'][i].points;
-      //   }
-      //   console.log('The progress total is ', sum);
-      //   return sum;
-      // };
-
-      // var completeTotal = function() {
-      //   var sum = 0;
-      //   for(var i = 0; i < $scope.models.lists['complete'].length; i++) {
-      //     sum += $scope.models.lists['complete'][i].points;
-      //   }
-      //   console.log('The completed total is ', sum);
-      //   return sum;
-      // };
-
       $scope.clearBoard = function () {
         for(var prop in $scope.models.lists) {
           $scope.models.lists[prop].length = 0;
@@ -69,39 +42,39 @@ angular.module('scrummage')
       $scope.renderBoard();
 
       // var intervalPromise = $interval($scope.renderBoard, 3000);
-      $scope.backlogCount = 0;
-      $scope.progressCount = 0;
-      $scope.completeCount = 0;
+      // $scope.backlogCount = 0;
+      // $scope.progressCount = 0;
+      // $scope.completeCount = 0;
 
       $scope.dropCallback = function (event, index, item, external, listName) {
         item.status = listName;
         item.points = parseInt(item.points);
+
         if(listName === "backlog") {
-          $scope.backlogCount += item.points;
-          Request.analytics.updatePoints({team_id : 1, points : $scope.backlogCount}).then(
-            function (results) {
-              console.log(results);
+          Request.feature.updateStatus({ 
+            feature_id : item.id, 
+            points : item.points,
+            status : item.status }).then(function(){
+
           });
         }
         else if(listName === "progress") {
-          $scope.progressCount += item.points;
-          Request.analytics.updatePoints({team_id : 1, points : $scope.progressCount}).then(
-            function (results) {
-              console.log(results);
+          Request.feature.updateStatus({ 
+            feature_id : item.id, 
+            points : item.points,
+            status : item.status }).then(function(){
+
           });
         }
         else if(listName === "complete") {
-          $scope.completeCount += item.points;
-          Request.analytics.updatePoints({team_id : 1, points : $scope.completeCount}).then(
-            function (results) {
-              console.log(results);
+          Request.feature.updateStatus({ 
+            feature_id : item.id, 
+            points : item.points,
+            status : item.status }).then(function(){
+
           });
         }
-        Request.feature.updateStatus({ 
-          feature_id : item.id, 
-          status : item.status }).then(function(){
 
-        });
         return item;
       };
 
