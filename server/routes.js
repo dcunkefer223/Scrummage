@@ -1,5 +1,6 @@
 var User = require('./requestHandlers/userHandler.js');
 var Task = require('./requestHandlers/taskHandler.js');
+var Team = require('./requestHandlers/teamHandler.js');
 var passport = require('passport');
 var authStore = require('./config/authStore');
 
@@ -37,6 +38,11 @@ module.exports = function(app){
   app.get('/logout', function (req, res) {
     req.logout();
     res.redirect('/');
+  });
+
+  app.get('/getteam', function (req, res) {
+    // ?team_id=integer
+    Team.getTeam(req.query.team_id, res);
   });
 
   app.get('/getallfeatures', function (req, res) {
