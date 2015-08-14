@@ -86,7 +86,7 @@ module.exports = function(app){
   });
 
   app.post('/changestatus', function (req, res) {
-    // {feature_id, status}
+    // {feature_id, points, status}
     Task.changeFeatureStatus(req.body, res);
   });
 

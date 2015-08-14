@@ -1,4 +1,5 @@
 var db = require('../db/db.js');
+var Promise = require('bluebird');
 
 module.exports.getTeam = function (team_id, res) {
   db.select('*').from('teams').where('id', team_id).then(
@@ -12,8 +13,36 @@ module.exports.getTeam = function (team_id, res) {
   );
 };
 
-module.exports.changeBacklogPoints = function () {};
+module.exports.fetchPoints = function (team_id, column) {
+  return db.select(column).from('teams').where('id', team_id)
+  // (
+  //   function (points){
+  //     console.log('The points array looks like', JSON.parse(points[0].status));
+  //     return JSON.parse(points[0].status);
+  //   }, 
+  //   function (error){
+  //     console.error(error);
+  //   }
+  // )
+};
 
-module.exports.changeProgressPoints = function () {};
+module.exports.changePoints = function (team_id, column, points) {
+  return db('teams').where('id', team_id).update(column, JSON.stringify(points))
+  //   function (rows) {
+  //     console.log('The updated points are:', rows);
+  //   },
+  //   function (error) {
+  //     console.error(error);
+  //   }
+  // );
+};
 
-module.exports.changeCompletePoints = function () {};
+// module.exports.fetchProgressPoints = function (team_id) {};
+
+// module.exports.fetchCompletePoints = function (team_id) {};
+
+// module.exports.changeBacklogPoints = function (team_id, points) {};
+
+// module.exports.changeProgressPoints = function (team_id, points) {};
+
+// module.exports.changeCompletePoints = function (team_id, points) {};

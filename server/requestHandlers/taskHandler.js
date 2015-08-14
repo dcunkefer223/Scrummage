@@ -1,4 +1,5 @@
 var taskModel = require('../models/taskModel.js');
+var teamModel = require('../models/teamModel.js');
 
 module.exports.addFeature = function (feature, res) {
   // feature is {name, description, points, status[complete|progress|backlog], team_id}
@@ -11,8 +12,92 @@ module.exports.addCommentToFeature = function (comment, res) {
 };
 
 module.exports.changeFeatureStatus = function (obj, res) {
-  taskModel.changeFeatureStatus(obj.feature_id, obj.status, res);
+  // check current status
+  var points;
+  var currentStatus;
+
+  taskModel.getStatusById(obj.feature_id)
+    .then( function (oldStatus) {
+      currentStatus = oldStatus[0].status;
+      teamModel.fetchPoints(1, currentStatus)
+        .then(function (fetchedPoints) {
+          points = JSON.parse(fetchedPoints[0][currentStatus]);
+          // decrement previous status points
+          points[points.length - 1] -= obj.points;
+          teamModel.changePoints(1, currentStatus, points)
+            .then(function () {
+              // change current status
+              taskModel.changeFeatureStatus(obj.feature_id, obj.status, res)
+                .then(function () {
+                  currentStatus = obj.status
+                  console.log('obj.status looks like', obj.status);
+                  teamModel.fetchPoints(1, currentStatus)
+                    .then(function (fetchedPoints) {
+                      console.log('fetchedPoints looks like', fetchedPoints);
+                      points = JSON.parse(fetchedPoints[0][currentStatus]);
+                      // increment current status points
+                      points[points.length - 1] += obj.points;
+                      teamModel.changePoints(1, currentStatus, points)
+                        .then(
+                          function () {
+                          res.status(200).send({feature_id: obj.feature_id});
+                        },
+                          function (error) {
+                            console.error(error);
+                        }
+                      );
+                    }
+                  );
+                }
+              );
+            }
+          );
+        }
+      );
+    }
+  );
 };
+
+//   // fetch previous status points
+//       console.log('The points in taskHandler looks like', points);
+
+//   // fetch current status points
+//   points = teamModel.fetchPoints(1, obj.status);
+//   points[points.length - 1] += obj.points;
+//   // increment current status points
+//   teamModel.changePoints(1, obj.status, points);
+// };
+
+
+
+
+
+// module.exports.changeFeatureStatus = function (obj, res) {
+//   // check current status
+//   taskModel.getStatusById(obj.feature_id, res).then(
+//     function (currentStatus){
+//       console.log("we entered the first promise");
+//       console.log('CurrentStatus looks like', currentStatus);
+//       // fetch previous status points
+//       teamModel.fetchPoints(1, currentStatus).then(
+//         function (points) {
+//           console.log('The points in taskHandler looks like', points);
+//           points[points.length - 1] -= obj.points;
+//           // decrement previous status points
+//           teamModel.changePoints(1, currentStatus, points);
+//         });
+//     }).then(function () {
+//       // change current status
+//       taskModel.changeFeatureStatus(obj.feature_id, obj.status, res);
+//       // fetch current status points
+//       teamModel.fetchPoints(1, obj.status).then(
+//         function (points) {
+//           points[points.length - 1] += obj.points;
+//           // increment current status points
+//           teamModel.changePoints(1, obj.status, points);
+//         });
+//     })
+// };
 
 module.exports.changeFeaturePoints = function (obj, res) {
   taskModel.changeFeaturePoints(obj.feature_id, obj.points, res);

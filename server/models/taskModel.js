@@ -1,4 +1,5 @@
 var db = require('../db/db.js');
+var Promise = require('bluebird');
 
 module.exports.addFeature = function (feature, res) {
   // feature is {title, description, points, status[complete|inprogress|todo], team_id}
@@ -29,15 +30,15 @@ module.exports.addCommentToFeature = function (comment, res) {
 };
 
 module.exports.changeFeatureStatus = function (feature_id, newStatus, res) {
-  db('features').where('id', feature_id).update('status', newStatus).then(
-    function (rows) {
-      res.status(200).send({feature_id: feature_id});
-    }, 
-    function (error) {
-      console.error(error);
-      res.status(500).send('Failed to update feature in database');
-    }
-  );
+  return db('features').where('id', feature_id).update('status', newStatus);
+  //   function (rows) {
+      // res.status(200).send({feature_id: feature_id});
+  //   }, 
+  //   function (error) {
+  //     console.error(error);
+  //     res.status(500).send('Failed to update feature in database');
+  //   }
+  // );
 };
 
 module.exports.changeFeaturePoints = function (feature_id, newPoints, res) {
@@ -77,7 +78,7 @@ module.exports.changeFeatureName = function (feature_id, newName, res) {
 };
 
 module.exports.changeFeatureUser = function (feature_id, user_id, res) {
-  db('features').where(id, feature_id).update('team_id', user_id).then(
+  db('features').where('id', feature_id).update('team_id', user_id).then(
     function (rows) {
       res.status(200).send({feature_id: feature_id});
     }, 
@@ -149,7 +150,7 @@ module.exports.getFeaturesByStatus = function (team_id, status, res) {
 };
 
 module.exports.getCommentsOnFeature = function (feature_id, res) {
-  db.select('*').from('comments').where('feature_id', feature_id).then(
+  db.select('*').from('comments').where('id', feature_id).then(
     function (comments) {
       res.status(200).send(comments);
     }, 
@@ -171,3 +172,21 @@ module.exports.changeTeamPoints = function (team_id, newPoints, res) {
     }
   );
 };
+
+module.exports.getStatusById = function (feature_id) {
+  return db.select('status').from('features').where('id', feature_id)
+    // function (status) {
+    //   return status[0].status;
+    // },
+    // function (error) {
+    //   console.error(error);
+    
+  
+};
+
+
+
+
+
+
+
