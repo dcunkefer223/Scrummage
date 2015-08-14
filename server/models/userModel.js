@@ -8,7 +8,7 @@ exports.addUser = function(user, cb){
   db('users').insert(user).returning('id').then(
     function (id) {
       console.log("User inserted at: " + id);
-      cb(null, id);
+      cb(null, id[0]);
     },
     function (error) {
       console.error(error);
@@ -55,7 +55,7 @@ exports.changeUserTeam = function (user_id, newTeam_id, res) {
   db('users').where('id', user_id).update('team_id', newTeam_id).then(
     function (rows) {
       res.status(200).send({user_id: user_id});
-    }, 
+    },
     function (error) {
       console.error(error);
       res.status(500).send('Failed to update feature in database');
