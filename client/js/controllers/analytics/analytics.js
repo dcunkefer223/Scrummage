@@ -12,6 +12,7 @@ angular.module('scrummage')
     $scope.cancel = function() {
       $scope.showModal = false;
     };
+    // $scope.chartActive = true;
 
     $scope.config = {
       title: 'Points',
@@ -24,7 +25,8 @@ angular.module('scrummage')
         display: true,
         //could be 'left, right'
         position: 'right'
-      }
+      },
+      waitForHeightAndWidth: true
     };
   // backlog/progress, nocompleted
     $scope.data = {
