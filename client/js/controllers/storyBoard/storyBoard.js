@@ -11,12 +11,12 @@ angular.module('scrummage')
       };
 
       $scope.feature = {
-        sprint_id: 1,
+        team_id: 1,
         name: "",
         description: "",
         points: 0,
         status: "backlog",
-        index: 0
+        // index: 0
       };
 
       $scope.clearBoard = function () {
@@ -86,7 +86,7 @@ angular.module('scrummage')
           newFeature.id = results.feature_id;
         });
         $scope.feature = {
-          sprint_id: 1,
+          team_id: 1,
           name: "",
           description: "",
           points: 0,
