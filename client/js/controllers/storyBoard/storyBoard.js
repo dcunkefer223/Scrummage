@@ -41,10 +41,6 @@ angular.module('scrummage')
 
       $scope.renderBoard();
 
-      // var intervalPromise = $interval($scope.renderBoard, 3000);
-      // $scope.backlogCount = 0;
-      // $scope.progressCount = 0;
-      // $scope.completeCount = 0;
 
       $scope.dropCallback = function (event, index, item, external, listName) {
         item.status = listName;

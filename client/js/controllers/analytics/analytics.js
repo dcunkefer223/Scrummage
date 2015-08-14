@@ -1,7 +1,6 @@
 angular.module('scrummage')
 
-  .controller('analyticsCtrl', function($scope){
-    // console.log('analyticsCtrl  is here')
+  .controller('analyticsCtrl', function($scope, Request){
     $scope.open = function() {
       $scope.showModal = true;
     };
@@ -15,7 +14,7 @@ angular.module('scrummage')
     };
 
     $scope.config = {
-      title: 'Products',
+      title: 'Points',
       tooltips: true,
       labels: false,
       mouseover: function() {},
@@ -29,9 +28,9 @@ angular.module('scrummage')
     };
   // backlog/progress, nocompleted
     $scope.data = {
-      series: ['Ideal Burn Rate', 'Actual'],  // series is the Y axis
+      series: ['Ideal Burn Rate', 'Actual'],  // what we are measuring--- will appear in legend
       data: [{
-        x: "Jan 1",
+        x: "Jan 1",   // start date   data: [{x: date, y: [] }]
         y: [100, 100]
       }, {
         x: "Jan 5",
@@ -40,8 +39,11 @@ angular.module('scrummage')
         x: "Jan 10",
         y: [50, 76]
       }, {
-        x: "Jan 15",
+        x: "Jan 15",  //end date?
         y: [0, 20]
+      },{
+      x: "Jan 20",  //end date?
+        y: [0, 0]
       }]
     };
   });
