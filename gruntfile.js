@@ -73,12 +73,12 @@ module.exports = function (grunt){
  }) //Closes initConfig
 
   //Tell grunt to use these plugins
-  grunt.loadNpmTasks('grunt-contrib-imagemin');
+  // grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
+  // grunt.loadNpmTasks('grunt-contrib-jshint');
 
   grunt.registerTask('server-dev', function (target) {
   // Running nodejs in a different process and displaying output on the main console
