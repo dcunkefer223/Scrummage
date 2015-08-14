@@ -44,7 +44,11 @@ angular.module('scrummage')
         x: "Jan 15",  //end date?
         y: [0, 20]
       },{
-      x: "Jan 20",  //end date?
+        x: "Jan 20",  //end date?
+        y: [0, 20]
+      },
+      {
+      x: "Jan 25",  //end date?
         y: [0, 0]
       }]
     };

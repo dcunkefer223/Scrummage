@@ -130,10 +130,6 @@
   text-decoration: none;
  }
 
-.modal {
-  top: 15%;
-  bottom: 15%;
-}
 
 /* --------------------------------- StoryBoard Styling --------------------------------- */
 
@@ -354,7 +350,7 @@ ul[dnd-list] li.selected {
   padding: 14px 15px 15px;
   margin-bottom: 0;
   text-align: right;
-  background-color: #f5f5f5;
+  background-color: white; /*#f5f5f5;*/
   border-top: 1px solid #ddd;
   -webkit-border-radius: 0 0 6px 6px;
      -moz-border-radius: 0 0 6px 6px;
@@ -426,5 +422,6 @@ ul[dnd-list] li.selected {
 .chart {
  width: 500px;
  height: 500px;
- background-color: grey;
+ background-color: #63bdc7;
+ margin: auto;
 }
