@@ -6,7 +6,6 @@ var auth = require('../config/authStore.js');
 //Otherwise, it goes to the auth file and pulls it from there.
 
 
-
 // var db = require('knex')({
 //   client: 'pg',
 //   connection: process.env.DATABASE_URL || auth.pgData
