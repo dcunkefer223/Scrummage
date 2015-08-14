@@ -137,16 +137,21 @@
 
 /* --------------------------------- StoryBoard Styling --------------------------------- */
 
+.feature-header .feature-title {
+  font: Helvetica;
+  font-weight: 100;
+}
+
 .container-fluid {
   padding-left: 0;
 }
 
 .column-bg {
-  background-color: grey;
+  background-color: #d8d8d8;
 }
 
 .nav-bg {
-  background-color: black;
+  background-color: #63bdc7;
 }
 
 .sidebar-nav {
@@ -185,7 +190,7 @@
 }
 
 #column-bg {
-  background-color: grey;
+  background-color: black;
 }
 
 .side-bar {
@@ -219,7 +224,7 @@
 
 .container h3 {
   text-align: center;
-  color: lightyellow;
+  color: grey;
   margin-bottom: 20px;
 }
 
@@ -251,7 +256,7 @@ ul[dnd-list] .dndDraggingSource {
 
 ul[dnd-list] .dndPlaceholder {
     display: block;
-    background-color: grey;
+    background-color: #4ab8a4;
     border-style: none;
     min-height: 48px;
 }
@@ -391,7 +396,7 @@ ul[dnd-list] li.selected {
 
 .card .card-header {
   cursor: move;
-  background-color: black;
+  background-color: #4ab8a4;
   color: white;
   height: 22px;
 }

@@ -109,4 +109,9 @@ module.exports = function(app){
     User.changeUserTeam(req.body, res);
   });
 
+  app.post('/updatetotalpoints', function (req, res) {
+    // {team_id, points}
+    Task.changeTeamPoints(req.body, res);
+  });
+
 };

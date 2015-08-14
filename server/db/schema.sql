@@ -46,6 +46,7 @@ DROP TABLE IF EXISTS comments CASCADE;
 CREATE TABLE teams (
   id SERIAL PRIMARY KEY,
   name VARCHAR,
+  points INTEGER,
   start TIMESTAMP,
   backlog VARCHAR,
   progress VARCHAR,

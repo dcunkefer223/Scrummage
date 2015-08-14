@@ -1,7 +1,7 @@
 angular.module('scrummage')
 
   .controller('analyticsCtrl', function($scope){
-    console.log('analyticsCtrl  is here')
+    // console.log('analyticsCtrl  is here')
     $scope.open = function() {
       $scope.showModal = true;
     };

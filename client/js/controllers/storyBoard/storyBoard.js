@@ -15,7 +15,8 @@ angular.module('scrummage')
         name: "",
         description: "",
         points: 0,
-        status: "backlog"
+        status: "backlog",
+        index: 0
       };
 
       $scope.backlogTotal = function() {
@@ -36,7 +37,7 @@ angular.module('scrummage')
         return sum;
       };
 
-      $scope.completeTotal = function() {
+      var completeTotal = function() {
         var sum = 0;
         for(var i = 0; i < $scope.models.lists['complete'].length; i++) {
           sum += $scope.models.lists['complete'][i].points;
@@ -53,13 +54,11 @@ angular.module('scrummage')
 
       $scope.renderBoard = function () {
         Request.feature.fetchAll().then(function (results) {
-          console.log(results);
           $scope.clearBoard();
           for(var i = 0; i < results.length; i++) {
             for(var key in $scope.models.lists) {
               if(results[i].status === key) {
                 $scope.models.lists[key].push(results[i]);
-                console.log($scope.models.lists);
               }
             }
           }
@@ -70,19 +69,28 @@ angular.module('scrummage')
       $scope.renderBoard();
 
 
-      var intervalPromise = $interval($scope.renderBoard, 3000);
-
+      // var intervalPromise = $interval($scope.renderBoard, 3000);
+      $scope.count = 0;
       $scope.dropCallback = function (event, index, item, external, listName) {
         item.status = listName;
         item.points = parseInt(item.points);
+        if(listName === "complete") {
+
+          $scope.count += item.points;
+
+          console.log($scope.count);
+
+          Request.analytics.updatePoints({team_id: 1, points : $scope.count}).then(
+            function (results) {
+              console.log(results);
+          });
+
+        }
         Request.feature.updateStatus({ 
           feature_id : item.id, 
-          newStatus : item.status }).then(function(){
+          status : item.status }).then(function(){
 
         });
-        if(listName === "complete") {
-          //Request.analytics.substractPoints(item);
-        }
         return item;
       };
 
@@ -100,9 +108,6 @@ angular.module('scrummage')
           points: 0,
           status: "backlog"
         };
-        //Request.analytics.addPoints().then(function () {
-
-        //});
       };
 
       // Model to JSON
