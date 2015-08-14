@@ -5,7 +5,9 @@
         <div class="row">
           <div class="col-xs-4" ng-repeat="(listName, list) in models.lists">
             <div class="feature-header">
-              <h3>{{listName | capitalize}}</h3>
+              <div class="feature-title">
+                <h3>{{listName | capitalize}}</h3>
+              </div>
             </div>
             <div ng-include="'./js/controllers/storyBoard/list.html'"></div>
           </div>

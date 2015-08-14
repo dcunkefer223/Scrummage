@@ -41,3 +41,7 @@ module.exports.getFeaturesByStatus = function (team_id, status, res) {
 module.exports.getCommentsOnFeature = function (feature_id, res) {
   taskModel.getCommentsOnFeature(feature_id, res);
 };
+
+module.exports.changeTeamPoints = function (obj, res) {
+  taskModel.changeTeamPoints(obj.team_id, obj.points, res);
+};
