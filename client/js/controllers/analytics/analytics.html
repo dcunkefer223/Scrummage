@@ -1,17 +1,19 @@
-<div class = "chart" modal="showModal" close="cancel()">
-  <div class="modal-header">
+<div class= "modal modal-chart" modal="showModal" close="cancel()">
+  <div class="modal-chart-header">
     <h4>BurnDown Chart</h4>
   </div>
-  <div ng-controller='analyticsCtrl'>
+
+  <div ng-controller='analyticsCtrl' class="ng-chart-scope" >
       <div 
-        data-ac-chart="'bar'" 
+        data-ac-chart="'area'" 
         data-ac-data="data" 
         data-ac-config="config" 
         class="chart">
       </div>
   </div>
-    <div class="modal-footer">
-      <button class="btn btn-success" ng-click="ok()">Okay</button>
-      <button class="btn" ng-click="cancel()">Cancel</button>
-    </div>
+  <br>
+  <div class="modal-chart-footer">
+    <button class="btn btn-success" ng-click="ok()">Okay</button>
+    <button class="btn" ng-click="cancel()">Cancel</button>
+  </div>
 </div>

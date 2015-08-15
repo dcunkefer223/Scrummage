@@ -97,24 +97,24 @@ angular.module('scrummage')
       },
 
       analytics : {
-        updatePoints : function (data) {
+        getTeam : function (data) {
           return $http({
-            method: 'POST',
-            url: '/updatetotalpoints',
+            method: 'GET',
+            url: '/getteam?team_id=1',
             data: data
           }).then(function (resp) {
             return resp.data;
           }, noAuthRedirect);
         },
-        fetchTotal : function() {
-          return $http({
-            method: 'GET',
-            url: '/fetchtotalpoints',
-          }).then(function (resp) {
-            return resp.data;
-          }, noAuthRedirect);
-        }
-      },
+      //   fetchTotal : function() {
+      //     return $http({
+      //       method: 'GET',
+      //       url: '/fetchtotalpoints',
+      //     }).then(function (resp) {
+      //       return resp.data;
+      //     }, noAuthRedirect);
+      //   }
+        },
 
       user : {
 

@@ -423,7 +423,30 @@ ul[dnd-list] li.selected {
   float: right;
 }
 /* ------------------------- Analytics /// Chart --------------------- */
+
+.modal-chart{
+  background-color: #d8d8d8;
+  width: 1000px;
+  left: 50%;
+  margin-left: -500px;
+}
 .chart {
- width: 500px;
+ width: 900px;
  height: 500px;
+ background-color: #d8d8d8;
+ margin: auto;
+}
+.angular-charts-template ng-scope{
+}
+.modal-chart-header{
+}
+.modal-chart ng-scope modal{
+}
+.modal-chart-footer{
+  padding-top: 25px;
+  float: left;
+}
+.ng-scope{
+}
+.ng-chart-scope ng-scope{
 }
