@@ -35,7 +35,7 @@ angular.module('scrummage')
               }
             }
           }
-          console.log('rendered');
+          // console.log('rendered');
         });
       };
 
