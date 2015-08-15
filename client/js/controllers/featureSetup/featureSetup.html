@@ -1,14 +1,17 @@
   <div class="add-feature-modal">
-    <h1>Enter feature</h1>
-    <form class="add-feature-body">
-      <label for="">Feature Name</label> <br />
-      <input ng-model="feature.name" type="text" /> <br />
-      <label for="">Feature Description</label> <br />
-      <input ng-model="feature.description" type="text" /> <br />
-      <label for="">Points Amount</label> <br />
-      <input ng-model="feature.points" type="text" /> <br />
-    </form>
-    <button class="btn btn-default" ng-click="addFeature(feature); ok()">
-      Add a Feature
-    </button>
+    <div class="add-feature-body">
+      <div class="enter-feature">Enter your feature!</div>
+      <div class="add-feature-name">
+        <input ng-model="feature.name" placeholder="Enter feature name" type="text" />
+      </div>
+      <div class="add-feature-description">
+        <input ng-model="feature.description" placeholder="Enter feature description" type="text" />
+      </div>
+      <div class="add-feature-points">
+        <input ng-model="feature.points" placeholder="Enter points value" type="text" /> <br />
+      </div>
+      <button class="btn btn-lg" ng-click="addFeature(feature); ok()">
+        Add a Feature
+      </button>
+    </div>
   </div>
