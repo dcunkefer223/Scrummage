@@ -41,7 +41,6 @@ angular.module('scrummage')
 
       $scope.renderBoard();
 
-
       $scope.dropCallback = function (event, index, item, external, listName) {
         item.status = listName;
         item.points = parseInt(item.points);

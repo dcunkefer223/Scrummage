@@ -12,4 +12,16 @@ angular.module('scrummage')
   $scope.cancel = function() {
     $scope.showModal = false;
   };
+
+  $scope.isDisabled = false;
+  $scope.disableClick = function() {
+    if($scope.isDisabled === true) {
+      $scope.isDisabled = false;
+    } 
+    else if($scope.isDisabled === false) {
+      $scope.isDisabled = true;
+    }
+    return false;
+  };
+
 });

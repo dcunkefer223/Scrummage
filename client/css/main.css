@@ -137,6 +137,11 @@
 
 /* --------------------------------- StoryBoard Styling --------------------------------- */
 
+.add-feature {
+  background: none;
+  border: none;
+}
+
 .feature-header .feature-title {
   font: Helvetica;
   font-weight: 100;
