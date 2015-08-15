@@ -33,23 +33,25 @@ angular.module('scrummage')
         //could be 'left, right'
         position: 'right'
       },
-      waitForHeightAndWidth: true
+      colors: ["grey", "red"],
+      waitForHeightAndWidth: true,
+      isAnimate: true
     };
   // backlog/progress, nocompleted
     $scope.data = {
-      series: ['Ideal Burn Rate', 'Actual'],  // what we are measuring--- will appear in legend
+      series: ['Ideal', 'Actual'],  // what we are measuring--- will appear in legend
       data: [{
         x: "Jan 1",   // start date   data: [{x: date, y: [] }]
-        y: [100, 100]
+        y: [100, 100] //locked total, 
       }, {
         x: "Jan 5",
         y: [75, 80]
       }, {
         x: "Jan 10",
-        y: [50, 76]
+        y: [50, 24]
       }, {
         x: "Jan 15",  //end date?
-        y: [0, 20]
+        y: [10, 20]
       },{
         x: "Jan 20",  //end date?
         y: [0, 20]
