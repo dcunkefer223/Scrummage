@@ -3,26 +3,29 @@ var teamModel = require('../models/teamModel.js');
 
 module.exports.addFeature = function (feature, res) {
   // feature is {name, description, points, status[complete|progress|backlog], team_id}
+  var points;
+  var featureId;
+
   taskModel.addFeature(feature, res)
     .then(function (id) {
+      featureId = id[0];
       // fetch backlog points
-      teamModel.fetchPoints(1, feature.status)
-        .then(function (response){
-        // increment backlog points
-        var points = JSON.parse(response[0][feature.status]);
-        points[points.length - 1] += parseInt(feature.points, 10);
-
-        // update backlog points          
-        teamModel.changePoints(1, feature.status, points)
-          .then(function (response) {
-            console.log('Feature inserted at id: ' + id);
-            res.status(201).send({feature_id: id[0]});
-          },
-            function (error) {
-              console.error(error);
-              res.status(500).send('Failed to insert feature into database');
-            });
-        });
+      return teamModel.fetchPoints(1, feature.status);
+    })
+    .then(function (response){
+      // increment backlog points
+      points = JSON.parse(response[0][feature.status]);
+      points[points.length - 1] += parseInt(feature.points, 10);
+      // update backlog points          
+      return teamModel.changePoints(1, feature.status, points);
+    })
+    .then(function (response) {
+      console.log('Feature inserted at id: ' + featureId);
+      res.status(201).send({feature_id: featureId});
+    })
+    .catch(function (error) {
+      console.error(error);
+      res.status(500).send('Error while inserting feature into database');
     });
 };
 
@@ -37,44 +40,38 @@ module.exports.changeFeatureStatus = function (obj, res) {
   var currentStatus;
 
   taskModel.getStatusById(obj.feature_id)
-    .then( function (oldStatus) {
+    .then(function (oldStatus) {
       currentStatus = oldStatus[0].status;
-      teamModel.fetchPoints(1, currentStatus)
-        .then(function (fetchedPoints) {
-          points = JSON.parse(fetchedPoints[0][currentStatus]);
-          // decrement previous status points
-          points[points.length - 1] -= parseInt(obj.points, 10);
-          teamModel.changePoints(1, currentStatus, points)
-            .then(function () {
-              // change current status
-              taskModel.changeFeatureStatus(obj.feature_id, obj.status, res)
-                .then(function () {
-                  currentStatus = obj.status
-                  teamModel.fetchPoints(1, currentStatus)
-                    .then(function (fetchedPoints) {
-                      points = JSON.parse(fetchedPoints[0][currentStatus]);
-                      // increment current status points
-                      points[points.length - 1] += parseInt(obj.points, 10);
-                      teamModel.changePoints(1, currentStatus, points)
-                        .then(
-                          function () {
-                          res.status(200).send({feature_id: obj.feature_id});
-                        },
-                          function (error) {
-                            console.error(error);
-                        }
-                      );
-                    }
-                  );
-                }
-              );
-            }
-          );
-        }
-      );
-    }
-  );
+      return teamModel.fetchPoints(1, currentStatus);
+    })
+    .then(function (fetchedPoints) {
+      points = JSON.parse(fetchedPoints[0][currentStatus]);
+      // decrement previous status points
+      points[points.length - 1] -= parseInt(obj.points, 10);
+      return teamModel.changePoints(1, currentStatus, points);
+    })
+    .then(function () {
+      // change current status
+      return taskModel.changeFeatureStatus(obj.feature_id, obj.status, res);
+    })
+    .then(function () {
+      currentStatus = obj.status;
+      return teamModel.fetchPoints(1, currentStatus);
+    })
+    .then(function (fetchedPoints) {
+      points = JSON.parse(fetchedPoints[0][currentStatus]);
+      // increment current status points
+      points[points.length - 1] += parseInt(obj.points, 10);
+      return teamModel.changePoints(1, currentStatus, points);
+    })
+    .then(function () {
+      res.status(200).send({feature_id: obj.feature_id});
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
 };
+
 
 module.exports.changeFeaturePoints = function (obj, res) {
   taskModel.changeFeaturePoints(obj.feature_id, obj.points, res);
