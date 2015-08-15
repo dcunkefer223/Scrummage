@@ -1,6 +1,6 @@
 //userModel.js
 var db = require('../db/db.js');
-var bcrypt = require('bcrypt');
+// var bcrypt = require('bcrypt');
 
 exports.addUser = function(user, cb){
   // This method is for internal server use

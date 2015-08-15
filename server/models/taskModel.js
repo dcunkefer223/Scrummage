@@ -3,15 +3,6 @@ var db = require('../db/db.js');
 module.exports.addFeature = function (feature, res) {
   // feature is {title, description, points, status[complete|inprogress|todo], team_id}
   return db('features').insert(feature).returning('id');
-  //   function (id) {
-  //     console.log('Feature inserted at id: ' + id);
-  //     res.status(201).send({feature_id: id[0]});
-  //   }, 
-  //   function (error) {
-  //     console.error(error);
-  //     res.status(500).send('Failed to insert feature into database');
-  //   }
-  // );
 };
 
 module.exports.addCommentToFeature = function (comment, res) {
@@ -30,14 +21,6 @@ module.exports.addCommentToFeature = function (comment, res) {
 
 module.exports.changeFeatureStatus = function (feature_id, newStatus, res) {
   return db('features').where('id', feature_id).update('status', newStatus);
-  //   function (rows) {
-      // res.status(200).send({feature_id: feature_id});
-  //   }, 
-  //   function (error) {
-  //     console.error(error);
-  //     res.status(500).send('Failed to update feature in database');
-  //   }
-  // );
 };
 
 module.exports.changeFeaturePoints = function (feature_id, newPoints, res) {
@@ -173,14 +156,7 @@ module.exports.changeTeamPoints = function (team_id, newPoints, res) {
 };
 
 module.exports.getStatusById = function (feature_id) {
-  return db.select('status').from('features').where('id', feature_id)
-    // function (status) {
-    //   return status[0].status;
-    // },
-    // function (error) {
-    //   console.error(error);
-    
-  
+  return db.select('status').from('features').where('id', feature_id);  
 };
 
 
