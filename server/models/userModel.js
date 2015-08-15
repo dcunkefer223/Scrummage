@@ -7,7 +7,7 @@ exports.addUser = function(user, cb){
   // user is {email, username, github_id}
   db('users').insert(user).returning('id').then(
     function (id) {
-      console.log("User inserted at: " + id);
+      console.log("User inserted at: " + id[0]);
       cb(null, id);
     },
     function (error) {
