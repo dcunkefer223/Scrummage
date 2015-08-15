@@ -1,4 +1,5 @@
 var teamModel = require('../models/teamModel.js');
+var taskModel = require('../models/taskModel.js');
 
 module.exports.getTeam = function (team_id, res) {
   teamModel.getTeam(team_id, res)

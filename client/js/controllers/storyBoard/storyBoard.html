@@ -1,4 +1,4 @@
-  <div class="container-fluid mobile-padding nav-bg">
+  <div class="container-fluid mobile-padding">
     <div class="col-xs-1 nav-bg" ng-include="'./includes/navbar.html'"></div>
     <div class="col-xs-11 column-bg">
       <div class="container column-bg">
@@ -6,7 +6,7 @@
           <div class="col-xs-4" ng-repeat="(listName, list) in models.lists">
             <div class="feature-header">
               <div class="feature-title">
-                <h3>{{listName | capitalize}}</h3>
+                <h2>{{listName | capitalize}}</h2>
               </div>
             </div>
             <div ng-include="'./js/controllers/storyBoard/list.html'"></div>

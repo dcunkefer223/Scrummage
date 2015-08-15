@@ -14,7 +14,6 @@ angular.module('scrummage')
         team_id: 1,
         name: "",
         description: "",
-        points: 0,
         status: "backlog",
         // index: 0
       };
@@ -35,12 +34,11 @@ angular.module('scrummage')
               }
             }
           }
-          console.log('rendered');
+          // console.log('rendered');
         });
       };
 
       $scope.renderBoard();
-
 
       $scope.dropCallback = function (event, index, item, external, listName) {
         item.status = listName;
