@@ -3,13 +3,13 @@ var User = require('../requestHandlers/userHandler.js');
 var passport = require('passport');
 var GithubStrategy = require('passport-github').Strategy;
 var LocalStrategy = require('passport-local').Strategy;
-var bcrypt = require('bcrypt');
+// var bcrypt = require('bcrypt');
 var flash = require('connect-flash');
 
 module.exports = function(passport) {
 
   passport.serializeUser(function(user, done) {
-    done(null, user.id);
+    done(null, user.github_id);
   });
 
   passport.deserializeUser(function(id, done) {
@@ -59,7 +59,7 @@ module.exports = function(passport) {
             if (err) throw err;
 
             // if successful, return the new user
-            return done(null, results);
+            return done(null, newUser);
           });
         }
       });
