@@ -6,7 +6,6 @@
   "author": "ddpj",
   "dependencies": {
     "bcrypt": "^0.8.4",
-    "bluebird": "^2.9.34",
     "body-parser": "latest",
     "connect-flash": "~0.1.1",
     "ejs": "latest",
