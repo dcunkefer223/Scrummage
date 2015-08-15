@@ -297,15 +297,15 @@ ul[dnd-list] {
 
 ul[dnd-list] .dndDraggingSource {
     display: none;
+    background-color: black;
     min-height: 42px;
 }
 
 
 ul[dnd-list] .dndPlaceholder {
     display: block;
-    background-color: #4ab8a4;
     border-style: none;
-    min-height: 20%;
+    min-height: 40%;
 }
 
 ul[dnd-list] li {
@@ -491,6 +491,7 @@ li .card {
 }
 
 .card .card-body {
+  cursor: move;
   padding: 5px 5px 2px 5px;
   font-size: 15px;
   word-wrap: break-word;
