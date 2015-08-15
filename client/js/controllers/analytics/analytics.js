@@ -13,6 +13,13 @@ angular.module('scrummage')
       $scope.showModal = false;
     };
     // $scope.chartActive = true;
+    $scope.getTeamPoints = function (){
+      Request.analytics.getTeam().then(function(results){
+        console.log(results)
+        // console.log(results.points)
+      })
+    }
+
 
     $scope.config = {
       title: 'Points',

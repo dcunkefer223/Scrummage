@@ -1,5 +1,4 @@
 var db = require('../db/db.js');
-var Promise = require('bluebird');
 
 module.exports.addFeature = function (feature, res) {
   // feature is {title, description, points, status[complete|inprogress|todo], team_id}

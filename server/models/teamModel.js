@@ -1,9 +1,9 @@
 var db = require('../db/db.js');
-var Promise = require('bluebird');
 
 module.exports.getTeam = function (team_id, res) {
   db.select('*').from('teams').where('id', team_id).then(
     function (team) {
+      console.log(team);
       res.status(200).send(team[0]);
     }, 
     function (error) {

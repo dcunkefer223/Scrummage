@@ -15,6 +15,7 @@ module.exports.addFeature = function (feature, res) {
         // update backlog points          
         teamModel.changePoints(1, feature.status, points)
           .then(function (response) {
+            console.log(response);
             console.log('Feature inserted at id: ' + id);
             res.status(201).send({feature_id: id[0]});
           },
