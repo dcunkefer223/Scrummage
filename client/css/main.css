@@ -1,4 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto);
+
 /****** LOGIN MODAL ******/
 .loginmodal-container {
   padding: 30px;
@@ -202,10 +203,11 @@
   font-weight: 200;
   margin-bottom: 35px;
   color: black;
+  font-size: 32px;
 }
 
 .container-fluid {
-  padding-left: 0;
+  padding: 0;
 }
 
 .nav-bg {
@@ -267,6 +269,10 @@
 }
 
 .fa-lock:before {
+  padding-left: 8px;
+}
+
+.fa-unlock-alt:before {
   padding-left: 8px;
 }
 
@@ -473,30 +479,28 @@ ul li:nth-child(5n) .card {
 li .card {
   box-shadow: 1px 1px 9px rgba(0, 0, 0, 0.2);
   width: 100%;
-  font-family:"Reenie Beanie",arial,sans-serif;
+  font-family: 'Architects Daughter', cursive;
 }
 
 .card .card-header {
   cursor: move;
   background-color: #fcfff5;
   color: black;
-  font-size: 30px;
-  height: 25px;
+  font-size: 23px;
+  height: 33%;
+  padding-left: 3%;
+  padding-right: 3%;
   padding-top: 1%;
   float: left;
-  margin-left: 8px;
-  font-weight: 400;
   text-decoration: underline;
-  text-align: center;
 }
 
 .card .card-body {
   cursor: move;
   padding: 5px 5px 2px 5px;
-  font-size: 15px;
   word-wrap: break-word;
   background-color: #fcfff5;
-  font-size: 30px;
+  font-size: 22px;
   height: inherit;
 }
 
@@ -514,12 +518,12 @@ li .card {
 
 .card .card-body .card-footer {
   padding-left: 1px;
-  height: 35px;
+  height: 45px;
 }
 
 .card-body .card-points {
   float: right;
-  font-size: 120%;
+  font-size: 150%;
 }
 /* ------------------------- Analytics /// Chart --------------------- */
 
