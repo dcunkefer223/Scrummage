@@ -6,7 +6,7 @@
           <div class="team-body">
             <h2>Join a team</h2>
             <div class="join-team">
-              <input ng-model="team.name" placeholder="Enter team name" type="text" />
+              <input ng-model="team.name" ng-keyup="$event.keyCode == 13 && changeTeam(team)" placeholder="Enter team name" type="text" />
             </div>
             <h2>Create a team</h2>
             <div class="create-team">
