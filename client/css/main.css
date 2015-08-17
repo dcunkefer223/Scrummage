@@ -252,6 +252,7 @@
 }
 .column-bg {
   background-color: #d1dbbd;
+  height: 100vh;
 }
 
 .fa-github-square {
@@ -553,3 +554,26 @@ li .card {
 }
 .ng-chart-scope ng-scope{
 }
+
+/* ------------------------- Team Setup ------------------------- */
+
+.join-team input {
+  font-size: 35px;
+  background-color: inherit;
+  border: none;
+  outline: 0;
+  width: 100%;
+}
+
+.create-team input {
+  font-size: 35px;
+  background-color: inherit;
+  border: none;
+  outline: 0;
+  width: 100%;
+}
+
+.team-body {
+  padding-top: 80px;
+}
+

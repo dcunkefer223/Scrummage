@@ -10,8 +10,7 @@ module.exports = function(app){
     if(req.isAuthenticated()){
       return next();
     }
-
-    res.redirect('/#/signin');
+    res.status(404).send();
   }
 
   // Auth Routes
@@ -21,7 +20,12 @@ module.exports = function(app){
   app.get('/auth/github/callback',
     passport.authenticate('github', { failureRedirect: '/#/signin' }),
       function (req, res) {
-        res.redirect('/#/storyboard');
+        console.log(req);
+        if(!req.user.team_id) {
+          res.redirect('/#/teamsetup');
+        } else {
+          res.redirect('/#/storyboard');
+        }
   });
 
 
