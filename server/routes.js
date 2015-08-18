@@ -21,10 +21,8 @@ module.exports = function(app){
     passport.authenticate('github', { failureRedirect: '/#/signin' }),
       function (req, res) {
         if(!req.user.team_id) {
-          console.log('NOPE');
           res.redirect('/#/teamsetup');
         } else {
-          console.log('LOOKS GOOD');
           res.redirect('/storyboard');
         }
   });
@@ -115,14 +113,19 @@ module.exports = function(app){
     Task.changeFeatureUser(req.body, res);
   });
 
+  app.post('/updatetotalpoints', function (req, res) {
+    // {team_id, points}
+    Task.changeTeamPoints(req.body, res);
+  });
+
   app.post('/changeuserteam', function (req, res) {
     // {user_id, team_id}
     User.changeUserTeam(req.body, req.user, res);
   });
 
-  app.post('/updatetotalpoints', function (req, res) {
-    // {team_id, points}
-    Task.changeTeamPoints(req.body, res);
-  });
+  app.post('/addteam', function (req, res) {
+    User.createTeam(req.body, req.user, res);
+  })
+
 
 };

@@ -130,7 +130,17 @@ angular.module('scrummage')
         fetchUser : function (data) {
           return $http({
             method: 'GET',
-            url: 'fetchuser',
+            url: '/fetchuser',
+            data: data
+          }).then(function (resp) {
+            return resp.data;
+          }, noAuthRedirect);
+        },
+
+        createTeam : function (data) {
+          return $http({
+            method: 'POST',
+            url: '/addTeam',
             data: data
           }).then(function (resp) {
             return resp.data;

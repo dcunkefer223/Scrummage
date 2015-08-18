@@ -10,21 +10,14 @@ angular.module('scrummage')
       name: null
     };
 
-    $scope.changeTeam = function (newTeam) {
-      Request.user.joinTeam(newTeam);
+    $scope.changeTeam = function (team) {
+      Request.user.joinTeam(team);
       $location.path('/storyboard');
     };
 
-    $scope.open = function() {
-      $scope.showModal = true;
-    };
-
-    $scope.ok = function() {
-      $scope.showModal = false;
-    };
-
-    $scope.cancel = function() {
-      $scope.showModal = false;
+    $scope.createTeam = function (newTeam) {
+      Request.user.createTeam(newTeam);
+      $location.path('/storyboard');
     };
 
   });
