@@ -23,7 +23,7 @@ module.exports = function(app){
         if(!req.user.team_id) {
           res.redirect('/#/teamsetup');
         } else {
-          res.redirect('/storyboard');
+          res.redirect('/#/storyboard');
         }
   });
 
@@ -50,7 +50,7 @@ module.exports = function(app){
 
   app.get('/getallfeatures', function (req, res) {
     // ?team_id=integer
-    Task.getAllFeatures(req.query.team_id, res);
+    Task.getAllFeatures(req.user.team_id, res);
   });
 
   app.get('/getfeaturesbystatus', function (req, res) {
@@ -80,7 +80,7 @@ module.exports = function(app){
   
   app.post('/addfeature', function (req, res) {
     // feature is {name, description, points, status, team_id, user_id}
-    Task.addFeature(req.body, res);
+    Task.addFeature(req.body, req.user, res);
   });
 
   app.post('/addcomment', function (req, res) {
@@ -90,7 +90,7 @@ module.exports = function(app){
 
   app.post('/changestatus', function (req, res) {
     // {feature_id, points, status}
-    Task.changeFeatureStatus(req.body, res);
+    Task.changeFeatureStatus(req.body, req.user, res);
   });
 
   app.post('/changefeaturepoints', function (req, res) {
