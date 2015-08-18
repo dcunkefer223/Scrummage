@@ -156,7 +156,7 @@ module.exports.changeTeamPoints = function (team_id, newPoints, res) {
 };
 
 module.exports.getStatusById = function (feature_id) {
-  return db.select('status').from('features').where('id', feature_id);  
+  return db.select('status').from('features').where('id', feature_id);
 };
 
 

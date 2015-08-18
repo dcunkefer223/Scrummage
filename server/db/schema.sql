@@ -38,6 +38,12 @@
 --   *Feature_ID
 --   *User_ID
 
+
+DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS teams CASCADE;
+DROP TABLE IF EXISTS features CASCADE;
+DROP TABLE IF EXISTS comments CASCADE;
+
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS teams CASCADE;
 DROP TABLE IF EXISTS features CASCADE;
@@ -80,6 +86,16 @@ CREATE TABLE comments (
   user_id INTEGER references users(id)
 );
 
+-- Possibily give users and features a sprint id.
+
+-- CREATE TABLE sprints {
+--   id SERIAL PRIMARY KEY,
+--   name VARCHAR,
+--   start TIMESTAMP,
+--   end TIMESTAMP,
+--   team_id INTEGER references teams(id)
+-- }
+
 -----------------------------------------------------------------------
 ----------------------------- TEST VALUES -----------------------------
 -----------------------------------------------------------------------
@@ -87,8 +103,21 @@ CREATE TABLE comments (
 INSERT INTO teams (name, backlog, progress, complete) VALUES ('Test Team', '[50]', '[5]', '[3]');
 INSERT INTO users (username, github_id) VALUES ('JParis44', 11894565);
 INSERT INTO features (name, description, points, status, team_id, user_id)
-  VALUES ('This is a test!', 'This started complete.', 3, 'complete', 1, 1);
+  VALUES ('Save features', 'Store feature status in DB.', 7, 'backlog', 1, 1);
 INSERT INTO features (name, description, points, status, team_id, user_id)
-  VALUES ('This is another test!', 'This started in progress.', 5, 'progress', 1, 1);
+  VALUES ('Set up Grunt', 'Add a Grunt build file.', 2, 'backlog', 1, 1);
 INSERT INTO features (name, description, points, status, team_id, user_id)
-  VALUES ('This is a trial!', 'This started in backlog.', 50, 'backlog', 1, 1);
+  VALUES ('Navigation bar', 'Placed to the left of 3 columns.', 1, 'backlog', 1, 1);
+INSERT INTO features (name, description, points, status, team_id, user_id)
+  VALUES ('Login functionality', 'Using Github Oauth.', 7, 'progress', 1, 1);
+INSERT INTO features (name, description, points, status, team_id, user_id)
+  VALUES ('Drag boxes', 'Be able to drag between columns.', 5, 'progress', 1, 1);
+INSERT INTO features (name, description, points, status, team_id, user_id)
+  VALUES ('Add modals', 'For analytics and add feature.', 3, 'progress', 1, 1);
+INSERT INTO features (name, description, points, status, team_id, user_id)
+  VALUES ('View deployed site', 'Set up heroku.', 2, 'complete', 1, 1);
+INSERT INTO features (name, description, points, status, team_id, user_id)
+  VALUES ('Box view', 'View boxes inside columns', 3, 'complete', 1, 1);
+INSERT INTO features (name, description, points, status, team_id, user_id)
+  VALUES ('Basic storyboard view', 'Set up basic html.', 1, 'complete', 1, 1);
+
