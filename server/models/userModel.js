@@ -51,15 +51,11 @@ exports.generateHash = function(password){
   return hash;
 };
 
-exports.changeUserTeam = function (user_id, newTeam_id, res) {
-  db('users').where('id', user_id).update('team_id', newTeam_id).then(
-    function (rows) {
-      res.status(200).send({user_id: user_id});
-    }, 
-    function (error) {
-      console.error(error);
-      res.status(500).send('Failed to update feature in database');
-    }
-  );
+exports.fetchTeamName = function (newTeam_name, res) {
+  return db.select('id').from('teams').where('name', newTeam_name);
+};
+
+exports.changeTeamId = function (user_id, newTeam_id) {
+  return db('users').where('id', user_id).update('team_id', newTeam_id);
 };
 

@@ -117,7 +117,25 @@ angular.module('scrummage')
         },
 
       user : {
+        joinTeam : function (data) {
+          return $http({
+            method: 'POST',
+            url: '/changeuserteam',
+            data: data
+          }).then(function (resp) {
+            return resp.data;
+          }, noAuthRedirect);
+        },
 
+        fetchUser : function (data) {
+          return $http({
+            method: 'GET',
+            url: 'fetchuser',
+            data: data
+          }).then(function (resp) {
+            return resp.data;
+          }, noAuthRedirect);
+        }
       },
 
       team : {

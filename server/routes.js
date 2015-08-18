@@ -10,8 +10,7 @@ module.exports = function(app){
     if(req.isAuthenticated()){
       return next();
     }
-
-    res.redirect('/#/signin');
+    res.status(404).send();
   }
 
   // Auth Routes
@@ -21,7 +20,13 @@ module.exports = function(app){
   app.get('/auth/github/callback',
     passport.authenticate('github', { failureRedirect: '/#/signin' }),
       function (req, res) {
-        res.redirect('/#/storyboard');
+        if(!req.user.team_id) {
+          console.log('NOPE');
+          res.redirect('/#/teamsetup');
+        } else {
+          console.log('LOOKS GOOD');
+          res.redirect('/storyboard');
+        }
   });
 
 
@@ -112,7 +117,7 @@ module.exports = function(app){
 
   app.post('/changeuserteam', function (req, res) {
     // {user_id, team_id}
-    User.changeUserTeam(req.body, res);
+    User.changeUserTeam(req.body, req.user, res);
   });
 
   app.post('/updatetotalpoints', function (req, res) {
