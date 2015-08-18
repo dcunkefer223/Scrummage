@@ -11,7 +11,6 @@ angular.module('scrummage')
       };
 
       $scope.feature = {
-        team_id: 1,
         name: "",
         description: "",
         status: "backlog",
@@ -80,7 +79,6 @@ angular.module('scrummage')
           newFeature.id = results.feature_id;
         });
         $scope.feature = {
-          team_id: 1,
           name: "",
           description: "",
           points: 0,

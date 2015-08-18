@@ -61,7 +61,7 @@ angular.module('scrummage')
         fetchAll : function () {
           return $http({
             method: 'GET',
-            url: '/getallfeatures?team_id=1',
+            url: '/getallfeatures',
           }).then(function (resp) {
             return resp.data;
           }, noAuthRedirect);
