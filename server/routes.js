@@ -23,7 +23,7 @@ module.exports = function(app){
         if(!req.user.team_id) {
           res.redirect('/#/teamsetup');
         } else {
-          res.redirect('/storyboard');
+          res.redirect('/#/storyboard');
         }
   });
 
