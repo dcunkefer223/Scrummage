@@ -10,7 +10,7 @@
             </div>
             <h2>Create a team</h2>
             <div class="create-team">
-              <input ng-model="newTeam.name" placeholder="Create your team name" type="text" />
+              <input ng-model="newTeam.name" placeholder="Create your team name" ng-keyup="$event.keyCode == 13 && createTeam(newTeam)"type="text" />
             </div>
           </div>
         </div>
