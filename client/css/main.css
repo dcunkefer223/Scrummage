@@ -444,33 +444,45 @@ li .card {
 
  /* --------------------------------- Analytics / Chart Modal --------------------------------- */
 
- .modal-chart{
-   background-color: #d8d8d8;
-   width: 1000px;
-   left: 50%;
-   margin-left: -500px;
- }
- .chart {
-  width: 900px;
-  height: 500px;
+.modal-chart{
   background-color: #d8d8d8;
-  margin: auto;
- }
- .angular-charts-template ng-scope{
- }
- .modal-chart-header{
- }
- .modal-chart ng-scope modal{
- }
- .modal-chart-footer{
-   padding-top: 25px;
-   float: left;
- }
- .ng-scope{
- }
- .ng-chart-scope ng-scope{
- }
+  width: 1000px;
+  height: 650px;
+  left: 50%;
+  margin-left: -500px;
+  padding: 40px;
+}
+.chart {
+ font-size: 1.3em;
+ padding-left: 60px;
+ width: 1000px;
+ height: 400px;
+ background-color: #d8d8d8;
+}
+.angular-charts-template ng-scope{
+}
+.modal-chart-header{
+  font-size: 24px;
+}
 
+.modal-chart-footer{
+  padding-top: 35px;
+  float: left;
+}
+.axis{  /* this is for the tick area */
+  stroke-width: 3;
+/*  #4ab8a4 stroke-width: 2; */
+  padding: 10px;
+}
+.axis line{
+  stroke-width: 4;
+  
+    /* these are the ticks (measure markers on graph*/
+}
+path{ /* this is the x and y axis lines */
+  stroke:black;
+  stroke-width: 4;
+}
 
 /* ---------------------------------- Modal / Graph Boxes -------------------------------- */
 
