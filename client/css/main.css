@@ -532,28 +532,39 @@ li .card {
 .modal-chart{
   background-color: #d8d8d8;
   width: 1000px;
+  height: 600px;
   left: 50%;
   margin-left: -500px;
+  padding: 40px;
 }
 .chart {
- width: 900px;
- height: 500px;
+ padding-left: 60px;
+ width: 1000px;
+ height: 400px;
  background-color: #d8d8d8;
- margin: auto;
 }
 .angular-charts-template ng-scope{
 }
 .modal-chart-header{
+  font-size: 24px;
 }
 .modal-chart ng-scope modal{
 }
 .modal-chart-footer{
-  padding-top: 25px;
+  padding-top: 35px;
   float: left;
 }
-.ng-scope{
+.axis{
+  stroke: ;
+/*  #4ab8a4 stroke-width: 2; */
+  padding: 10px;
 }
-.ng-chart-scope ng-scope{
+.axis line{
+  stroke-width: 5;  /* these are the ticks (measure markers on graph*/
+}
+path{
+  stroke:black;
+  stroke-width: 4;
 }
 
 /* ------------------------- Team Setup ------------------------- */

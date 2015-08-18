@@ -14,10 +14,12 @@ angular.module('scrummage')
     };
     // $scope.chartActive = true;
     $scope.getTeamPoints = function (){
-      Request.analytics.getTeam().then(function(results){
-        console.log(results)
-        // console.log(results.points)
-      })
+      Request.analytics.getTeam()
+        .then(function(results){
+          console.log(results.backlog[0])
+          //$scope.data.data = (results.backlog[0])
+           //console.log(results.points)
+        })
     }
 
 
@@ -33,33 +35,38 @@ angular.module('scrummage')
         //could be 'left, right'
         position: 'right'
       },
-      colors: ["grey", "red"],
+      colors: ["#d8d8d8", "red", "#039676"],
       waitForHeightAndWidth: true,
       isAnimate: true
     };
   // backlog/progress, nocompleted
     $scope.data = {
-      series: ['Ideal', 'Actual'],  // what we are measuring--- will appear in legend
-      data: [{
+      series: ['Ideal','In Progress', 'BackLog' ],  // what we are measuring--- will appear in legend
+      data: [//{
+      //   x: "",   // start date   data: [{x: date, y: [] }]
+      //   y: [100, 100] //locked total, 
+      // },
+      {
         x: "Jan 1",   // start date   data: [{x: date, y: [] }]
-        y: [100, 100] //locked total, 
+        y: [150, 150, 130] //locked total, 
       }, {
         x: "Jan 5",
-        y: [75, 80]
+        y: [120, 135, 125]
       }, {
         x: "Jan 10",
-        y: [50, 24]
+        y: [90, 110, 115]
       }, {
         x: "Jan 15",  //end date?
-        y: [10, 20]
+        y: [60, 75, 75]
       },{
         x: "Jan 20",  //end date?
-        y: [0, 20]
+        y: [30, 65, 70]
       },
-      {
-      x: "Jan 25",  //end date?
-        y: [0, 0]
-      }]
+       {
+        x: "Jan 30",   // start date   data: [{x: date, y: [] }]
+        y: [0, 50, 20] //locked total, 
+      }
+      ]
     };
-  });
+  });// end of contr
 
