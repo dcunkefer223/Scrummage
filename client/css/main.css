@@ -232,10 +232,6 @@
   padding: 5px;
 }
 
-.fa-plus {
-    border: none;
-}
-
 .fa-lock:before {
   padding-left: 8px;
 }
@@ -375,6 +371,14 @@ li .card {
 
 /* --------------------------------- Add Feature Modal --------------------------------- */
 
+button:focus {
+  outline:0;
+}
+
+.add-feature {
+  padding-left: 7px;
+}
+
 .modal .add-feature-modal {
     border: 0px;
     text-shadow: 0 1px rgba(0,0,0,0.1);
@@ -433,6 +437,7 @@ li .card {
  }
 
  .btn-lg {
+  font-family: 'Architects Daughter', cursive;
   text-decoration: none;
   font-size: 30px;
   margin-left: 25%;
@@ -444,14 +449,25 @@ li .card {
 
  /* --------------------------------- Analytics / Chart Modal --------------------------------- */
 
-.modal-chart{
+/*.modal .modal-chart{
   background-color: #d8d8d8;
   width: 1000px;
   height: 650px;
   left: 50%;
   margin-left: -500px;
   padding: 40px;
+}*/
+
+.modal .modal-chart {
+    background-color: #d8d8d8;
+    width: 1000px;
+    height: 650px;
+    left: 50%;
+    margin-left: -500px;
+    padding: 40px;
+    top: 10%;
 }
+
 .chart {
  font-size: 1.3em;
  padding-left: 60px;
@@ -599,5 +615,13 @@ body {
 
 .modal-footer .btn-block + .btn-block {
   margin-left: 0;
+}
+
+/*-----------------------------------------------------------------------------*/
+
+.second {
+    width: 100px;
+    height: 100px;
+    background-color: pink;
 }
 
