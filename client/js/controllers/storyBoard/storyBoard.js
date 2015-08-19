@@ -14,7 +14,6 @@ angular.module('scrummage')
         name: "",
         description: "",
         status: "backlog",
-        // index: 0
       };
 
       $scope.clearBoard = function () {
@@ -33,7 +32,6 @@ angular.module('scrummage')
               }
             }
           }
-          // console.log('rendered');
         });
       };
 
@@ -81,7 +79,6 @@ angular.module('scrummage')
         $scope.feature = {
           name: "",
           description: "",
-          points: 0,
           status: "backlog"
         };
       };
