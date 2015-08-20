@@ -15,11 +15,10 @@
             </div>
         </li>
       </div>
-      <div id= "analyticsModal" ng-controller='analyticsCtrl'>
+      <div id= "analyticsModal">
         <li data-step="6" data-intro="View the current status with this burndown chart" data-position="right">
-            <a href = "#" ng-click="open();getTeamPoints()"><i class="grow fa fa-area-chart nav-list-icon"></i></a>
+          <a href = "/#/analytics"><i class="grow fa fa-area-chart nav-list-icon"></i></a>
         </li> 
-        <div class= "modal-chart" modal="showModal"  close="cancel()" ng-include="'../js/controllers/analytics/analytics.html'"></div>
       </div>
       <div id= "featureSetupModal" ng-controller='featureSetupCtrl'>
         <li data-step="3" data-intro="This is where you add your new features to the board." data-position="right">
