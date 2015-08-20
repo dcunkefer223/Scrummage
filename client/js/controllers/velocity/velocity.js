@@ -1,6 +1,6 @@
 angular.module('scrummage')
 
-  .controller('burndownCtrl', function ($scope, Request) {
+  .controller('velocityCtrl', function ($scope, Request) {
 
     $scope.data = {
         labels: ['8/23', '8/24', '8/25', '8/26', '8/27', '8/28', '8/29'],

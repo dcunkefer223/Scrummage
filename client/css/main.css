@@ -462,55 +462,41 @@ button:focus {
 
  /* --------------------------------- Analytics / Chart Modal --------------------------------- */
 
-/*.modal .modal-chart{
-  background-color: #d8d8d8;
-  width: 1000px;
-  height: 650px;
-  left: 50%;
-  margin-left: -500px;
-  padding: 40px;
-}*/
-
-.modal .modal-chart {
-    background-color: #d8d8d8;
-    width: 1000px;
-    height: 650px;
-    left: 50%;
-    margin-left: -500px;
-    padding: 40px;
-    top: 10%;
+.burndown-body {
+  width: 100%;
+  padding-left: 60px;
+  padding-top: 60px;
+  padding-right: 0;
 }
 
-.chart {
- font-size: 1.3em;
- padding-left: 60px;
- width: 1000px;
- height: 400px;
- background-color: #d8d8d8;
-}
-.angular-charts-template ng-scope{
-}
-.modal-chart-header{
-  font-size: 24px;
+.burndown-body h2 {
+  padding-bottom: 20px;
 }
 
-.modal-chart-footer{
-  padding-top: 35px;
+.chart-banner {
+  background-color:rgba(0, 140, 186, 0.3);
+  padding-top:25px;
+  margin-bottom:15px;
+  border-top:1px solid #666666;
+  border-bottom:1px solid #cccccc;
+}
+
+.tc-chart-js-legend {
+  list-style-type: none;
+  padding-left: 0px;
+}
+.tc-chart-js-legend li {
+  display: block;
   float: left;
+  clear:both;
+  padding:10px;
 }
-.axis{  /* this is for the tick area */
-  stroke-width: 3;
-/*  #4ab8a4 stroke-width: 2; */
-  padding: 10px;
-}
-.axis line{
-  stroke-width: 4;
-  
-    /* these are the ticks (measure markers on graph*/
-}
-path{ /* this is the x and y axis lines */
-  stroke:black;
-  stroke-width: 4;
+.tc-chart-js-legend li span {
+  width:25px;
+  height:25px;
+  display:block;
+  float:left;
+  margin-right:10px;
 }
 
 /* ---------------------------------- Modal / Graph Boxes -------------------------------- */
