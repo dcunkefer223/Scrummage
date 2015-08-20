@@ -241,8 +241,13 @@ li .sub-menu {
   margin-left: 100px;
 }
 
+
 .fa-question-circle:before {
   padding-left: 7px;
+}
+
+.fa-gear:before, .fa-cog:before {
+  padding: 5px;
 }
 
 .fa-lock:before {
