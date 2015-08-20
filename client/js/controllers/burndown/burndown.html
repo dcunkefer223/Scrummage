@@ -3,9 +3,8 @@
     <div class="col-xs-1 nav-bg" ng-include="'./includes/navbar.html'"></div>
     <div class="col-xs-11 column-bg">
       <div class="container">
-        <h2> Choose a metric </h2>
-        <button class="btn btn-lg" ng-click="openBurndown()">Burndown</button>
-        <button class="btn btn-lg" ng-click="openVelocity()">Velocity</button>
+        <h2> Burndown Chart </h2>
+        <canvas tc-chartjs-line chart-options="options" chart-data="data" chart-legend="lineChart1" ></canvas>
       </div>
     </div>
   </div>
