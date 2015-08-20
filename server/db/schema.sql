@@ -50,9 +50,9 @@ CREATE TABLE teams (
   id SERIAL PRIMARY KEY,
   name VARCHAR,
   start TIMESTAMP,
-  backlog VARCHAR,
-  progress VARCHAR,
-  complete VARCHAR
+  backlog INTEGER,
+  progress INTEGER,
+  complete INTEGER
 );
 
 CREATE TABLE users (
@@ -91,20 +91,20 @@ CREATE TABLE comments (
 
 CREATE TABLE sprints (
   id SERIAL PRIMARY KEY,
+  team_id INTEGER references teams(id) ON DELETE CASCADE,
   name VARCHAR,
   sprintstart TIMESTAMP,
   sprintend TIMESTAMP,
-  team_id INTEGER references teams(id) ON DELETE CASCADE,
-  backlog VARCHAR,
-  progress VARCHAR,
-  complete VARCHAR
+  backlog INTEGER,
+  progress INTEGER,
+  complete INTEGER
 );
 
 -----------------------------------------------------------------------
 ----------------------------- TEST VALUES -----------------------------
 -----------------------------------------------------------------------
 
-INSERT INTO teams (name, backlog, progress, complete) VALUES ('Test Team', '[50]', '[5]', '[3]');
+INSERT INTO teams (name, backlog, progress, complete) VALUES ('Test Team', 50, 5, 3);
 INSERT INTO users (username, github_id) VALUES ('JParis44', 11894565);
 INSERT INTO features (name, description, points, status, team_id, user_id)
   VALUES ('Save features', 'Store feature status in DB.', 7, 'backlog', 1, 1);
