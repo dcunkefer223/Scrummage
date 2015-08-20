@@ -17,8 +17,8 @@ module.exports.changeCurrentPoints = function (team_id, column, points) {
   return db('teams').where('id', team_id).update(column, points);
 };
 
-module.exports.changeSprintPoints = function (sprint_id, column, points) {
-  return db('sprints').where('id', sprint_id).update(column, points);
+module.exports.updateSprint = function (sprint_id, points) {
+  return db('sprints').where('id', sprint_id).update(points);
 };
 
 module.exports.createSprint = function (team_id, sprint) {
