@@ -76,7 +76,7 @@ CREATE TABLE features (
   points INTEGER,
   status VARCHAR,
   team_id INTEGER references teams(id) ON DELETE CASCADE,
-  user_id INTEGER DEFAULT null references users(id)
+  user_id INTEGER DEFAULT null references users(id) ON DELETE CASCADE
 );
 
 CREATE TABLE comments (
@@ -84,7 +84,7 @@ CREATE TABLE comments (
   posted TIMESTAMP,
   comment VARCHAR,
   feature_id INTEGER references features(id) ON DELETE CASCADE,
-  user_id INTEGER references users(id)
+  user_id INTEGER references users(id) ON DELETE CASCADE
 );
 
 -- Possibily give users and features a sprint id.
@@ -92,8 +92,8 @@ CREATE TABLE comments (
 CREATE TABLE sprints (
   id SERIAL PRIMARY KEY,
   name VARCHAR,
-  start TIMESTAMP,
-  end TIMESTAMP,
+  sprintstart TIMESTAMP,
+  sprintend TIMESTAMP,
   team_id INTEGER references teams(id) ON DELETE CASCADE,
   backlog VARCHAR,
   progress VARCHAR,
