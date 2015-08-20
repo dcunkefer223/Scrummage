@@ -17,7 +17,7 @@ angular.module('scrummage')
 
     $scope.createTeam = function (newTeam) {
       Request.user.createTeam(newTeam);
-      $location.path('/storyboard');
+      $location.path('/sprintsetup');
     };
 
   });

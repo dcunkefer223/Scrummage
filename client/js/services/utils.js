@@ -148,8 +148,16 @@ angular.module('scrummage')
         }
       },
 
-      team : {
-
+      sprint : {
+        createSprint : function (data) {
+          return $htpp({
+            method: 'POST',
+            url: '/createsprint',
+            data: data
+          }).then(function (resp) {
+            return resp.data;
+          },  noAuthRedirect);
+        }
       }
     };
 
