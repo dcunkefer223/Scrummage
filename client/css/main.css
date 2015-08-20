@@ -145,11 +145,6 @@
 
 /* --------------------------------- StoryBoard Styling --------------------------------- */
 
-.add-feature {
-  background: none;
-  border: none;
-}
-
 .feature-header .feature-title h2{
   font: Helvetica sans-serif;
   font-weight: 200;
@@ -211,6 +206,24 @@
   width: 40px;
 }
 
+li .sub-menu {
+  clear: both;
+}
+
+.sub-item {
+  width: 95%;
+}
+
+.show-settings {
+  background: none;
+  border: none;
+}
+
+.add-feature {
+  background: none;
+  border: none;
+}
+
 /* --------------------------------- Icons --------------------------------- */
 
 .fa {
@@ -228,8 +241,8 @@
   margin-left: 100px;
 }
 
-.fa-gear:before, .fa-cog:before {
-  padding: 5px;
+.fa-question-circle:before {
+  padding-left: 7px;
 }
 
 .fa-lock:before {
