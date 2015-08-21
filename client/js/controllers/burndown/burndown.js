@@ -7,8 +7,8 @@ angular.module('scrummage')
         datasets: [
           {
             label: 'In Progress',
-            fillColor: 'rgba(220,220,220,0.7)',
-            strokeColor: 'rgba(220,220,220,1)',
+            fillColor: '#FAA43A',
+            strokeColor: '#FAA43A',
             pointColor: 'rgba(220,220,220,1)',
             pointStrokeColor: '#fff',
             pointHighlightFill: '#fff',
@@ -17,8 +17,8 @@ angular.module('scrummage')
           },
           {
             label: 'Backlog',
-            fillColor: 'rgba(151,187,205,1)',
-            strokeColor: 'rgba(151,187,205,1)',
+            fillColor: '#5DA5DA',
+            strokeColor: '#5DA5DA',
             pointColor: 'rgba(151,187,205,1)',
             pointStrokeColor: '#fff',
             pointHighlightFill: '#fff',
@@ -26,8 +26,9 @@ angular.module('scrummage')
             data: [80, 55, 47, 31]
           },
           {
-            fillColor: 'rgba(255, 255, 255,0)',
-            strokeColor: 'rgba(255, 255, 255 1)',
+            label: 'Ideal Line',
+            fillColor: 'rgba(255, 255, 255, 0)',
+            strokeColor: 'rgba(255,255,255,1)',
             data: [80, 66.667, 52.333, 39, 26.667, 13.333, 0]
           }
         ]
@@ -76,7 +77,7 @@ angular.module('scrummage')
         bezierCurveTension : 0.4,
 
         //Boolean - Whether to show a dot for each point
-        pointDot : true,
+        pointDot : false,
 
         //Number - Radius of each point dot in pixels
         pointDotRadius : 4,
@@ -91,7 +92,7 @@ angular.module('scrummage')
         datasetStroke : true,
 
         //Number - Pixel width of dataset stroke
-        datasetStrokeWidth : 2,
+        datasetStrokeWidth : 4,
 
         //Boolean - Whether to fill the dataset with a colour
         datasetFill : true,

@@ -544,6 +544,7 @@ button:focus {
   float: left;
   clear:both;
   padding:10px;
+  font-size: 18px;
 }
 .tc-chart-js-legend li span {
   width:25px;

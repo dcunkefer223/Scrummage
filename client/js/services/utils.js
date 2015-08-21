@@ -150,13 +150,13 @@ angular.module('scrummage')
 
       sprint : {
         createSprint : function (data) {
-          return $htpp({
+          return $http({
             method: 'POST',
             url: '/createsprint',
             data: data
           }).then(function (resp) {
             return resp.data;
-          },  noAuthRedirect);
+          }, noAuthRedirect);
         }
       }
     };
