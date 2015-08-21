@@ -125,10 +125,13 @@ module.exports = function(app){
   });
 
   app.post('/addteam', function (req, res) {
-    Team.createTeam(req.body, req.user, res);
+    User.createTeam(req.body, req.user, res);
   });
 
   app.get('/createsprint', function (req, res) {
-    Team.createSprint(req.body, req.user.team_id, res);
+    Sprint.createSprint(req.body, req.user, res);
   });
+
+
+
 };
