@@ -74,6 +74,7 @@ CREATE TABLE features (
   description VARCHAR,
   points INTEGER,
   status VARCHAR,
+  status_time TIMESTAMP,
   team_id INTEGER references teams(id),
   user_id INTEGER DEFAULT null references users(id)
 );
@@ -100,7 +101,7 @@ CREATE TABLE comments (
 ----------------------------- TEST VALUES -----------------------------
 -----------------------------------------------------------------------
 
-INSERT INTO teams (name, backlog, progress, complete) VALUES ('Test Team', '[50]', '[5]', '[3]');
+INSERT INTO teams (name, backlog, progress, complete) VALUES ('Test Team', '[10]', '[15]', '[6]');
 INSERT INTO users (username, github_id) VALUES ('JParis44', 11894565);
 INSERT INTO features (name, description, points, status, team_id, user_id)
   VALUES ('Save features', 'Store feature status in DB.', 7, 'backlog', 1, 1);

@@ -18,7 +18,7 @@ angular.module('scrummage')
           {
             label: 'Overall Team Average',
             fillColor: 'rgba(255, 255, 255,0)',
-            strokeColor: 'rgba(255, 255, 255 1)',
+            strokeColor: 'rgba(255, 255, 255, 1)',
             data: [30, 30, 30, 30, 30, 30, 30]
           }
         ]
@@ -76,7 +76,7 @@ angular.module('scrummage')
         bezierCurveTension : 0.4,
 
         //Boolean - Whether to show a dot for each point
-        pointDot : true,
+        pointDot : false,
 
         //Number - Radius of each point dot in pixels
         pointDotRadius : 4,
@@ -91,7 +91,7 @@ angular.module('scrummage')
         datasetStroke : true,
 
         //Number - Pixel width of dataset stroke
-        datasetStrokeWidth : 2,
+        datasetStrokeWidth : 4.5,
 
         //Boolean - Whether to fill the dataset with a colour
         datasetFill : true,

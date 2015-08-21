@@ -143,6 +143,24 @@
   padding-top: 80px;
 }
 
+/* --------------------------------- Sprint Setup --------------------------------- */
+
+.sprint-body {
+  padding-top: 70px;
+}
+
+.sprint-name input {
+  font-size: 35px;
+  background-color: inherit;
+  border: none;
+  outline: 0;
+  width: 100%;
+}
+
+.input-group {
+  padding-bottom: 20px;
+}
+
 /* --------------------------------- StoryBoard Styling --------------------------------- */
 
 .feature-header .feature-title h2{
@@ -177,7 +195,7 @@
   background-color: #039676;
   height: 100vh;
   padding-top: 6%;
-  padding-left: 25px;
+  padding-left: 20px;
 }
 
 .sidebar-nav {
@@ -241,17 +259,17 @@ li .sub-menu {
   margin-left: 100px;
 }
 
+.fa-reply:before {
+  padding-left: 5px;
+}
 
 .fa-question-circle:before {
   padding-left: 7px;
 }
 
-.fa-gear:before, .fa-cog:before {
-  padding: 5px;
-}
-
-.fa-lock:before {
-  padding-left: 8px;
+.change-settings-btn {
+  background: none;
+  border: none;
 }
 
 .fa-unlock-alt:before {
@@ -387,6 +405,37 @@ li .card {
   font-size: 150%;
 }
 
+/* --------------------------------- Settings Modal --------------------------------- */
+
+.modal .change-settings-modal {
+  border: 0px;
+  text-shadow: 0 1px rgba(0,0,0,0.1);
+  padding: 17px 0px;
+  padding-left: 10px;
+  font-family: 'Architects Daughter', cursive;
+  font-size: 20px;
+  height: 100%;
+}
+
+.change-settings-modal .change-settings-body {
+  width: 100%;
+}
+
+.change-settings-body h2 {
+  padding-left: 33%;
+  font-size: 40px;
+}
+
+.change-settings-modal .create-sprint {
+  padding-top: 60px;
+  padding-bottom: 70px;
+  width: 84%;
+}
+
+.change-settings-modal .leave-team {
+  padding-left: 30px;
+}
+
 /* --------------------------------- Add Feature Modal --------------------------------- */
 
 button:focus {
@@ -495,6 +544,7 @@ button:focus {
   float: left;
   clear:both;
   padding:10px;
+  font-size: 18px;
 }
 .tc-chart-js-legend li span {
   width:25px;
