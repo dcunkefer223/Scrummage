@@ -50,7 +50,6 @@ module.exports = function(app){
 
   app.get('/getallfeatures', function (req, res) {
     // ?team_id=integer
-    console.log(req.user);
     Task.getAllFeatures(req.user.team_id, res);
   });
 
