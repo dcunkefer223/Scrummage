@@ -70,7 +70,7 @@ angular.module('scrummage')
         bezierCurveTension : 0.4,
 
         //Boolean - Whether to show a dot for each point
-        pointDot : true,
+        pointDot : false,
 
         //Number - Radius of each point dot in pixels
         pointDotRadius : 4,
