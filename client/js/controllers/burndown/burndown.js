@@ -96,6 +96,9 @@ angular.module('scrummage')
         //Boolean - Whether to fill the dataset with a colour
         datasetFill : true,
 
+        // String - Animation easing effect
+        animationEasing: "easeOutExpo",
+
         // Function - on animation progress
         onAnimationProgress: function(){},
 
