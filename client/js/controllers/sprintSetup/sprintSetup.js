@@ -4,8 +4,8 @@ angular.module('scrummage')
 
     $scope.newSprint = {
       name : '',
-      start: '',
-      end: ''
+      sprintstart: '',
+      sprintend: ''
     };
 
     $scope.createSprint = function (newSprint) {

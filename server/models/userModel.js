@@ -51,17 +51,24 @@ exports.generateHash = function(password){
   return hash;
 };
 
-exports.fetchTeamName = function (newTeam_name, res) {
-  return db.select('id').from('teams').where('name', newTeam_name);
+module.exports.changeCurrentTeam = function (user_id, newTeam_id) {
+  return db('users').where('id', user_id).update('current_team', newTeam_id).returning('current_team');
 };
 
-exports.changeTeamId = function (user_id, newTeam_id) {
-  return db('users').where('id', user_id).update('team_id', newTeam_id);
+module.exports.addUserToTeam = function (user_id, newTeam_id) {
+  return db.insert({user_id: user_id, team_id: newTeam_id}).into('users_teams').whereNotExists(function(){
+    this.select('*').from('users_teams').whereRaw({user_id: user_id, team_id: newTeam_id});
+  });
 };
 
-exports.createTeam = function (newTeam, res) {
-  console.log('newTeam in model looks like', newTeam);
-  return db('teams').insert(newTeam).returning('id');
+module.exports.getUserTeams = function (user_id) {
+  return db.select('*').from('users_teams').where('user_id', user_id);
 };
 
+module.exports.checkUserTeam = function (user_id, team_id) {
+  return db.select('*').from('users_teams').where({user_id: user_id, team_id: team_id});
+};
 
+module.exports.removeUserFromTeam = function (user_id, team_id) {
+  return db('users_teams').where({user_id: user_id, team_id: team_id});
+};

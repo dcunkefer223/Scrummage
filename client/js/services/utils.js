@@ -120,7 +120,7 @@ angular.module('scrummage')
         joinTeam : function (data) {
           return $http({
             method: 'POST',
-            url: '/changeuserteam',
+            url: '/jointeam',
             data: data
           }).then(function (resp) {
             return resp.data;
@@ -150,7 +150,7 @@ angular.module('scrummage')
 
       sprint : {
         createSprint : function (data) {
-          return $htpp({
+          return $http({
             method: 'POST',
             url: '/createsprint',
             data: data

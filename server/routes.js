@@ -20,7 +20,7 @@ module.exports = function(app){
   app.get('/auth/github/callback',
     passport.authenticate('github', { failureRedirect: '/#/signin' }),
       function (req, res) {
-        if(!req.user.team_id) {
+        if(!req.user.current_team) {
           res.redirect('/#/teamsetup');
         } else {
           res.redirect('/#/storyboard');
@@ -50,8 +50,7 @@ module.exports = function(app){
 
   app.get('/getallfeatures', function (req, res) {
     // ?team_id=integer
-    console.log(req.user);
-    Task.getAllFeatures(req.user.team_id, res);
+    Task.getAllFeatures(req.user.current_team, res);
   });
 
   app.get('/getfeaturesbystatus', function (req, res) {
@@ -119,19 +118,17 @@ module.exports = function(app){
     Task.changeTeamPoints(req.body, res);
   });
 
-  app.post('/changeuserteam', function (req, res) {
+  app.post('/jointeam', function (req, res) {
     // {user_id, team_id}
-    User.changeUserTeam(req.body, req.user, res);
+    User.joinTeam(req.body, req.user, res);
   });
 
   app.post('/addteam', function (req, res) {
-    User.createTeam(req.body, req.user, res);
+    Team.createTeam(req.body, req.user, res);
   });
 
-  app.get('/createsprint', function (req, res) {
-    Sprint.createSprint(req.body, req.user, res);
+  app.post('/createsprint', function (req, res) {
+    console.log('--------', req.user);
+    Team.createSprint(req.body, req.user.current_team, res);
   });
-
-
-
 };
