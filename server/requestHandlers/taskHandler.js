@@ -15,14 +15,14 @@ module.exports.addFeature = function (feature, user, res) {
     .then(function (id) {
       featureId = id[0];
       // fetch backlog points
-      return teamModel.fetchCurrentPoints(user.team_id, feature.status);
+      return teamModel.fetchPoints(user.team_id, feature.status);
     })
-    .then(function (fetchedPoints){
+    .then(function (response){
       // increment backlog points
-      points = fetchedPoints[0][feature.status];
-      points += parseInt(feature.points, 10);
+      points = JSON.parse(response[0][feature.status]);
+      points[points.length - 1] += parseInt(feature.points, 10);
       // update backlog points          
-      return teamModel.changeCurrentPoints(user.team_id, feature.status, points);
+      return teamModel.changePoints(user.team_id, feature.status, points);
     })
     .then(function (response) {
       console.log('Feature inserted at id: ' + featureId);
@@ -48,13 +48,13 @@ module.exports.changeFeatureStatus = function (obj, user, res) {
   taskModel.getStatusById(obj.feature_id)
     .then(function (oldStatus) {
       currentStatus = oldStatus[0].status;
-      return teamModel.fetchCurrentPoints(user.team_id, currentStatus);
+      return teamModel.fetchPoints(user.team_id, currentStatus);
     })
     .then(function (fetchedPoints) {
-      points = fetchedPoints[0][currentStatus];
+      points = JSON.parse(fetchedPoints[0][currentStatus]);
       // decrement previous status points
-      points -= parseInt(obj.points, 10);
-      return teamModel.changeCurrentPoints(user.team_id, currentStatus, points);
+      points[points.length - 1] -= parseInt(obj.points, 10);
+      return teamModel.changePoints(user.team_id, currentStatus, points);
     })
     .then(function () {
       // change current status
@@ -62,13 +62,13 @@ module.exports.changeFeatureStatus = function (obj, user, res) {
     })
     .then(function () {
       currentStatus = obj.status;
-      return teamModel.fetchCurrentPoints(user.team_id, currentStatus);
+      return teamModel.fetchPoints(user.team_id, currentStatus);
     })
     .then(function (fetchedPoints) {
-      points = fetchedPoints[0][currentStatus];
+      points = JSON.parse(fetchedPoints[0][currentStatus]);
       // increment current status points
-      points += parseInt(obj.points, 10);
-      return teamModel.changeCurrentPoints(user.team_id, currentStatus, points);
+      points[points.length - 1] += parseInt(obj.points, 10);
+      return teamModel.changePoints(user.team_id, currentStatus, points);
     })
     .then(function () {
       res.status(200).send({feature_id: obj.feature_id});
@@ -105,4 +105,8 @@ module.exports.getFeaturesByStatus = function (team_id, status, res) {
 
 module.exports.getCommentsOnFeature = function (feature_id, res) {
   taskModel.getCommentsOnFeature(feature_id, res);
+};
+
+module.exports.changeTeamPoints = function (obj, res) {
+  taskModel.changeTeamPoints(obj.team_id, obj.points, res);
 };
