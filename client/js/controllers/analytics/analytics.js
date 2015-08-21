@@ -7,7 +7,7 @@ angular.module('scrummage')
   };
 
   $scope.openVelocity = function () {
-    // $location.path('/velocity');
+    $location.path('/velocity');
   };
 
   });// end of contr

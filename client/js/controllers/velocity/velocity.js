@@ -1,34 +1,24 @@
 angular.module('scrummage')
 
-  .controller('burndownCtrl', function ($scope, Request) {
+  .controller('velocityCtrl', function ($scope, Request) {
 
     $scope.data = {
         labels: ['8/23', '8/24', '8/25', '8/26', '8/27', '8/28', '8/29'],
         datasets: [
           {
             label: 'In Progress',
-            fillColor: 'rgba(220,220,220,0.7)',
-            strokeColor: 'rgba(220,220,220,1)',
-            pointColor: 'rgba(220,220,220,1)',
-            pointStrokeColor: '#fff',
-            pointHighlightFill: '#fff',
-            pointHighlightStroke: 'rgba(220,220,220,1)',
-            data: [80, 72, 64, 43]
-          },
-          {
-            label: 'Backlog',
-            fillColor: 'rgba(151,187,205,1)',
+            fillColor: 'rgba(151,187,205,0)',
             strokeColor: 'rgba(151,187,205,1)',
             pointColor: 'rgba(151,187,205,1)',
             pointStrokeColor: '#fff',
             pointHighlightFill: '#fff',
             pointHighlightStroke: 'rgba(151,187,205,1)',
-            data: [80, 55, 47, 31]
+            data: [0, 22, 28, 33, 28, 25, 36]
           },
           {
             fillColor: 'rgba(255, 255, 255,0)',
             strokeColor: 'rgba(255, 255, 255 1)',
-            data: [80, 66.667, 52.333, 39, 26.667, 13.333, 0]
+            data: [30, 30, 30, 30, 30, 30, 30]
           }
         ]
       };
@@ -37,8 +27,8 @@ angular.module('scrummage')
       //   var resultsArr = [];
       //   var dy = pointsY[0] / pointsX.length;
       //   resultsArr.length = pointsX.length;
-      //   for(var i = 1; i < resultsArr.length; i++) {
-      //     resultsArr.push(resultsArr[i] - dy);
+      //   for(var i = 1; i < pointsX.length; i++) {
+      //     resultsArr.push(pointsX[0]);
       //   }
       //   return resultsArr;
       // };
