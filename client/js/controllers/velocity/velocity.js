@@ -1,7 +1,7 @@
 angular.module('scrummage')
 
   .controller('velocityCtrl', function ($scope, Request) {
-
+    
     $scope.data = {
         labels: ['8/23', '8/24', '8/25', '8/26', '8/27', '8/28', '8/29'],
         datasets: [
@@ -22,7 +22,8 @@ angular.module('scrummage')
           }
         ]
       };
-
+      // $scope.data.datasets[1]
+      //   .data.push($scope.data.datasets[0].data(function))
       // $scope.generateLineData = function (pointsX, pointsY) {
       //   var resultsArr = [];
       //   var dy = pointsY[0] / pointsX.length;
@@ -34,7 +35,6 @@ angular.module('scrummage')
       // };
 
       $scope.options =  {
-
         // Sets the chart to be responsive
         responsive: true,
 
@@ -60,7 +60,7 @@ angular.module('scrummage')
         bezierCurveTension : 0.4,
 
         //Boolean - Whether to show a dot for each point
-        pointDot : true,
+        pointDot : false,
 
         //Number - Radius of each point dot in pixels
         pointDotRadius : 4,

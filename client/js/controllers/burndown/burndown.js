@@ -1,6 +1,21 @@
 angular.module('scrummage')
 
   .controller('burndownCtrl', function ($scope, Request) {
+  //   $scope.openBurndown = function () {
+  //   $location.path('/burndown');
+  // };
+  
+    $scope.getTeamPoints = function (){
+      Request.analytics.getTeam()
+        .then(function(results){
+          $scope.data.datasets[0].data.push(results.backlog[0])
+          //$scope.data.datasets[1].data.unshift(results.backlog[0])
+          
+          console.log(results.backlog[0])
+          //$scope.data.data = (results.backlog[0])
+           //console.log(results.points)
+        })
+    }
 
     $scope.data = {
         labels: ['8/23', '8/24', '8/25', '8/26', '8/27', '8/28', '8/29'],
@@ -13,7 +28,7 @@ angular.module('scrummage')
             pointStrokeColor: '#fff',
             pointHighlightFill: '#fff',
             pointHighlightStroke: 'rgba(220,220,220,1)',
-            data: [80, 72, 64, 43]
+            data: []
           },
           {
             label: 'Backlog',
@@ -23,7 +38,7 @@ angular.module('scrummage')
             pointStrokeColor: '#fff',
             pointHighlightFill: '#fff',
             pointHighlightStroke: 'rgba(151,187,205,1)',
-            data: [80, 55, 47, 31]
+            data: [ 55, 47, 31]
           },
           {
             fillColor: 'rgba(255, 255, 255,0)',
