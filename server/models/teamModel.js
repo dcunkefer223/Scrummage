@@ -18,8 +18,8 @@ module.exports.fetchCurrentPoints = function (team_id, column) {
   return db.select(column).from('teams').where('id', team_id);
 };
 
-module.exports.fetchAllSprints = function (team_id) {
-  return db.select('*').from('sprints').where('id', team_id);
+module.exports.fetchAllSprints = function (team_id) {//-------------------------------
+  return db.select('*').from('sprints').where('team_id', team_id);
 };
 
 module.exports.changeCurrentPoints = function (team_id, column, points) {
@@ -31,5 +31,5 @@ module.exports.updateSprint = function (sprint_id, points) {
 };
 
 module.exports.createSprint = function (team_id, sprint) {
-	return db.insert(sprint).into('sprints').returning('id');
+  return db.insert(sprint).into('sprints').returning('id');
 };

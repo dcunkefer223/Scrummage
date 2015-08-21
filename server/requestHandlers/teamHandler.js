@@ -1,5 +1,6 @@
 var teamModel = require('../models/teamModel.js');
 var taskModel = require('../models/taskModel.js');
+var userModel = require('../models/userModel.js');
 
 module.exports.getTeam = function (team_id, res) {
 var resTeam = {};
@@ -17,7 +18,7 @@ var resTeam = {};
     })
     .catch(function (error) {
       console.error(error);
-      res.status(404).send('Failed to find request resource in database');
+      res.status(500).send('Failed to find request resource in database');
     });
 };
 
@@ -25,7 +26,7 @@ module.exports.createSprint = function (sprint, team_id, res) {
   teamModel.createSprint(team_id, sprint)
     .then(function (id) {
       console.log('Sprint inserted at ID: ' + id[0]);
-      res.status(201).send(id);
+      res.status(201).send({sprint_id: id[0]});
     })
     .catch(function (error) {
       console.error(error);
@@ -48,7 +49,7 @@ module.exports.createTeam = function (obj, user, res) {
   var newName = obj.name;
   teamModel.createTeam({name: obj.name, backlog: 0, progress: 0, complete: 0})
   .then(function (newTeam_id) {
-    return userModel.changeTeamId(user.id, newTeam_id[0].id);
+    return userModel.changeCurrentTeam(user.id, newTeam_id[0].id);
   })
   .then(function (response) {
     res.status(201).send({team_id: response[0]});

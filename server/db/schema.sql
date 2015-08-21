@@ -60,7 +60,8 @@ CREATE TABLE users (
   email VARCHAR,
   username VARCHAR,
   password VARCHAR,
-  github_id VARCHAR
+  github_id VARCHAR,
+  current_team INTEGER
 );
 
 CREATE TABLE users_teams (
@@ -104,7 +105,7 @@ CREATE TABLE sprints (
 ----------------------------- TEST VALUES -----------------------------
 -----------------------------------------------------------------------
 
-INSERT INTO teams (name, backlog, progress, complete) VALUES ('Test Team', 50, 5, 3);
+INSERT INTO teams (name, backlog, progress, complete) VALUES ('Test Team', 10, 15, 6);
 INSERT INTO users (username, github_id) VALUES ('JParis44', 11894565);
 INSERT INTO features (name, description, points, status, team_id, user_id)
   VALUES ('Save features', 'Store feature status in DB.', 7, 'backlog', 1, 1);
