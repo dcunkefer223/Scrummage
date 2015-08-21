@@ -1,35 +1,25 @@
 angular.module('scrummage')
 
-  .controller('burndownCtrl', function ($scope, Request) {
+  .controller('velocityCtrl', function ($scope, Request) {
 
     $scope.data = {
         labels: ['8/23', '8/24', '8/25', '8/26', '8/27', '8/28', '8/29'],
         datasets: [
           {
-            label: 'In Progress',
-            fillColor: '#FAA43A',
-            strokeColor: '#FAA43A',
-            pointColor: 'rgba(220,220,220,1)',
-            pointStrokeColor: '#fff',
-            pointHighlightFill: '#fff',
-            pointHighlightStroke: 'rgba(220,220,220,1)',
-            data: [80, 72, 64, 43]
-          },
-          {
-            label: 'Backlog',
-            fillColor: '#5DA5DA',
-            strokeColor: '#5DA5DA',
+            label: 'Rolling Average',
+            fillColor: 'rgba(151,187,205,0)',
+            strokeColor: 'rgba(151,187,205,1)',
             pointColor: 'rgba(151,187,205,1)',
             pointStrokeColor: '#fff',
             pointHighlightFill: '#fff',
             pointHighlightStroke: 'rgba(151,187,205,1)',
-            data: [80, 55, 47, 31]
+            data: [0, 22, 28, 33, 28, 25, 36]
           },
           {
-            label: 'Ideal Line',
-            fillColor: 'rgba(255, 255, 255, 0)',
-            strokeColor: 'rgba(255,255,255,1)',
-            data: [80, 66.667, 52.333, 39, 26.667, 13.333, 0]
+            label: 'Overall Team Average',
+            fillColor: 'rgba(255, 255, 255,0)',
+            strokeColor: 'rgba(255, 255, 255, 1)',
+            data: [30, 30, 30, 30, 30, 30, 30]
           }
         ]
       };
@@ -38,8 +28,8 @@ angular.module('scrummage')
       //   var resultsArr = [];
       //   var dy = pointsY[0] / pointsX.length;
       //   resultsArr.length = pointsX.length;
-      //   for(var i = 1; i < resultsArr.length; i++) {
-      //     resultsArr.push(resultsArr[i] - dy);
+      //   for(var i = 1; i < pointsX.length; i++) {
+      //     resultsArr.push(pointsX[0]);
       //   }
       //   return resultsArr;
       // };
@@ -49,23 +39,32 @@ angular.module('scrummage')
         // Sets the chart to be responsive
         responsive: true,
 
-        // Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
-        scaleBeginAtZero: true,
+        // Boolean - If we should show the scale at all
+        showScale: true,
+
+        // Boolean - If we want to override with a hard coded scale
+        scaleOverride: true,
 
         // Boolean - Whether to show labels on the scale
         scaleShowLabels: true,
 
-        ///Boolean - Whether grid lines are shown across the chart
-        scaleShowGridLines : true,
+        // Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+        scaleBeginAtZero: true,
 
         // Number - Scale label font size in pixels
         scaleFontSize: 18,
 
+        // Number - The number of steps in a hard coded scale
+        scaleSteps: 6,
+
         // Number - The value jump in the hard coded scale
         scaleStepWidth: 10,
 
+        ///Boolean - Whether grid lines are shown across the chart
+        scaleShowGridLines : true,
+
         //String - Colour of the grid lines
-        scaleGridLineColor : 'rgba(0, 0, 0, .1)',
+        scaleGridLineColor : 'rgba(0,0,0,.1)',
 
         //Number - Width of the grid lines
         scaleGridLineWidth : 1,
@@ -92,13 +91,10 @@ angular.module('scrummage')
         datasetStroke : true,
 
         //Number - Pixel width of dataset stroke
-        datasetStrokeWidth : 4,
+        datasetStrokeWidth : 4.5,
 
         //Boolean - Whether to fill the dataset with a colour
         datasetFill : true,
-
-        // String - Animation easing effect
-        animationEasing: "easeOutExpo",
 
         // Function - on animation progress
         onAnimationProgress: function(){},

@@ -3,7 +3,7 @@ var taskModel = require('../models/taskModel.js');
 var userModel = require('../models/userModel.js');
 
 module.exports.getTeam = function (team_id, res) {
-var resTeam = {};
+  var resTeam = {};
   teamModel.getTeam(team_id, res)
     .then(function (team) {
       // team[0].backlog = JSON.parse(team[0].backlog);
@@ -30,7 +30,7 @@ module.exports.createSprint = function (sprint, team_id, res) {
     })
     .catch(function (error) {
       console.error(error);
-      res.status(500).send('Error while inserting sprint into database');
+        res.status(404).send('Failed to find request resource in database');
     });
 };
 

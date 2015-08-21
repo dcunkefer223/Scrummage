@@ -156,7 +156,7 @@ angular.module('scrummage')
             data: data
           }).then(function (resp) {
             return resp.data;
-          },  noAuthRedirect);
+          }, noAuthRedirect);
         }
       }
     };

@@ -7,7 +7,6 @@ exports.addUser = function(user, cb){
   // user is {email, username, github_id}
   db('users').insert(user).returning('id').then(
     function (id) {
-      console.log("User inserted at: " + id[0]);
       cb(null, id);
     },
     function (error) {
@@ -72,3 +71,4 @@ module.exports.checkUserTeam = function (user_id, team_id) {
 module.exports.removeUserFromTeam = function (user_id, team_id) {
   return db('users_teams').where({user_id: user_id, team_id: team_id});
 };
+

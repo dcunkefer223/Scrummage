@@ -19,8 +19,8 @@ module.exports.addCommentToFeature = function (comment, res) {
   );
 };
 
-module.exports.changeFeatureStatus = function (feature_id, newStatus, res) {
-  return db('features').where('id', feature_id).update('status', newStatus);
+module.exports.changeFeatureStatus = function (feature_id, newStatus, currentDate, res) {
+  return db('features').where('id', feature_id).update({status: newStatus, status_time: currentDate}).returning('*');
 };
 
 module.exports.changeFeaturePoints = function (feature_id, newPoints, res) {
@@ -139,6 +139,18 @@ module.exports.getCommentsOnFeature = function (feature_id, res) {
     function (error) {
       console.error(error);
       res.status(404).send('Failed to find request resource in database');
+    }
+  );
+};
+
+module.exports.changeTeamPoints = function (team_id, newPoints, res) {
+  db('teams').where('id', team_id).update('points', newPoints).then(
+    function (rows) {
+      res.status(200).send({team_id: team_id, points: newPoints});
+    }, 
+    function (error) {
+      console.error(error);
+      res.status(500).send('Failed to update feature in database');
     }
   );
 };
