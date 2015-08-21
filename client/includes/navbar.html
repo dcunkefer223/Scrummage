@@ -15,21 +15,20 @@
             </div>
         </li>
       </div>
-      <div id= "analyticsModal" ng-controller='analyticsCtrl'>
-        <li data-step="3" data-intro="View the current status with this burndown chart" data-position="right">
-            <a href = "#" ng-click="open();getTeamPoints()"><i class="grow fa fa-area-chart nav-list-icon"></i></a>
+      <div id= "analyticsModal">
+        <li data-step="6" data-intro="View the current status with this burndown chart" data-position="right">
+          <a href = "/#/analytics"><i class="grow fa fa-area-chart nav-list-icon"></i></a>
         </li> 
-        <div class= "modal-chart" modal="showModal"  close="cancel()" ng-include="'../js/controllers/analytics/analytics.html'"></div>
       </div>
       <div id= "featureSetupModal" ng-controller='featureSetupCtrl'>
-        <li data-step="4" data-intro="This is where you add your new features to the board." data-position="right">
+        <li data-step="3" data-intro="This is where you add your new features to the board." data-position="right">
           <button class="add-feature" ng-disabled="isDisabled" ng-click="open()"><i class="grow fa fa-plus"></i></button></li>
           <div class="feature-modal" modal="showModal" close="cancel()" ng-include="'../js/controllers/featureSetup/featureSetup.html'"></div>
-        <li data-step="5" data-intro="This locks/unlocks the board." data-position="right">
+        <li data-step="4" data-intro="This locks/unlocks the board." data-position="right">
           <a href="#" ng-if="!isDisabled" ng-click="disableClick()"><i class="fa fa-lock"></i></a>
           <a href="#" ng-if="isDisabled" ng-click="disableClick()"><i class="fa fa-unlock-alt"></i></a>
         </li>
       </div>
-      <li data-step="6" data-intro="Your changes are automatically saved, logout here!" data-position="right"><a href="/logout"><i class="grow fa fa-sign-out"></i></a></li>
+      <li data-step="7" data-intro="Your changes are automatically saved, logout here!" data-position="top"><a href="/logout"><i class="grow fa fa-sign-out"></i></a></li>
     </ul>
 </div>
