@@ -143,18 +143,6 @@ module.exports.getCommentsOnFeature = function (feature_id, res) {
   );
 };
 
-module.exports.changeTeamPoints = function (team_id, newPoints, res) {
-  db('teams').where('id', team_id).update('points', newPoints).then(
-    function (rows) {
-      res.status(200).send({team_id: team_id, points: newPoints});
-    }, 
-    function (error) {
-      console.error(error);
-      res.status(500).send('Failed to update feature in database');
-    }
-  );
-};
-
 module.exports.getStatusById = function (feature_id) {
   return db.select('status').from('features').where('id', feature_id);
 };

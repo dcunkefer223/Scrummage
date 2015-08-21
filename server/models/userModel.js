@@ -51,17 +51,6 @@ exports.generateHash = function(password){
   return hash;
 };
 
-exports.fetchTeamName = function (newTeam_name, res) {
-  return db.select('id').from('teams').where('name', newTeam_name);
-};
-
-exports.changeTeamId = function (user_id, newTeam_id) {
+module.exports.changeTeamId = function (user_id, newTeam_id) {
   return db('users').where('id', user_id).update('team_id', newTeam_id);
 };
-
-exports.createTeam = function (newTeam, res) {
-  console.log('newTeam in model looks like', newTeam);
-  return db('teams').insert(newTeam).returning('id');
-};
-
-
