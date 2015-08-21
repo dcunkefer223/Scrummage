@@ -48,17 +48,23 @@ angular.module('scrummage')
         // Sets the chart to be responsive
         responsive: true,
 
+        // Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+        scaleBeginAtZero: true,
+
+        // Boolean - Whether to show labels on the scale
+        scaleShowLabels: true,
+
+        ///Boolean - Whether grid lines are shown across the chart
+        scaleShowGridLines : true,
+
         // Number - Scale label font size in pixels
         scaleFontSize: 18,
 
         // Number - The value jump in the hard coded scale
         scaleStepWidth: 10,
 
-        ///Boolean - Whether grid lines are shown across the chart
-        scaleShowGridLines : true,
-
         //String - Colour of the grid lines
-        scaleGridLineColor : 'rgba(0,0,0,.1)',
+        scaleGridLineColor : 'rgba(0, 0, 0, .1)',
 
         //Number - Width of the grid lines
         scaleGridLineWidth : 1,

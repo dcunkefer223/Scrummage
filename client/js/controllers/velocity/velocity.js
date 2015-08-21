@@ -6,7 +6,7 @@ angular.module('scrummage')
         labels: ['8/23', '8/24', '8/25', '8/26', '8/27', '8/28', '8/29'],
         datasets: [
           {
-            label: 'In Progress',
+            label: 'Rolling Average',
             fillColor: 'rgba(151,187,205,0)',
             strokeColor: 'rgba(151,187,205,1)',
             pointColor: 'rgba(151,187,205,1)',
@@ -16,6 +16,7 @@ angular.module('scrummage')
             data: [0, 22, 28, 33, 28, 25, 36]
           },
           {
+            label: 'Overall Team Average',
             fillColor: 'rgba(255, 255, 255,0)',
             strokeColor: 'rgba(255, 255, 255 1)',
             data: [30, 30, 30, 30, 30, 30, 30]
@@ -38,8 +39,23 @@ angular.module('scrummage')
         // Sets the chart to be responsive
         responsive: true,
 
+        // Boolean - If we should show the scale at all
+        showScale: true,
+
+        // Boolean - If we want to override with a hard coded scale
+        scaleOverride: true,
+
+        // Boolean - Whether to show labels on the scale
+        scaleShowLabels: true,
+
+        // Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+        scaleBeginAtZero: true,
+
         // Number - Scale label font size in pixels
         scaleFontSize: 18,
+
+        // Number - The number of steps in a hard coded scale
+        scaleSteps: 6,
 
         // Number - The value jump in the hard coded scale
         scaleStepWidth: 10,
