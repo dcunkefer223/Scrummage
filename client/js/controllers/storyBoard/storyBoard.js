@@ -37,6 +37,13 @@ angular.module('scrummage')
 
       $scope.renderBoard();
 
+      $scope.formatDate = function (currentDate) {
+        var newDate = new Date(currentDate);
+        var currentMonth = newDate.getMonth();
+        var currentDay = newDate.getDate();
+        return ((currentMonth + 1) + '/' + currentDay);
+      }
+
       $scope.dropCallback = function (event, index, item, external, listName) {
         item.status = listName;
         item.points = parseInt(item.points);
@@ -45,24 +52,24 @@ angular.module('scrummage')
           Request.feature.updateStatus({ 
             feature_id : item.id, 
             points : item.points,
-            status : item.status }).then(function(){
-
+            status : item.status }).then(function(response){
+              $scope.formatDate(response.status_date);
           });
         }
         else if(listName === "progress") {
           Request.feature.updateStatus({ 
             feature_id : item.id, 
             points : item.points,
-            status : item.status }).then(function(){
-
+            status : item.status }).then(function(response){
+              $scope.formatDate(response.status_date);
           });
         }
         else if(listName === "complete") {
           Request.feature.updateStatus({ 
             feature_id : item.id, 
             points : item.points,
-            status : item.status }).then(function(){
-
+            status : item.status }).then(function(response){
+              $scope.formatDate(response.status_date);
           });
         }
 

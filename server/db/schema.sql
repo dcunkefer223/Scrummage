@@ -76,6 +76,7 @@ CREATE TABLE features (
   description VARCHAR,
   points INTEGER,
   status VARCHAR,
+  status_date TIMESTAMP,
   team_id INTEGER references teams(id) ON DELETE CASCADE,
   user_id INTEGER DEFAULT null references users(id) ON DELETE CASCADE
 );
