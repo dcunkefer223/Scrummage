@@ -89,7 +89,7 @@ CREATE TABLE comments (
   user_id INTEGER references users(id) ON DELETE CASCADE
 );
 
--- Possibily give users and features a sprint id.
+-- Possibly give users and features a sprint id.
 
 CREATE TABLE sprints (
   id SERIAL PRIMARY KEY,

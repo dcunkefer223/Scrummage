@@ -46,7 +46,7 @@ module.exports.changeFeatureStatus = function (obj, user, res) {
   var currentStatus;
   var currentDate = new Date();
   currentDate = currentDate.toDateString();
-  console.log('the user looks like', user);
+  // console.log('the user looks like', user);
 
   taskModel.getStatusById(obj.feature_id)
     .then(function (oldStatus) {
@@ -72,10 +72,11 @@ module.exports.changeFeatureStatus = function (obj, user, res) {
       points = fetchedPoints[0][currentStatus];
       // increment current status points
       points += parseInt(obj.points, 10);
+      // console.log(fetchedPoints[0]);
       return teamModel.changeCurrentPoints(user.current_team, currentStatus, points);
     })
-    .then(function () {
-      res.status(200).send(feature[0]);
+    .then(function (resp) {
+      res.status(200).send({team: resp, feature: feature});
     })
     .catch(function (error) {
       console.error(error);

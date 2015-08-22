@@ -1,5 +1,5 @@
 angular.module('scrummage')
-    .controller('storyBoardCtrl', function ($scope, $interval, Request) {
+    .controller('storyBoardCtrl', ['$scope', '$interval', 'Request', 'ColumnPoints', function ($scope, $interval, Request, ColumnPoints) {
 
       $scope.models = {
         selected: null,
@@ -42,7 +42,7 @@ angular.module('scrummage')
         var currentMonth = newDate.getMonth();
         var currentDay = newDate.getDate();
         return ((currentMonth + 1) + '/' + currentDay);
-      }
+      };
 
       $scope.dropCallback = function (event, index, item, external, listName) {
         item.status = listName;
@@ -53,7 +53,13 @@ angular.module('scrummage')
             feature_id : item.id, 
             points : item.points,
             status : item.status }).then(function(response){
-              $scope.formatDate(response.status_date);
+              var sendData = {
+                backlog: response['team'][0]['backlog'],
+                progress: response['team'][0]['progress'],
+                complete: response['team'][0]['complete'],
+                date: $scope.formatDate(response['feature'][0].status_date)
+              };
+              ColumnPoints.setColumns(sendData);
           });
         }
         else if(listName === "progress") {
@@ -61,7 +67,13 @@ angular.module('scrummage')
             feature_id : item.id, 
             points : item.points,
             status : item.status }).then(function(response){
-              $scope.formatDate(response.status_date);
+              var sendData = {
+                backlog: response['team'][0]['backlog'],
+                progress: response['team'][0]['progress'],
+                complete: response['team'][0]['complete'],
+                date: $scope.formatDate(response['feature'][0].status_date)
+              };
+              ColumnPoints.setColumns(sendData);
           });
         }
         else if(listName === "complete") {
@@ -69,10 +81,15 @@ angular.module('scrummage')
             feature_id : item.id, 
             points : item.points,
             status : item.status }).then(function(response){
-              $scope.formatDate(response.status_date);
+              var sendData = {
+                backlog: response['team'][0]['backlog'],
+                progress: response['team'][0]['progress'],
+                complete: response['team'][0]['complete'],
+                date: $scope.formatDate(response['feature'][0].status_date)
+              };
+              ColumnPoints.setColumns(sendData);
           });
         }
-
         return item;
       };
 
@@ -95,7 +112,7 @@ angular.module('scrummage')
         $scope.modelAsJson = angular.toJson(model, true);
       }, true);
 
-    })
+    }])
     .filter('capitalize', function() {
         return function(input) {
           return input.charAt(0).toUpperCase() + input.substr(1).toLowerCase();

@@ -1,9 +1,21 @@
 angular.module('scrummage')
 
-  .controller('burndownCtrl', function ($scope, Request) {
+  .controller('burndownCtrl', ['$scope', 'Request', 'ColumnPoints', function ($scope, Request, ColumnPoints) {
+
+    $scope.columnData;
+
+    $scope.updateData = function(columnData) {
+      for(var i = 0; i < $scope.data.labels.length; i++) {
+        if($scope.data.labels[i] === columnData.date) {
+          $scope.data.datasets[0].data[i] = columnData.backlog + columnData.progress;
+          $scope.data.datasets[1].data[i] = columnData.backlog;
+        }
+      }
+      console.log($scope.data.datasets);
+    };
 
     $scope.data = {
-        labels: ['8/23', '8/24', '8/25', '8/26', '8/27', '8/28', '8/29'],
+        labels: ['8/16' ,'8/17', '8/18', '8/19', '8/20', '8/21', '8/22'],
         datasets: [
           {
             label: 'In Progress',
@@ -34,6 +46,7 @@ angular.module('scrummage')
         ]
       };
 
+      // Under construction ideal line generator
       // $scope.generateLineData = function (pointsX, pointsY) {
       //   var resultsArr = [];
       //   var dy = pointsY[0] / pointsX.length;
@@ -110,4 +123,14 @@ angular.module('scrummage')
         legendTemplate : '<ul class="tc-chart-js-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].strokeColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>'
       };
 
-  });
+      $scope.$watch(
+        function () {
+          return ColumnPoints.getColumns();
+        },
+
+        function (newValue, oldValue) {
+          console.log(newValue);
+          $scope.columnData = newValue;
+          $scope.updateData(newValue);
+        }, true);
+  }]);

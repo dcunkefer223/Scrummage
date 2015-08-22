@@ -59,3 +59,14 @@ module.exports.createTeam = function (obj, user, res) {
     res.status(500).send('Error while creating team in database');
   });
 };
+
+module.exports.getAllPoints = function (team_id, res) {
+  teamModel.fetchCurrentPoints(team_id, '*')
+    .then(function (response) {
+      res.status(201).send(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+      res.status(500).send('Error while fetching all points');
+    });
+};

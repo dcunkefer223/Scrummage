@@ -46,6 +46,7 @@ angular.module('scrummage')
             url: '/changestatus',
             data: data
           }).then(function (resp) {
+            // console.log(resp.data)
             return resp.data;
           }, noAuthRedirect);
         },
@@ -157,9 +158,34 @@ angular.module('scrummage')
           }).then(function (resp) {
             return resp.data;
           }, noAuthRedirect);
+        },
+        fetchAllPoints : function(data) {
+          return $http({
+            method: 'GET',
+            url: '/getallpoints',
+            data : data
+          }).then(function (resp) {
+            return resp.data;
+          }, noAuthRedirect);
         }
       }
     };
 
     return returnObj;
+  })
+
+  .factory('ColumnPoints', function() {
+    var columns = {};
+
+    return {
+      getColumns : function () {
+        return columns;
+      },
+      setColumns : function (data) {
+        columns.backlog = data.backlog;
+        columns.progress = data.progress;
+        columns.complete = data.complete;
+        columns.date = data.date;
+      }
+    };
   });
