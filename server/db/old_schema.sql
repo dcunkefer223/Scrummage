@@ -39,20 +39,24 @@
 --   *User_ID
 
 
-DROP TABLE IF EXISTS users_teams CASCADE;
-DROP TABLE IF EXISTS comments CASCADE;
-DROP TABLE IF EXISTS sprints CASCADE;
-DROP TABLE IF EXISTS features CASCADE;
-DROP TABLE IF EXISTS teams CASCADE;
 DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS teams CASCADE;
+DROP TABLE IF EXISTS features CASCADE;
+DROP TABLE IF EXISTS comments CASCADE;
+
+DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS teams CASCADE;
+DROP TABLE IF EXISTS features CASCADE;
+DROP TABLE IF EXISTS comments CASCADE;
 
 CREATE TABLE teams (
   id SERIAL PRIMARY KEY,
   name VARCHAR,
+  points INTEGER,
   start TIMESTAMP,
-  backlog INTEGER,
-  progress INTEGER,
-  complete INTEGER
+  backlog VARCHAR,
+  progress VARCHAR,
+  complete VARCHAR
 );
 
 CREATE TABLE users (
@@ -61,13 +65,7 @@ CREATE TABLE users (
   username VARCHAR,
   password VARCHAR,
   github_id VARCHAR,
-  current_team INTEGER
-);
-
-CREATE TABLE users_teams (
-  user_id INTEGER references users(id) ON DELETE CASCADE,
-  team_id INTEGER references teams(id) ON DELETE CASCADE,
-  CONSTRAINT users_teams_pkey PRIMARY KEY (user_id, team_id)
+  team_id INTEGER references teams(id)
 );
 
 CREATE TABLE features (
@@ -76,36 +74,33 @@ CREATE TABLE features (
   description VARCHAR,
   points INTEGER,
   status VARCHAR,
-  team_id INTEGER references teams(id) ON DELETE CASCADE,
-  user_id INTEGER DEFAULT null references users(id) ON DELETE CASCADE
+  team_id INTEGER references teams(id),
+  user_id INTEGER DEFAULT null references users(id)
 );
 
 CREATE TABLE comments (
   id SERIAL PRIMARY KEY,
   posted TIMESTAMP,
   comment VARCHAR,
-  feature_id INTEGER references features(id) ON DELETE CASCADE,
-  user_id INTEGER references users(id) ON DELETE CASCADE
+  feature_id INTEGER references features(id),
+  user_id INTEGER references users(id)
 );
 
 -- Possibily give users and features a sprint id.
 
-CREATE TABLE sprints (
-  id SERIAL PRIMARY KEY,
-  team_id INTEGER references teams(id) ON DELETE CASCADE,
-  name VARCHAR,
-  sprintstart TIMESTAMP,
-  sprintend TIMESTAMP,
-  backlog INTEGER,
-  progress INTEGER,
-  complete INTEGER
-);
+-- CREATE TABLE sprints {
+--   id SERIAL PRIMARY KEY,
+--   name VARCHAR,
+--   start TIMESTAMP,
+--   end TIMESTAMP,
+--   team_id INTEGER references teams(id)
+-- }
 
 -----------------------------------------------------------------------
 ----------------------------- TEST VALUES -----------------------------
 -----------------------------------------------------------------------
 
-INSERT INTO teams (name, backlog, progress, complete) VALUES ('Test Team', 10, 15, 6);
+INSERT INTO teams (name, backlog, progress, complete) VALUES ('Test Team', '[50]', '[5]', '[3]');
 INSERT INTO users (username, github_id) VALUES ('JParis44', 11894565);
 INSERT INTO features (name, description, points, status, team_id, user_id)
   VALUES ('Save features', 'Store feature status in DB.', 7, 'backlog', 1, 1);
