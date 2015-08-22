@@ -1,21 +1,25 @@
 angular.module('scrummage')
 
-  .controller('burndownCtrl', ['$scope', 'Request', 'ColumnPoints', function ($scope, Request, ColumnPoints) {
+  .controller('burndownCtrl', ['$scope', 'Request', 'ColumnPoints', 'Sprint', function ($scope, Request, ColumnPoints, Sprint) {
 
     $scope.columnData;
+    $scope.labelData;
 
-    $scope.updateData = function(columnData) {
+    $scope.updateColumnData = function(columnData) {
       for(var i = 0; i < $scope.data.labels.length; i++) {
         if($scope.data.labels[i] === columnData.date) {
           $scope.data.datasets[0].data[i] = columnData.backlog + columnData.progress;
           $scope.data.datasets[1].data[i] = columnData.backlog;
         }
       }
-      console.log($scope.data.datasets);
+    };
+
+    $scope.updateLabelData = function(labelData) {
+      $scope.data.labels = labelData.dateArray;
     };
 
     $scope.data = {
-        labels: ['8/16' ,'8/17', '8/18', '8/19', '8/20', '8/21', '8/22'],
+        labels: ['8/18' ,'8/19', '8/20', '8/21', '8/22', '8/23', '8/24'],
         datasets: [
           {
             label: 'In Progress',
@@ -129,8 +133,18 @@ angular.module('scrummage')
         },
 
         function (newValue, oldValue) {
-          console.log(newValue);
           $scope.columnData = newValue;
-          $scope.updateData(newValue);
+          $scope.updateColumnData(newValue);
+        }, true);
+
+      $scope.$watch(
+        function () {
+          return Sprint.getSprint();
+        },
+
+        function (newValue, oldValue) {
+          console.log(newValue);
+          $scope.labelData = newValue;
+          $scope.updateLabelData(newValue);
         }, true);
   }]);

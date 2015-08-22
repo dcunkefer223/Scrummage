@@ -174,7 +174,7 @@ angular.module('scrummage')
     return returnObj;
   })
 
-  .factory('ColumnPoints', function() {
+  .factory('ColumnPoints', function () {
     var columns = {};
 
     return {
@@ -188,4 +188,21 @@ angular.module('scrummage')
         columns.date = data.date;
       }
     };
+  })
+
+  .factory('Sprint', function () {
+    var sprintData = {};
+
+    return {
+      getSprint : function () {
+        return sprintData;
+      },
+      setSprint : function(data) {
+        sprintData.name = data.name;
+        sprintData.start = data.start;
+        sprintData.end = data.end;
+        sprintData.dateArray = data.dateArray;
+      }
+    };
   });
+
