@@ -57,7 +57,7 @@ module.exports = function(app){
 
   app.get('/getallpoints', function (req, res) {
     Team.getAllPoints(req.user.current_team, res);
-  })
+  });
 
 
   // POST requests
