@@ -29,3 +29,17 @@ module.exports.joinTeam = function (obj, user, res) {
   });
 
 };
+
+module.exports.leaveTeam = function(user, res) {
+  userModel.removeUserFromTeam(user.id, user.current_team)
+  .then(function () {
+    return userModel.changeCurrentTeam(user.id, null);
+  })
+  .then(function (response) {
+    res.status(201).send();
+  })
+  .catch(function (error) {
+    console.log(error);
+    res.status(500).send('Error while removing user team relation from database');
+  });
+};

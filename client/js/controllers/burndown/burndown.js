@@ -19,7 +19,7 @@ angular.module('scrummage')
     };
 
     $scope.data = {
-        labels: ['8/18' ,'8/19', '8/20', '8/21', '8/22', '8/23', '8/24'],
+        labels: [],
         datasets: [
           {
             label: 'In Progress',
@@ -29,7 +29,7 @@ angular.module('scrummage')
             pointStrokeColor: '#fff',
             pointHighlightFill: '#fff',
             pointHighlightStroke: 'rgba(220,220,220,1)',
-            data: [80, 72, 64, 43]
+            data: [0, 0, 0, 0, 0, 0, 0]
           },
           {
             label: 'Backlog',
@@ -39,7 +39,7 @@ angular.module('scrummage')
             pointStrokeColor: '#fff',
             pointHighlightFill: '#fff',
             pointHighlightStroke: 'rgba(151,187,205,1)',
-            data: [80, 55, 47, 31]
+            data: [0, 0, 0, 0, 0, 0, 0]
           },
           {
             label: 'Ideal Line',
@@ -50,7 +50,8 @@ angular.module('scrummage')
         ]
       };
 
-      // Under construction ideal line generator
+      // UNDER CONSTRUCTION: ideal line generator
+
       // $scope.generateLineData = function (pointsX, pointsY) {
       //   var resultsArr = [];
       //   var dy = pointsY[0] / pointsX.length;
@@ -133,6 +134,7 @@ angular.module('scrummage')
         },
 
         function (newValue, oldValue) {
+          console.log(oldValue);
           $scope.columnData = newValue;
           $scope.updateColumnData(newValue);
         }, true);
@@ -143,7 +145,7 @@ angular.module('scrummage')
         },
 
         function (newValue, oldValue) {
-          console.log(newValue);
+          console.log(oldValue);
           $scope.labelData = newValue;
           $scope.updateLabelData(newValue);
         }, true);

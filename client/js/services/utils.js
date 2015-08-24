@@ -146,6 +146,16 @@ angular.module('scrummage')
           }).then(function (resp) {
             return resp.data;
           }, noAuthRedirect);
+        },
+
+        leaveTeam : function (data) {
+          return $http({
+            method: 'POST',
+            url: '/leaveteam',
+            data: data
+          }).then(function (resp) {
+            return resp.data;
+          }, noAuthRedirect);
         }
       },
 
