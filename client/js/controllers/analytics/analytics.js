@@ -1,6 +1,6 @@
 angular.module('scrummage')
 
-  .controller('analyticsCtrl', function ($scope, $location, Request){
+  .controller('analyticsCtrl', ['$scope', '$location', function ($scope, $location) {
 
   $scope.openBurndown = function () {
     $location.path('/burndown');
@@ -10,5 +10,5 @@ angular.module('scrummage')
     $location.path('/velocity');
   };
 
-  });// end of contr
+  }]);// end of contr
 

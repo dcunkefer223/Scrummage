@@ -37,7 +37,6 @@ angular.module('scrummage')
     $scope.createSprint = function (newSprint) {
       Request.sprint.createSprint(newSprint)
       .then(function (response) {
-        console.log(response);
         var name = response[0].name;
         var start = $scope.formatDate(response[0].sprintstart);
         var end = $scope.formatDate(response[0].sprintend);
@@ -47,10 +46,11 @@ angular.module('scrummage')
           start : start,
           end : end,
           dateArray : dateArr
-        }
-        console.log(sendData);
+        };
+
         Sprint.setSprint(sendData);
       });
+      
       $location.path('/storyboard');
     };
 

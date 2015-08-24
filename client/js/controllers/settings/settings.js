@@ -1,6 +1,6 @@
 angular.module('scrummage')
 
-.controller('settingsCtrl', function($scope){
+.controller('settingsCtrl', ['$scope', function ($scope){
   $scope.open = function() {
     $scope.showModal = true;
   };
@@ -13,4 +13,4 @@ angular.module('scrummage')
     $scope.showModal = false;
   };
 
-});
+}]);

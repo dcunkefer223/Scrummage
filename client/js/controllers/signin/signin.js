@@ -1,5 +1,5 @@
 angular.module('scrummage')
 
-.controller('signinCtrl', function($scope){
+.controller('signinCtrl', ['$scope', function ($scope){
   
-});
+}]);
