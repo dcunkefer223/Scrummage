@@ -63,6 +63,10 @@ module.exports = function(app){
     Task.getCommentsOnFeature(req.query.feature_id, res);
   });
 
+  app.get('/getallpoints', function (req, res) {
+    Team.getAllPoints(req.user.current_team, res);
+  })
+
 
   // POST requests
 

@@ -42,8 +42,11 @@ module.exports.addCommentToFeature = function (comment, res) {
 module.exports.changeFeatureStatus = function (obj, user, res) {
   // check current status
   var points;
+  var feature;
   var currentStatus;
-  console.log('the user looks like', user);
+  var currentDate = new Date();
+  currentDate = currentDate.toDateString();
+  // console.log('the user looks like', user);
 
   taskModel.getStatusById(obj.feature_id)
     .then(function (oldStatus) {
@@ -58,9 +61,10 @@ module.exports.changeFeatureStatus = function (obj, user, res) {
     })
     .then(function () {
       // change current status
-      return taskModel.changeFeatureStatus(obj.feature_id, obj.status, res);
+      return taskModel.changeFeatureStatus(obj.feature_id, obj.status, currentDate, res);
     })
-    .then(function () {
+    .then(function (newFeature) {
+      feature = newFeature;
       currentStatus = obj.status;
       return teamModel.fetchCurrentPoints(user.current_team, currentStatus);
     })
@@ -68,10 +72,11 @@ module.exports.changeFeatureStatus = function (obj, user, res) {
       points = fetchedPoints[0][currentStatus];
       // increment current status points
       points += parseInt(obj.points, 10);
+      // console.log(fetchedPoints[0]);
       return teamModel.changeCurrentPoints(user.current_team, currentStatus, points);
     })
-    .then(function () {
-      res.status(200).send({feature_id: obj.feature_id});
+    .then(function (resp) {
+      res.status(200).send({team: resp, feature: feature});
     })
     .catch(function (error) {
       console.error(error);

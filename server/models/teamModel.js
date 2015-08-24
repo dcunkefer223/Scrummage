@@ -9,7 +9,6 @@ module.exports.fetchTeamName = function (team_name, res) {
 };
 
 module.exports.createTeam = function (newTeam, res) {
-  console.log('newTeam in model looks like', newTeam);
   return db('teams').insert(newTeam).returning('id');
 };
 
@@ -18,12 +17,12 @@ module.exports.fetchCurrentPoints = function (team_id, column) {
   return db.select(column).from('teams').where('id', team_id);
 };
 
-module.exports.fetchAllSprints = function (team_id) {//-------------------------------
+module.exports.fetchAllSprints = function (team_id) {
   return db.select('*').from('sprints').where('team_id', team_id);
 };
 
 module.exports.changeCurrentPoints = function (team_id, column, points) {
-  return db('teams').where('id', team_id).update(column, points);
+  return db('teams').where('id', team_id).update(column, points).returning('*');
 };
 
 module.exports.updateSprint = function (sprint_id, points) {

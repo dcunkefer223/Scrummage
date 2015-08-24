@@ -19,8 +19,8 @@ module.exports.addCommentToFeature = function (comment, res) {
   );
 };
 
-module.exports.changeFeatureStatus = function (feature_id, newStatus, res) {
-  return db('features').where('id', feature_id).update('status', newStatus);
+module.exports.changeFeatureStatus = function (feature_id, newStatus, currentDate, res) {
+  return db('features').where('id', feature_id).update({status : newStatus, status_date : currentDate}).returning('*');
 };
 
 module.exports.changeFeaturePoints = function (feature_id, newPoints, res) {
