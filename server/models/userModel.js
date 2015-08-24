@@ -70,5 +70,5 @@ module.exports.checkUserTeam = function (user_id, team_id) {
 };
 
 module.exports.removeUserFromTeam = function (user_id, team_id) {
-  return db('users_teams').where({user_id: user_id, team_id: team_id});
+  return db('users_teams').where({user_id: user_id, team_id: team_id}).del();
 };

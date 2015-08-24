@@ -61,6 +61,7 @@ CREATE TABLE users (
   username VARCHAR,
   password VARCHAR,
   github_id VARCHAR,
+  picture VARCHAR,
   current_team INTEGER
 );
 

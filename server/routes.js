@@ -30,14 +30,6 @@ module.exports = function(app){
 
   // GET requests
 
-  // app.get('/signin', function (req, res){
-  //   res.render('signin', { message: req.flash('signinMessage') });
-  // });
-
-  // app.get('/signup', function (req, res){
-  //   res.render('signup', { message: req.flash('signupMessage') });
-  // });
-
   app.get('/logout', function (req, res) {
     req.logout();
     res.redirect('/');
@@ -69,18 +61,6 @@ module.exports = function(app){
 
 
   // POST requests
-
-  // app.post('/signup', passport.authenticate('local-signup', {
-  //   successRedirect: '/signin',
-  //   failureRedirect: '/signup',
-  //   failureFlash: true
-  // }));
-
-  // app.post('/signin', passport.authenticate('local-signin', {
-  //   successRedirect: '/storyBoard',
-  //   failureRedirect: '/signin',
-  //   failureFlash: true
-  // }));
   
   app.post('/addfeature', function (req, res) {
     // feature is {name, description, points, status, team_id, user_id}
@@ -126,6 +106,11 @@ module.exports = function(app){
     // {user_id, team_id}
     User.joinTeam(req.body, req.user, res);
   });
+
+  app.post('/leaveteam', function (req, res) {
+
+    User.leaveTeam(req.user, res);
+  })
 
   app.post('/addteam', function (req, res) {
     Team.createTeam(req.body, req.user, res);
