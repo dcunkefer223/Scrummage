@@ -37,7 +37,9 @@ angular.module('scrummage')
 
       $scope.renderBoard();
 
-      $scope.formatDate = function (currentDate) {
+      // setInterval($scope.renderBoard, 5000);
+
+      var formatDate = function (currentDate) {
         var newDate = new Date(currentDate);
         var currentMonth = newDate.getMonth();
         var currentDay = newDate.getDate();
@@ -47,6 +49,9 @@ angular.module('scrummage')
       $scope.dropCallback = function (event, index, item, external, listName) {
         item.status = listName;
         item.points = parseInt(item.points);
+        // add a pause setInterval on dnd-dragstart
+        // then inside of this function unpause the setInterval
+        // possibly think of adding a 'pause' helper function
 
         if(listName === "backlog") {
           Request.feature.updateStatus({ 
@@ -57,7 +62,7 @@ angular.module('scrummage')
                 backlog: response['team'][0]['backlog'],
                 progress: response['team'][0]['progress'],
                 complete: response['team'][0]['complete'],
-                date: $scope.formatDate(response['feature'][0].status_date)
+                date: formatDate(response['feature'][0].status_date)
               };
               ColumnPoints.setColumns(sendData);
           });
@@ -71,7 +76,7 @@ angular.module('scrummage')
                 backlog: response['team'][0]['backlog'],
                 progress: response['team'][0]['progress'],
                 complete: response['team'][0]['complete'],
-                date: $scope.formatDate(response['feature'][0].status_date)
+                date: formatDate(response['feature'][0].status_date)
               };
               ColumnPoints.setColumns(sendData);
           });
@@ -85,7 +90,7 @@ angular.module('scrummage')
                 backlog: response['team'][0]['backlog'],
                 progress: response['team'][0]['progress'],
                 complete: response['team'][0]['complete'],
-                date: $scope.formatDate(response['feature'][0].status_date)
+                date: formatDate(response['feature'][0].status_date)
               };
               ColumnPoints.setColumns(sendData);
           });

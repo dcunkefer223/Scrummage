@@ -24,9 +24,9 @@ var resTeam = {};
 
 module.exports.createSprint = function (sprint, team_id, res) {
   teamModel.createSprint(team_id, sprint)
-    .then(function (id) {
-      console.log('Sprint inserted at ID: ' + id[0]);
-      res.status(201).send({sprint_id: id[0]});
+    .then(function (response) {
+      // console.log('Sprint inserted at ID: ' + id[0]);
+      res.status(201).send(response);
     })
     .catch(function (error) {
       console.error(error);

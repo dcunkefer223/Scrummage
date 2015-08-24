@@ -1,6 +1,6 @@
 angular.module('scrummage')
 
-  .controller('teamSetupCtrl', function ($scope, Request, $location) {
+  .controller('teamSetupCtrl', ['$scope', 'Request', '$location', function ($scope, Request, $location) {
 
     $scope.team = {
       name: null
@@ -20,4 +20,4 @@ angular.module('scrummage')
       $location.path('/sprintsetup');
     };
 
-  });
+  }]);

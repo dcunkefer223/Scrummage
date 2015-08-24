@@ -30,5 +30,5 @@ module.exports.updateSprint = function (sprint_id, points) {
 };
 
 module.exports.createSprint = function (team_id, sprint) {
-  return db.insert(sprint).into('sprints').returning('id');
+  return db.insert(sprint).into('sprints').returning('*');
 };
