@@ -192,6 +192,7 @@ angular.module('scrummage')
         return columns;
       },
       setColumns : function (data) {
+        console.log(data);
         columns.backlog = data.backlog;
         columns.progress = data.progress;
         columns.complete = data.complete;

@@ -8,8 +8,15 @@ angular.module('scrummage')
     $scope.updateColumnData = function(columnData) {
       for(var i = 0; i < $scope.data.labels.length; i++) {
         if($scope.data.labels[i] === columnData.date) {
-          $scope.data.datasets[0].data[i] = columnData.backlog + columnData.progress;
-          $scope.data.datasets[1].data[i] = columnData.backlog;
+          if(($scope.data.datasets[0].data[i] === undefined) &&
+             ($scope.data.datasets[1].data[i] === undefined)) {
+            $scope.data.datasets[0].data.push(columnData.backlog + columnData.progress);
+            $scope.data.datasets[1].data.push(columnData.backlog);
+          }
+          else {
+            $scope.data.datasets[0].data[i] = columnData.backlog + columnData.progress;
+            $scope.data.datasets[1].data[i] = columnData.backlog;
+          }
         }
       }
     };
@@ -19,7 +26,7 @@ angular.module('scrummage')
     };
 
     $scope.data = {
-        labels: [],
+        labels: ['8/27', '8/28', '8/29', '8/30', '8/31', '9/1', '9/2'],
         datasets: [
           {
             label: 'In Progress',
@@ -29,7 +36,7 @@ angular.module('scrummage')
             pointStrokeColor: '#fff',
             pointHighlightFill: '#fff',
             pointHighlightStroke: 'rgba(220,220,220,1)',
-            data: [0, 0, 0, 0, 0, 0, 0]
+            data: [80]
           },
           {
             label: 'Backlog',
@@ -39,7 +46,7 @@ angular.module('scrummage')
             pointStrokeColor: '#fff',
             pointHighlightFill: '#fff',
             pointHighlightStroke: 'rgba(151,187,205,1)',
-            data: [0, 0, 0, 0, 0, 0, 0]
+            data: [65]
           },
           {
             label: 'Ideal Line',
@@ -137,6 +144,7 @@ angular.module('scrummage')
           console.log(oldValue);
           $scope.columnData = newValue;
           $scope.updateColumnData(newValue);
+          // Update the backlog and backlog_progress columns in the database with a stringified array
         }, true);
 
       $scope.$watch(

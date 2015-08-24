@@ -99,8 +99,7 @@ CREATE TABLE sprints (
   sprintstart TIMESTAMP,
   sprintend TIMESTAMP,
   backlog INTEGER,
-  progress INTEGER,
-  complete INTEGER
+  backlog_progress INTEGER,
 );
 
 -----------------------------------------------------------------------
@@ -109,22 +108,22 @@ CREATE TABLE sprints (
 
 INSERT INTO teams (name, backlog, progress, complete) VALUES ('Test Team', 10, 15, 6);
 INSERT INTO users (username, github_id) VALUES ('JParis44', 11894565);
-INSERT INTO features (name, description, points, status, team_id, user_id)
-  VALUES ('Save features', 'Store feature status in DB.', 7, 'backlog', 1, 1);
-INSERT INTO features (name, description, points, status, team_id, user_id)
-  VALUES ('Set up Grunt', 'Add a Grunt build file.', 2, 'backlog', 1, 1);
-INSERT INTO features (name, description, points, status, team_id, user_id)
-  VALUES ('Navigation bar', 'Placed to the left of 3 columns.', 1, 'backlog', 1, 1);
-INSERT INTO features (name, description, points, status, team_id, user_id)
-  VALUES ('Login functionality', 'Using Github Oauth.', 7, 'progress', 1, 1);
-INSERT INTO features (name, description, points, status, team_id, user_id)
-  VALUES ('Drag boxes', 'Be able to drag between columns.', 5, 'progress', 1, 1);
-INSERT INTO features (name, description, points, status, team_id, user_id)
-  VALUES ('Add modals', 'For analytics and add feature.', 3, 'progress', 1, 1);
-INSERT INTO features (name, description, points, status, team_id, user_id)
-  VALUES ('View deployed site', 'Set up heroku.', 2, 'complete', 1, 1);
-INSERT INTO features (name, description, points, status, team_id, user_id)
-  VALUES ('Box view', 'View boxes inside columns', 3, 'complete', 1, 1);
-INSERT INTO features (name, description, points, status, team_id, user_id)
-  VALUES ('Basic storyboard view', 'Set up basic html.', 1, 'complete', 1, 1);
+INSERT INTO features (name, description, points, status, team_id)
+  VALUES ('Save features', 'Store feature status in DB.', 7, 'backlog', 1);
+INSERT INTO features (name, description, points, status, team_id)
+  VALUES ('Set up Grunt', 'Add a Grunt build file.', 2, 'backlog', 1);
+INSERT INTO features (name, description, points, status, team_id)
+  VALUES ('Navigation bar', 'Placed to the left of 3 columns.', 1, 'backlog', 1);
+INSERT INTO features (name, description, points, status, team_id)
+  VALUES ('Login functionality', 'Using Github Oauth.', 7, 'progress', 1);
+INSERT INTO features (name, description, points, status, team_id)
+  VALUES ('Drag boxes', 'Be able to drag between columns.', 5, 'progress', 1);
+INSERT INTO features (name, description, points, status, team_id)
+  VALUES ('Add modals', 'For analytics and add feature.', 3, 'progress', 1);
+INSERT INTO features (name, description, points, status, team_id)
+  VALUES ('View deployed site', 'Set up heroku.', 2, 'complete', 1);
+INSERT INTO features (name, description, points, status, team_id)
+  VALUES ('Box view', 'View boxes inside columns', 3, 'complete', 1);
+INSERT INTO features (name, description, points, status, team_id)
+  VALUES ('Basic storyboard view', 'Set up basic html.', 1, 'complete', 1);
 

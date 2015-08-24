@@ -37,7 +37,7 @@ angular.module('scrummage')
 
       $scope.renderBoard();
 
-      // setInterval($scope.renderBoard, 5000);
+      setInterval($scope.renderBoard, 5000);
 
       var formatDate = function (currentDate) {
         var newDate = new Date(currentDate);
@@ -85,7 +85,7 @@ angular.module('scrummage')
           Request.feature.updateStatus({ 
             feature_id : item.id, 
             points : item.points,
-            status : item.status }).then(function(response){
+            status : item.status }).then(function (response){
               var sendData = {
                 backlog: response['team'][0]['backlog'],
                 progress: response['team'][0]['progress'],
@@ -102,8 +102,15 @@ angular.module('scrummage')
         $scope.models.lists.backlog.unshift(newFeature);
 
         Request.feature.create(newFeature).then(function (results) {
-          // console.log('The feature_id is ', results.feature_id)
+          console.log(results);
           newFeature.id = results.feature_id;
+          var sendData = {
+            backlog: results['team']['backlog'],
+            progress: results['team']['progress'],
+            complete: results['team']['complete'],
+            date: formatDate(results.feature_date)
+          };
+          ColumnPoints.setColumns(sendData);
         });
         $scope.feature = {
           name: "",

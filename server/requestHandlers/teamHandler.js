@@ -23,10 +23,15 @@ var resTeam = {};
 };
 
 module.exports.createSprint = function (sprint, team_id, res) {
+  var sprintData;
   teamModel.createSprint(team_id, sprint)
+    .then(function (createdSprint) {
+      sprintData = createdSprint[0];
+      return teamModel.fetchCurrentPoints(team_id);
+    })
     .then(function (response) {
       // console.log('Sprint inserted at ID: ' + id[0]);
-      res.status(201).send(response);
+      res.status(201).send({team: response[0], sprint: sprintData});
     })
     .catch(function (error) {
       console.error(error);
