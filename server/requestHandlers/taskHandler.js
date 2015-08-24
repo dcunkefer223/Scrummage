@@ -36,7 +36,16 @@ module.exports.addFeature = function (feature, user, res) {
 
 module.exports.addCommentToFeature = function (comment, res) {
   // comment is {comment(the text), posted(TIMESTAMP), feature_id, user_id}
-  taskModel.addCommentToFeature(comment, res);
+  taskModel.addCommentToFeature(comment).then(
+    function (id) {
+      console.log('Comment inserted at id: ' + id);
+      res.status(201).send({comment_id: id[0]});
+    }, 
+    function (error) {
+      console.error(error);
+      res.status(500).send('Failed to insert comment into database');
+    }
+  );
 };
 
 module.exports.changeFeatureStatus = function (obj, user, res) {
@@ -85,29 +94,98 @@ module.exports.changeFeatureStatus = function (obj, user, res) {
 
 
 module.exports.changeFeaturePoints = function (obj, res) {
-  taskModel.changeFeaturePoints(obj.feature_id, obj.points, res);
+  taskModel.changeFeaturePoints(obj.feature_id, obj.points).then(
+    function (rows) {
+      res.status(200).send({feature_id: feature_id});
+    }, 
+    function (error) {
+      console.error(error);
+      res.status(500).send('Failed to update feature in database');
+    }
+  );
 };
 
 module.exports.changeFeatureDescription = function (obj, res) {
-  taskModel.changeFeatureDescription(obj.feature_id, obj.description, res);
+  taskModel.changeFeatureDescription(obj.feature_id, obj.description).then(
+    function (rows) {
+      res.status(200).send({feature_id: feature_id});
+    }, 
+    function (error) {
+      console.error(error);
+      res.status(500).send('Failed to update feature in database');
+    }
+  );
 };
 
 module.exports.changeFeatureName = function (obj, res) {
-  taskModel.changeFeatureName(obj.feature_id, obj.name, res);
+  taskModel.changeFeatureName(obj.feature_id, obj.name).then(
+    function (rows) {
+      res.status(200).send({feature_id: feature_id});
+    }, 
+    function (error) {
+      console.error(error);
+      res.status(500).send('Failed to update feature in database');
+    }
+  );
 };
 
 module.exports.changeFeatureUser = function (obj, res) {
-  taskModel.changeFeatureUser(obj.feature_id, obj.user_id, res);
+  taskModel.changeFeatureUser(obj.feature_id, obj.user_id).then(
+    function (rows) {
+      res.status(200).send({feature_id: feature_id});
+    }, 
+    function (error) {
+      console.error(error);
+      res.status(500).send('Failed to update feature in database');
+    }
+  );
 };
 
 module.exports.getAllFeatures = function (team_id, res) {
-  taskModel.getAllFeatures(team_id, res);
+  taskModel.getAllFeatures(team_id).then(
+    function (features) {
+      res.status(200).send(features);
+    }, 
+    function (error) {
+      console.error(error);
+      res.status(404).send('Failed to find requested resource in database');
+    }
+  );
 };
 
 module.exports.getFeaturesByStatus = function (team_id, status, res) {
-  taskModel.getFeaturesByStatus(team_id, status, res);
+  taskModel.getFeaturesByStatus(team_id, status).then(
+    function (features) {
+      res.status(200).send(features);
+    }, 
+    function (error) {
+      console.error(error);
+      res.status(404).send('Failed to find request resource in database');
+    }
+  );
 };
 
 module.exports.getCommentsOnFeature = function (feature_id, res) {
-  taskModel.getCommentsOnFeature(feature_id, res);
+  taskModel.getCommentsOnFeature(feature_id).then(
+    function (comments) {
+      res.status(200).send(comments);
+    }, 
+    function (error) {
+      console.error(error);
+      res.status(404).send('Failed to find request resource in database');
+    }
+  );
 };
+
+module.exports.changeTeamPoints = function (obj, res) {
+  taskModel.changeTeamPoints(obj.team_id, obj.points).then(
+    function (rows) {
+      res.status(200).send({team_id: team_id, points: newPoints});
+    }, 
+    function (error) {
+      console.error(error);
+      res.status(500).send('Failed to update feature in database');
+    }
+  );
+};
+
