@@ -22,7 +22,12 @@ module.exports.fetchAllSprints = function (team_id) {
 
 module.exports.changeCurrentPoints = function (team_id, column, points) {
   return db('teams').where('id', team_id).update(column, points).returning('*');
+  // update the date as well
 };
+
+module.exports.updateTeamDate = function (team_id, date) {
+  return db('teams').where('id', team_id).update('date_changed', date).returning('*');
+}
 
 module.exports.updateSprint = function (sprint_id, points) {
   return db('sprints').where('id', sprint_id).update(points);

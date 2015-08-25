@@ -7,11 +7,17 @@ angular.module('scrummage')
     };
 
     $scope.newTeam = {
-      name: null
+      name: null,
+      date: Date.now()
     };
 
     $scope.changeTeam = function (team) {
-      Request.user.joinTeam(team);
+      Request.user.joinTeam(team).then(
+        function () {
+          return Request.analytics.getSprintHistory();
+        });
+      // if not worked, promise
+      // if not worked, put into renderBoard()
       $location.path('/storyboard');
     };
 

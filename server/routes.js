@@ -35,9 +35,9 @@ module.exports = function(app){
     res.redirect('/');
   });
 
-  app.get('/getteam', function (req, res) {
+  app.get('/getsprinthistory', function (req, res) {
     // ?team_id=integer
-    Team.getTeam(req.query.team_id, res);
+    Team.getSprintHistory(req.user.current_team, res);
   });
 
   app.get('/getallfeatures', function (req, res) {
@@ -57,7 +57,7 @@ module.exports = function(app){
 
   app.get('/getallpoints', function (req, res) {
     Team.getAllPoints(req.user.current_team, res);
-  })
+  });
 
 
   // POST requests
@@ -108,7 +108,6 @@ module.exports = function(app){
   });
 
   app.post('/leaveteam', function (req, res) {
-
     User.leaveTeam(req.user, res);
   })
 

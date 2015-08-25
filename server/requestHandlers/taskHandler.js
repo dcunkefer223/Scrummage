@@ -30,7 +30,6 @@ module.exports.addFeature = function (feature, user, res) {
       return teamModel.fetchCurrentPoints(team[0].id);
     })
     .then(function (response) {
-      console.log('Response in taskHandler looks like', response);
       res.status(201).send({team : response[0], 
                             feature_id: featureId, 
                             feature_date: currentDate});
@@ -164,7 +163,10 @@ module.exports.getAllFeatures = function (team_id, res) {
     var oldDate = team[0].date_changed;
     oldDate = formatDate(oldDate);
     if(currentDate !== oldDate) {
-      teamModel.saveSprint(team_id)
+      teamModel.updateTeamDate(team_id, currentDate)
+      .then(function () {
+        return teamModel.saveSprint(team_id);
+      })
       .catch(function (error){
         console.error(error);
       });

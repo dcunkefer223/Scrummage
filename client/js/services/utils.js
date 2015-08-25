@@ -98,23 +98,13 @@ angular.module('scrummage')
       },
 
       analytics : {
-        getTeam : function (data) {
+        getSprintHistory : function () {
           return $http({
             method: 'GET',
-            url: '/getteam?team_id=1',
-            data: data
+            url: '/getsprinthistory'
           }).then(function (resp) {
             return resp.data;
           }, noAuthRedirect);
-        },
-      //   fetchTotal : function() {
-      //     return $http({
-      //       method: 'GET',
-      //       url: '/fetchtotalpoints',
-      //     }).then(function (resp) {
-      //       return resp.data;
-      //     }, noAuthRedirect);
-      //   }
         },
 
       user : {

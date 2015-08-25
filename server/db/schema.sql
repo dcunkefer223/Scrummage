@@ -49,7 +49,7 @@ DROP TABLE IF EXISTS users CASCADE;
 CREATE TABLE teams (
   id SERIAL PRIMARY KEY,
   name VARCHAR,
-  date_changed TIMESTAMP,
+  date_changed VARCHAR,
   backlog INTEGER,
   progress INTEGER,
   complete INTEGER
@@ -98,7 +98,7 @@ CREATE TABLE sprints (
   name VARCHAR,
   sprintstart TIMESTAMP,
   sprintend TIMESTAMP,
-  date_changed TIMESTAMP,
+  date_changed VARCHAR,
   backlog INTEGER,
   progress INTEGER,
   complete INTEGER
@@ -108,10 +108,14 @@ CREATE TABLE sprints (
 ----------------------------- TEST VALUES -----------------------------
 -----------------------------------------------------------------------
 
-INSERT INTO teams (name, backlog, progress, complete) VALUES ('Test Team', 10, 15, 6);
+INSERT INTO teams (name, date_changed, backlog, progress, complete) VALUES ('Test Team', '8/24', 10, 15, 6);
 INSERT INTO users (username, github_id) VALUES ('JParis44', 11894565);
+INSERT INTO sprints (team_id, date_changed, backlog, progress, complete) VALUES (1, '8/21', 80, 0, 0);
+INSERT INTO sprints (team_id, date_changed, backlog, progress, complete) VALUES (1, '8/22', 56, 12, 12);
+INSERT INTO sprints (team_id, date_changed, backlog, progress, complete) VALUES (1, '8/23', 44, 10, 26);
+INSERT INTO sprints (team_id, date_changed, backlog, progress, complete) VALUES (1, '8/24', 30, 15, 35);
 INSERT INTO features (name, description, points, status, team_id)
-  VALUES ('Save features', 'Store feature status in DB.', 7, 'backlog', 1);
+  VALUES ('Save features', 'Store feature status in DB.', 27, 'backlog', 1);
 INSERT INTO features (name, description, points, status, team_id)
   VALUES ('Set up Grunt', 'Add a Grunt build file.', 2, 'backlog', 1);
 INSERT INTO features (name, description, points, status, team_id)
@@ -127,5 +131,5 @@ INSERT INTO features (name, description, points, status, team_id)
 INSERT INTO features (name, description, points, status, team_id)
   VALUES ('Box view', 'View boxes inside columns', 3, 'complete', 1);
 INSERT INTO features (name, description, points, status, team_id)
-  VALUES ('Basic storyboard view', 'Set up basic html.', 1, 'complete', 1);
+  VALUES ('Basic storyboard view', 'Set up basic html.', 29, 'complete', 1);
 
