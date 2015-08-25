@@ -1,6 +1,6 @@
 angular.module('scrummage')
 
-  .controller('teamSetupCtrl', ['$scope', 'Request', '$location', function ($scope, Request, $location) {
+  .controller('teamSetupCtrl', ['$scope', 'Request', '$location', 'InitializeAnalytics', function ($scope, Request, $location, InitializeAnalytics) {
 
     $scope.team = {
       name: null
@@ -15,6 +15,9 @@ angular.module('scrummage')
       Request.user.joinTeam(team).then(
         function () {
           return Request.analytics.getSprintHistory();
+        })
+        .then(function (data) {
+          InitializeAnalytics.setData(data);
         });
       // if not worked, promise
       // if not worked, put into renderBoard()

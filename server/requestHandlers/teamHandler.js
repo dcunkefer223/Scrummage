@@ -6,8 +6,17 @@ module.exports.getSprintHistory = function (team_id, res) {
   console.log('user team looks like', team_id);
   teamModel.fetchAllSprints(team_id)
     .then(function (response) {
-      console.log('sprint history looks like', response);
-      res.status(200).send(response);
+      var results = {};
+      results.backlog = [];
+      results.progress = [];
+      results.dates = [];
+      response.forEach(function (obj) {
+        results.backlog.push(obj.backlog);
+        results.progress.push(obj.backlog + obj.progress);
+        results.dates.push(obj.date_changed);
+      });
+      console.log(results);
+      res.status(200).send(results);
     })
     .catch(function (error) {
       console.error(error);

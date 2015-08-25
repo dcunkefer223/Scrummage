@@ -1,9 +1,16 @@
 angular.module('scrummage')
 
-  .controller('burndownCtrl', ['$scope', 'Request', 'ColumnPoints', 'Sprint', function ($scope, Request, ColumnPoints, Sprint) {
+  .controller('burndownCtrl', ['$scope', 'Request', 'ColumnPoints', 'Sprint', 'InitializeAnalytics', function ($scope, Request, ColumnPoints, Sprint, InitializeAnalytics) {
 
     $scope.columnData;
     $scope.labelData;
+
+    $scope.initializeData = function (data) {
+      $scope.data.labels = data.dates;
+      $scope.data.datasets[0].data = data.progress;
+      $scope.data.datasets[1].data = data.backlog;
+      console.log('labels looks like', $scope.data.labels);
+    };
 
     $scope.updateColumnData = function(columnData) {
       for(var i = 0; i < $scope.data.labels.length; i++) {
@@ -26,7 +33,7 @@ angular.module('scrummage')
     };
 
     $scope.data = {
-        labels: ['8/27', '8/28', '8/29', '8/30', '8/31', '9/1', '9/2'],
+        labels: [],
         datasets: [
           {
             label: 'In Progress',
@@ -36,7 +43,7 @@ angular.module('scrummage')
             pointStrokeColor: '#fff',
             pointHighlightFill: '#fff',
             pointHighlightStroke: 'rgba(220,220,220,1)',
-            data: [80]
+            data: []
           },
           {
             label: 'Backlog',
@@ -46,13 +53,13 @@ angular.module('scrummage')
             pointStrokeColor: '#fff',
             pointHighlightFill: '#fff',
             pointHighlightStroke: 'rgba(151,187,205,1)',
-            data: [65]
+            data: []
           },
           {
             label: 'Ideal Line',
             fillColor: 'rgba(255, 255, 255, 0)',
             strokeColor: 'rgba(255,255,255,1)',
-            data: [80, 66.667, 52.333, 39, 26.667, 13.333, 0]
+            // data: [80, 66.667, 52.333, 39, 26.667, 13.333, 0]
           }
         ]
       };
@@ -137,11 +144,19 @@ angular.module('scrummage')
 
       $scope.$watch(
         function () {
+          return InitializeAnalytics.getData();
+        },
+
+        function (newValue, oldValue) {
+          $scope.initializeData(newValue);
+        }, true);
+
+      $scope.$watch(
+        function () {
           return ColumnPoints.getColumns();
         },
 
         function (newValue, oldValue) {
-          console.log(oldValue);
           $scope.columnData = newValue;
           $scope.updateColumnData(newValue);
           // Update the backlog and backlog_progress columns in the database with a stringified array
@@ -153,7 +168,6 @@ angular.module('scrummage')
         },
 
         function (newValue, oldValue) {
-          console.log(oldValue);
           $scope.labelData = newValue;
           $scope.updateLabelData(newValue);
         }, true);

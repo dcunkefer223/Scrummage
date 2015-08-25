@@ -106,6 +106,15 @@ angular.module('scrummage')
             return resp.data;
           }, noAuthRedirect);
         },
+      //   fetchTotal : function() {
+      //     return $http({
+      //       method: 'GET',
+      //       url: '/fetchtotalpoints',
+      //     }).then(function (resp) {
+      //       return resp.data;
+      //     }, noAuthRedirect);
+      //   }
+        },
 
       user : {
         joinTeam : function (data) {
@@ -173,6 +182,18 @@ angular.module('scrummage')
 
     return returnObj;
   })
+  .factory('InitializeAnalytics', function () {
+    var dataObj = {};
+
+    return {
+      getData : function () {
+        return dataObj;
+      },
+      setData : function (data) {
+        dataObj = data;
+      }
+    }
+  })
 
   .factory('ColumnPoints', function () {
     var columns = {};
@@ -182,7 +203,6 @@ angular.module('scrummage')
         return columns;
       },
       setColumns : function (data) {
-        console.log(data);
         columns.backlog = data.backlog;
         columns.progress = data.progress;
         columns.complete = data.complete;
