@@ -28,6 +28,10 @@ module.exports.updateSprint = function (sprint_id, points) {
   return db('sprints').where('id', sprint_id).update(points);
 };
 
+module.exports.saveSprint = function (team_id) {
+  return db.raw('INSERT INTO "sprints" ("team_id", "backlog", "progress", "complete", "date_changed") SELECT "id", "backlog", "progress", "complete", "date_changed" FROM "teams" WHERE "id" = ?;', [team_id]);
+}
+
 module.exports.createSprint = function (team_id, sprint) {
   return db.insert(sprint).into('sprints').returning('*');
 };

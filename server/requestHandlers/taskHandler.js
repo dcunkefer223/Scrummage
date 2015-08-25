@@ -149,6 +149,27 @@ module.exports.changeFeatureUser = function (obj, res) {
 };
 
 module.exports.getAllFeatures = function (team_id, res) {
+  var currentDate = Date.now();
+  var formatDate = function (currentDate) {
+    var newDate = new Date(currentDate);
+    var currentMonth = newDate.getMonth();
+    var currentDay = newDate.getDate();
+    return ((currentMonth + 1) + '/' + currentDay);
+  };
+
+  currentDate = formatDate(currentDate);
+
+  teamModel.fetchCurrentPoints(team_id)
+  .then(function (team) {
+    var oldDate = team[0].date_changed;
+    oldDate = formatDate(oldDate);
+    if(currentDate !== oldDate) {
+      teamModel.saveSprint(team_id)
+      .catch(function (error){
+        console.error(error);
+      });
+    }
+  });
   taskModel.getAllFeatures(team_id).then(
     function (features) {
       res.status(200).send(features);

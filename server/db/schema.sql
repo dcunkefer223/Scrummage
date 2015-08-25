@@ -49,7 +49,7 @@ DROP TABLE IF EXISTS users CASCADE;
 CREATE TABLE teams (
   id SERIAL PRIMARY KEY,
   name VARCHAR,
-  start TIMESTAMP,
+  date_changed TIMESTAMP,
   backlog INTEGER,
   progress INTEGER,
   complete INTEGER
@@ -98,8 +98,10 @@ CREATE TABLE sprints (
   name VARCHAR,
   sprintstart TIMESTAMP,
   sprintend TIMESTAMP,
+  date_changed TIMESTAMP,
   backlog INTEGER,
-  backlog_progress INTEGER,
+  progress INTEGER,
+  complete INTEGER
 );
 
 -----------------------------------------------------------------------
