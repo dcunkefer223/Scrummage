@@ -59,7 +59,7 @@ angular.module('scrummage')
               backlog: response.team['backlog'],
               progress: response.team['progress'],
               complete: response.team['complete'],
-              date: null
+              date: dateArr
             };
             ColumnPoints.setColumns(sendColumnPoints);
           });

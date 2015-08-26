@@ -1,45 +1,30 @@
 angular.module('scrummage')
 
   .controller('burndownCtrl', ['$scope', 'Request', 'ColumnPoints', 'Sprint', 'InitializeAnalytics', function ($scope, Request, ColumnPoints, Sprint, InitializeAnalytics) {
-    // $scope.columnData;
-    // $scope.labelData;
 
-    // $scope.data = {
-    //     labels: ['8/21', '8/22', '8/23', '8/24', '8/26'],
-    //     datasets: [
-    //       {
-    //         label: 'In Progress',
-    //         fillColor: '#FAA43A',
-    //         strokeColor: '#FAA43A',
-    //         pointColor: 'rgba(220,220,220,1)',
-    //         pointStrokeColor: '#fff',
-    //         pointHighlightFill: '#fff',
-    //         pointHighlightStroke: 'rgba(220,220,220,1)',
-    //         data: []
-    //       },
-    //       {
-    //         label: 'Backlog',
-    //         fillColor: '#5DA5DA',
-    //         strokeColor: '#5DA5DA',
-    //         pointColor: 'rgba(151,187,205,1)',
-    //         pointStrokeColor: '#fff',
-    //         pointHighlightFill: '#fff',
-    //         pointHighlightStroke: 'rgba(151,187,205,1)',
-    //         data: []
-    //       },
-    //       {
-    //         label: 'Ideal Line',
-    //         fillColor: 'rgba(255, 255, 255, 0)',
-    //         strokeColor: 'rgba(255,255,255,1)',
-    //         data: [80, 66.667, 52.333, 39, 26.667, 13.333, 0]
-    //       }
-    //     ]
-    //   };
+    var generatedLabels;
 
-    $scope.initializeData = function (data) {
-      $scope.labels = data.dates;
-      $scope.series = ['Progress', 'Backlog'];
-      $scope.data = [data.progress, data.backlog];
+    var initializeData = function (data) {
+
+      var idealLine = function(progress, labels) {
+        var results = [];
+        var first = progress[0];
+        var step = (first.toFixed(3) / (labels.length - 1).toFixed(3));
+        for(var i = 0; i < labels.length; i++) {
+          debugger;
+          results.push(first);
+          first -= step;
+        }
+        return results;
+      };
+      $scope.labels = generatedLabels;
+      $scope.series = ['Progress', 'Backlog', 'Ideal Line'];
+      if(data.progress) {
+        $scope.labels = data.dateArray;
+        $scope.data = [data.progress, data.backlog, idealLine(data.progress, data.dateArray)];
+      } else {
+        $scope.data = [[0],[0], idealLine(data.progress, data.dates)];
+      }
       $scope.options =  {
 
         // Sets the chart to be responsive
@@ -123,15 +108,15 @@ angular.module('scrummage')
           pointStrokeColor: '#fff',
           pointHighlightFill: '#fff',
           pointHighlightStroke: 'rgba(151,187,205,1)',
+        },
+        {
+          fillColor: 'rgba(255, 255, 255, 0)',
+          strokeColor: 'rgba(255,255,255, 1)'
         }
       ];
-
-      console.log('labels looks like', $scope.labels);
-      console.log('backlog data looks like', $scope.data[1])
-      console.log('progress data looks like', $scope.data[0]);
     };
 
-    $scope.updateColumnData = function(columnData) {
+    var updateColumnData = function(columnData) {
       for(var i = 0; i < $scope.labels.length; i++) {
         if($scope.labels[i] === columnData.date) {
           if(($scope.data[0][i] === undefined) &&
@@ -147,11 +132,15 @@ angular.module('scrummage')
       }
     };
 
-    $scope.updateLabelData = function(labelData) {
-      if($scope.labels.length < 1) {
-        $scope.labels = labelData.dateArray;
-      }
-    };
+    $scope.$watch(
+      function () {
+        return Sprint.getSprint();
+      },
+
+      function (newValue, oldValue) {
+        generatedLabels = newValue.dateArray;
+      }, true);
+
 
     $scope.$watch(
       function () {
@@ -159,7 +148,7 @@ angular.module('scrummage')
       },
 
       function (newValue, oldValue) {
-        $scope.initializeData(newValue);
+        initializeData(newValue);
       }, true);
 
     $scope.$watch(
@@ -168,20 +157,7 @@ angular.module('scrummage')
       },
 
       function (newValue, oldValue) {
-        $scope.columnData = newValue;
-        $scope.updateColumnData(newValue);
-        // Update the backlog and backlog_progress columns in the database with a stringified array
+        updateColumnData(newValue);
       }, true);
 
-
-
-    $scope.$watch(
-      function () {
-        return Sprint.getSprint();
-      },
-
-      function (newValue, oldValue) {
-        $scope.labelData = newValue;
-        $scope.updateLabelData(newValue);
-      }, true);
   }]);

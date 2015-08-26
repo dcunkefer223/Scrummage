@@ -4,18 +4,53 @@ var userModel = require('../models/userModel.js');
 
 module.exports.getSprintHistory = function (team_id, res) {
   console.log('user team looks like', team_id);
+  var formatDate = function (currentDate) {
+    var newDate = new Date(currentDate);
+    var currentMonth = newDate.getMonth();
+    var currentDay = newDate.getDate();
+    return ((currentMonth + 1) + '/' + currentDay);
+  };
+
+  var dateArray = function (start, end) {
+    Date.prototype.addDays = function(days) {
+      var dat = new Date(this.valueOf());
+      dat.setDate(dat.getDate() + days);
+      return dat;
+    };
+
+    function getDates(startDate, stopDate) {
+      var dateArray = [];
+      var currentDate = startDate;
+      while (currentDate <= stopDate) {
+        dateArray.push(currentDate);
+        currentDate = currentDate.addDays(1);
+      }
+      for(var i = 0; i < dateArray.length; i++) {
+        dateArray[i] = formatDate(dateArray[i].toDateString());
+      }
+      return dateArray;
+    }
+
+      return getDates(start, end);
+  };
+
+
   teamModel.fetchAllSprints(team_id)
     .then(function (response) {
       var results = {};
+      var start = formatDate(response[0].sprintstart);
+      var end = formatDate(response[0].sprintend);
+      var dateArr = dateArray(new Date(start), new Date(end));
       results.backlog = [];
       results.progress = [];
       results.dates = [];
+      results.dateArray = null;
       response.forEach(function (obj) {
         results.backlog.push(obj.backlog);
         results.progress.push(obj.backlog + obj.progress);
         results.dates.push(obj.date_changed);
       });
-      console.log(results);
+      results.dateArray = dateArr;
       res.status(200).send(results);
     })
     .catch(function (error) {

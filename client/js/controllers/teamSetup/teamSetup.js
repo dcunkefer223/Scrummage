@@ -19,8 +19,6 @@ angular.module('scrummage')
         .then(function (data) {
           InitializeAnalytics.setData(data);
         });
-      // if not worked, promise
-      // if not worked, put into renderBoard()
       $location.path('/storyboard');
     };
 
