@@ -33,7 +33,7 @@ angular.module('scrummage')
     };
 
     $scope.data = {
-        labels: [],
+        // labels: [],
         datasets: [
           {
             label: 'In Progress',
@@ -43,7 +43,7 @@ angular.module('scrummage')
             pointStrokeColor: '#fff',
             pointHighlightFill: '#fff',
             pointHighlightStroke: 'rgba(220,220,220,1)',
-            data: []
+            // data: []
           },
           {
             label: 'Backlog',
@@ -53,7 +53,7 @@ angular.module('scrummage')
             pointStrokeColor: '#fff',
             pointHighlightFill: '#fff',
             pointHighlightStroke: 'rgba(151,187,205,1)',
-            data: []
+            // data: []
           },
           {
             label: 'Ideal Line',
@@ -170,5 +170,5 @@ angular.module('scrummage')
         function (newValue, oldValue) {
           $scope.labelData = newValue;
           $scope.updateLabelData(newValue);
-        }, true);
+        });
   }]);

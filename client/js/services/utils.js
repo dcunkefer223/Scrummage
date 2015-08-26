@@ -147,6 +147,15 @@ angular.module('scrummage')
           }, noAuthRedirect);
         },
 
+        fetchTeam : function () {
+          return $http({
+            method: 'GET',
+            url: '/fetchuserteam',
+          }).then(function (resp) {
+            return resp.data;
+          }, noAuthRedirect);
+        },
+
         leaveTeam : function (data) {
           return $http({
             method: 'POST',

@@ -59,6 +59,10 @@ module.exports = function(app){
     Team.getAllPoints(req.user.current_team, res);
   });
 
+  app.get('/fetchuserteam', function (req, res) {
+    res.status(200).send({team_id: req.user.current_team});
+  })
+
 
   // POST requests
   

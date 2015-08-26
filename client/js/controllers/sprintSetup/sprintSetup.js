@@ -35,29 +35,35 @@ angular.module('scrummage')
     };
 
     $scope.createSprint = function (newSprint) {
-      Request.sprint.createSprint(newSprint)
-      .then(function (response) {
-        console.log(response);
-        var name = response.sprint.name;
-        var start = formatDate(response.sprint.sprintstart);
-        var end = formatDate(response.sprint.sprintend);
-        var dateArr = dateArray(new Date(start), new Date(end));
-        var sendSprintDates = {
-          name : name,
-          start : start,
-          end : end,
-          dateArray : dateArr
-        };
+      Request.user.fetchTeam().then(
+        function(response) {
+          newSprint.team_id = response.team_id;
+        }).then(function () {
+          Request.sprint.createSprint(newSprint)
+          .then(function (response) {
+            console.log(response);
 
-        Sprint.setSprint(sendSprintDates);
-        var sendColumnPoints = {
-          backlog: response.team['backlog'],
-          progress: response.team['progress'],
-          complete: response.team['complete'],
-          date: null
-        };
-        ColumnPoints.setColumns(sendColumnPoints);
-      });
+            var name = response.sprint.name;
+            var start = formatDate(response.sprint.sprintstart);
+            var end = formatDate(response.sprint.sprintend);
+            var dateArr = dateArray(new Date(start), new Date(end));
+            var sendSprintDates = {
+              name : name,
+              start : start,
+              end : end,
+              dateArray : dateArr
+            };
+
+            Sprint.setSprint(sendSprintDates);
+            var sendColumnPoints = {
+              backlog: response.team['backlog'],
+              progress: response.team['progress'],
+              complete: response.team['complete'],
+              date: null
+            };
+            ColumnPoints.setColumns(sendColumnPoints);
+          });
+        });
       
       $location.path('/storyboard');
     };
