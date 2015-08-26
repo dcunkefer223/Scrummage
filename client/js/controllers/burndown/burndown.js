@@ -1,81 +1,45 @@
 angular.module('scrummage')
 
   .controller('burndownCtrl', ['$scope', 'Request', 'ColumnPoints', 'Sprint', 'InitializeAnalytics', function ($scope, Request, ColumnPoints, Sprint, InitializeAnalytics) {
+    // $scope.columnData;
+    // $scope.labelData;
 
-    $scope.columnData;
-    $scope.labelData;
+    // $scope.data = {
+    //     labels: ['8/21', '8/22', '8/23', '8/24', '8/26'],
+    //     datasets: [
+    //       {
+    //         label: 'In Progress',
+    //         fillColor: '#FAA43A',
+    //         strokeColor: '#FAA43A',
+    //         pointColor: 'rgba(220,220,220,1)',
+    //         pointStrokeColor: '#fff',
+    //         pointHighlightFill: '#fff',
+    //         pointHighlightStroke: 'rgba(220,220,220,1)',
+    //         data: []
+    //       },
+    //       {
+    //         label: 'Backlog',
+    //         fillColor: '#5DA5DA',
+    //         strokeColor: '#5DA5DA',
+    //         pointColor: 'rgba(151,187,205,1)',
+    //         pointStrokeColor: '#fff',
+    //         pointHighlightFill: '#fff',
+    //         pointHighlightStroke: 'rgba(151,187,205,1)',
+    //         data: []
+    //       },
+    //       {
+    //         label: 'Ideal Line',
+    //         fillColor: 'rgba(255, 255, 255, 0)',
+    //         strokeColor: 'rgba(255,255,255,1)',
+    //         data: [80, 66.667, 52.333, 39, 26.667, 13.333, 0]
+    //       }
+    //     ]
+    //   };
 
     $scope.initializeData = function (data) {
-      $scope.data.labels = data.dates;
-      $scope.data.datasets[0].data = data.progress;
-      $scope.data.datasets[1].data = data.backlog;
-      console.log('labels looks like', $scope.data.labels);
-    };
-
-    $scope.updateColumnData = function(columnData) {
-      for(var i = 0; i < $scope.data.labels.length; i++) {
-        if($scope.data.labels[i] === columnData.date) {
-          if(($scope.data.datasets[0].data[i] === undefined) &&
-             ($scope.data.datasets[1].data[i] === undefined)) {
-            $scope.data.datasets[0].data.push(columnData.backlog + columnData.progress);
-            $scope.data.datasets[1].data.push(columnData.backlog);
-          }
-          else {
-            $scope.data.datasets[0].data[i] = columnData.backlog + columnData.progress;
-            $scope.data.datasets[1].data[i] = columnData.backlog;
-          }
-        }
-      }
-    };
-
-    $scope.updateLabelData = function(labelData) {
-      $scope.data.labels = labelData.dateArray;
-    };
-
-    $scope.data = {
-        // labels: [],
-        datasets: [
-          {
-            label: 'In Progress',
-            fillColor: '#FAA43A',
-            strokeColor: '#FAA43A',
-            pointColor: 'rgba(220,220,220,1)',
-            pointStrokeColor: '#fff',
-            pointHighlightFill: '#fff',
-            pointHighlightStroke: 'rgba(220,220,220,1)',
-            // data: []
-          },
-          {
-            label: 'Backlog',
-            fillColor: '#5DA5DA',
-            strokeColor: '#5DA5DA',
-            pointColor: 'rgba(151,187,205,1)',
-            pointStrokeColor: '#fff',
-            pointHighlightFill: '#fff',
-            pointHighlightStroke: 'rgba(151,187,205,1)',
-            // data: []
-          },
-          {
-            label: 'Ideal Line',
-            fillColor: 'rgba(255, 255, 255, 0)',
-            strokeColor: 'rgba(255,255,255,1)',
-            // data: [80, 66.667, 52.333, 39, 26.667, 13.333, 0]
-          }
-        ]
-      };
-
-      // UNDER CONSTRUCTION: ideal line generator
-
-      // $scope.generateLineData = function (pointsX, pointsY) {
-      //   var resultsArr = [];
-      //   var dy = pointsY[0] / pointsX.length;
-      //   resultsArr.length = pointsX.length;
-      //   for(var i = 1; i < resultsArr.length; i++) {
-      //     resultsArr.push(resultsArr[i] - dy);
-      //   }
-      //   return resultsArr;
-      // };
-
+      $scope.labels = data.dates;
+      $scope.series = ['Progress', 'Backlog'];
+      $scope.data = [data.progress, data.backlog];
       $scope.options =  {
 
         // Sets the chart to be responsive
@@ -142,33 +106,82 @@ angular.module('scrummage')
         legendTemplate : '<ul class="tc-chart-js-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].strokeColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>'
       };
 
-      $scope.$watch(
-        function () {
-          return InitializeAnalytics.getData();
+
+      $scope.colours = [
+        {
+          fillColor: '#FAA43A',
+          strokeColor: '#FAA43A',
+          pointColor: 'rgba(220,220,220,1)',
+          pointStrokeColor: '#fff',
+          pointHighlightFill: '#fff',
+          pointHighlightStroke: 'rgba(220,220,220,1)'
         },
+        {
+          fillColor: '#5DA5DA',
+          strokeColor: '#5DA5DA',
+          pointColor: 'rgba(151,187,205,1)',
+          pointStrokeColor: '#fff',
+          pointHighlightFill: '#fff',
+          pointHighlightStroke: 'rgba(151,187,205,1)',
+        }
+      ];
 
-        function (newValue, oldValue) {
-          $scope.initializeData(newValue);
-        }, true);
+      console.log('labels looks like', $scope.labels);
+      console.log('backlog data looks like', $scope.data[1])
+      console.log('progress data looks like', $scope.data[0]);
+    };
 
-      $scope.$watch(
-        function () {
-          return ColumnPoints.getColumns();
-        },
+    $scope.updateColumnData = function(columnData) {
+      for(var i = 0; i < $scope.labels.length; i++) {
+        if($scope.labels[i] === columnData.date) {
+          if(($scope.data[0][i] === undefined) &&
+             ($scope.data[1][i] === undefined)) {
+            $scope.data[0].push(columnData.backlog + columnData.progress);
+            $scope.data[1].push(columnData.backlog);
+          }
+          else {
+            $scope.data[0][i] = columnData.backlog + columnData.progress;
+            $scope.data[1][i] = columnData.backlog;
+          }
+        }
+      }
+    };
 
-        function (newValue, oldValue) {
-          $scope.columnData = newValue;
-          $scope.updateColumnData(newValue);
-          // Update the backlog and backlog_progress columns in the database with a stringified array
-        }, true);
+    $scope.updateLabelData = function(labelData) {
+      if($scope.labels.length < 1) {
+        $scope.labels = labelData.dateArray;
+      }
+    };
 
-      $scope.$watch(
-        function () {
-          return Sprint.getSprint();
-        },
+    $scope.$watch(
+      function () {
+        return InitializeAnalytics.getData();
+      },
 
-        function (newValue, oldValue) {
-          $scope.labelData = newValue;
-          $scope.updateLabelData(newValue);
-        });
+      function (newValue, oldValue) {
+        $scope.initializeData(newValue);
+      }, true);
+
+    $scope.$watch(
+      function () {
+        return ColumnPoints.getColumns();
+      },
+
+      function (newValue, oldValue) {
+        $scope.columnData = newValue;
+        $scope.updateColumnData(newValue);
+        // Update the backlog and backlog_progress columns in the database with a stringified array
+      }, true);
+
+
+
+    $scope.$watch(
+      function () {
+        return Sprint.getSprint();
+      },
+
+      function (newValue, oldValue) {
+        $scope.labelData = newValue;
+        $scope.updateLabelData(newValue);
+      }, true);
   }]);

@@ -4,7 +4,7 @@ angular.module('scrummage', [
   'dndLists',
   'ui.bootstrap.modal',
   'ngAnimate',
-  'tc.chartjs'
+  'chart.js'
   ])
 .config(function ($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/signin')
