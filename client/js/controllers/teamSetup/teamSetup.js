@@ -12,8 +12,8 @@ angular.module('scrummage')
     };
 
     $scope.changeTeam = function (team) {
-      Request.user.joinTeam(team).then(
-        function () {
+      Request.user.joinTeam(team)
+      .then(function () {
           return Request.analytics.getSprintHistory();
         })
         .then(function (data) {
@@ -25,7 +25,14 @@ angular.module('scrummage')
     };
 
     $scope.createTeam = function (newTeam) {
-      Request.user.createTeam(newTeam);
+      Request.user.createTeam(newTeam)
+      .then(function () {
+        return Request.analytics.getSprintHistory();
+      })
+      .then(function (data) {
+        InitializeAnalytics.setData(data);
+      });
+      
       $location.path('/sprintsetup');
     };
 

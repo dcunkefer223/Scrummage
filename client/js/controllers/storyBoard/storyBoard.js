@@ -1,5 +1,5 @@
 angular.module('scrummage')
-    .controller('storyBoardCtrl', ['$scope', '$interval', 'Request', 'ColumnPoints', function ($scope, $interval, Request, ColumnPoints) {
+    .controller('storyBoardCtrl', ['$scope', '$interval', 'Request', 'ColumnPoints', 'InitializeAnalytics', function ($scope, $interval, Request, ColumnPoints, InitializeAnalytics) {
 
       var timer;
 
@@ -8,7 +8,7 @@ angular.module('scrummage')
         $scope.stop(); 
         
         // store the interval promise
-        timer = $interval(renderBoard, 5000);
+        timer = $interval($scope.renderBoard, 5000);
       };
       
       // stops the interval
@@ -125,7 +125,7 @@ angular.module('scrummage')
         $scope.modelAsJson = angular.toJson(model, true);
       }, true);
 
-      var renderBoard = function () {
+      $scope.renderBoard = function () {
         console.log('I rendered!');
         Request.feature.fetchAll().then(function (results) {
           $scope.clearBoard();
@@ -139,8 +139,12 @@ angular.module('scrummage')
         });
       };
 
-      // starting the interval by default
-      $scope.start();
+      $scope.initializeData = function () {
+        Request.analytics.getSprintHistory().then(
+          function (data) {
+            InitializeAnalytics.setData(data);
+        });
+      };
 
     }])
     .filter('capitalize', function() {
