@@ -27,23 +27,23 @@ exports.checkUser = function(req, res, next){
 //     };
 
 // Daniel
-exports.pgData = {
-      host: 'localhost',
-      database: 'jansenfamily',
-      user : 'jansenfamily',
-      port : 5432,
-      password : '',
-      ssl: false
-    };
-
-// Dave
 // exports.pgData = {
 //       host: 'localhost',
-//       database: 'postgres',
-//       user : 'davidunkefer',
+//       database: 'jansenfamily',
+//       user : 'jansenfamily',
 //       port : 5432,
 //       password : '',
 //       ssl: false
 //     };
+
+// Dave
+exports.pgData = {
+      host: 'localhost',
+      database: 'postgres',
+      user : 'davidunkefer',
+      port : 5432,
+      password : '',
+      ssl: false
+    };
 
 
