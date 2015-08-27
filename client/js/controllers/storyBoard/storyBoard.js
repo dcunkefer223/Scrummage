@@ -1,4 +1,4 @@
-angular.module('scrummage')
+angular.module('scrummageStoryboard', [])
     .controller('storyBoardCtrl', function ($scope, $interval, Request) {
 
       $scope.models = {

@@ -1,4 +1,4 @@
-angular.module('scrummage')
+angular.module('scrummageTeamSetup', [])
 
   .controller('teamSetupCtrl', function ($scope, Request, $location) {
 

@@ -1,4 +1,4 @@
-angular.module('scrummage')
+angular.module('scrummageSprintSetup', [])
 
   .controller('sprintSetupCtrl', function ($scope, Request, $location) {
 

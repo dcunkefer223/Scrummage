@@ -1,22 +1,17 @@
-angular.module('scrummage')
+angular.module('scrummageBurndown', [])
 
-  .controller('burndownCtrl', function ($scope, Request) {
-  //   $scope.openBurndown = function () {
-  //   $location.path('/burndown');
-  // };
-  
-    $scope.getTeamPoints = function (){
-      Request.analytics.getTeam()
-        .then(function(results){
-          $scope.data.datasets[0].data.push(results.backlog[0])
-          //$scope.data.datasets[1].data.unshift(results.backlog[0])
+  .controller('burndownCtrl',['$scope', function ($scope, Request) {
+    // $scope.getTeamPoints = function (){
+    //   Request.analytics.getTeam()
+    //     .then(function(results){
+    //       $scope.data.datasets[0].data.push(results.backlog[0])
+    //       //$scope.data.datasets[1].data.unshift(results.backlog[0])
           
-          console.log(results.backlog[0])
-          //$scope.data.data = (results.backlog[0])
-           //console.log(results.points)
-        })
-    }
-
+    //       console.log(results.backlog[0])
+    //       //$scope.data.data = (results.backlog[0])
+    //        //console.log(results.points)
+    //     })
+    // }
     $scope.data = {
         labels: ['8/23', '8/24', '8/25', '8/26', '8/27', '8/28', '8/29'],
         datasets: [
@@ -28,7 +23,7 @@ angular.module('scrummage')
             pointStrokeColor: '#fff',
             pointHighlightFill: '#fff',
             pointHighlightStroke: 'rgba(220,220,220,1)',
-            data: []
+            data: [50,48,29,28,38]
           },
           {
             label: 'Backlog',
@@ -114,5 +109,6 @@ angular.module('scrummage')
         //String - A legend template
         legendTemplate : '<ul class="tc-chart-js-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].strokeColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>'
       };
+//});
+  }]);
 
-  });

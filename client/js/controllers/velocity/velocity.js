@@ -1,4 +1,4 @@
-angular.module('scrummage')
+angular.module('scrummageVelocity', [])
 
   .controller('velocityCtrl', function ($scope, Request) {
     

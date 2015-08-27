@@ -1,4 +1,4 @@
-angular.module('scrummage')
+angular.module('scrummageFeatureSetup', [])
 
 .controller('featureSetupCtrl', function($scope){
   $scope.open = function() {

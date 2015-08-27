@@ -1,5 +1,4 @@
-angular.module('scrummage')
-
+angular.module('scrummageUtils', [])
   .factory('Request', function($http, $location){
     var noAuthRedirect = function () { $location.path('/'); };
     var returnObj = {
@@ -10,7 +9,7 @@ angular.module('scrummage')
             url: '/addfeature',
             data: data
           }).then(function (resp) {
-            return resp.data;
+          return resp.data;
           }, noAuthRedirect);
         },
         updateTitle : function (data) {
@@ -103,7 +102,7 @@ angular.module('scrummage')
             url: '/getteam?team_id=1',
             data: data
           }).then(function (resp) {
-            return resp.data;
+            return resp.data.backlog[0];
           }, noAuthRedirect);
         },
       //   fetchTotal : function() {
@@ -120,7 +119,7 @@ angular.module('scrummage')
         joinTeam : function (data) {
           return $http({
             method: 'POST',
-            url: '/changeuserteam',
+            url: '/jointeam',
             data: data
           }).then(function (resp) {
             return resp.data;
@@ -150,13 +149,13 @@ angular.module('scrummage')
 
       sprint : {
         createSprint : function (data) {
-          return $htpp({
+          return $http({
             method: 'POST',
             url: '/createsprint',
             data: data
           }).then(function (resp) {
             return resp.data;
-          },  noAuthRedirect);
+          }, noAuthRedirect);
         }
       }
     };

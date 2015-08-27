@@ -4,7 +4,17 @@ angular.module('scrummage', [
   'dndLists',
   'ui.bootstrap.modal',
   'ngAnimate',
-  'tc.chartjs'
+  'tc.chartjs',
+  'scrummageAnalytics', 
+  'scrummageBurndown',
+  'scrummageFeatureSetup',
+  'scrummageSettings',
+  'scrummageSignin', 
+  'scrummageSprintSetup',
+  'scrummageStoryboard',
+  'scrummageTeamSetup',
+  'scrummageVelocity',
+  'scrummageUtils'
   ])
 .config(function ($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/signin')
