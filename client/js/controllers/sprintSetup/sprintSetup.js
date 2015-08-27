@@ -35,8 +35,10 @@ angular.module('scrummage')
     };
 
     $scope.createSprint = function (newSprint) {
+      newSprint.date_changed = formatDate(new Date());
       Request.user.fetchTeam().then(
         function(response) {
+          console.log('in the view, response looks like', response);
           newSprint.team_id = response.team_id;
         }).then(function () {
           Request.sprint.createSprint(newSprint)
@@ -62,10 +64,10 @@ angular.module('scrummage')
               date: dateArr
             };
             ColumnPoints.setColumns(sendColumnPoints);
+            $location.path('/storyboard');
           });
         });
       
-      $location.path('/storyboard');
     };
 
   }]);

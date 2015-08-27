@@ -23,13 +23,7 @@ angular.module('scrummage')
     };
 
     $scope.createTeam = function (newTeam) {
-      Request.user.createTeam(newTeam)
-      .then(function () {
-        return Request.analytics.getSprintHistory();
-      })
-      .then(function (data) {
-        InitializeAnalytics.setData(data);
-      });
+      Request.user.createTeam(newTeam);
       
       $location.path('/sprintsetup');
     };
