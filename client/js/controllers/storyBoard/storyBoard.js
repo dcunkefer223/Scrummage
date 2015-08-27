@@ -1,5 +1,24 @@
 angular.module('scrummage')
-    .controller('storyBoardCtrl', ['$scope', '$interval', 'Request', 'ColumnPoints', function ($scope, $interval, Request, ColumnPoints) {
+    .controller('storyBoardCtrl', ['$scope', '$interval', 'Request', 'ColumnPoints', 'InitializeAnalytics', function ($scope, $interval, Request, ColumnPoints, InitializeAnalytics) {
+
+      var timer;
+
+      $scope.start = function() {
+        // stops any running interval to avoid two intervals running at the same time
+        $scope.stop(); 
+        
+        // store the interval promise
+        timer = $interval($scope.renderBoard, 5000);
+      };
+      
+      // stops the interval
+      $scope.stop = function() {
+        $interval.cancel(timer);
+      };
+      
+      $scope.$on('$destroy', function() {
+        $scope.stop();
+      });
 
       $scope.models = {
         selected: null,
@@ -22,23 +41,6 @@ angular.module('scrummage')
         }
       };
 
-      $scope.renderBoard = function () {
-        Request.feature.fetchAll().then(function (results) {
-          $scope.clearBoard();
-          for(var i = 0; i < results.length; i++) {
-            for(var key in $scope.models.lists) {
-              if(results[i].status === key) {
-                $scope.models.lists[key].push(results[i]);
-              }
-            }
-          }
-        });
-      };
-
-      $scope.renderBoard();
-
-      // setInterval($scope.renderBoard, 5000);
-
       var formatDate = function (currentDate) {
         var newDate = new Date(currentDate);
         var currentMonth = newDate.getMonth();
@@ -47,11 +49,10 @@ angular.module('scrummage')
       };
 
       $scope.dropCallback = function (event, index, item, external, listName) {
+        $scope.start();
+
         item.status = listName;
         item.points = parseInt(item.points);
-        // add a pause setInterval on dnd-dragstart
-        // then inside of this function unpause the setInterval
-        // possibly think of adding a 'pause' helper function
 
         if(listName === "backlog") {
           Request.feature.updateStatus({ 
@@ -85,7 +86,7 @@ angular.module('scrummage')
           Request.feature.updateStatus({ 
             feature_id : item.id, 
             points : item.points,
-            status : item.status }).then(function(response){
+            status : item.status }).then(function (response){
               var sendData = {
                 backlog: response['team'][0]['backlog'],
                 progress: response['team'][0]['progress'],
@@ -102,8 +103,15 @@ angular.module('scrummage')
         $scope.models.lists.backlog.unshift(newFeature);
 
         Request.feature.create(newFeature).then(function (results) {
-          // console.log('The feature_id is ', results.feature_id)
+          console.log(results);
           newFeature.id = results.feature_id;
+          var sendData = {
+            backlog: results['team']['backlog'],
+            progress: results['team']['progress'],
+            complete: results['team']['complete'],
+            date: formatDate(results.feature_date)
+          };
+          ColumnPoints.setColumns(sendData);
         });
         $scope.feature = {
           name: "",
@@ -116,6 +124,27 @@ angular.module('scrummage')
       $scope.$watch('models', function(model) {
         $scope.modelAsJson = angular.toJson(model, true);
       }, true);
+
+      $scope.renderBoard = function () {
+        console.log('I rendered!');
+        Request.feature.fetchAll().then(function (results) {
+          $scope.clearBoard();
+          for(var i = 0; i < results.length; i++) {
+            for(var key in $scope.models.lists) {
+              if(results[i].status === key) {
+                $scope.models.lists[key].push(results[i]);
+              }
+            }
+          }
+        });
+      };
+
+      $scope.initializeData = function () {
+        Request.analytics.getSprintHistory().then(
+          function (data) {
+            InitializeAnalytics.setData(data);
+        });
+      };
 
     }])
     .filter('capitalize', function() {

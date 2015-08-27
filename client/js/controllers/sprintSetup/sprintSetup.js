@@ -1,17 +1,17 @@
 angular.module('scrummage')
 
-  .controller('sprintSetupCtrl', ['$scope', 'Request', '$location', 'Sprint', function ($scope, Request, $location, Sprint) {
+  .controller('sprintSetupCtrl', ['$scope', 'Request', '$location', 'Sprint', 'ColumnPoints', function ($scope, Request, $location, Sprint, ColumnPoints) {
 
     $scope.newSprint = {};
 
-    $scope.formatDate = function (currentDate) {
+    var formatDate = function (currentDate) {
       var newDate = new Date(currentDate);
       var currentMonth = newDate.getMonth();
       var currentDay = newDate.getDate();
       return ((currentMonth + 1) + '/' + currentDay);
     };
 
-    $scope.dateArray = function (start, end) {
+    var dateArray = function (start, end) {
       Date.prototype.addDays = function(days) {
         var dat = new Date(this.valueOf());
         dat.setDate(dat.getDate() + days);
@@ -26,7 +26,7 @@ angular.module('scrummage')
           currentDate = currentDate.addDays(1);
         }
         for(var i = 0; i < dateArray.length; i++) {
-          dateArray[i] = $scope.formatDate(dateArray[i].toDateString());
+          dateArray[i] = formatDate(dateArray[i].toDateString());
         }
         return dateArray;
       }
@@ -35,21 +35,35 @@ angular.module('scrummage')
     };
 
     $scope.createSprint = function (newSprint) {
-      Request.sprint.createSprint(newSprint)
-      .then(function (response) {
-        var name = response[0].name;
-        var start = $scope.formatDate(response[0].sprintstart);
-        var end = $scope.formatDate(response[0].sprintend);
-        var dateArr = $scope.dateArray(new Date(start), new Date(end));
-        var sendData = {
-          name : name,
-          start : start,
-          end : end,
-          dateArray : dateArr
-        };
+      Request.user.fetchTeam().then(
+        function(response) {
+          newSprint.team_id = response.team_id;
+        }).then(function () {
+          Request.sprint.createSprint(newSprint)
+          .then(function (response) {
+            console.log(response);
 
-        Sprint.setSprint(sendData);
-      });
+            var name = response.sprint.name;
+            var start = formatDate(response.sprint.sprintstart);
+            var end = formatDate(response.sprint.sprintend);
+            var dateArr = dateArray(new Date(start), new Date(end));
+            var sendSprintDates = {
+              name : name,
+              start : start,
+              end : end,
+              dateArray : dateArr
+            };
+
+            Sprint.setSprint(sendSprintDates);
+            var sendColumnPoints = {
+              backlog: response.team['backlog'],
+              progress: response.team['progress'],
+              complete: response.team['complete'],
+              date: dateArr
+            };
+            ColumnPoints.setColumns(sendColumnPoints);
+          });
+        });
       
       $location.path('/storyboard');
     };

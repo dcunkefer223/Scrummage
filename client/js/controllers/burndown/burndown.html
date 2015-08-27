@@ -7,10 +7,11 @@
           <h2> Burndown Chart </h2>
           <div class="chart-container">
             <div class="col-xs-9">
-            <canvas tc-chartjs-line chart-options="options" chart-data="data" chart-legend="lineChart1" ></canvas>
+              <canvas id="line" class="chart chart-line" data="data"
+                labels="labels" legend="true" series="series" colours="colours" options="options">
+              </canvas> 
           </div>
           <div class="col-xs-3">
-            <div tc-chartjs-legend chart-legend="lineChart1"></div>
           </div>
         </div>
         </div>

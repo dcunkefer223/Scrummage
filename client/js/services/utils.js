@@ -98,11 +98,10 @@ angular.module('scrummage')
       },
 
       analytics : {
-        getTeam : function (data) {
+        getSprintHistory : function () {
           return $http({
             method: 'GET',
-            url: '/getteam?team_id=1',
-            data: data
+            url: '/getsprinthistory'
           }).then(function (resp) {
             return resp.data;
           }, noAuthRedirect);
@@ -148,6 +147,15 @@ angular.module('scrummage')
           }, noAuthRedirect);
         },
 
+        fetchTeam : function () {
+          return $http({
+            method: 'GET',
+            url: '/fetchuserteam',
+          }).then(function (resp) {
+            return resp.data;
+          }, noAuthRedirect);
+        },
+
         leaveTeam : function (data) {
           return $http({
             method: 'POST',
@@ -182,6 +190,18 @@ angular.module('scrummage')
     };
 
     return returnObj;
+  })
+  .factory('InitializeAnalytics', function () {
+    var dataObj = {};
+
+    return {
+      getData : function () {
+        return dataObj;
+      },
+      setData : function (data) {
+        dataObj = data;
+      }
+    }
   })
 
   .factory('ColumnPoints', function () {

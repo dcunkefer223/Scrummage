@@ -1,67 +1,30 @@
 angular.module('scrummage')
 
-  .controller('burndownCtrl', ['$scope', 'Request', 'ColumnPoints', 'Sprint', function ($scope, Request, ColumnPoints, Sprint) {
+  .controller('burndownCtrl', ['$scope', 'Request', 'ColumnPoints', 'Sprint', 'InitializeAnalytics', function ($scope, Request, ColumnPoints, Sprint, InitializeAnalytics) {
 
-    $scope.columnData;
-    $scope.labelData;
+    var generatedLabels;
 
-    $scope.updateColumnData = function(columnData) {
-      for(var i = 0; i < $scope.data.labels.length; i++) {
-        if($scope.data.labels[i] === columnData.date) {
-          $scope.data.datasets[0].data[i] = columnData.backlog + columnData.progress;
-          $scope.data.datasets[1].data[i] = columnData.backlog;
+    var initializeData = function (data) {
+
+      var idealLine = function(progress, labels) {
+        var results = [];
+        var first = progress[0];
+        var step = (first.toFixed(3) / (labels.length - 1).toFixed(3));
+        for(var i = 0; i < labels.length; i++) {
+          debugger;
+          results.push(first);
+          first -= step;
         }
-      }
-    };
-
-    $scope.updateLabelData = function(labelData) {
-      $scope.data.labels = labelData.dateArray;
-    };
-
-    $scope.data = {
-        labels: [],
-        datasets: [
-          {
-            label: 'In Progress',
-            fillColor: '#FAA43A',
-            strokeColor: '#FAA43A',
-            pointColor: 'rgba(220,220,220,1)',
-            pointStrokeColor: '#fff',
-            pointHighlightFill: '#fff',
-            pointHighlightStroke: 'rgba(220,220,220,1)',
-            data: [0, 0, 0, 0, 0, 0, 0]
-          },
-          {
-            label: 'Backlog',
-            fillColor: '#5DA5DA',
-            strokeColor: '#5DA5DA',
-            pointColor: 'rgba(151,187,205,1)',
-            pointStrokeColor: '#fff',
-            pointHighlightFill: '#fff',
-            pointHighlightStroke: 'rgba(151,187,205,1)',
-            data: [0, 0, 0, 0, 0, 0, 0]
-          },
-          {
-            label: 'Ideal Line',
-            fillColor: 'rgba(255, 255, 255, 0)',
-            strokeColor: 'rgba(255,255,255,1)',
-            data: [80, 66.667, 52.333, 39, 26.667, 13.333, 0]
-          }
-        ]
+        return results;
       };
-
-      // UNDER CONSTRUCTION: ideal line generator
-
-      // $scope.generateLineData = function (pointsX, pointsY) {
-      //   var resultsArr = [];
-      //   var dy = pointsY[0] / pointsX.length;
-      //   resultsArr.length = pointsX.length;
-      //   for(var i = 1; i < resultsArr.length; i++) {
-      //     resultsArr.push(resultsArr[i] - dy);
-      //   }
-      //   return resultsArr;
-      // };
-
+      $scope.labels = generatedLabels;
+      $scope.series = ['Progress', 'Backlog', 'Ideal Line'];
+      if(data.progress) {
+        $scope.labels = data.dateArray;
+        $scope.data = [data.progress, data.backlog, idealLine(data.progress, data.dateArray)];
+      } else {
+        $scope.data = [[0],[0], idealLine(data.progress, data.dates)];
+      }
       $scope.options =  {
 
         // Sets the chart to be responsive
@@ -128,25 +91,73 @@ angular.module('scrummage')
         legendTemplate : '<ul class="tc-chart-js-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].strokeColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>'
       };
 
-      $scope.$watch(
-        function () {
-          return ColumnPoints.getColumns();
+
+      $scope.colours = [
+        {
+          fillColor: '#FAA43A',
+          strokeColor: '#FAA43A',
+          pointColor: 'rgba(220,220,220,1)',
+          pointStrokeColor: '#fff',
+          pointHighlightFill: '#fff',
+          pointHighlightStroke: 'rgba(220,220,220,1)'
         },
-
-        function (newValue, oldValue) {
-          console.log(oldValue);
-          $scope.columnData = newValue;
-          $scope.updateColumnData(newValue);
-        }, true);
-
-      $scope.$watch(
-        function () {
-          return Sprint.getSprint();
+        {
+          fillColor: '#5DA5DA',
+          strokeColor: '#5DA5DA',
+          pointColor: 'rgba(151,187,205,1)',
+          pointStrokeColor: '#fff',
+          pointHighlightFill: '#fff',
+          pointHighlightStroke: 'rgba(151,187,205,1)',
         },
+        {
+          fillColor: 'rgba(255, 255, 255, 0)',
+          strokeColor: 'rgba(255,255,255, 1)'
+        }
+      ];
+    };
 
-        function (newValue, oldValue) {
-          console.log(oldValue);
-          $scope.labelData = newValue;
-          $scope.updateLabelData(newValue);
-        }, true);
+    var updateColumnData = function(columnData) {
+      for(var i = 0; i < $scope.labels.length; i++) {
+        if($scope.labels[i] === columnData.date) {
+          if(($scope.data[0][i] === undefined) &&
+             ($scope.data[1][i] === undefined)) {
+            $scope.data[0].push(columnData.backlog + columnData.progress);
+            $scope.data[1].push(columnData.backlog);
+          }
+          else {
+            $scope.data[0][i] = columnData.backlog + columnData.progress;
+            $scope.data[1][i] = columnData.backlog;
+          }
+        }
+      }
+    };
+
+    $scope.$watch(
+      function () {
+        return Sprint.getSprint();
+      },
+
+      function (newValue, oldValue) {
+        generatedLabels = newValue.dateArray;
+      }, true);
+
+
+    $scope.$watch(
+      function () {
+        return InitializeAnalytics.getData();
+      },
+
+      function (newValue, oldValue) {
+        initializeData(newValue);
+      }, true);
+
+    $scope.$watch(
+      function () {
+        return ColumnPoints.getColumns();
+      },
+
+      function (newValue, oldValue) {
+        updateColumnData(newValue);
+      }, true);
+
   }]);
