@@ -3,7 +3,6 @@ var taskModel = require('../models/taskModel.js');
 var userModel = require('../models/userModel.js');
 
 module.exports.getSprintHistory = function (team_id, res) {
-  console.log('user team looks like', team_id);
   var formatDate = function (currentDate) {
     var newDate = new Date(currentDate);
     var currentMonth = newDate.getMonth();
@@ -36,7 +35,6 @@ module.exports.getSprintHistory = function (team_id, res) {
 
   teamModel.fetchAllSprints(team_id)
     .then(function (response) {
-      console.log('response looks like', response);
       var results = {};
       var start = formatDate(response[0].sprintstart);
       var end = formatDate(response[0].sprintend);

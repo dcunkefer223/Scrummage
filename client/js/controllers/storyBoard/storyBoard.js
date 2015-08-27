@@ -1,6 +1,5 @@
 angular.module('scrummage')
     .controller('storyBoardCtrl', ['$scope', '$interval', 'Request', 'ColumnPoints', 'InitializeAnalytics', function ($scope, $interval, Request, ColumnPoints, InitializeAnalytics) {
-
       var timer;
 
       $scope.start = function() {
@@ -8,7 +7,7 @@ angular.module('scrummage')
         $scope.stop(); 
         
         // store the interval promise
-        timer = $interval($scope.renderBoard, 5000);
+        timer = $interval($scope.renderBoard, 3000);
       };
       
       // stops the interval
@@ -35,7 +34,7 @@ angular.module('scrummage')
         status: "backlog",
       };
 
-      $scope.clearBoard = function () {
+      var clearBoard = function () {
         for(var prop in $scope.models.lists) {
           $scope.models.lists[prop].length = 0;
         }
@@ -126,13 +125,13 @@ angular.module('scrummage')
       }, true);
 
       $scope.renderBoard = function () {
-        console.log('I rendered!');
         Request.feature.fetchAll().then(function (results) {
-          $scope.clearBoard();
+          clearBoard();
           for(var i = 0; i < results.length; i++) {
             for(var key in $scope.models.lists) {
               if(results[i].status === key) {
                 $scope.models.lists[key].push(results[i]);
+                $scope.initializeData();
               }
             }
           }
