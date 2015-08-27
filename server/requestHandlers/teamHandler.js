@@ -34,9 +34,9 @@ module.exports.getSprintHistory = function (team_id, res) {
       return getDates(start, end);
   };
 
-
   teamModel.fetchAllSprints(team_id)
     .then(function (response) {
+      console.log('response looks like', response);
       var results = {};
       var start = formatDate(response[0].sprintstart);
       var end = formatDate(response[0].sprintend);
@@ -44,7 +44,6 @@ module.exports.getSprintHistory = function (team_id, res) {
       results.backlog = [];
       results.progress = [];
       results.dates = [];
-      results.dateArray = null;
       response.forEach(function (obj) {
         results.backlog.push(obj.backlog);
         results.progress.push(obj.backlog + obj.progress);
@@ -61,6 +60,7 @@ module.exports.getSprintHistory = function (team_id, res) {
 
 module.exports.createSprint = function (sprint, team_id, res) {
   var sprintData;
+  console.log('sprint looks like', sprint);
   teamModel.createSprint(team_id, sprint)
     .then(function (createdSprint) {
       sprintData = createdSprint[0];
