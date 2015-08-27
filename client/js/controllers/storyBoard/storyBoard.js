@@ -1,5 +1,24 @@
 angular.module('scrummage')
-    .controller('storyBoardCtrl', function ($scope, $interval, Request) {
+    .controller('storyBoardCtrl', ['$scope', '$interval', 'Request', 'ColumnPoints', 'InitializeAnalytics', function ($scope, $interval, Request, ColumnPoints, InitializeAnalytics) {
+
+      var timer;
+
+      $scope.start = function() {
+        // stops any running interval to avoid two intervals running at the same time
+        $scope.stop(); 
+        
+        // store the interval promise
+        timer = $interval($scope.renderBoard, 5000);
+      };
+      
+      // stops the interval
+      $scope.stop = function() {
+        $interval.cancel(timer);
+      };
+      
+      $scope.$on('$destroy', function() {
+        $scope.stop();
+      });
 
       $scope.models = {
         selected: null,
@@ -11,39 +30,9 @@ angular.module('scrummage')
       };
 
       $scope.feature = {
-        sprint_id: 1,
         name: "",
         description: "",
-        points: 0,
         status: "backlog",
-        index: 0
-      };
-
-      $scope.backlogTotal = function() {
-        var sum = 0;
-        for(var i = 0; i < $scope.models.lists['backlog'].length; i++) {
-          sum += $scope.models.lists['backlog'][i].points;
-        }
-        console.log('The backlog total is ', sum);
-        return sum;
-      };
-
-      $scope.progressTotal = function() {
-        var sum = 0;
-        for(var i = 0; i < $scope.models.lists['progress'].length; i++) {
-          sum += $scope.models.lists['progress'][i].points;
-        }
-        console.log('The progress total is ', sum);
-        return sum;
-      };
-
-      var completeTotal = function() {
-        var sum = 0;
-        for(var i = 0; i < $scope.models.lists['complete'].length; i++) {
-          sum += $scope.models.lists['complete'][i].points;
-        }
-        console.log('The completed total is ', sum);
-        return sum;
       };
 
       $scope.clearBoard = function () {
@@ -52,45 +41,61 @@ angular.module('scrummage')
         }
       };
 
-      $scope.renderBoard = function () {
-        Request.feature.fetchAll().then(function (results) {
-          $scope.clearBoard();
-          for(var i = 0; i < results.length; i++) {
-            for(var key in $scope.models.lists) {
-              if(results[i].status === key) {
-                $scope.models.lists[key].push(results[i]);
-              }
-            }
-          }
-          console.log('rendered');
-        });
+      var formatDate = function (currentDate) {
+        var newDate = new Date(currentDate);
+        var currentMonth = newDate.getMonth();
+        var currentDay = newDate.getDate();
+        return ((currentMonth + 1) + '/' + currentDay);
       };
 
-      $scope.renderBoard();
-
-
-      // var intervalPromise = $interval($scope.renderBoard, 3000);
-      $scope.count = 0;
       $scope.dropCallback = function (event, index, item, external, listName) {
+        $scope.start();
+
         item.status = listName;
         item.points = parseInt(item.points);
-        if(listName === "complete") {
 
-          $scope.count += item.points;
-
-          console.log($scope.count);
-
-          Request.analytics.updatePoints({team_id: 1, points : $scope.count}).then(
-            function (results) {
-              console.log(results);
+        if(listName === "backlog") {
+          Request.feature.updateStatus({ 
+            feature_id : item.id, 
+            points : item.points,
+            status : item.status }).then(function(response){
+              var sendData = {
+                backlog: response['team'][0]['backlog'],
+                progress: response['team'][0]['progress'],
+                complete: response['team'][0]['complete'],
+                date: formatDate(response['feature'][0].status_date)
+              };
+              ColumnPoints.setColumns(sendData);
           });
-
         }
-        Request.feature.updateStatus({ 
-          feature_id : item.id, 
-          status : item.status }).then(function(){
-
-        });
+        else if(listName === "progress") {
+          Request.feature.updateStatus({ 
+            feature_id : item.id, 
+            points : item.points,
+            status : item.status }).then(function(response){
+              var sendData = {
+                backlog: response['team'][0]['backlog'],
+                progress: response['team'][0]['progress'],
+                complete: response['team'][0]['complete'],
+                date: formatDate(response['feature'][0].status_date)
+              };
+              ColumnPoints.setColumns(sendData);
+          });
+        }
+        else if(listName === "complete") {
+          Request.feature.updateStatus({ 
+            feature_id : item.id, 
+            points : item.points,
+            status : item.status }).then(function (response){
+              var sendData = {
+                backlog: response['team'][0]['backlog'],
+                progress: response['team'][0]['progress'],
+                complete: response['team'][0]['complete'],
+                date: formatDate(response['feature'][0].status_date)
+              };
+              ColumnPoints.setColumns(sendData);
+          });
+        }
         return item;
       };
 
@@ -98,14 +103,19 @@ angular.module('scrummage')
         $scope.models.lists.backlog.unshift(newFeature);
 
         Request.feature.create(newFeature).then(function (results) {
-          // console.log('The feature_id is ', results.feature_id)
+          console.log(results);
           newFeature.id = results.feature_id;
+          var sendData = {
+            backlog: results['team']['backlog'],
+            progress: results['team']['progress'],
+            complete: results['team']['complete'],
+            date: formatDate(results.feature_date)
+          };
+          ColumnPoints.setColumns(sendData);
         });
         $scope.feature = {
-          sprint_id: 1,
           name: "",
           description: "",
-          points: 0,
           status: "backlog"
         };
       };
@@ -115,9 +125,30 @@ angular.module('scrummage')
         $scope.modelAsJson = angular.toJson(model, true);
       }, true);
 
-    })
+      $scope.renderBoard = function () {
+        console.log('I rendered!');
+        Request.feature.fetchAll().then(function (results) {
+          $scope.clearBoard();
+          for(var i = 0; i < results.length; i++) {
+            for(var key in $scope.models.lists) {
+              if(results[i].status === key) {
+                $scope.models.lists[key].push(results[i]);
+              }
+            }
+          }
+        });
+      };
+
+      $scope.initializeData = function () {
+        Request.analytics.getSprintHistory().then(
+          function (data) {
+            InitializeAnalytics.setData(data);
+        });
+      };
+
+    }])
     .filter('capitalize', function() {
         return function(input) {
           return input.charAt(0).toUpperCase() + input.substr(1).toLowerCase();
-        }
+        };
     });

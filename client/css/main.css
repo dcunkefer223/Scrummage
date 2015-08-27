@@ -1,10 +1,13 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto);
-/****** LOGIN MODAL ******/
+
+
+
+/* ------------------------------------- Login Modal ------------------------------------- */
 .loginmodal-container {
   padding: 30px;
   max-width: 350px;
   width: 100% !important;
-  background-color: #F7F7F7;
+  background-color: #fcfff5;
   margin: 0 auto;
   border-radius: 2px;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
@@ -106,52 +109,93 @@
 
 .signin-bg {
   background: url('../img/sheep-herder-compressed.jpg') no-repeat center center;
+  background-blend-mode: multiply;
+  background-color: #d1dbbd;
     height: 100vh;
     width: 100%;
     background-size: cover;
-    margin-top: -30px;
+    padding-top: 80px;
 }
 
- .add-feature-modal {
-    border: 0px;
-    text-shadow: 0 1px rgba(0,0,0,0.1);
-    padding: 17px 0px;
-    font-family: roboto;
-    font-size: 14px;
-    margin-top: 40px;
-    text-align: center;  
- }
+.modal-dialog {
+  margin-top: 0;
+}
 
- .add-feature-modal .add-feature-body {
-  margin-bottom: 30px;
- }
+/* ------------------------------------- Team Setup ------------------------------------- */
 
- a:hover {
-  text-decoration: none;
- }
+.join-team input {
+  font-size: 35px;
+  background-color: inherit;
+  border: none;
+  outline: 0;
+  width: 100%;
+}
 
-.modal {
-  top: 15%;
-  bottom: 15%;
+.create-team input {
+  font-size: 35px;
+  background-color: inherit;
+  border: none;
+  outline: 0;
+  width: 100%;
+}
+
+.team-body {
+  padding-top: 80px;
+}
+
+/* --------------------------------- Sprint Setup --------------------------------- */
+
+.sprint-body {
+  padding-top: 70px;
+}
+
+.sprint-name input {
+  font-size: 35px;
+  background-color: inherit;
+  border: none;
+  outline: 0;
+  width: 100%;
+}
+
+.input-group {
+  padding-bottom: 20px;
 }
 
 /* --------------------------------- StoryBoard Styling --------------------------------- */
 
-.feature-header .feature-title {
-  font: Helvetica;
-  font-weight: 100;
+.feature-header .feature-title h2{
+  font: Helvetica sans-serif;
+  font-weight: 200;
+  margin-bottom: 35px;
+  color: black;
+  font-size: 32px;
 }
 
 .container-fluid {
-  padding-left: 0;
+  padding: 0;
 }
 
 .column-bg {
-  background-color: #d8d8d8;
+  background-color: #d1dbbd;
+  height: 100vh;
 }
 
+.container .col-xs-4 {
+  border-right: 5px solid;
+  text-align: center;
+  height: 100vh;
+  padding-left: 1%;
+  padding-right: 1%;
+  overflow-y: scroll;
+}
+
+/* --------------------------------- Navigation --------------------------------- */
+
 .nav-bg {
-  background-color: #63bdc7;
+  background-color: #039676;
+  height: 100vh;
+  padding-top: 6%;
+  padding-left: 20px;
 }
 
 .sidebar-nav {
@@ -159,23 +203,18 @@
   display: block;
   margin: 0;
   padding-left: 0;
-  z-index: 1001;
 }
 
 .sidebar-nav ul {
-  padding-top: 20px;
-  padding-left: 10px;
+  padding-top: inherit;
+  padding-left: inherit;
+  height: inherit;
 }
 
 .sidebar-nav li {
   list-style: none;
   white-space: nowrap;
   padding-bottom: 20px;
-}
-
-.fa {
-  display: inline-block;
-  color: lightyellow;
 }
 
 .nav-list-icon {
@@ -185,35 +224,33 @@
   width: 40px;
 }
 
-.col-xs-10 {
-  padding: 0;
+li .sub-menu {
+  clear: both;
 }
 
-#column-bg {
-  background-color: black;
+.sub-item {
+  width: 95%;
 }
 
-.side-bar {
-  z-index: 1001;
-  height: 100%;
-  position: absolute;
-  display: block;
-  float: left;
-  margin: 0;
-  background-color: black;
+.show-settings {
+  background: none;
+  border: none;
 }
 
-.side-bar ul {
-  list-style: none;
-  white-space: nowrap;
+.add-feature {
+  background: none;
+  border: none;
 }
+
+/* --------------------------------- Icons --------------------------------- */
 
 .fa {
+  display: inline-block;
   width: 40px;
   font-size: 40px;
   padding: 10px 11px;
   line-height: 50px;
-  color: lightyellow;
+  color: #fcfff5;
 }
 
 .fa-github-square {
@@ -222,21 +259,28 @@
   margin-left: 100px;
 }
 
-.container h3 {
-  text-align: center;
-  color: grey;
-  margin-bottom: 20px;
+.fa-reply:before {
+  padding-left: 5px;
 }
 
-.container .col-xs-4 {
-  border-right: 5px solid;
-  text-align: center;
-  height: 100vh;
-  padding: 10px, 20px;
-  overflow-y: scroll;
+.fa-question-circle:before {
+  padding-left: 7px;
 }
 
-/* ------------------------- Test Boxes --------------------- */
+.change-settings-btn {
+  background: none;
+  border: none;
+}
+
+.fa-unlock-alt:before {
+  padding-left: 8px;
+}
+
+.fa-sign-out:before {
+  padding-left: 6px;
+}
+
+/* ------------------------- Draggable Boxes --------------------- */
 
 ul[dnd-list],
 ul[dnd-list] > li {
@@ -250,20 +294,18 @@ ul[dnd-list] {
 
 ul[dnd-list] .dndDraggingSource {
     display: none;
+    background-color: black;
     min-height: 42px;
 }
 
 
 ul[dnd-list] .dndPlaceholder {
     display: block;
-    background-color: #4ab8a4;
     border-style: none;
-    min-height: 48px;
+    min-height: 40%;
 }
 
 ul[dnd-list] li {
-    background-color: #fff;
-    border: 1px solid #ddd;
     border-top-right-radius: 4px;
     border-top-left-radius: 4px;
     display: block;
@@ -271,6 +313,8 @@ ul[dnd-list] li {
     margin-bottom: 50px;
     margin-left: 15%;
     margin-right: 15%;
+    padding-right: 4%;
+    padding-left: 4%;
 }
 
 ul[dnd-list] li.selected {
@@ -278,7 +322,244 @@ ul[dnd-list] li.selected {
     color: #3c763d;
 }
 
-/* ------------------------- Modal / Graph Boxes --------------------- */
+/* --------------------------------- Box Content --------------------------------- */
+
+
+ul li:nth-child(1) .card {
+  -o-transform:rotate(-3deg);
+  -webkit-transform:rotate(-3deg);
+  -moz-transform:rotate(-3deg);
+  position:relative;
+  top:5px;
+}
+
+ul li:nth-child(even) .card {
+  -o-transform:rotate(2deg);
+  -webkit-transform:rotate(2deg);
+  -moz-transform:rotate(2deg);
+  position:relative;
+  top:5px;
+}
+ul li:nth-child(3n) .card {
+  -o-transform:rotate(-1deg);
+  -webkit-transform:rotate(-1deg);
+  -moz-transform:rotate(-1deg);
+  position:relative;
+  top:-5px;
+}
+ul li:nth-child(5n) .card {
+  -o-transform:rotate(3deg);
+  -webkit-transform:rotate(3deg);
+  -moz-transform:rotate(3deg);
+  position:relative;
+  top:-10px;
+}
+
+li .card {
+  box-shadow: 1px 1px 9px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  font-family: 'Architects Daughter', cursive;
+}
+
+.card .card-header {
+  cursor: move;
+  background-color: #fcfff5;
+  color: black;
+  font-size: 23px;
+  height: 33%;
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-top: 1%;
+  float: left;
+  text-decoration: underline;
+}
+
+.card .card-body {
+  cursor: move;
+  padding: 5px 5px 2px 5px;
+  word-wrap: break-word;
+  background-color: #fcfff5;
+  font-size: 22px;
+  height: inherit;
+}
+
+.card .card-body .comments {
+  border: none;
+  resize: none;
+  word-wrap: break-word;
+  overflow: hidden;
+  background-color: #fcfff5;
+  margin-top: 10px;
+  width: 100%;
+  font-size: 100%;
+  height: inherit;
+}
+
+.card .card-body .card-footer {
+  padding-left: 1px;
+  height: 45px;
+}
+
+.card-body .card-points {
+  float: right;
+  font-size: 150%;
+}
+
+/* --------------------------------- Settings Modal --------------------------------- */
+
+.modal .change-settings-modal {
+  border: 0px;
+  text-shadow: 0 1px rgba(0,0,0,0.1);
+  padding: 17px 0px;
+  padding-left: 10px;
+  font-family: 'Architects Daughter', cursive;
+  font-size: 20px;
+  height: 100%;
+}
+
+.change-settings-modal .change-settings-body {
+  width: 100%;
+}
+
+.change-settings-body h2 {
+  padding-left: 33%;
+  font-size: 40px;
+}
+
+.change-settings-modal .create-sprint {
+  padding-top: 60px;
+  padding-bottom: 70px;
+  width: 84%;
+}
+
+.change-settings-modal .leave-team {
+  padding-left: 30px;
+}
+
+/* --------------------------------- Add Feature Modal --------------------------------- */
+
+button:focus {
+  outline:0;
+}
+
+.add-feature {
+  padding-left: 7px;
+}
+
+.modal .add-feature-modal {
+    border: 0px;
+    text-shadow: 0 1px rgba(0,0,0,0.1);
+    padding: 17px 0px;
+    font-family: 'Architects Daughter', cursive;
+    font-size: 20px;
+    height: 100%;
+}
+
+.add-feature-modal .enter-feature {
+  font-size: 45px;
+  margin-bottom: 20px;
+  padding-left: 50px;
+}
+
+ .add-feature-modal .add-feature-body {
+  margin-bottom: 30px;
+  float: left;
+  margin-left: 30px;
+  width: 100%;
+ }
+
+ .add-feature-body .add-feature-name {
+  margin-bottom: 40px;
+ }
+
+ .add-feature-body .add-feature-name input {
+  font-size: 40px;
+  background-color: inherit;
+  border: none;
+  outline: 0;
+  width: 100%;
+ }
+
+ .add-feature-body .add-feature-description {
+  margin-bottom: 40px;
+ }
+
+ .add-feature-body .add-feature-description input {
+  font-size: 40px;
+  background-color: inherit;
+  border: none;
+  outline: 0;
+  width: 100%;
+ }
+
+ .add-feature-body .add-feature-points {
+  margin-bottom: 60px;
+ }
+
+ .add-feature-body .add-feature-points input {
+  font-size: 40px;
+  background-color: inherit;
+  border: none;
+  outline: 0;
+ }
+
+ .btn-lg {
+  background: url('../img/burnDown.png') no-repeat center center;
+  font-family: 'Architects Daughter', cursive;
+  text-decoration: none;
+  font-size: 30px;
+  margin-left: 25%;
+ }
+
+ a:hover {
+  text-decoration: none;
+ }
+
+ /* --------------------------------- Analytics / Chart Modal --------------------------------- */
+
+.burndown-body {
+  width: 100%;
+  padding-left: 60px;
+  padding-top: 60px;
+  padding-right: 0;
+}
+
+.burndown-body h2 {
+  padding-bottom: 20px;
+}
+
+.chart-banner {
+  background-color:rgba(0, 140, 186, 0.3);
+  padding-top:25px;
+  margin-bottom:15px;
+  border-top:1px solid #666666;
+  border-bottom:1px solid #cccccc;
+}
+
+.tc-chart-js-legend {
+  list-style-type: none;
+  padding-left: 0px;
+}
+.tc-chart-js-legend li {
+  display: block;
+  float: left;
+  clear:both;
+  padding:10px;
+  font-size: 18px;
+}
+.tc-chart-js-legend li span {
+  width:25px;
+  height:25px;
+  display:block;
+  float:left;
+  margin-right:10px;
+}
+
+/* ---------------------------------- Modal / Graph Boxes -------------------------------- */
+
+body {
+  overflow-y: hidden;
+}
 
 .modal-backdrop.fade {
   opacity: 0;
@@ -297,13 +578,15 @@ ul[dnd-list] li.selected {
   z-index: 1050;
   width: 560px;
   margin-left: -280px;
-  background-color: #ffffff;
+  background-color: #f4f6ef;
   border: 1px solid #999;
   border: 1px solid rgba(0, 0, 0, 0.3);
   *border: 1px solid #999;
-  -webkit-border-radius: 6px;
+  top: 15%;
+  bottom: 15%;
+/*  -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
-          border-radius: 6px;
+          border-radius: 6px;*/
   outline: none;
   -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
      -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
@@ -389,41 +672,11 @@ ul[dnd-list] li.selected {
   margin-left: 0;
 }
 
-.card {
-  margin-bottom: 20px;
+/*-----------------------------------------------------------------------------*/
 
-}
-
-.card .card-header {
-  cursor: move;
-  background-color: #4ab8a4;
-  color: white;
-  height: 22px;
+.second {
+    width: 100px;
+    height: 100px;
+    background-color: pink;
 }
 
-.card .card-body {
-  padding: 5px 5px 2px 5px;
-  font-size: 15px;
-  word-wrap: break-word;
-}
-
-.card .card-body .comments {
-  border: none;
-  height: 32px;
-  resize: none;
-  word-wrap: break-word;
-  overflow: hidden;
-}
-
-.card .card-body .card-footer {
-  padding-left:1px;
-}
-
-.card .card-body .card-points {
-  float: right;
-}
-/* ------------------------- Analytics /// Chart --------------------- */
-.chart {
- width: 500px;
- height: 500px;
-}

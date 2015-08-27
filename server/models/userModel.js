@@ -1,13 +1,13 @@
 //userModel.js
 var db = require('../db/db.js');
-var bcrypt = require('bcrypt');
+// var bcrypt = require('bcrypt');
 
 exports.addUser = function(user, cb){
   // This method is for internal server use
   // user is {email, username, github_id}
   db('users').insert(user).returning('id').then(
     function (id) {
-      console.log("User inserted at: " + id);
+      console.log("User inserted at: " + id[0]);
       cb(null, id);
     },
     function (error) {
@@ -51,15 +51,22 @@ exports.generateHash = function(password){
   return hash;
 };
 
-exports.changeUserTeam = function (user_id, newTeam_id, res) {
-  db('users').where('id', user_id).update('team_id', newTeam_id).then(
-    function (rows) {
-      res.status(200).send({user_id: user_id});
-    },
-    function (error) {
-      console.error(error);
-      res.status(500).send('Failed to update feature in database');
-    }
-  );
+module.exports.changeCurrentTeam = function (user_id, newTeam_id) {
+  return db('users').where('id', user_id).update('current_team', newTeam_id).returning('current_team');
 };
 
+module.exports.addUserToTeam = function (user_id, newTeam_id) {
+  return db.raw('insert into "users_teams" ("team_id", "user_id") select ?, ? where not exists (select * from "users_teams" where "user_id" = ? and "team_id" = ?);', [user_id, newTeam_id, user_id, newTeam_id]);
+};
+
+module.exports.getUserTeams = function (user_id) {
+  return db.select('*').from('users_teams').where('user_id', user_id);
+};
+
+module.exports.checkUserTeam = function (user_id, team_id) {
+  return db.select('*').from('users_teams').where({user_id: user_id, team_id: team_id});
+};
+
+module.exports.removeUserFromTeam = function (user_id, team_id) {
+  return db('users_teams').where({user_id: user_id, team_id: team_id}).del();
+};

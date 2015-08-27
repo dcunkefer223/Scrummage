@@ -3,12 +3,13 @@ angular.module('scrummage', [
   'ui.bootstrap',
   'dndLists',
   'ui.bootstrap.modal',
-  'angularCharts'
+  'ngAnimate',
+  'chart.js'
   ])
 .config(function ($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/signin')
 
-  var appViews = ['signin', 'storyBoard', 'analytics', 'featureSetup']
+  var appViews = ['signin', 'storyBoard', 'analytics', 'featureSetup', 'teamSetup', 'sprintSetup', 'settings', 'burndown', 'velocity'];
   appViews.forEach(function(stateName) {
     $stateProvider.state(stateName, {
       url: '/' + stateName.toLowerCase(),

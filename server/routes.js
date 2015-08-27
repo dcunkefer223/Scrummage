@@ -10,8 +10,7 @@ module.exports = function(app){
     if(req.isAuthenticated()){
       return next();
     }
-
-    res.redirect('/#/signin');
+    res.status(404).send();
   }
 
   // Auth Routes
@@ -21,33 +20,29 @@ module.exports = function(app){
   app.get('/auth/github/callback',
     passport.authenticate('github', { failureRedirect: '/#/signin' }),
       function (req, res) {
-        res.redirect('/#/storyboard');
+        if(!req.user.current_team) {
+          res.redirect('/#/teamsetup');
+        } else {
+          res.redirect('/#/storyboard');
+        }
   });
 
 
   // GET requests
-
-  // app.get('/signin', function (req, res){
-  //   res.render('signin', { message: req.flash('signinMessage') });
-  // });
-
-  // app.get('/signup', function (req, res){
-  //   res.render('signup', { message: req.flash('signupMessage') });
-  // });
 
   app.get('/logout', function (req, res) {
     req.logout();
     res.redirect('/');
   });
 
-  app.get('/getteam', function (req, res) {
+  app.get('/getsprinthistory', function (req, res) {
     // ?team_id=integer
-    Team.getTeam(req.query.team_id, res);
+    Team.getSprintHistory(req.user.current_team, res);
   });
 
   app.get('/getallfeatures', function (req, res) {
     // ?team_id=integer
-    Task.getAllFeatures(req.query.team_id, res);
+    Task.getAllFeatures(req.user.current_team, res);
   });
 
   app.get('/getfeaturesbystatus', function (req, res) {
@@ -60,24 +55,21 @@ module.exports = function(app){
     Task.getCommentsOnFeature(req.query.feature_id, res);
   });
 
+  app.get('/getallpoints', function (req, res) {
+    Team.getAllPoints(req.user.current_team, res);
+  });
+
+  app.get('/fetchuserteam', function (req, res) {
+    res.status(200).send({team_id: req.user.current_team});
+  });
+
+
 
   // POST requests
-
-  // app.post('/signup', passport.authenticate('local-signup', {
-  //   successRedirect: '/signin',
-  //   failureRedirect: '/signup',
-  //   failureFlash: true
-  // }));
-
-  // app.post('/signin', passport.authenticate('local-signin', {
-  //   successRedirect: '/storyBoard',
-  //   failureRedirect: '/signin',
-  //   failureFlash: true
-  // }));
   
   app.post('/addfeature', function (req, res) {
     // feature is {name, description, points, status, team_id, user_id}
-    Task.addFeature(req.body, res);
+    Task.addFeature(req.body, req.user, res);
   });
 
   app.post('/addcomment', function (req, res) {
@@ -86,8 +78,8 @@ module.exports = function(app){
   });
 
   app.post('/changestatus', function (req, res) {
-    // {feature_id, status}
-    Task.changeFeatureStatus(req.body, res);
+    // {feature_id, points, status}
+    Task.changeFeatureStatus(req.body, req.user, res);
   });
 
   app.post('/changefeaturepoints', function (req, res) {
@@ -110,14 +102,25 @@ module.exports = function(app){
     Task.changeFeatureUser(req.body, res);
   });
 
-  app.post('/changeuserteam', function (req, res) {
-    // {user_id, team_id}
-    User.changeUserTeam(req.body, res);
-  });
-
   app.post('/updatetotalpoints', function (req, res) {
     // {team_id, points}
     Task.changeTeamPoints(req.body, res);
   });
 
+  app.post('/jointeam', function (req, res) {
+    // {user_id, team_id}
+    User.joinTeam(req.body, req.user, res);
+  });
+
+  app.post('/leaveteam', function (req, res) {
+    User.leaveTeam(req.user, res);
+  });
+
+  app.post('/addteam', function (req, res) {
+    Team.createTeam(req.body, req.user, res);
+  });
+
+  app.post('/createsprint', function (req, res) {
+    Team.createSprint(req.body, req.user.current_team, res);
+  });
 };

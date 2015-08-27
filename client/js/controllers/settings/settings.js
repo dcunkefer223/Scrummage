@@ -1,6 +1,7 @@
 angular.module('scrummage')
 
-.controller('featureSetupCtrl', ['$scope', function ($scope){
+.controller('settingsCtrl', ['$scope', 'Request', '$location', function ($scope, Request, $location){
+  
   $scope.open = function() {
     $scope.showModal = true;
   };
@@ -11,6 +12,11 @@ angular.module('scrummage')
 
   $scope.cancel = function() {
     $scope.showModal = false;
+  };
+
+  $scope.leaveTeam = function () {
+    Request.user.leaveTeam();
+    $location.path('/teamsetup');
   };
 
 }]);
