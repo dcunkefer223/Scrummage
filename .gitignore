@@ -3,6 +3,8 @@ client/bower_components/**/*
 server/config/authStore.js
 server/db/db.js
 
+npm-debug.log
+
 .DS_Store
 
 
