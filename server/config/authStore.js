@@ -28,12 +28,12 @@ exports.checkUser = function(req, res, next){
 
 // Daniel
 exports.pgData = {
-      host: 'ec2-54-83-55-214.compute-1.amazonaws.com',
-      database: 'df8681a488cm7j',
-      user : 'wtloxdvspmlazo',
+      host: 'localhost',
+      database: 'jansenfamily',
+      user : 'jansenfamily',
       port : 5432,
-      password : 'NSQw_qVzfiy4hTSwK3MYTxMEaB',
-      ssl: true
+      password : '',
+      ssl: false
     };
 
 // Dave
