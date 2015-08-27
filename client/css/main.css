@@ -503,7 +503,7 @@ button:focus {
   outline: 0;
  }
 
- .btn-lg {
+ .btn-lgBurn {
   background: url('../img/burnDown.png') no-repeat center center;
   font-family: 'Architects Daughter', cursive;
   text-decoration: none;
