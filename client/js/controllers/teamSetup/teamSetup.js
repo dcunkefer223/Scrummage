@@ -18,14 +18,15 @@ angular.module('scrummage')
         })
         .then(function (data) {
           InitializeAnalytics.setData(data);
+          $location.path('/storyboard');
         });
-      $location.path('/storyboard');
     };
 
     $scope.createTeam = function (newTeam) {
-      Request.user.createTeam(newTeam);
+      Request.user.createTeam(newTeam).then(function(){
+        $location.path('/sprintsetup');
+      });
       
-      $location.path('/sprintsetup');
     };
 
   }]);
