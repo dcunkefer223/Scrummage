@@ -504,6 +504,7 @@ button:focus {
  }
 
  .btn-lg {
+  background: url('../img/burnDown.png') no-repeat center center;
   font-family: 'Architects Daughter', cursive;
   text-decoration: none;
   font-size: 30px;
