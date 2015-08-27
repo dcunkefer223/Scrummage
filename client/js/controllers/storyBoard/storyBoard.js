@@ -1,6 +1,7 @@
 angular.module('scrummage')
     .controller('storyBoardCtrl', ['$scope', '$interval', 'Request', 'ColumnPoints', 'InitializeAnalytics', function ($scope, $interval, Request, ColumnPoints, InitializeAnalytics) {
       var timer;
+      var gate = true;
 
       $scope.start = function() {
         // stops any running interval to avoid two intervals running at the same time
@@ -125,20 +126,28 @@ angular.module('scrummage')
       }, true);
 
       $scope.renderBoard = function () {
-        Request.feature.fetchAll().then(function (results) {
+        console.log('renderBoard was called');
+        Request.feature.fetchAll()
+        .then(function (results) {
           clearBoard();
           for(var i = 0; i < results.length; i++) {
             for(var key in $scope.models.lists) {
               if(results[i].status === key) {
                 $scope.models.lists[key].push(results[i]);
-                $scope.initializeData();
               }
             }
+          }
+        })
+        .then(function () {
+          if(gate === true) {
+            $scope.initializeData();
+            gate = false;
           }
         });
       };
 
       $scope.initializeData = function () {
+        console.log('initialize data was called');
         Request.analytics.getSprintHistory().then(
           function (data) {
             InitializeAnalytics.setData(data);

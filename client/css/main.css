@@ -1,5 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto);
-
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
 
 
 /* ------------------------------------- Login Modal ------------------------------------- */
@@ -164,8 +164,8 @@
 /* --------------------------------- StoryBoard Styling --------------------------------- */
 
 .feature-header .feature-title h2{
-  font: Helvetica sans-serif;
-  font-weight: 200;
+  font-family: 'Open Sans' sans-serif;
+  font-weight: 600;
   margin-bottom: 35px;
   color: black;
   font-size: 32px;
@@ -358,7 +358,7 @@ ul li:nth-child(5n) .card {
 li .card {
   box-shadow: 1px 1px 9px rgba(0, 0, 0, 0.2);
   width: 100%;
-  font-family: 'Architects Daughter', cursive;
+  font-family: 'Open Sans', cursive;
 }
 
 .card .card-header {
@@ -379,7 +379,8 @@ li .card {
   padding: 5px 5px 2px 5px;
   word-wrap: break-word;
   background-color: #fcfff5;
-  font-size: 22px;
+  font-size: 18px;
+  font-weight: 400;
   height: inherit;
 }
 
@@ -412,7 +413,7 @@ li .card {
   text-shadow: 0 1px rgba(0,0,0,0.1);
   padding: 17px 0px;
   padding-left: 10px;
-  font-family: 'Architects Daughter', cursive;
+  font-family: 'Open Sans', cursive;
   font-size: 20px;
   height: 100%;
 }
@@ -450,7 +451,7 @@ button:focus {
     border: 0px;
     text-shadow: 0 1px rgba(0,0,0,0.1);
     padding: 17px 0px;
-    font-family: 'Architects Daughter', cursive;
+    font-family: 'Open Sans', cursive;
     font-size: 20px;
     height: 100%;
 }
@@ -504,7 +505,7 @@ button:focus {
  }
 
  .btn-lg {
-  font-family: 'Architects Daughter', cursive;
+  font-family: 'Open Sans', cursive;
   text-decoration: none;
   font-size: 30px;
   margin-left: 25%;
