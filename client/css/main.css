@@ -520,7 +520,10 @@ a:hover {
 }
 
  /* --------------------------------- Analytics / Chart Modal --------------------------------- */
-
+.graphThumb {
+  width: 675px;
+  height: auto;
+}
 .burndown-body {
   width: 100%;
   padding-left: 60px;

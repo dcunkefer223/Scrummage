@@ -10,7 +10,7 @@ angular.module('scrummage', [
   $urlRouterProvider.otherwise('/signin')
   
 
-  var appViews = ['signin', 'storyBoard','featureSetup', 'teamSetup', 'sprintSetup', 'settings' /*'burndown', 'velocity'*/];
+  var appViews = ['signin', 'storyBoard','featureSetup', 'teamSetup', 'sprintSetup', 'settings', 'burndown', 'analytics', 'velocity'];
   appViews.forEach(function(stateName) {
     $stateProvider.state(stateName, {
       url: '/' + stateName.toLowerCase(),
@@ -18,20 +18,30 @@ angular.module('scrummage', [
       controller: stateName + 'Ctrl'
     })
   });
-    $stateProvider.state('analytics', {
-      url: '/analytics',
-      templateUrl: '/js/controllers/analytics/analytics.html',
-      controller: 'burndownCtrl', 
-      abstract: true
-    }).state('analytics.burndown', {
-      //parent: 'analytics',
-      url: '',
-      templateUrl: '/js/controllers/burndown/burndown.html',
-      controller: 'burndownCtrl'
-    }).state('analytics.velocity', {
-      //parent: 'analytics',
-      url: '',
-      templateUrl: '/js/controllers/velocity/velocity.html',
-      controller: 'velocityCtrl'
-    });
+    // $stateProvider.state('analytics', {
+    //   url: '/analytics',
+    //   templateUrl: '/js/controllers/analytics/analytics.html',
+    //   controller: 'analyticsCtrl', 
+    //   views: {
+    //     'burndown':{
+    //       templateUrl: '/js/controllers/burndown/burndown.html',
+    //       controller: 'burndownCtrl'
+    //     },
+    //     'velocity':{
+    //       templateUrl: '/js/controllers/velocity/velocity.html',
+    //       controller: 'velocityCtrl'
+    //     },
+    //   }//end of views
+    // })
+    // .state('burndown', {
+    //   //parent: 'analytics',
+    //   url: '/burndown',
+    //   templateUrl: '/js/controllers/burndown/burndown.html',
+    //   controller: 'burndownCtrl'
+    // }).state('velocity', {
+    //   //parent: 'analytics',
+    //   url: '/velocity',
+    //   templateUrl: '/js/controllers/velocity/velocity.html',
+    //   controller: 'velocityCtrl'
+    // });
 });

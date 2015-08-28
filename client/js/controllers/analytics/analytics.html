@@ -3,17 +3,34 @@
     <div class="col-xs-1 nav-bg" ng-include="'./includes/navbar.html'"></div>
     <div class="col-xs-11 column-bg">
       <div class="container">
-        <h2> Choose a metric </h2>
-        <button class="btn btn-lg burn" ng-click="openBurndown()">Burndown</button> 
-        <button class="btn btn-lg" ng-click="openVelocity()">Velocity</button>
+        <div class="row">
+          <div class="col-xs-6 column">
+            <button class="btn btn-lg" ng-click="openBurndown()">Burndown</button> 
+            <a class="thumbnail">
+              <img src="/../../img/burnDown.png" class="graphThumb" alt="...">
+            </a>
+            <p>This is some description about the burdown chart that tells client what it does.</p>
+          </div>
+          <div class="col-xs-6 column">
+            <button class="btn btn-lg" ng-click="openVelocity()">Velocity</button>
+            <a class="thumbnail">
+              <img src="/../../img/velocity.png" class="graphThumb" alt="...">
+            </a>
+            <p>This is some description about the burdown chart that tells client what it does.</p>
+          </div>
+        </div>
+        
+
+
+
       <div class="row">
-        <div class="col-xs-6">
-          <div ui-view="burndown">
+<!--         <div class="col-xs-6">
+          <div ui-view="analytics.burndown">
           </div>
         </div>
         <div class="col-xs-6">
-          <div ui-view="velocity">
-          </div>
+          <div ui-view="analytics.velocity">
+          </div> -->
         </div>
       </div>
       </div>
