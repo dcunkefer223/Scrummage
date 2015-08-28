@@ -61,7 +61,8 @@ module.exports = function(app){
 
   app.get('/fetchuserteam', function (req, res) {
     res.status(200).send({team_id: req.user.current_team});
-  })
+  });
+
 
 
   // POST requests
@@ -113,7 +114,7 @@ module.exports = function(app){
 
   app.post('/leaveteam', function (req, res) {
     User.leaveTeam(req.user, res);
-  })
+  });
 
   app.post('/addteam', function (req, res) {
     Team.createTeam(req.body, req.user, res);

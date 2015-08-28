@@ -1,21 +1,33 @@
 
 var pg = require('pg');
-var auth = process.env.DATABASE_URL ? null : require('../config/authStore.js');
+var auth = require('../config/authStore.js');
 
 //This sets up you connection to the database. if on heroku, it links to the postgres database URL they give us.
 //Otherwise, it goes to the auth file and pulls it from there.
 
-//*************************************
-//Commenting out Paris settings to test
-//*************************************
-
+// LOCAL SETTINGS
 var db = require('knex')({
   client: 'pg',
   connection: auth.pgData
 });
 
-// var db = new pg.Client("");
+
+//This works
+// var db = new pg.Client(auth.pgData);
 // db.connect();
+
+// HEROKU SETTINGS
+// var db = require('knex')({
+//   client: 'pg',
+//   connection: {
+//     user: 'wtloxdvspmlazo',
+//     password: 'NSQw_qVzfiy4hTSwK3MYTxMEaB',
+//     host: 'ec2-54-83-55-214.compute-1.amazonaws.com',
+//     port: 5432,
+//     database: 'df8681a488cm7j',
+//     ssl: true
+//   }
+//   });
 
 
 module.exports = db;

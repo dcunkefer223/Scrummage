@@ -506,6 +506,7 @@ button:focus {
 
  .btn-lg {
   font-family: 'Open Sans', cursive;
+  background: url('../img/burnDown.png') no-repeat center center;
   text-decoration: none;
   font-size: 30px;
   margin-left: 25%;
