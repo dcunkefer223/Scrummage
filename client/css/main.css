@@ -462,59 +462,62 @@ button:focus {
   padding-left: 50px;
 }
 
- .add-feature-modal .add-feature-body {
+.add-feature-modal .add-feature-body {
   margin-bottom: 30px;
   float: left;
   margin-left: 30px;
   width: 100%;
- }
+}
 
- .add-feature-body .add-feature-name {
+.add-feature-body .add-feature-name {
   margin-bottom: 40px;
- }
+}
 
- .add-feature-body .add-feature-name input {
+.add-feature-body .add-feature-name input {
   font-size: 40px;
   background-color: inherit;
   border: none;
   outline: 0;
   width: 100%;
- }
+}
 
- .add-feature-body .add-feature-description {
+.add-feature-body .add-feature-description {
   margin-bottom: 40px;
- }
+}
 
- .add-feature-body .add-feature-description input {
+.add-feature-body .add-feature-description input {
   font-size: 40px;
   background-color: inherit;
   border: none;
   outline: 0;
   width: 100%;
- }
+}
 
- .add-feature-body .add-feature-points {
+.add-feature-body .add-feature-points {
   margin-bottom: 60px;
- }
+}
 
- .add-feature-body .add-feature-points input {
+.add-feature-body .add-feature-points input {
   font-size: 40px;
   background-color: inherit;
   border: none;
   outline: 0;
- }
+}
 
- .btn-lg {
+.btn-lg {
   font-family: 'Open Sans', cursive;
-  background: url('../img/burnDown.png') no-repeat center center;
   text-decoration: none;
   font-size: 30px;
   margin-left: 25%;
- }
+}
 
- a:hover {
+.burn {
+  background: url('../img/burnDown.png') no-repeat center center;
+}
+
+a:hover {
   text-decoration: none;
- }
+}
 
  /* --------------------------------- Analytics / Chart Modal --------------------------------- */
 
