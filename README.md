@@ -1,6 +1,10 @@
 ## Synopsis
 
-At the top of the file there should be a short introduction and/ or overview that explains **what** the project is. This description should match descriptions added for package managers (Gemspec, package.json, etc.)
+Scrummage is a web application that allows a development team to create, modify, update feature/tasks for a created project.  A feature is created with a title, description and points(based on difficulty).  It is then added web app's storyboard that displays the status of each feature - "Backlog" "Progress" or "Completed"
+
+Scrummage keeps track of these points and visually represents the team's progress in a [Burndown chart](https://en.wikipedia.org/wiki/Burn_down_chart).
+
+Abiding by the agile practices, Scrummage is a project management solution.  
 
 ## Code Example
 
@@ -8,7 +12,7 @@ Show what the library does as concisely as possible, developers should be able t
 
 ## Motivation
 
-A short description of the motivation behind the creation and maintenance of the project. This should explain **why** the project exists.
+In a work environment where communication is important and organization is vital, we wanted to create a real time app that can keep track of both as well as measure progress.
 
 ## Installation
 
