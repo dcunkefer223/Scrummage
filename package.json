@@ -12,7 +12,7 @@
     "test": "echo \"Error: No Test Specified\" && exit 1",
     "start": "node server/server.js",
     "postinstall": "bash ./post_install.sh"
-    },
+  },
   "dependencies": {
     "bcrypt": "^0.8.4",
     "body-parser": "latest",
@@ -32,7 +32,8 @@
     "passport": "^0.2.2",
     "passport-github": "^0.1.5",
     "passport-local": "~1.0.0",
-    "pg": "^4.4.1"
+    "pg": "^4.4.1",
+    "grunt-contrib-imagemin": "~0.9.4"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
@@ -40,6 +41,7 @@
     "grunt-contrib-cssmin": "^0.13.0",
     "grunt-contrib-jshint": "^0.11.2",
     "grunt-contrib-uglify": "^0.9.1",
-    "grunt-contrib-watch": "^0.6.1"
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-contrib-imagemin": "~0.9.4"
   }
 }
