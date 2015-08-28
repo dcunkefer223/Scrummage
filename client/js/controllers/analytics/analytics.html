@@ -2,16 +2,25 @@
   <div class="row">
     <div class="col-xs-1 nav-bg" ng-include="'./includes/navbar.html'"></div>
     <div class="col-xs-11 column-bg">
-      <div class="container">
-        <h2> Choose a metric: </h2>
-         <div class="jumbotron">
+      <div class="row">
+        <div class="col-xs-6">
+          <div ui-view="burndown">
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div ui-view="velocity">
+          </div>
+        </div>
+      </div>
+     <!--  <div class="analytics">
+         <div class="jumbotron container" id="burn">
           <h1>Chart pic will go here</h1>
             <p><a class="btn btn-primary btn-lg" ng-click="openBurndown()">Burndown Chart</a></p>
-        </div>
-        <div class="jumbotron">
+        </div> -->
+       <!-- <div class="jumbotron container" id= "velocity">
         <h1>Chart pic will go here</h1>
           <p><a class="btn btn-primary btn-lg" ng-click="openVelocity()">Velocity Chart</a></p>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
