@@ -11,7 +11,6 @@ angular.module('scrummage')
         var first = progress[0];
         var step = (first.toFixed(3) / (labels.length - 1).toFixed(3));
         for(var i = 0; i < labels.length; i++) {
-          debugger;
           results.push(Math.round(first));
           first -= step;
         }

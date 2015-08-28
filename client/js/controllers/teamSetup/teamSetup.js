@@ -16,8 +16,7 @@ angular.module('scrummage')
       .then(function () {
           return Request.analytics.getSprintHistory();
         })
-        .then(function (data) {
-          InitializeAnalytics.setData(data);
+        .then(function () {
           $location.path('/storyboard');
         });
     };

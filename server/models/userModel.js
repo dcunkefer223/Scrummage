@@ -55,8 +55,14 @@ module.exports.changeCurrentTeam = function (user_id, newTeam_id) {
   return db('users').where('id', user_id).update('current_team', newTeam_id).returning('current_team');
 };
 
+// module.exports.addUserToTeam = function (user_id, newTeam_id) {
+//   return db.insert({user_id: user_id, team_id: newTeam_id}).into('users_teams').whereNotExists(function(){
+//     this.select('*').from('users_teams').whereRaw({user_id: user_id, team_id: newTeam_id});
+//   });
+// };
+
 module.exports.addUserToTeam = function (user_id, newTeam_id) {
-  return db.raw('insert into "users_teams" ("team_id", "user_id") select ?, ? where not exists (select * from "users_teams" where "user_id" = ? and "team_id" = ?);', [user_id, newTeam_id, user_id, newTeam_id]);
+  return db.raw('insert into "users_teams" ("team_id", "user_id") select ?, ? where not exists (select * from "users_teams" where "user_id" = ? and "team_id" = ?);', [newTeam_id, user_id, user_id, newTeam_id]);
 };
 
 module.exports.getUserTeams = function (user_id) {
