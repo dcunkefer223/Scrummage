@@ -1,38 +1,45 @@
 angular.module('scrummage')
 
-  .controller('velocityCtrl', ['$scope', 'Request', function ($scope, Request) {
+  .controller('velocityCtrl', ['$scope', 'Request', 'ColumnPoints', 'Sprint', 'InitializeAnalytics', function ($scope, Request, ColumnPoints, Sprint, InitializeAnalytics) {
+    var generatedLabels;
+    var mockAverage = 30;
+    var mockRolling = [0, 22, 28, 33, 28, 25, 36];
 
-    $scope.data = {
-        labels: ['8/23', '8/24', '8/25', '8/26', '8/27', '8/28', '8/29'],
-        datasets: [
-          {
-            label: 'Rolling Average',
-            fillColor: 'rgba(151,187,205,0)',
-            strokeColor: 'rgba(151,187,205,1)',
-            pointColor: 'rgba(151,187,205,1)',
-            pointStrokeColor: '#fff',
-            pointHighlightFill: '#fff',
-            pointHighlightStroke: 'rgba(151,187,205,1)',
-            data: [0, 22, 28, 33, 28, 25, 36]
-          },
-          {
-            label: 'Overall Team Average',
-            fillColor: 'rgba(255, 255, 255,0)',
-            strokeColor: 'rgba(255, 255, 255, 1)',
-            data: [30, 30, 30, 30, 30, 30, 30]
-          }
-        ]
+    var generateAverageArray = function (average, labels) {
+      var results = [];
+      for(var i = 0; i < labels.length; i++) {
+        results.push(average);
+      }
+      return results;
+    };
+
+    var initializeData = function (data) {
+      var averageArray;
+      $scope.labels = generatedLabels;
+      $scope.series = ['Rolling Average', 'Overall Team Average'];
+
+      if(data.progress) {
+        $scope.labels = data.dateArray;
+        averageArray = generateAverageArray(mockAverage, $scope.labels);
+        $scope.data = [averageArray, mockRolling];
       };
 
-      // $scope.generateLineData = function (pointsX, pointsY) {
-      //   var resultsArr = [];
-      //   var dy = pointsY[0] / pointsX.length;
-      //   resultsArr.length = pointsX.length;
-      //   for(var i = 1; i < pointsX.length; i++) {
-      //     resultsArr.push(pointsX[0]);
-      //   }
-      //   return resultsArr;
-      // };
+      $scope.colours = [
+            {
+              fillColor: 'rgba(151,187,205,0)',
+              strokeColor: 'rgba(151,187,205,1)',
+              pointColor: 'rgba(151,187,205,1)',
+              pointStrokeColor: '#fff',
+              pointHighlightFill: '#fff',
+              pointHighlightStroke: 'rgba(151,187,205,1)'
+            },
+            {
+              fillColor: 'rgba(255, 255, 255,0)',
+              strokeColor: 'rgba(255, 255, 255, 1)'
+            }
+      ];
+
+      $scope.data = [averageArray, mockRolling];
 
       $scope.options =  {
 
@@ -105,5 +112,37 @@ angular.module('scrummage')
         //String - A legend template
         legendTemplate : '<ul class="tc-chart-js-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].strokeColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>'
       };
+    };
+
+    var updateRollingAverage = function(rollingData) {
+      $scope.data[1] = rollingData;
+    };
+
+    $scope.$watch(
+      function () {
+        return Sprint.getSprint();
+      },
+
+      function (newValue, oldValue) {
+        generatedLabels = newValue.dateArray;
+      }, true);
+
+      $scope.$watch(
+        function () {
+          return InitializeAnalytics.getData();
+        },
+
+        function (newValue, oldValue) {
+          initializeData(newValue);
+        }, true);
+
+      $scope.$watch(
+        function () {
+          return ColumnPoints.getColumns();
+        },
+
+        function (newValue, oldValue) {
+          updateRollingAverage(mockRolling);
+        }, true);
 
   }]);
