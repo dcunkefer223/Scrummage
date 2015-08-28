@@ -6,6 +6,16 @@
         <h2> Choose a metric </h2>
         <button class="btn btn-lg burn" ng-click="openBurndown()">Burndown</button> 
         <button class="btn btn-lg" ng-click="openVelocity()">Velocity</button>
+      <div class="row">
+        <div class="col-xs-6">
+          <div ui-view="burndown">
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div ui-view="velocity">
+          </div>
+        </div>
+      </div>
       </div>
     </div>
   </div>
