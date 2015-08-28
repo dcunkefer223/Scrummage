@@ -1,12 +1,8 @@
-<div class="container-fluid mobile-padding">
-  <div class="row">
-    <div class="col-xs-1 nav-bg" ng-include="'./includes/navbar.html'"></div>
-    <div class="col-xs-11 column-bg">
-      <div class="container">
-        <h2> Choose a metric </h2>
-        <button class="btn btn-lg burn" ng-click="openBurndown()">Burndown</button> 
-        <button class="btn btn-lg" ng-click="openVelocity()">Velocity</button>
-      </div>
-    </div>
+<div class="off-canvas__container off-canvas__content" ng-controller="analyticsCtrl as my">
+  <div class="container-fluid mobile-padding column-bg">
+      <button ng-click="my.toggle()">open the nav</button>
+          <h2> Choose a metric </h2>
+          <button class="btn btn-lg burn" ng-click="openBurndown()">Burndown</button> 
+          <button class="btn btn-lg" ng-click="openVelocity()">Velocity</button>
   </div>
 </div>

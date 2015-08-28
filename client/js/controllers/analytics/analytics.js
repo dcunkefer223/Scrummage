@@ -1,6 +1,8 @@
 angular.module('scrummage')
 
-  .controller('analyticsCtrl', ['$scope', '$location', function ($scope, $location) {
+  .controller('analyticsCtrl', ['$scope', '$location', 'myOffCanvas', function ($scope, $location, myOffCanvas) {
+
+  this.toggle = myOffCanvas.toggle;
 
   $scope.openBurndown = function () {
     $location.path('/burndown');
