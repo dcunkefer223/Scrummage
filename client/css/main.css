@@ -98,17 +98,22 @@
   transition: opacity ease 0.5s;
 }
 
+.loginmodal-container img {
+  display: block;
+  margin: 0 auto;
+}
+
 .login-help{
   font-size: 12px;
 }
 
 .icon-github-sign{
-  font-size: 60px;
+  font-size: 40px;
   margin-left: 120px;
 }
 
 .signin-bg {
-  background: url('../img/sheep-herder-compressed.jpg') no-repeat center center;
+  background: url('../img/splash-picture.jpg') no-repeat center center;
   background-blend-mode: multiply;
   background-color: #d1dbbd;
     height: 100vh;
