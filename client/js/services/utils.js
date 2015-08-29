@@ -191,6 +191,16 @@ angular.module('scrummage')
 
     return returnObj;
   })
+
+  .factory('myOffCanvas', function (cnOffCanvas) {
+    return cnOffCanvas({
+      container: document.getElementById('nav-target'),
+      controller: 'navCtrl',
+      controllerAs: 'nav',
+      templateUrl: '../js/controllers/nav/nav.html'
+    });
+  })
+
   .factory('InitializeAnalytics', function () {
     var dataObj = {};
 

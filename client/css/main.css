@@ -1,5 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Roboto);
-
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
 
 
 /* ------------------------------------- Login Modal ------------------------------------- */
@@ -168,58 +168,119 @@
 
 /* --------------------------------- StoryBoard Styling --------------------------------- */
 
+.top-bar {
+  background-color: #039676;
+  padding-left: 2.5%;
+}
+
+.top-bar button {
+  outline:0;
+  border: none;
+  background: none;
+}
+
+.container {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
 .feature-header .feature-title h2{
-  font: Helvetica sans-serif;
-  font-weight: 200;
+  font-family: 'Open Sans' sans-serif;
+  font-weight: 600;
   margin-bottom: 35px;
   color: black;
   font-size: 32px;
 }
 
-.container-fluid {
-  padding: 0;
+.container .column-bg {
+  width: 100%;
 }
 
 .column-bg {
   background-color: #d1dbbd;
   height: 100vh;
+  padding: 0;
 }
 
 .container .col-xs-4 {
   border-right: 5px solid;
   text-align: center;
   height: 100vh;
-  padding-left: 1%;
-  padding-right: 1%;
+  padding-left: 0;
+  padding-right: 0;
   overflow-y: scroll;
 }
 
+/* --------------------------------- Off canvas settings --------------------------------- */
+
+html, body {
+  overflow-x: hidden; }
+
+.off-canvas__nav {
+  -webkit-transform: translate3d(0, 0, 0) translateX(-10%);
+  -ms-transform: translate3d(0, 0, 0) translateX(-10%);
+  -moz-transform: translate3d(0, 0, 0) translateX(-10%);
+  -o-transform: translate3d(0, 0, 0) translateX(-10%);
+  transform: translate3d(0, 0, 0) translateX(-10%);
+  -webkit-transition: all 0.3s cubic-bezier(0.16, 0.63, 0.45, 0.98);
+  -ms-transition: all 0.3s cubic-bezier(0.16, 0.63, 0.45, 0.98);
+  -moz-transition: all 0.3s cubic-bezier(0.16, 0.63, 0.45, 0.98);
+  -o-transition: all 0.3s cubic-bezier(0.16, 0.63, 0.45, 0.98);
+  transition: all 0.3s cubic-bezier(0.16, 0.63, 0.45, 0.98); }
+
+.off-canvas__content {
+  -webkit-transform: translate3d(0, 0, 0) translateX(0);
+  -ms-transform: translate3d(0, 0, 0) translateX(0);
+  -moz-transform: translate3d(0, 0, 0) translateX(0);
+  -o-transform: translate3d(0, 0, 0) translateX(0);
+  transform: translate3d(0, 0, 0) translateX(0);
+  -webkit-transition: all 0.3s cubic-bezier(0.16, 0.63, 0.45, 0.98);
+  -ms-transition: all 0.3s cubic-bezier(0.16, 0.63, 0.45, 0.98);
+  -moz-transition: all 0.3s cubic-bezier(0.16, 0.63, 0.45, 0.98);
+  -o-transition: all 0.3s cubic-bezier(0.16, 0.63, 0.45, 0.98);
+  transition: all 0.3s cubic-bezier(0.16, 0.63, 0.45, 0.98); }
+
+.is-off-canvas-opened .off-canvas__nav {
+  -webkit-transform: translate3d(0, 0, 0) translateX(0);
+  -ms-transform: translate3d(0, 0, 0) translateX(0);
+  -moz-transform: translate3d(0, 0, 0) translateX(0);
+  -o-transform: translate3d(0, 0, 0) translateX(0);
+  transform: translate3d(0, 0, 0) translateX(0); }
+
+.is-off-canvas-opened .off-canvas__content {
+  -webkit-transform: translate3d(0, 0, 0) translate(10%);
+  -ms-transform: translate3d(0, 0, 0) translate(10%);
+  -moz-transform: translate3d(0, 0, 0) translate(10%);
+  -o-transform: translate3d(0, 0, 0) translate(10%);
+  transform: translate3d(0, 0, 0) translate(10%); }
+
+
 /* --------------------------------- Navigation --------------------------------- */
 
-.nav-bg {
+.off-canvas__container {
+  position: relative;
+}
+
+.off-canvas__nav {
   background-color: #039676;
-  height: 100vh;
-  padding-top: 6%;
-  padding-left: 20px;
-}
-
-.sidebar-nav {
+  color: white;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
   height: 100%;
-  display: block;
-  margin: 0;
-  padding-left: 0;
+  padding-top: 6%;
+  -webkit-user-drag: none;
 }
 
-.sidebar-nav ul {
-  padding-top: inherit;
-  padding-left: inherit;
-  height: inherit;
+.nav-bg {
+  height: 100vh;
 }
 
-.sidebar-nav li {
-  list-style: none;
-  white-space: nowrap;
-  padding-bottom: 20px;
+.nav-list {
+  list-style-type: none;
+  padding-left: 2%;
 }
 
 .nav-list-icon {
@@ -363,7 +424,7 @@ ul li:nth-child(5n) .card {
 li .card {
   box-shadow: 1px 1px 9px rgba(0, 0, 0, 0.2);
   width: 100%;
-  font-family: 'Architects Daughter', cursive;
+  font-family: 'Open Sans', cursive;
 }
 
 .card .card-header {
@@ -384,7 +445,8 @@ li .card {
   padding: 5px 5px 2px 5px;
   word-wrap: break-word;
   background-color: #fcfff5;
-  font-size: 22px;
+  font-size: 18px;
+  font-weight: 400;
   height: inherit;
 }
 
@@ -417,7 +479,7 @@ li .card {
   text-shadow: 0 1px rgba(0,0,0,0.1);
   padding: 17px 0px;
   padding-left: 10px;
-  font-family: 'Architects Daughter', cursive;
+  font-family: 'Open Sans', cursive;
   font-size: 20px;
   height: 100%;
 }
@@ -455,7 +517,7 @@ button:focus {
     border: 0px;
     text-shadow: 0 1px rgba(0,0,0,0.1);
     padding: 17px 0px;
-    font-family: 'Architects Daughter', cursive;
+    font-family: 'Open Sans', cursive;
     font-size: 20px;
     height: 100%;
 }
@@ -466,59 +528,62 @@ button:focus {
   padding-left: 50px;
 }
 
- .add-feature-modal .add-feature-body {
+.add-feature-modal .add-feature-body {
   margin-bottom: 30px;
   float: left;
   margin-left: 30px;
   width: 100%;
- }
+}
 
- .add-feature-body .add-feature-name {
+.add-feature-body .add-feature-name {
   margin-bottom: 40px;
- }
+}
 
- .add-feature-body .add-feature-name input {
+.add-feature-body .add-feature-name input {
   font-size: 40px;
   background-color: inherit;
   border: none;
   outline: 0;
   width: 100%;
- }
+}
 
- .add-feature-body .add-feature-description {
+.add-feature-body .add-feature-description {
   margin-bottom: 40px;
- }
+}
 
- .add-feature-body .add-feature-description input {
+.add-feature-body .add-feature-description input {
   font-size: 40px;
   background-color: inherit;
   border: none;
   outline: 0;
   width: 100%;
- }
+}
 
- .add-feature-body .add-feature-points {
+.add-feature-body .add-feature-points {
   margin-bottom: 60px;
- }
+}
 
- .add-feature-body .add-feature-points input {
+.add-feature-body .add-feature-points input {
   font-size: 40px;
   background-color: inherit;
   border: none;
   outline: 0;
- }
+}
 
- .btn-lg {
-  background: url('../img/burnDown.png') no-repeat center center;
-  font-family: 'Architects Daughter', cursive;
+.btn-lg {
+  font-family: 'Open Sans', cursive;
   text-decoration: none;
   font-size: 30px;
   margin-left: 25%;
- }
+}
 
- a:hover {
+.burn {
+  background: url('../img/burnDown.png') no-repeat center center;
+}
+
+a:hover {
   text-decoration: none;
- }
+}
 
  /* --------------------------------- Analytics / Chart Modal --------------------------------- */
 
