@@ -42,7 +42,6 @@
   background: #fff;
   border: 1px solid #d9d9d9;
   border-top: 1px solid #c0c0c0;
-  /* border-radius: 2px; */
   padding: 0 8px;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -145,13 +144,15 @@
 }
 
 .team-body {
-  padding-top: 80px;
+  padding-top: 60px;
+  padding-left: 40px;
 }
 
 /* --------------------------------- Sprint Setup --------------------------------- */
 
 .sprint-body {
-  padding-top: 70px;
+  padding-top: 60px;
+  padding-left: 40px;
 }
 
 .sprint-name input {
@@ -169,7 +170,6 @@
 /* --------------------------------- StoryBoard Styling --------------------------------- */
 
 .top-bar {
-  background-color: #039676;
   padding-left: 2.5%;
 }
 
@@ -185,12 +185,19 @@
   margin: 0;
 }
 
+.feature-header {
+  display: inline-block;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  width: 100%;
+}
+
 .feature-header .feature-title h2{
-  font-family: 'Open Sans' sans-serif;
-  font-weight: 600;
-  margin-bottom: 35px;
-  color: black;
+  margin-bottom: 0;
   font-size: 32px;
+  font-weight: 200;
+  font-family: 'Open Sans', sans-serif;
+  letter-spacing: 2px;
 }
 
 .container .column-bg {
@@ -198,13 +205,11 @@
 }
 
 .column-bg {
-  background-color: #d1dbbd;
   height: 100vh;
   padding: 0;
 }
 
 .container .col-xs-4 {
-  border-right: 5px solid;
   text-align: center;
   height: 100vh;
   padding-left: 0;
@@ -263,7 +268,6 @@ html, body {
 }
 
 .off-canvas__nav {
-  background-color: #039676;
   color: white;
   position: absolute;
   left: 0;
@@ -312,7 +316,6 @@ html, body {
   font-size: 40px;
   padding: 10px 11px;
   line-height: 50px;
-  color: #fcfff5;
 }
 
 .fa-github-square {
@@ -321,7 +324,7 @@ html, body {
   margin-left: 100px;
 }
 
-.fa-reply:before {
+.fa-home:before {
   padding-left: 5px;
 }
 
@@ -418,14 +421,14 @@ ul li:nth-child(5n) .card {
 }
 
 li .card {
-  box-shadow: 1px 1px 9px rgba(0, 0, 0, 0.2);
+  box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.2);
   width: 100%;
   font-family: 'Open Sans', cursive;
 }
 
 .card .card-header {
   cursor: move;
-  background-color: #fcfff5;
+  background-color: inherit;
   color: black;
   font-size: 23px;
   height: 33%;
@@ -433,14 +436,13 @@ li .card {
   padding-right: 3%;
   padding-top: 1%;
   float: left;
-  text-decoration: underline;
 }
 
 .card .card-body {
   cursor: move;
   padding: 5px 5px 2px 5px;
   word-wrap: break-word;
-  background-color: #fcfff5;
+  background-color: inherit;
   font-size: 18px;
   font-weight: 400;
   height: inherit;
@@ -451,7 +453,7 @@ li .card {
   resize: none;
   word-wrap: break-word;
   overflow: hidden;
-  background-color: #fcfff5;
+  background-color: inherit;
   margin-top: 10px;
   width: 100%;
   font-size: 100%;
@@ -510,12 +512,12 @@ button:focus {
 }
 
 .modal .add-feature-modal {
-    border: 0px;
-    text-shadow: 0 1px rgba(0,0,0,0.1);
-    padding: 17px 0px;
-    font-family: 'Open Sans', cursive;
-    font-size: 20px;
-    height: 100%;
+  border: 0px;
+  text-shadow: 0 1px rgba(0,0,0,0.1);
+  padding: 17px 0px;
+  font-family: 'Open Sans', cursive;
+  font-size: 20px;
+  height: 100%;
 }
 
 .add-feature-modal .enter-feature {
@@ -636,10 +638,6 @@ body {
   opacity: 0.8;
   filter: alpha(opacity=80);
 }
-/*
-.modal-backdrop {
-  z-index: -1;
-}*/
 
 .modal {
   position: fixed !important;
@@ -654,9 +652,6 @@ body {
   *border: 1px solid #999;
   top: 15%;
   bottom: 15%;
-/*  -webkit-border-radius: 6px;
-     -moz-border-radius: 6px;
-          border-radius: 6px;*/
   outline: none;
   -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
      -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
@@ -693,7 +688,6 @@ body {
 }
 
 .modal-body {
-  /*position: relative;*/
   max-height: 400px;
   padding: 15px;
   overflow-y: auto;
@@ -744,9 +738,57 @@ body {
 
 /*-----------------------------------------------------------------------------*/
 
-.second {
-    width: 100px;
-    height: 100px;
-    background-color: pink;
+/* SCHEMES: 
+
+SPRINGTIME HAPPINESS (MAYBE): #AF7575, #EFD8A1, #AFD7DB, #3D9CA8;
+PHAEDRA (NO): #00A388, #79BD8F, #FFFF9D, #FF6138;
+
+ */
+
+.off-canvas__nav {
+  background-color: #193441;
 }
 
+.top-bar {
+  background-color: #193441;
+}
+/* -------------------------------- */
+.fa {
+  color: white;
+}
+
+.feature-header .feature-title h2{
+  color: white;
+}
+/*--------------------------------- */
+li .card {
+  background-color: #FFF085;
+}
+/*----------------------------------*/
+.column-bg {
+  background-color: #91AA9D;
+}
+/*----------------------------------*/
+.feature-header {
+  background-color: #3E606F;
+}
+
+.first {
+  border-left: 10px solid #3E606F;
+  border-right: 10px solid #3E606F;
+}
+
+.last {
+  border-left: 10px solid #3E606F;
+  border-right: 10px solid #3E606F;
+}
+
+.card .card-header {
+  color: #193441;
+  font-weight: 600;
+}
+
+.card .card-body {
+  color: #193441;
+}
+/*---------------------------------*/
