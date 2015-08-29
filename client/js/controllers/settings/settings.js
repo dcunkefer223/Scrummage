@@ -1,17 +1,16 @@
 angular.module('scrummage')
 
-.controller('settingsCtrl', ['$scope', 'Request', '$location', function ($scope, Request, $location){
-  
+.controller('settingsCtrl', ['$scope', 'Request', '$location', '$rootScope', function ($scope, Request, $location, $rootScope){
   $scope.open = function() {
-    $scope.showModal = true;
+    $rootScope.showSettingsModal = true;
   };
 
   $scope.ok = function() {
-    $scope.showModal = false;
+    $rootScope.showsettingsModal = false;
   };
 
   $scope.cancel = function() {
-    $scope.showModal = false;
+    $rootScope.showSettingsModal = false;
   };
 
   $scope.leaveTeam = function () {

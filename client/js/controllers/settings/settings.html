@@ -1,14 +1,14 @@
-<div class="change-settings-modal">
+<div class="change-settings-modal test">
   <div class="change-settings-body">
     <div class="enter-feature"><h2>Settings</h2></div>
     <div class="create-sprint">
       <button class="btn btn-lg">
-      <a href="/#/sprintsetup">Create New Sprint</a>
+      <a href="/#/sprintsetup" ng-click="cancel()">Create New Sprint</a>
       </button>
     </div>
     <div class="leave-team">
       <button class="btn btn-lg">
-      <a href="#" ng-click="leaveTeam()">Leave Team</a>
+      <a href="#" ng-click="leaveTeam(); cancel()">Leave Team</a>
       </button>
     </div>
   </div>
