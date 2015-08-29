@@ -18,30 +18,4 @@ angular.module('scrummage', [
       controller: stateName + 'Ctrl'
     })
   });
-    // $stateProvider.state('analytics', {
-    //   url: '/analytics',
-    //   templateUrl: '/js/controllers/analytics/analytics.html',
-    //   controller: 'analyticsCtrl', 
-    //   views: {
-    //     'burndown':{
-    //       templateUrl: '/js/controllers/burndown/burndown.html',
-    //       controller: 'burndownCtrl'
-    //     },
-    //     'velocity':{
-    //       templateUrl: '/js/controllers/velocity/velocity.html',
-    //       controller: 'velocityCtrl'
-    //     },
-    //   }//end of views
-    // })
-    // .state('burndown', {
-    //   //parent: 'analytics',
-    //   url: '/burndown',
-    //   templateUrl: '/js/controllers/burndown/burndown.html',
-    //   controller: 'burndownCtrl'
-    // }).state('velocity', {
-    //   //parent: 'analytics',
-    //   url: '/velocity',
-    //   templateUrl: '/js/controllers/velocity/velocity.html',
-    //   controller: 'velocityCtrl'
-    // });
 });
