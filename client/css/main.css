@@ -500,7 +500,11 @@ li .card {
 }
 
 .change-settings-modal .leave-team {
-  padding-left: 30px;
+  margin-right: 2%;
+}
+
+.btn-lg {
+  margin-left: 35%;
 }
 
 /* --------------------------------- Add Feature Modal --------------------------------- */
@@ -523,24 +527,26 @@ button:focus {
 }
 
 .add-feature-modal .enter-feature {
-  font-size: 45px;
-  margin-bottom: 20px;
-  padding-left: 50px;
+  font-size: 35px;
+  margin-top: 7px;
+  margin-bottom: 43px;
+  padding-top: 10px;
+  padding-left: 14%;
 }
 
 .add-feature-modal .add-feature-body {
-  margin-bottom: 30px;
+  margin-bottom: 33px;
   float: left;
-  margin-left: 30px;
   width: 100%;
+  font-size: 30px;
 }
 
 .add-feature-body .add-feature-name {
-  margin-bottom: 40px;
+  margin-bottom: 43px;
 }
 
 .add-feature-body .add-feature-name input {
-  font-size: 40px;
+  font-size: inherit;
   background-color: inherit;
   border: none;
   outline: 0;
@@ -548,11 +554,11 @@ button:focus {
 }
 
 .add-feature-body .add-feature-description {
-  margin-bottom: 40px;
+  margin-bottom: 43px;
 }
 
 .add-feature-body .add-feature-description input {
-  font-size: 40px;
+  font-size: inherit;
   background-color: inherit;
   border: none;
   outline: 0;
@@ -564,17 +570,17 @@ button:focus {
 }
 
 .add-feature-body .add-feature-points input {
-  font-size: 40px;
+  font-size: inherit;
   background-color: inherit;
   border: none;
   outline: 0;
 }
 
-.btn-lg {
+.btn-md {
   font-family: 'Open Sans', cursive;
   text-decoration: none;
-  font-size: 30px;
-  margin-left: 25%;
+  font-size: inherit;
+  margin-left: 20%;
 }
 
 .burn {
@@ -765,6 +771,10 @@ PHAEDRA (NO): #00A388, #79BD8F, #FFFF9D, #FF6138;
 /*--------------------------------- */
 li .card {
   background-color: #FFF085;
+}
+
+.modal {
+  background-color: #FFFAD5;
 }
 /*----------------------------------*/
 .column-bg {
