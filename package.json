@@ -1,0 +1,47 @@
+{
+  "name": "OAuthProject",
+  "version": "0.0.0",
+  "description": "",
+  "main": "server.js",
+  "author": "ddpj",
+  "engines": {
+    "node": "0.12.0",
+    "npm": "2.13.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: No Test Specified\" && exit 1",
+    "start": "node server/server.js",
+    "postinstall": "bash ./post_install.sh"
+  },
+  "dependencies": {
+    "bcrypt": "^0.8.4",
+    "body-parser": "latest",
+    "bower": "^1.4.1",
+    "connect-flash": "~0.1.1",
+    "ejs": "latest",
+    "express": "^4.12.4",
+    "express-session": "latest",
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-cssmin": "^0.13.0",
+    "grunt-contrib-uglify": "^0.9.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "knex": "^0.8.6",
+    "morgan": "~1.5.2",
+    "passport": "^0.2.2",
+    "passport-github": "^0.1.5",
+    "passport-local": "~1.0.0",
+    "pg": "^4.4.1",
+    "grunt-contrib-imagemin": "~0.9.4"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-cssmin": "^0.13.0",
+    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-contrib-uglify": "^0.9.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-contrib-imagemin": "~0.9.4"
+  }
+}

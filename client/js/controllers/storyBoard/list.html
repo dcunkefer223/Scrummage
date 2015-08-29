@@ -1,0 +1,23 @@
+  <ul dnd-list="list"
+      dnd-drop="dropCallback(event, index, item, external, listName)">
+    <li ng-repeat="item in list track by $id(item)"
+        dnd-draggable="item"
+        dnd-moved="list.splice($index, 1)"
+        dnd-dragstart="stop()"
+        dnd-effect-allowed="move"
+        dnd-selected="models.selected = item"
+        ng-class="{'selected': models.selected === item}"
+        >
+      <div class="card">
+        <div class="card-header">
+          <div>{{item.name}}</div>
+        </div>
+        <div class="card-body">
+          <textarea class="comments">{{item.description}}</textarea>
+          <div class="card-footer">
+            <div class="card-points">{{item.points}}</div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>

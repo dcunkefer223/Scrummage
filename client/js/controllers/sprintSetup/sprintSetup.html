@@ -1,0 +1,27 @@
+  <div class="container-fluid mobile-padding">
+    <div class="row">
+      <div class="col-xs-1 nav-bg" ng-include="'./includes/navbar.html'"></div>
+      <div class="col-xs-11 column-bg">
+        <div class="container">
+          <div class="col-md-6">
+            <h2>Create a sprint</h2>
+            <div class="sprint-name">
+              <input ng-model="newSprint.name" ng-keyup="$event.keyCode == 13 && changeTeam(team)" placeholder="Enter sprint name" type="text" />
+            </div>
+            <h3>Start Date</h3>
+              <p class="input-group">
+                <input type="date" class="form-control" datepicker-popup ng-model="newSprint.sprintstart" is-open="status.opened" min-date="minDate" max-date="'2020-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+              </p>
+            <h3>End Date</h3>
+              <p class="input-group">
+                <input type="date" class="form-control" datepicker-popup ng-model="newSprint.sprintend" is-open="status.opened" min-date="minDate" max-date="'2020-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+              </p>
+              <button class="btn btn-lg" ng-click="createSprint(newSprint); ok()">
+                Submit
+              </button>
+              <canvas tc-chartjs-line chart-options="options" chart-data="data" auto-legend></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

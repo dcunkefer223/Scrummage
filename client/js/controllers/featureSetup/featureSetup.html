@@ -1,0 +1,19 @@
+<div class="off-canvas__container off-canvas__content" ng-controller="featureSetupCtrl as my">
+  <div class="add-feature-modal">
+    <div class="add-feature-body">
+      <div class="enter-feature">Enter your feature!</div>
+      <div class="add-feature-name">
+        <input ng-model="feature.name" placeholder="Enter feature name" type="text" />
+      </div>
+      <div class="add-feature-description">
+        <input ng-model="feature.description" placeholder="Enter feature description" type="text" />
+      </div>
+      <div class="add-feature-points">
+        <input ng-model="feature.points" placeholder="Enter points value" type="text" /> <br />
+      </div>
+      <button class="btn btn-lg" ng-click="addFeature(feature); ok()">
+        Add a Feature
+      </button>
+    </div>
+  </div>
+</div>

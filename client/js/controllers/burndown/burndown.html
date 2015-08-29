@@ -1,0 +1,21 @@
+<div class="container-fluid mobile-padding">
+  <div class="row">
+    <div class="col-xs-1 nav-bg" ng-include="'./includes/navbar.html'"></div>
+    <div class="col-xs-11 column-bg">
+      <div class="container analytics-bg">
+        <div class="burndown-body">
+          <h2> Burndown Chart </h2>
+          <div class="chart-container">
+            <div class="col-xs-9">
+              <canvas id="line" class="chart chart-line" data="data"
+                labels="labels" legend="true" series="series" colours="colours" options="options">
+              </canvas> 
+          </div>
+          <div class="col-xs-3">
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
