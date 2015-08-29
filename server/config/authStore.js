@@ -36,14 +36,24 @@ exports.checkUser = function(req, res, next){
 //       ssl: false
 //     };
 
-// Dave
 // exports.pgData = {
 //       host: 'localhost',
 //       database: 'postgres',
-//       user : 'davidunkefer',
+//       user : 'postgres',
 //       port : 5432,
-//       password : '',
+//       password : 'ryuoko',
 //       ssl: false
 //     };
+
+
+// Dave
+exports.pgData = {
+      host: 'localhost',
+      database: 'postgres',
+      user : 'davidunkefer',
+      port : 5432,
+      password : '',
+      ssl: false
+    };
 
 
