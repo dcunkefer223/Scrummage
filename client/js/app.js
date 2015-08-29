@@ -17,4 +17,5 @@ angular.module('scrummage', [
       controller: stateName + 'Ctrl'
     })
   });
+ });
     
