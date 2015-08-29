@@ -6,28 +6,28 @@ var auth = require('../config/authStore.js');
 //Otherwise, it goes to the auth file and pulls it from there.
 
 // LOCAL SETTINGS
-// var db = require('knex')({
-//   client: 'pg',
-//   connection: auth.pgData
-// });
+var db = require('knex')({
+  client: 'pg',
+  connection: auth.pgData
+});
 
 
 //This works
 // var db = new pg.Client(auth.pgData);
 // db.connect();
 
-HEROKU SETTINGS
-var db = require('knex')({
-  client: 'pg',
-  connection: {
-    user: 'wtloxdvspmlazo',
-    password: 'NSQw_qVzfiy4hTSwK3MYTxMEaB',
-    host: 'ec2-54-83-55-214.compute-1.amazonaws.com',
-    port: 5432,
-    database: 'df8681a488cm7j',
-    ssl: true
-  }
-  });
+// HEROKU SETTINGS
+// var db = require('knex')({
+//   client: 'pg',
+//   connection: {
+//     user: 'wtloxdvspmlazo',
+//     password: 'NSQw_qVzfiy4hTSwK3MYTxMEaB',
+//     host: 'ec2-54-83-55-214.compute-1.amazonaws.com',
+//     port: 5432,
+//     database: 'df8681a488cm7j',
+//     ssl: true
+//   }
+//   });
 
 
 module.exports = db;

@@ -3,14 +3,13 @@ var User = require('../requestHandlers/userHandler.js');
 var passport = require('passport');
 var GithubStrategy = require('passport-github').Strategy;
 var LocalStrategy = require('passport-local').Strategy;
-var bcrypt = require('bcrypt');
+// var bcrypt = require('bcrypt');
 var flash = require('connect-flash');
 
 module.exports = function(passport) {
 
   passport.serializeUser(function(user, done) {
-    // console.log(user);
-    done(null, user.id);
+    done(null, user.github_id);
   });
 
   passport.deserializeUser(function(id, done) {
@@ -24,9 +23,9 @@ module.exports = function(passport) {
   //Github OAuth**
   //*************************************************************
   passport.use(new GithubStrategy({
-    clientID: '5057c4d093220875cc38',
-    clientSecret: 'cf79e078480f4dda85ec4946c10353e215d8a9db',
-    callbackURL: 'https://scrummage-app.herokuapp.com/auth/github/callback',
+    clientID: '3cf6f618800a697e2bc5',
+    clientSecret: 'b160a044255899ac3cc086064b8783ff40fd0c23',
+    callbackURL: 'http://127.0.0.1:3000/auth/github/callback',
     passReqToCallback: true
   },
 
@@ -34,10 +33,8 @@ module.exports = function(passport) {
     // console.log(profile);
     process.nextTick(function() {
       var github_id = profile.id;
-
       // find the user in the database based on their github_id
       User.findUserByGithubId(github_id, function(err, user) {
-
         // if there is an error, stop everything and return that
         // i.e. an error connecting to the database
         if (err) return done(err);
@@ -55,12 +52,13 @@ module.exports = function(passport) {
           newUser.github_id      = profile.id;
           newUser.username       = profile.username;
           newUser.email          = profile.emails[0].value;
+          newUser.picture        = profile._json.avatar_url;
           // save our user to the database
           User.addUser(newUser, function(err, results) {
             if (err) throw err;
 
             // if successful, return the new user
-            return done(null, results);
+            return done(null, newUser);
           });
         }
       });
@@ -119,3 +117,4 @@ module.exports = function(passport) {
   //   });
   // }
   // ));
+

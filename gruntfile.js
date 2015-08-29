@@ -14,16 +14,16 @@ module.exports = function (grunt){
     }
   },
 
-  imagemin: {
-    dynamic: {
-      files: [{
-        expand: true,
-        cwd: 'client/img/',
-        src: ['*.jpg'],
-        dest: 'client/img/'
-      }]
-    }
-  },
+  // imagemin: {
+  //   dynamic: {
+  //     files: [{
+  //       expand: true,
+  //       cwd: 'client/img/',
+  //       src: ['*.jpg'],
+  //       dest: 'client/img/'
+  //     }]
+  //   }
+  // },
 
   concat: {
     serverSide: {
@@ -76,7 +76,7 @@ module.exports = function (grunt){
   //Tell grunt to use these plugins
 
 
-  grunt.loadNpmTasks('grunt-contrib-imagemin');
+  // grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
@@ -97,7 +97,7 @@ module.exports = function (grunt){
 });
 
   //what happens when you type grunt in CL
-  grunt.registerTask('default', ['cssmin', 'imagemin', 'concat', 'uglify', 'watch']);
+  grunt.registerTask('default', ['cssmin', 'concat', 'uglify', 'watch']);
   // grunt.registerTask('default', ['imagemin']);
   grunt.registerTask('build', ['concat']);
   //grunt.registerTask('default', ['mochaTest']); will replace with Jasmine if possible

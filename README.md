@@ -1,56 +1,31 @@
 ## Synopsis
 
-Scrummage is a web application that allows a development team to create, modify, update feature/tasks for a created project.  A feature is created with a title, description and points(based on difficulty).  It is then added web app's storyboard that displays the status of each feature - "Backlog" "Progress" or "Completed"
+At the top of the file there should be a short introduction and/ or overview that explains **what** the project is. This description should match descriptions added for package managers (Gemspec, package.json, etc.)
 
-Scrummage keeps track of these points and visually represents the team's progress in a [Burndown chart](https://en.wikipedia.org/wiki/Burn_down_chart).
+## Code Example
 
-Abiding by the agile practices, Scrummage is a project management solution.  
-
+Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
 
 ## Motivation
 
-In a work environment where communication is important and organization is vital, we wanted to create a real time app that can keep track of both as well as visually measure progress.
-
-## Team
-
-  - __Product Owner__/__Scrum Master__: Daniel Jansen
-  - __Development Team Members__: Paris Caldwell, John McGuirk, David Unkefer
+A short description of the motivation behind the creation and maintenance of the project. This should explain **why** the project exists.
 
 ## Installation
 
-After forking the repo - install the dependencies in the root directory.
-```sh
-sudo npm install -g bower
-npm install
-bower install
-```
-### Creating the Database
-To install Postgres:
-```
-brew install postgres
-```
-To check your version of Postgres:
-```
-brew info postgres
-```
-Once Postgres is running, create the database:
-```
-createdb dbName
-```
-To launch psql:
-```
-psql dbName
-```
-### Connecting the Database
-Open file Scrummage > server > config > authStore.js
-		and adjust your Postgres connection settings accordingly using exports.pgData object.  
+Provide code examples and explanations of how to get the project.
 
-### Starting the Server
-From the command line:
-```
-nodemon server/server.js
-```
+## API Reference
+
+Depending on the size of the project, if it is small and simple enough the reference docs can be added to the README. For medium size to larger projects it is important to at least provide a link to where the API reference docs live.
+
+## Tests
+
+Describe and show how to run the tests with code examples.
 
 ## Contributors
 
-We welcome any questions, concerns, contributions - please open an issue.  
+Let people know how they can dive into the project, include important links to things like issue trackers, irc, twitter accounts if applicable.
+
+## License
+
+A short snippet describing the license (MIT, Apache, etc.)
