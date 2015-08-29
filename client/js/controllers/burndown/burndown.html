@@ -1,4 +1,4 @@
-<div class="container-fluid mobile-padding">
+<!-- <div class="container-fluid mobile-padding">
   <div class="row">
     <div class="col-xs-1 nav-bg" ng-include="'./includes/navbar.html'"></div>
     <div class="col-xs-11 column-bg">
@@ -18,4 +18,26 @@
       </div>
     </div>
   </div>
+</div> -->
+
+<div class="top-bar" ng-controller="storyBoardCtrl as my">
+<button class="fa fa-bars" ng-click="my.toggle()"></button>
 </div>
+  <div class="off-canvas__container off-canvas__content" ng-controller="burndownCtrl">
+        <div class="col-xs-12 column-bg">
+          <div class="container column-bg">
+            <div class="burndown-body">
+              <h2> Burndown Chart </h2>
+              <div class="chart-container">
+                <div class="col-xs-9">
+                  <canvas id="line" class="chart chart-line" data="data"
+                    labels="labels" legend="true" series="series" colours="colours" options="options">
+                  </canvas> 
+              </div>
+              <div class="col-xs-3">
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+  </div>

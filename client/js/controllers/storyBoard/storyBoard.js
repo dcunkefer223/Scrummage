@@ -10,7 +10,7 @@ angular.module('scrummage')
         $scope.stop(); 
         
         // store the interval promise
-        timer = $interval($scope.renderBoard, 3000);
+        timer = $interval($scope.renderBoard, 2000);
       };
       
       // stops the interval
@@ -102,6 +102,7 @@ angular.module('scrummage')
       };
 
       $scope.addFeature = function (newFeature) {
+        console.log('addFeature was called!');
         $scope.models.lists.backlog.unshift(newFeature);
 
         Request.feature.create(newFeature).then(function (results) {

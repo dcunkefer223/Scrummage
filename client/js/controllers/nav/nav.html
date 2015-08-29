@@ -10,7 +10,6 @@
         <li data-step="2" data-intro="Create or select a team here." data-position="right">
           <button class="change-settings-btn" ng-click="open()"><i class="grow fa fa-gear nav-list-icon"></i></button>
         </li>
-        <div class="feature-modal" modal="showModal" close="cancel()" ng-include="'../js/controllers/settings/settings.html'"></div>
       </div>
       <div id= "analyticsModal">
         <li data-step="6" data-intro="View the current status with this burndown chart" data-position="right">
@@ -21,9 +20,11 @@
         <li data-step="3" data-intro="This is where you add your new features to the board." data-position="right">
           <button class="add-feature" ng-disabled="isDisabled" ng-click="open()"><i class="grow fa fa-plus"></i></button>
         </li>
-          <div class="feature-modal" modal="showModal" close="cancel()" ng-include="'../js/controllers/featureSetup/featureSetup.html'"></div>
       </div>
       <li data-step="7" data-intro="Your changes are automatically saved, logout here!" data-position="top"><a href="/logout"><i class="grow fa fa-sign-out"></i></a></li>
     </ul>
 </nav>
+    <div class="feature-modal" modal="showSettingsModal" ng-controller="settingsCtrl" close="cancel()" ng-include="'../js/controllers/settings/settings.html'"></div>
+    
+    <div class="feature-modal" modal="showFeatureModal" ng-controller="featureSetupCtrl" close="cancel()" ng-include="'../js/controllers/featureSetup/featureSetup.html'"></div>
 
