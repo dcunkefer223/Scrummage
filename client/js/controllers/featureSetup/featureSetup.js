@@ -1,16 +1,16 @@
 angular.module('scrummage')
 
-.controller('featureSetupCtrl', ['$scope', function ($scope){
+.controller('featureSetupCtrl', ['$scope', '$rootScope', function ($scope, $rootScope){
   $scope.open = function() {
-    $scope.showModal = true;
+    $rootScope.showFeatureModal = true;
   };
 
   $scope.ok = function() {
-    $scope.showModal = false;
+    $rootScope.showFeatureModal = false;
   };
 
   $scope.cancel = function() {
-    $scope.showModal = false;
+    $rootScope.showFeatureModal = false;
   };
 
 }]);
