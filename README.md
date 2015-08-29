@@ -1,6 +1,6 @@
 ## Synopsis
 
-Scrummage is a web application that allows a development team to create, modify, update feature/tasks for a created project.  A feature is created with a title, description and points(based on difficulty).  It is then added web app's storyboard that displays the status of each feature - "Backlog" "Progress" or "Completed"
+Scrummage is a web application that allows a development team to create, modify, update feature/tasks for a created project.  A feature is created with a title, description and points(based on difficulty).  It is then added to the storyboard that displays the status of each feature - "Backlog" "Progress" or "Completed"
 
 Scrummage keeps track of these points and visually represents the team's progress in a [Burndown chart](https://en.wikipedia.org/wiki/Burn_down_chart).
 
@@ -9,7 +9,7 @@ Abiding by the agile practices, Scrummage is a project management solution.
 
 ## Motivation
 
-In a work environment where communication is important and organization is vital, we wanted to create a real time app that can keep track of both as well as visually measure progress.
+In a work environment where communication is important and organization is vital, we wanted to create a real time app that can keep track of both, as well as visually measure progress.
 
 ## Team
 
@@ -53,4 +53,4 @@ nodemon server/server.js
 
 ## Contributors
 
-We welcome any questions, concerns, contributions - please open an issue.  
+We welcome any questions, concerns, contributions - please open an issue or submit a pull request.  
