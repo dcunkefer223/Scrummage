@@ -8,7 +8,6 @@ angular.module('scrummage', [
   ])
 .config(function ($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/signin')
-  
 
   var appViews = ['signin', 'storyBoard','featureSetup', 'teamSetup', 'sprintSetup', 'settings', 'burndown', 'analytics', 'velocity'];
   appViews.forEach(function(stateName) {
@@ -18,4 +17,4 @@ angular.module('scrummage', [
       controller: stateName + 'Ctrl'
     })
   });
-});
+    
