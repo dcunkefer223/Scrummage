@@ -1,7 +1,9 @@
 angular.module('scrummage')
-    .controller('storyBoardCtrl', ['$scope', '$interval', 'Request', 'ColumnPoints', 'InitializeAnalytics', function ($scope, $interval, Request, ColumnPoints, InitializeAnalytics) {
+    .controller('storyBoardCtrl', ['$scope', '$interval', 'Request', 'ColumnPoints', 'InitializeAnalytics', 'myOffCanvas', function ($scope, $interval, Request, ColumnPoints, InitializeAnalytics, myOffCanvas) {
       var timer;
       var gate = true;
+
+      this.toggle = myOffCanvas.toggle;
 
       $scope.start = function() {
         // stops any running interval to avoid two intervals running at the same time
