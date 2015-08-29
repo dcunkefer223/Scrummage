@@ -16,6 +16,21 @@ exports.checkUser = function(req, res, next){
   }
 };
 
+
+//Heroku
+var db = require('knex')({
+  client: 'pg',
+  connection: {
+    user: 'wtloxdvspmlazo',
+    password: 'NSQw_qVzfiy4hTSwK3MYTxMEaB',
+    host: 'ec2-54-83-55-214.compute-1.amazonaws.com',
+    port: 5432,
+    database: 'df8681a488cm7j',
+    ssl: true
+  }
+  });
+
+
 // Paris
 // exports.pgData = {
 //       host: 'localhost',
