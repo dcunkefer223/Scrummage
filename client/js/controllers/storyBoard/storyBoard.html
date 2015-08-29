@@ -4,7 +4,7 @@
   <div class="off-canvas__container off-canvas__content">
         <div class="col-xs-12 column-bg" ng-init="renderBoard(); start();">
           <div class="container column-bg">
-              <div class="col-xs-4" ng-repeat="(listName, list) in models.lists">
+              <div class="col-xs-4" ng-repeat="(listName, list) in models.lists" ng-class="{'first':$first, 'middle':$middle, 'last':$last}">
                 <div class="feature-header">
                   <div class="feature-title">
                     <h2 data-step="5" data-intro="Update your feature status by dragging cards to the appropriate column!" data-position="bottom">{{listName | capitalize}}</h2>
