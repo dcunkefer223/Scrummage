@@ -41,6 +41,10 @@ To launch psql:
 ```
 psql dbName
 ```
+FROM the Postgres CLI Insert database schema and sample data:
+```
+\i /Scrummage/server/db/schema.sql
+```
 ### Connecting the Database
 Open file Scrummage > server > config > authStore.js
 		and adjust your Postgres connection settings accordingly using exports.pgData object.  
