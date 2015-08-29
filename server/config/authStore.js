@@ -16,6 +16,15 @@ exports.checkUser = function(req, res, next){
   }
 };
 
+
+exports.pgData = {
+      host: 'ec2-54-83-55-214.compute-1.amazonaws.com',
+      database: 'df8681a488cm7j',
+      user : 'wtloxdvspmlazo',
+      port : 5432,
+      password : 'NSQw_qVzfiy4hTSwK3MYTxMEaB',
+      ssl: true
+    }
 // Paris
 // exports.pgData = {
 //       host: 'localhost',
