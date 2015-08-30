@@ -171,7 +171,6 @@
 /* --------------------------------- StoryBoard Styling --------------------------------- */
 
 .top-bar {
-  /*overflow: hidden;*/
   height: 8vh;
   padding-left: 2.5%;
   padding-bottom: 5%;
@@ -367,6 +366,11 @@ html, body {
   padding-left: 6px;
 }
 
+.fa-plus-circle:before {
+  font-size: 55px;
+  color: #193441;
+}
+
 /* ------------------------- Draggable Boxes --------------------- */
 
 ul[dnd-list],
@@ -531,11 +535,15 @@ li .card {
 /* --------------------------------- Add Feature Modal --------------------------------- */
 
 button:focus {
-  outline:0;
+  outline: 0;
 }
 
 .add-feature {
   padding-left: 7px;
+}
+
+.add-feature a {
+  margin-left: 20px;
 }
 
 .modal .add-feature-modal {
@@ -545,14 +553,6 @@ button:focus {
   font-family: 'Open Sans', cursive;
   font-size: 20px;
   height: 100%;
-}
-
-.add-feature-modal .enter-feature {
-  font-size: 35px;
-  margin-top: 7px;
-  margin-bottom: 43px;
-  padding-top: 10px;
-  padding-left: 14%;
 }
 
 .add-feature-modal .add-feature-body {
@@ -569,9 +569,12 @@ button:focus {
 .add-feature-body .add-feature-name input {
   font-size: inherit;
   background-color: inherit;
-  border: none;
+  border: dashed #193441;
   outline: 0;
-  width: 100%;
+  width: 50%;
+  height: 60px;
+  margin-top: 1.5%;
+  padding-left: 1.4%;
 }
 
 .add-feature-body .add-feature-description {
@@ -581,31 +584,27 @@ button:focus {
 .add-feature-body .add-feature-description input {
   font-size: inherit;
   background-color: inherit;
-  border: none;
+  border: dashed #193441;
   outline: 0;
-  width: 100%;
+  width: 80%;
+  height: 180px;
+  padding-left: 10%;
 }
 
 .add-feature-body .add-feature-points {
-  margin-bottom: 60px;
+  margin-left: 32%;
 }
 
 .add-feature-body .add-feature-points input {
   font-size: inherit;
   background-color: inherit;
-  border: none;
+  border: dashed #193441;
   outline: 0;
-}
-
-.btn-md {
-  font-family: 'Open Sans', cursive;
-  text-decoration: none;
-  font-size: inherit;
-  margin-left: 31%;
-}
-
-.burn {
-  background: url('../img/burnDown.png') no-repeat center center;
+  float: right;
+  width: 110px;
+  margin-right: 100px;
+  height: 60px;
+  padding-left: 2%;
 }
 
 a:hover {
@@ -613,6 +612,10 @@ a:hover {
 }
 
  /* --------------------------------- Analytics / Chart Modal --------------------------------- */
+
+.burn {
+  background: url('../img/burnDown.png') no-repeat center center;
+}
 
 .burndown-body {
   width: 100%;
@@ -633,7 +636,7 @@ a:hover {
   border-bottom:1px solid #cccccc;
 }
 
-.tc-chart-js-legend {
+/*.tc-chart-js-legend {
   list-style-type: none;
   padding-left: 0px;
 }
@@ -650,7 +653,7 @@ a:hover {
   display:block;
   float:left;
   margin-right:10px;
-}
+}*/
 
 /* ---------------------------------- Modal / Graph Boxes -------------------------------- */
 
@@ -673,7 +676,8 @@ body {
   top: 10%;
   left: 50%;
   z-index: 1050;
-  width: 560px;
+  width: 600px;
+  height: 440px;
   margin-left: -280px;
   background-color: #f4f6ef;
   border: 1px solid #999;

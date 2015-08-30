@@ -1,7 +1,6 @@
 <div class="off-canvas__container off-canvas__content" ng-controller="storyBoardCtrl">
   <div class="add-feature-modal">
     <div class="add-feature-body">
-      <div class="enter-feature">Enter your feature!</div>
       <div class="add-feature-name">
         <input ng-model="feature.name" placeholder="Enter feature name" type="text" />
       </div>
@@ -9,11 +8,9 @@
         <input ng-model="feature.description" placeholder="Enter feature description" type="text" />
       </div>
       <div class="add-feature-points">
-        <input ng-model="feature.points" placeholder="Enter points value" type="text" /> <br />
+        <a href='#' class="fa fa-plus-circle" ng-click="addFeature(feature); ok();"></a>
+        <input ng-model="feature.points" placeholder="Points" type="text" /> <br />
       </div>
-      <button class="btn btn-md" ng-click="addFeature(feature); ok();">
-        Add
-      </button>
     </div>
   </div>
 </div>
