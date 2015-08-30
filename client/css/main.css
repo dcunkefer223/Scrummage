@@ -7,17 +7,18 @@
   padding: 30px;
   max-width: 350px;
   width: 100% !important;
-  background-color: #fcfff5;
-  margin: 0 auto;
+/*  background-color: #fcfff5;
+*/  margin: 0 auto;
   border-radius: 2px;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  overflow: hidden;
+/*  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+*/  overflow: hidden;
   font-family: roboto;
 }
 .loginmodal-container h1 {
   text-align: center;
-  font-size: 1.8em;
+  font-size: 2.1em;
   font-family: roboto;
+  font-weight: 600;
 }
 
 .loginmodal-container h3 {
@@ -93,7 +94,7 @@
   font-weight: 400;
   text-align: center;
   display: inline-block;
-  opacity: 0.6;
+  opacity: 1;
   transition: opacity ease 0.5s;
 }
 
@@ -173,12 +174,15 @@
   /*overflow: hidden;*/
   height: 8vh;
   padding-left: 2.5%;
+  padding-bottom: 5%;
+
 }
 
 .top-bar button {
   outline:0;
   border: none;
   background: none;
+  padding-top: 0.5%;
 }
 
 .container {
@@ -192,6 +196,11 @@
   margin-bottom: 30px;
   padding-bottom: 20px;
   width: 100%;
+  margin-bottom: 0;
+  font-size: 32px;
+  font-weight: 200;
+  font-family: 'Open Sans', sans-serif;
+  letter-spacing: 2px;
 }
 
 .feature-header .feature-title h2{
@@ -200,6 +209,16 @@
   font-weight: 200;
   font-family: 'Open Sans', sans-serif;
   letter-spacing: 2px;
+}
+
+.col-sm-4 {
+  text-align: center;
+}
+
+.column-bg .row {
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: -5px;
 }
 
 .container .column-bg {
@@ -216,6 +235,7 @@
   height: 92vh;
   padding-left: 0;
   padding-right: 0;
+  padding-top: 2.5%;
   overflow-y: scroll;
 }
 
@@ -283,7 +303,7 @@ html, body {
 .nav-bg {
   height: 92vh;
 }
-
+  
 .nav-list {
   list-style-type: none;
   padding-left: 2%;
@@ -320,10 +340,10 @@ html, body {
   line-height: 50px;
 }
 
-.fa-github-square {
-  font-size: 80px;
-  color: black;
-  margin-left: 100px;
+.fa-github-square:before {
+  font-size: 120px;
+  color: white;
+  margin-left: 90px;
 }
 
 .fa-home:before {
@@ -750,7 +770,6 @@ body {
 /* SCHEMES: 
 
 SPRINGTIME HAPPINESS (MAYBE): #AF7575, #EFD8A1, #AFD7DB, #3D9CA8;
-PHAEDRA (NO): #00A388, #79BD8F, #FFFF9D, #FF6138;
 
  */
 
