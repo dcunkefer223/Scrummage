@@ -4,14 +4,25 @@
   <div class="off-canvas__container off-canvas__content">
         <div class="col-xs-12 column-bg" ng-init="renderBoard(); start();">
           <div class="container column-bg">
-              <div class="col-xs-4" ng-repeat="(listName, list) in models.lists" ng-class="{'first':$first, 'middle':$middle, 'last':$last}">
-                <div class="feature-header">
-                  <div class="feature-title">
-                    <h2 data-step="5" data-intro="Update your feature status by dragging cards to the appropriate column!" data-position="bottom">{{listName | capitalize}}</h2>
-                  </div>
+            <div class="row">
+              <div class="feature-header">
+<!--                     <h2 data-step="5" data-intro="Update your feature status by dragging cards to the appropriate column!" data-position="bottom">{{listName | capitalize}}</h2> -->
+                <div class="col-sm-4 feature-title">
+                  <h2>Backlog</h2>
                 </div>
-                <div ng-include="'./js/controllers/storyBoard/list.html'"></div>
+                <div class="col-sm-4 feature-title">
+                  <h2>In Progress</h2>
+                </div>
+                <div class="col-sm-4 feature-title">
+                  <h2>Complete</h2>
+                </div>
               </div>
-          </div>
-        </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-4" ng-repeat="(listName, list) in models.lists" ng-class="{'first':$first, 'middle':$middle, 'last':$last}">
+                <div ng-include="'./js/controllers/storyBoard/list.html'"></div>
+             </div>
+            </div>
+      </div>
   </div>
+</div>

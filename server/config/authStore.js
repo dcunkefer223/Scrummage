@@ -42,14 +42,14 @@ var db = require('knex')({
 //     };
 
 // Daniel
-// exports.pgData = {
-//       host: 'localhost',
-//       database: 'jansenfamily',
-//       user : 'jansenfamily',
-//       port : 5432,
-//       password : '',
-//       ssl: false
-//     };
+exports.pgData = {
+      host: 'localhost',
+      database: 'jansenfamily',
+      user : 'jansenfamily',
+      port : 5432,
+      password : '',
+      ssl: false
+    };
 
 // exports.pgData = {
 //       host: 'localhost',
@@ -62,13 +62,13 @@ var db = require('knex')({
 
 
 // Dave
-exports.pgData = {
-      host: 'localhost',
-      database: 'postgres',
-      user : 'davidunkefer',
-      port : 5432,
-      password : '',
-      ssl: false
-    };
+// exports.pgData = {
+//       host: 'localhost',
+//       database: 'postgres',
+//       user : 'davidunkefer',
+//       port : 5432,
+//       password : '',
+//       ssl: false
+//     };
 
 
