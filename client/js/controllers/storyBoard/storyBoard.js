@@ -102,7 +102,6 @@ angular.module('scrummage')
       };
 
       $scope.addFeature = function (newFeature) {
-        console.log('addFeature was called!');
         $scope.models.lists.backlog.unshift(newFeature);
 
         Request.feature.create(newFeature).then(function (results) {
@@ -129,7 +128,6 @@ angular.module('scrummage')
       }, true);
 
       $scope.renderBoard = function () {
-        console.log('renderBoard was called');
         Request.feature.fetchAll()
         .then(function (results) {
           clearBoard();
@@ -150,7 +148,6 @@ angular.module('scrummage')
       };
 
       $scope.initializeData = function () {
-        console.log('initialize data was called');
         Request.analytics.getSprintHistory().then(
           function (data) {
             InitializeAnalytics.setData(data);
