@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Roboto);
+@import url(https://fonts.googleapis.com/css?family=Roboto);
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
 
 
@@ -818,6 +818,7 @@ SPRINGTIME HAPPINESS (MAYBE): #AF7575, #EFD8A1, #AFD7DB, #3D9CA8;
 /* -------------------------------- */
 .fa {
   color: white;
+  padding-left: 8px;
 }
 
 .feature-header .feature-title h2{
