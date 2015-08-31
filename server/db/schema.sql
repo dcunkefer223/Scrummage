@@ -108,12 +108,12 @@ CREATE TABLE sprints (
 ----------------------------- TEST VALUES -----------------------------
 -----------------------------------------------------------------------
 
-INSERT INTO teams (name, date_changed, backlog, progress, complete) VALUES ('Test Team', '8/24', 10, 15, 6);
+INSERT INTO teams (name, date_changed, backlog, progress, complete) VALUES ('Test Team', '8/27', 10, 15, 6);
 INSERT INTO users (username, github_id) VALUES ('JParis44', 11894565);
-INSERT INTO sprints (team_id, date_changed, sprintstart, sprintend, backlog, progress, complete) VALUES (1, '8/21', '2015-08-21 05:00:00', '2015-08-28 05:00:00', 80, 0, 0);
-INSERT INTO sprints (team_id, date_changed, sprintstart, sprintend, backlog, progress, complete) VALUES (1, '8/22', '2015-08-21 05:00:00', '2015-08-28 05:00:00', 56, 12, 12);
-INSERT INTO sprints (team_id, date_changed, sprintstart, sprintend, backlog, progress, complete) VALUES (1, '8/23', '2015-08-21 05:00:00', '2015-08-28 05:00:00', 44, 10, 26);
-INSERT INTO sprints (team_id, date_changed, sprintstart, sprintend, backlog, progress, complete) VALUES (1, '8/24', '2015-08-21 05:00:00', '2015-08-28 05:00:00', 30, 15, 35);
+INSERT INTO sprints (team_id, date_changed, sprintstart, sprintend, backlog, progress, complete) VALUES (1, '8/27', '2015-08-27 05:00:00', '2015-09-02 05:00:00', 80, 0, 0);
+INSERT INTO sprints (team_id, date_changed, sprintstart, sprintend, backlog, progress, complete) VALUES (1, '8/28', '2015-08-27 05:00:00', '2015-09-02 05:00:00', 56, 12, 12);
+INSERT INTO sprints (team_id, date_changed, sprintstart, sprintend, backlog, progress, complete) VALUES (1, '8/29', '2015-08-27 05:00:00', '2015-09-02 05:00:00', 44, 10, 26);
+INSERT INTO sprints (team_id, date_changed, sprintstart, sprintend, backlog, progress, complete) VALUES (1, '8/30', '2015-08-27 05:00:00', '2015-09-02 05:00:00', 30, 15, 35);
 INSERT INTO features (name, description, points, status, team_id)
   VALUES ('Save features', 'Store feature status in DB.', 27, 'backlog', 1);
 INSERT INTO features (name, description, points, status, team_id)
