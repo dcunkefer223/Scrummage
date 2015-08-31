@@ -7,17 +7,18 @@
   padding: 30px;
   max-width: 350px;
   width: 100% !important;
-  background-color: #fcfff5;
-  margin: 0 auto;
+/*  background-color: #fcfff5;
+*/  margin: 0 auto;
   border-radius: 2px;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  overflow: hidden;
+/*  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+*/  overflow: hidden;
   font-family: roboto;
 }
 .loginmodal-container h1 {
   text-align: center;
-  font-size: 1.8em;
+  font-size: 2.1em;
   font-family: roboto;
+  font-weight: 600;
 }
 
 .loginmodal-container h3 {
@@ -93,7 +94,7 @@
   font-weight: 400;
   text-align: center;
   display: inline-block;
-  opacity: 0.6;
+  opacity: 1;
   transition: opacity ease 0.5s;
 }
 
@@ -127,12 +128,22 @@
 
 /* ------------------------------------- Team Setup ------------------------------------- */
 
+.team-body {
+  padding-top: 65px;
+  padding-left: 80px;
+}
+
+.team-body *::-webkit-input-placeholder {
+    color: white;
+}
+
 .join-team input {
   font-size: 35px;
   background-color: inherit;
   border: none;
   outline: 0;
   width: 100%;
+  color: white;
 }
 
 .create-team input {
@@ -141,18 +152,18 @@
   border: none;
   outline: 0;
   width: 100%;
-}
-
-.team-body {
-  padding-top: 60px;
-  padding-left: 40px;
+  color: white;
 }
 
 /* --------------------------------- Sprint Setup --------------------------------- */
 
 .sprint-body {
-  padding-top: 60px;
-  padding-left: 40px;
+  padding-top: 65px;
+  padding-left: 80px;
+}
+
+.sprint-body *::-webkit-input-placeholder {
+    color: white;
 }
 
 .sprint-name input {
@@ -161,6 +172,7 @@
   border: none;
   outline: 0;
   width: 100%;
+  color: white;
 }
 
 .input-group {
@@ -170,15 +182,17 @@
 /* --------------------------------- StoryBoard Styling --------------------------------- */
 
 .top-bar {
-  /*overflow: hidden;*/
   height: 8vh;
   padding-left: 2.5%;
+  padding-bottom: 5%;
+
 }
 
 .top-bar button {
   outline:0;
   border: none;
   background: none;
+  padding-top: 0.5%;
 }
 
 .container {
@@ -192,6 +206,11 @@
   margin-bottom: 30px;
   padding-bottom: 20px;
   width: 100%;
+  margin-bottom: 0;
+  font-size: 32px;
+  font-weight: 200;
+  font-family: 'Open Sans', sans-serif;
+  letter-spacing: 2px;
 }
 
 .feature-header .feature-title h2{
@@ -202,12 +221,22 @@
   letter-spacing: 2px;
 }
 
+.col-sm-4 {
+  text-align: center;
+}
+
+.column-bg .row {
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: -5px;
+}
+
 .container .column-bg {
   width: 100%;
 }
 
 .column-bg {
-  height: 92vh;
+  height: 100vh;
   padding: 0;
 }
 
@@ -216,6 +245,7 @@
   height: 92vh;
   padding-left: 0;
   padding-right: 0;
+  padding-top: 2.5%;
   overflow-y: scroll;
 }
 
@@ -275,7 +305,7 @@ html, body {
   left: 0;
   top: 0;
   width: 100%;
-  height: 100%;
+  height: 110%;
   padding-top: 6%;
   -webkit-user-drag: none;
 }
@@ -283,7 +313,7 @@ html, body {
 .nav-bg {
   height: 92vh;
 }
-
+  
 .nav-list {
   list-style-type: none;
   padding-left: 2%;
@@ -320,10 +350,10 @@ html, body {
   line-height: 50px;
 }
 
-.fa-github-square {
-  font-size: 80px;
-  color: black;
-  margin-left: 100px;
+.fa-github-square:before {
+  font-size: 120px;
+  color: white;
+  margin-left: 90px;
 }
 
 .fa-home:before {
@@ -345,6 +375,11 @@ html, body {
 
 .fa-sign-out:before {
   padding-left: 6px;
+}
+
+.fa-plus-circle:before {
+  font-size: 55px;
+  color: #193441;
 }
 
 /* ------------------------- Draggable Boxes --------------------- */
@@ -477,7 +512,6 @@ li .card {
 .modal .change-settings-modal {
   border: 0px;
   text-shadow: 0 1px rgba(0,0,0,0.1);
-  padding: 17px 0px;
   padding-left: 10px;
   font-family: 'Open Sans', cursive;
   font-size: 20px;
@@ -489,28 +523,53 @@ li .card {
 }
 
 .change-settings-body h2 {
-  padding-left: 33%;
+  padding-top: 2%;
+  padding-left: 36%;
   font-size: 40px;
+  margin-bottom: 5%;
 }
 
 .change-settings-modal .create-sprint {
-  padding-top: 60px;
-  padding-bottom: 70px;
-  width: 84%;
+  padding-top: 9%;
+  padding-bottom: 9%;
+  margin-left: -10px;
+  width: 102%;
+  background-color: #A3788F;
+  display: block;
+  font-size: 111%;
 }
 
 .change-settings-modal .leave-team {
-  padding-left: 30px;
+  width: 102%;
+  padding-top: 9%;
+  padding-bottom: 9%;
+  margin-left: -10px;
+  background-color: #8A6C7C;
+  display: block;
+  font-size: 111%;
+}
+
+.change-settings-modal a {
+  color: white;
+  text-align: center;
+}
+
+.change-settings-modal a:hover {
+  background-color: #3E606F;
 }
 
 /* --------------------------------- Add Feature Modal --------------------------------- */
 
 button:focus {
-  outline:0;
+  outline: 0;
 }
 
 .add-feature {
   padding-left: 7px;
+}
+
+.add-feature a {
+  margin-left: 20px;
 }
 
 .modal .add-feature-modal {
@@ -522,63 +581,56 @@ button:focus {
   height: 100%;
 }
 
-.add-feature-modal .enter-feature {
-  font-size: 45px;
-  margin-bottom: 20px;
-  padding-left: 50px;
-}
-
 .add-feature-modal .add-feature-body {
-  margin-bottom: 30px;
+  margin-bottom: 33px;
   float: left;
-  margin-left: 30px;
   width: 100%;
+  font-size: 30px;
 }
 
 .add-feature-body .add-feature-name {
-  margin-bottom: 40px;
+  margin-bottom: 43px;
 }
 
 .add-feature-body .add-feature-name input {
-  font-size: 40px;
+  font-size: inherit;
   background-color: inherit;
-  border: none;
+  border: dashed #193441;
   outline: 0;
-  width: 100%;
+  width: 50%;
+  height: 60px;
+  margin-top: 1.5%;
+  padding-left: 1.4%;
 }
 
 .add-feature-body .add-feature-description {
-  margin-bottom: 40px;
+  margin-bottom: 43px;
 }
 
 .add-feature-body .add-feature-description input {
-  font-size: 40px;
+  font-size: inherit;
   background-color: inherit;
-  border: none;
+  border: dashed #193441;
   outline: 0;
-  width: 100%;
+  width: 80%;
+  height: 180px;
+  padding-left: 10%;
 }
 
 .add-feature-body .add-feature-points {
-  margin-bottom: 60px;
+  margin-left: 32%;
 }
 
 .add-feature-body .add-feature-points input {
-  font-size: 40px;
+  font-size: inherit;
   background-color: inherit;
-  border: none;
+  border: dashed #193441;
   outline: 0;
-}
-
-.btn-lg {
-  font-family: 'Open Sans', cursive;
-  text-decoration: none;
-  font-size: 30px;
-  margin-left: 25%;
-}
-
-.burn {
-  background: url('../img/burnDown.png') no-repeat center center;
+  float: right;
+  width: 110px;
+  margin-right: 100px;
+  height: 60px;
+  padding-left: 2%;
 }
 
 a:hover {
@@ -586,6 +638,10 @@ a:hover {
 }
 
  /* --------------------------------- Analytics / Chart Modal --------------------------------- */
+
+.burn {
+  background: url('../img/burnDown.png') no-repeat center center;
+}
 
 .burndown-body {
   width: 100%;
@@ -606,7 +662,7 @@ a:hover {
   border-bottom:1px solid #cccccc;
 }
 
-.tc-chart-js-legend {
+/*.tc-chart-js-legend {
   list-style-type: none;
   padding-left: 0px;
 }
@@ -623,7 +679,7 @@ a:hover {
   display:block;
   float:left;
   margin-right:10px;
-}
+}*/
 
 /* ---------------------------------- Modal / Graph Boxes -------------------------------- */
 
@@ -646,7 +702,8 @@ body {
   top: 10%;
   left: 50%;
   z-index: 1050;
-  width: 560px;
+  width: 600px;
+  height: 440px;
   margin-left: -280px;
   background-color: #f4f6ef;
   border: 1px solid #999;
@@ -743,7 +800,6 @@ body {
 /* SCHEMES: 
 
 SPRINGTIME HAPPINESS (MAYBE): #AF7575, #EFD8A1, #AFD7DB, #3D9CA8;
-PHAEDRA (NO): #00A388, #79BD8F, #FFFF9D, #FF6138;
 
  */
 
@@ -765,6 +821,10 @@ PHAEDRA (NO): #00A388, #79BD8F, #FFFF9D, #FF6138;
 /*--------------------------------- */
 li .card {
   background-color: #FFF085;
+}
+
+.modal {
+  background-color: #FFFAD5;
 }
 /*----------------------------------*/
 .column-bg {

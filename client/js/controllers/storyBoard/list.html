@@ -1,6 +1,6 @@
   <ul dnd-list="list"
       dnd-drop="dropCallback(event, index, item, external, listName)">
-    <li ng-repeat="item in list track by $id(item)"
+    <li ng-repeat="item in list track by $index"
         dnd-draggable="item"
         dnd-moved="list.splice($index, 1)"
         dnd-dragstart="stop()"
