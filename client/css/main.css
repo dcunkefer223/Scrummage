@@ -128,12 +128,22 @@
 
 /* ------------------------------------- Team Setup ------------------------------------- */
 
+.team-body {
+  padding-top: 65px;
+  padding-left: 80px;
+}
+
+.team-body *::-webkit-input-placeholder {
+    color: white;
+}
+
 .join-team input {
   font-size: 35px;
   background-color: inherit;
   border: none;
   outline: 0;
   width: 100%;
+  color: white;
 }
 
 .create-team input {
@@ -142,18 +152,18 @@
   border: none;
   outline: 0;
   width: 100%;
-}
-
-.team-body {
-  padding-top: 60px;
-  padding-left: 40px;
+  color: white;
 }
 
 /* --------------------------------- Sprint Setup --------------------------------- */
 
 .sprint-body {
-  padding-top: 60px;
-  padding-left: 40px;
+  padding-top: 65px;
+  padding-left: 80px;
+}
+
+.sprint-body *::-webkit-input-placeholder {
+    color: white;
 }
 
 .sprint-name input {
@@ -162,6 +172,7 @@
   border: none;
   outline: 0;
   width: 100%;
+  color: white;
 }
 
 .input-group {
@@ -225,7 +236,7 @@
 }
 
 .column-bg {
-  height: 92vh;
+  height: 100vh;
   padding: 0;
 }
 
@@ -294,7 +305,7 @@ html, body {
   left: 0;
   top: 0;
   width: 100%;
-  height: 100%;
+  height: 110%;
   padding-top: 6%;
   -webkit-user-drag: none;
 }
@@ -501,7 +512,6 @@ li .card {
 .modal .change-settings-modal {
   border: 0px;
   text-shadow: 0 1px rgba(0,0,0,0.1);
-  padding: 17px 0px;
   padding-left: 10px;
   font-family: 'Open Sans', cursive;
   font-size: 20px;
@@ -513,23 +523,39 @@ li .card {
 }
 
 .change-settings-body h2 {
-  padding-left: 33%;
+  padding-top: 2%;
+  padding-left: 36%;
   font-size: 40px;
   margin-bottom: 5%;
 }
 
 .change-settings-modal .create-sprint {
-  padding-top: 60px;
-  padding-bottom: 20%;
-  width: 84%;
+  padding-top: 9%;
+  padding-bottom: 9%;
+  margin-left: -10px;
+  width: 102%;
+  background-color: #A3788F;
+  display: block;
+  font-size: 111%;
 }
 
 .change-settings-modal .leave-team {
-  margin-right: 2%;
+  width: 102%;
+  padding-top: 9%;
+  padding-bottom: 9%;
+  margin-left: -10px;
+  background-color: #8A6C7C;
+  display: block;
+  font-size: 111%;
 }
 
-.btn-lg {
-  margin-left: 35%;
+.change-settings-modal a {
+  color: white;
+  text-align: center;
+}
+
+.change-settings-modal a:hover {
+  background-color: #3E606F;
 }
 
 /* --------------------------------- Add Feature Modal --------------------------------- */
